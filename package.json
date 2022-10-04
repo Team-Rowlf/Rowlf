@@ -4,7 +4,10 @@
 	"description": "react template",
 	"main": "index.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"start": "node server/index.js",
+		"build": "webpack",
+		"build:dev": "npm run build -- --watch --mode=development",
+		"start:dev": "JWT=cooking nodemon server --ignore src/ --ignore dist/ & npm run build:dev"
 	},
 	"author": "Parzidog",
 	"license": "ISC",
@@ -44,6 +47,10 @@
 		]
 	},
 	"devDependencies": {
+		"@babel/core": "^7.19.3",
+		"@babel/preset-env": "^7.19.3",
+		"@babel/preset-react": "^7.18.6",
+		"babel-loader": "^8.2.5",
 		"redux-logger": "^3.0.6"
 	}
 }
