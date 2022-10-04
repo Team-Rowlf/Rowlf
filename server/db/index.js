@@ -10,6 +10,9 @@ const LineItem = require('./models/LineItem');
 
 User.hasMany(ShoppingList);
 ShoppingList.belongsTo(User);
+User.hasMany(Recipe, {as: 'favorite'})
+User.hasMany(Recipe, {as: 'dislike'})
+User.hasMany(Ingredient, {as: 'ownedIngredient'})
 
 Recipe.belongsToMany(Cuisine, {through: 'CuisineType'});
 Cuisine.belongsToMany(Recipe, {through: 'CuisineType'});
