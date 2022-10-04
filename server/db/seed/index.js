@@ -9,6 +9,9 @@ const appliances = require('./applianceSeed')
 const Appliance = require('../models/Appliance')
 const ingredients = require('./ingredientSeed')
 const Ingredient = require('../models/Ingredient')
+const recipes = require('./recipeSeed')
+const Recipe = require('../models/Recipe')
+const LineItem = require('../models/LineItem')
 
 const seed = async () => {
     // seed some stuff here;
@@ -18,5 +21,22 @@ const seed = async () => {
     await Promise.all(restrictions.map((restriction) => Restriction.create({name: restriction})))
     await Promise.all(appliances.map((appliance) => Appliance.create({name: appliance})))
     await Promise.all(ingredients.map((ingredient) => Ingredient.create(ingredient)))
+    await Promise.all(recipes.map(async (recipe) => {
+        const newRecipe = await Recipe.create({name: recipe.name, url: recipe.url, servings: recipe.servings, cookTime: recipe.cookTime})
+        recipe.ingredients.forEach(async (ingredient) => {
+            let ingredientModel = Ingredient.findOne({where: {name: ingredient.name}})
+            await LineItem.create({ingredientId: ingredientModel.id, recipeId: newRecipe.id, qty: ingredient.qty, measurement: ingredient.denom})
+        })
+        recipe.cuisine.forEach(async (cuisine) => {
+            let cuisineModel = await Cuisine.findOne({where: {name: cuisine}})
+            await newRecipe.addCuisine(cuisineModel)
+        })
+        recipe.restrictions.forEach(async (tag) => {
+            let restriction = await Restriction.findOne({where: {name: tag}})
+            await newRecipe.addRestriction(restriction)
+        })
+    }))
+    console.log('Seeding complete!')
 }
 
+module.exports = seed;
