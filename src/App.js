@@ -13,6 +13,7 @@ function App() {
   return (
     <>
       {/* <NavBar /> */}
+      
       <div id="main">
         <Routes>
           <Route index element={<Home />} />
