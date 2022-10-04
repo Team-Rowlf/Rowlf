@@ -1,7 +1,7 @@
 {
-	"name": "template",
+	"name": "recipes",
 	"version": "1.0.0",
-	"description": "react template",
+	"description": "react recipes",
 	"main": "index.js",
 	"scripts": {
 		"start": "node server/index.js",
@@ -10,7 +10,7 @@
 		"start:dev": "JWT=cooking nodemon server --ignore src/ --ignore dist/ & npm run build:dev",
 		"seed": "npm run server/db/seed"
 	},
-	"author": "Parzidog",
+	"author": "rowlf",
 	"license": "ISC",
 	"dependencies": {
 		"@reduxjs/toolkit": "^1.8.5",
