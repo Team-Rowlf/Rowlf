@@ -1,0 +1,1 @@
+const cuisines = ['american', 'asian',]

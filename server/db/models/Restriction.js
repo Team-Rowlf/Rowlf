@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
 
-const Restrictions = db.define('restrictions', {
+const Restriction = db.define('restriction', {
   name: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -11,4 +11,4 @@ const Restrictions = db.define('restrictions', {
   },
 });
 
-module.exports = Restrictions;
+module.exports = Restriction;
