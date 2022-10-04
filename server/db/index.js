@@ -1,11 +1,8 @@
-const db = require('./database')
-const Template = require('./template')
+const db = require('./db');
 
 //Template.hasAssociations()
 
-
-module.exports ={
-    db, 
-    Template
-}
-
+module.exports = {
+  db,
+  Template,
+};
