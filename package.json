@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "seed": "npm run server/db/seed"
+    "seed": "node server/db/seed",
+    "start": "nodemon server"
   },
   "author": "Parzidog",
   "license": "ISC",
