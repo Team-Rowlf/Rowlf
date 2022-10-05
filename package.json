@@ -1,16 +1,16 @@
 {
-	"name": "template",
+	"name": "recipes",
 	"version": "1.0.0",
-	"description": "react template",
+	"description": "react recipes",
 	"main": "index.js",
 	"scripts": {
 		"start": "node server/index.js",
 		"build": "webpack",
 		"build:dev": "npm run build -- --watch --mode=development",
-		"start:dev": "JWT=cooking nodemon server --ignore src/ --ignore dist/ & npm run build:dev",
+		"start:dev": "nodemon server --ignore src/ --ignore dist/ & npm run build:dev",
 		"seed": "node server/db"
 	},
-	"author": "Parzidog",
+	"author": "rowlf",
 	"license": "ISC",
 	"dependencies": {
 		"@reduxjs/toolkit": "^1.8.5",
@@ -54,5 +54,4 @@
 		"babel-loader": "^8.2.5",
 		"redux-logger": "^3.0.6"
 	}
-
 }

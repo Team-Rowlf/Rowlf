@@ -13,6 +13,7 @@ const Signup = () => {
 		event.preventDefault();
 		dispatch(createUser({ signUp })) && navigate('/login');
 	};
+
 	const handleChange = (prop) => (event) => {
 		const password = document.querySelector('input[name=password]');
 		const confirm = document.querySelector('input[name=retype_password]');
@@ -26,6 +27,7 @@ const Signup = () => {
 			confirm.setCustomValidity('Passwords do not match!');
 		}
 	};
+
 	return (
 		<div className="signUp">
 			{' '}
