@@ -1,18 +1,18 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { fetchUser } from '../features/user/userSlice';
+import { loginUser, fetchUser } from '../features/user/userSlice';
 
 const Login = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
 	const [login, setLogin] = React.useState({});
-	const loginAttempt = useSelector((state) => state.user);
+	const loginAttempt = useSelector((state) => state.user.token);
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		dispatch(fetchUser({ login }));
+		dispatch(loginUser({ login }));
 	};
 	const handleChange = (prop) => (event) => {
 		setLogin({
@@ -20,7 +20,9 @@ const Login = () => {
 			[prop]: event.target.value,
 		});
 	};
-	React.useEffect(() => {}, []);
+	React.useEffect(() => {
+		loginAttempt && dispatch(fetchUser());
+	}, [loginAttempt]);
 
 	return (
 		<div className="login">
