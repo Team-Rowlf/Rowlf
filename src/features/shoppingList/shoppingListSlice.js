@@ -7,12 +7,7 @@ const initialState = {
 
 export const fetchShoppingList = createAsyncThunk(
 	'shoppingList/fetchShoppingList',
-	async () => {
-		try {
-		} catch (e) {
-			console.log(e);
-		}
-	}
+	async () => {}
 );
 
 const shoppingListSlice = createSlice({
