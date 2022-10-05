@@ -10,30 +10,33 @@ const LineItem = require('./models/LineItem');
 
 User.hasMany(ShoppingList);
 ShoppingList.belongsTo(User);
+User.hasMany(Recipe, { as: 'favorite' });
+User.hasMany(Recipe, { as: 'dislike' });
+User.hasMany(Ingredient, { as: 'ownedIngredient' });
 
-Recipe.belongsToMany(Cuisine, {through: 'CuisineType'});
-Cuisine.belongsToMany(Recipe, {through: 'CuisineType'});
+Recipe.belongsToMany(Cuisine, { through: 'CuisineType' });
+Cuisine.belongsToMany(Recipe, { through: 'CuisineType' });
 
 LineItem.belongsTo(Ingredient);
 Recipe.hasMany(LineItem);
 
-ShoppingList.belongsToMany(Recipe, {through: 'ShoppingListRecipe'});
-Recipe.belongsToMany(ShoppingList, {through: 'ShoppingListRecipe'});
+ShoppingList.belongsToMany(Recipe, { through: 'ShoppingListRecipe' });
+Recipe.belongsToMany(ShoppingList, { through: 'ShoppingListRecipe' });
 
-Recipe.belongsToMany(Appliance, {through: 'CookingMethod'})
-Appliance.belongsToMany(Recipe, {through: 'CookingMethod'})
+Recipe.belongsToMany(Appliance, { through: 'CookingMethod' });
+Appliance.belongsToMany(Recipe, { through: 'CookingMethod' });
 
-Recipe.belongsToMany(Restriction, {through: 'DietaryRestriction'})
-Restriction.belongsToMany(Recipe, {through: 'DietaryRestriction'})
+Recipe.belongsToMany(Restriction, { through: 'DietaryRestriction' });
+Restriction.belongsToMany(Recipe, { through: 'DietaryRestriction' });
 
 module.exports = {
-  db,
-  User,
-  Recipe,
-  Ingredient,
-  ShoppingList,
-  Cuisine,
-  Restriction,
-  Appliance,
-  LineItem,
+	db,
+	User,
+	Recipe,
+	Ingredient,
+	ShoppingList,
+	Cuisine,
+	Restriction,
+	Appliance,
+	LineItem,
 };
