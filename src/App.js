@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Nav from './components/Nav.jsx';
 import Footer from './components/Footer.jsx';
@@ -10,10 +10,15 @@ import NotFound from './components/NotFound.jsx';
 import User from './features/user/User';
 import ShoppingList from './features/shoppingList/ShoppingList';
 import Profile from './features/profile/Profile';
+import { fetchUser } from './features/user/userSlice.js';
 
 function App() {
+	const navigate = useNavigate();
 	const state = useSelector((state) => state);
 	const dispatch = useDispatch();
+	React.useEffect(() => {
+		// dispatch(fetchUser());
+	}, []);
 
 	return (
 		<>
