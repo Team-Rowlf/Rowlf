@@ -9,7 +9,9 @@ const ingredients = [
     {name: 'anise', isSpice: 'true'},
     {name: 'bay leaf', isSpice: 'true'},
     {name: 'cayenne pepper', isSpice: 'true'},
+    {name: 'celery seed', isSpice: 'true'},
     {name: 'chili pepper', isSpice: 'true'},
+    {name: 'chili powder', isSpice: 'true'},
     {name: 'cilantro', isSpice: 'true'},
     {name: 'cinnamon', isSpice: 'true'},
     {name: 'clove', isSpice: 'true'},
@@ -17,8 +19,10 @@ const ingredients = [
     {name: 'cumin', isSpice: 'true'},
     {name: 'dill', isSpice: 'true'},
     {name: 'fennel', isSpice: 'true'},
+    {name: 'fennel seeds', isSpice: 'true'},
     {name: 'ginger', isSpice: 'true'},
     {name: 'horseradish', isSpice: 'true'},
+    {name: 'Italian seasoning', isSpice: 'true'},
     {name: 'lemon grass', isSpice: 'true'},
     {name: 'marjoram', isSpice: 'true'},
     {name: 'nutmeg', isSpice: 'true'},
@@ -35,8 +39,13 @@ const ingredients = [
     {name: 'turmeric', isSpice: 'true'},
     {name: 'vanilla', isSpice: 'true'},
     {name: 'wasabi', isSpice: 'true'},
-    {name: 'mustard seed', isSpice: 'true'},
-    {name: 'red pepper flakes', isSpice: 'true'}
+    {name: 'mustard powder', isSpice: 'true'},
+    {name: 'red pepper flakes', isSpice: 'true'},
+    {name: 'garlic powder', isSpice: 'true'},
+    {name: 'onion powder', isSpice: 'true'},
+    {name: 'lemon pepper', isSpice: 'true'},
+    {name: 'ancho chile pepper', isSpice: 'true'},
+    {name: 'ground chipotle pepper', isSpice: 'true'},
 ]
 
 module.exports = ingredients;
