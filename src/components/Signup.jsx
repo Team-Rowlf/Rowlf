@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
-import { createUser } from '../features/user/userSlice';
+import { createUser, validateSignupForm } from '../features/user/userSlice';
 
 const Signup = () => {
 	const dispatch = useDispatch();
@@ -9,6 +9,11 @@ const Signup = () => {
 
 	const [signUp, setSignUp] = React.useState({});
 
+	const handleAdditionalValidate = (prop) => (event) => {
+		const value = event.target.value;
+
+		dispatch(validateSignupForm({ prop, value }));
+	};
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		dispatch(createUser({ signUp })) && navigate('/login');
@@ -46,6 +51,7 @@ const Signup = () => {
 						type="text"
 						placeholder="Username"
 						onChange={handleChange('username')}
+						onBlur={handleAdditionalValidate('username')}
 						required
 						min={6}
 					/>
@@ -56,6 +62,7 @@ const Signup = () => {
 						type="email"
 						placeholder="Email"
 						onChange={handleChange('email')}
+						onBlur={handleAdditionalValidate('email')}
 						required
 					/>
 					<label htmlFor="password"> Password </label>

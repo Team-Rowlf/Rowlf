@@ -21,7 +21,7 @@ router.post('/signup', async (req, res, next) => {
 		res.send({ token: await user.generateToken() });
 	} catch (error) {
 		if (error.name === 'SequelizeUniqueConstraintError') {
-			res.status(401).send('User already exists');
+			res.send({ dup: 'User already exists' });
 		} else {
 			next(error);
 		}
@@ -38,33 +38,18 @@ router.get('/me', requireToken, async (req, res, next) => {
 		console.error(error);
 		next(error);
 	}
-<<<<<<< HEAD
 });
 
 //user can edit their own profile
 router.put('/editMe', requireToken, async (req, res, next) => {
-  try {
-    const user = await User.findByPk(req.user.id);
-    const { username, email, password } = req.body;
-    const updatedUser = await user.update({ username, email, password });
-    res.send(updatedUser);
-  } catch (error) {
-    next(error);
-  }
-=======
->>>>>>> 61012001c362ca6817e7f2fc7b41f2653eb701a1
-});
-
-//user can edit their own profile
-router.put('/editMe', requireToken, async (req, res, next) => {
-  try {
-    const user = await User.findByPk(req.user.id);
-    const { username, email, password } = req.body;
-    const updatedUser = await user.update({ username, email, password });
-    res.send(updatedUser);
-  } catch (error) {
-    next(error);
-  }
+	try {
+		const user = await User.findByPk(req.user.id);
+		const { username, email, password } = req.body;
+		const updatedUser = await user.update({ username, email, password });
+		res.send(updatedUser);
+	} catch (error) {
+		next(error);
+	}
 });
 
 //ADMIN ROUTES for users
@@ -99,55 +84,34 @@ router.post('/account', requireToken, isAdmin, async (req, res, next) => {
 	} catch (error) {
 		next(error);
 	}
-<<<<<<< HEAD
 });
 
 //admin can edit existing user accounts
 router.put('/account/:id', requireToken, isAdmin, async (req, res, next) => {
-  try {
-    //gave admins the ability to set other admins
-    const { username, email, password, isAdmin } = req.body;
-    const userToUpdate = await User.findByPk(req.params.id);
-    const editedUser = await userToUpdate.update({
-      username,
-      email,
-      password,
-      isAdmin,
-    });
-    res.send(editedUser);
-  } catch (error) {
-    next(error);
-  }
-=======
->>>>>>> 61012001c362ca6817e7f2fc7b41f2653eb701a1
-});
-
-//admin can edit existing user accounts
-router.put('/account/:id', requireToken, isAdmin, async (req, res, next) => {
-  try {
-    //gave admins the ability to set other admins
-    const { username, email, password, isAdmin } = req.body;
-    const userToUpdate = await User.findByPk(req.params.id);
-    const editedUser = await userToUpdate.update({
-      username,
-      email,
-      password,
-      isAdmin,
-    });
-    res.send(editedUser);
-  } catch (error) {
-    next(error);
-  }
+	try {
+		//gave admins the ability to set other admins
+		const { username, email, password, isAdmin } = req.body;
+		const userToUpdate = await User.findByPk(req.params.id);
+		const editedUser = await userToUpdate.update({
+			username,
+			email,
+			password,
+			isAdmin,
+		});
+		res.send(editedUser);
+	} catch (error) {
+		next(error);
+	}
 });
 
 //admin can remove user accounts
 router.delete('/account/:id', async (req, res, next) => {
-  try {
-    const userToDelete = await User.findByPk(req.params.id);
-    await userToDelete.destroy();
-    res.send(userToDelete);
-  } catch (error) {
-    next(error);
-  }
+	try {
+		const userToDelete = await User.findByPk(req.params.id);
+		await userToDelete.destroy();
+		res.send(userToDelete);
+	} catch (error) {
+		next(error);
+	}
 });
 module.exports = router;

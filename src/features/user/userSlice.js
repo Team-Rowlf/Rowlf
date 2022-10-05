@@ -27,6 +27,17 @@ export const createUser = createAsyncThunk(
 		return create;
 	}
 );
+export const validateSignupForm = createAsyncThunk(
+	'user/validateSignupForm',
+	async (validate) => {
+		console.log(validate.prop, validate.value);
+		const { data } = await axios.get(
+			`/api/user/userExist/${validate.prop}`,
+			validate.value
+		);
+		return data;
+	}
+);
 
 const initialState = {
 	userInfo: {},
@@ -56,6 +67,7 @@ const userSlice = createSlice({
 			.addCase(createUser.rejected, (state, action) => {
 				state.status = 'failed';
 				state.error = action.error;
+				console.log(action);
 			})
 			.addCase(fetchUser.pending, (state, action) => {
 				state.status = 'pending';
