@@ -4,12 +4,9 @@ const { Ingredient } = require('../db')
 // basic get all; may want to later find all recipes with specific ingredients? will have to think about how to do that
 router.get('/', async (req, res, next) => {
     try {
-        console.log('in get statement before attempting to get ingredicents')
         const ingredients = await Ingredient.findAll();
-        console.log('in get statement after attempting to get ingredicents')
         res.send(ingredients)
     } catch(err) {
-        console.log('in error statement')
         next(err)
     }
 })
