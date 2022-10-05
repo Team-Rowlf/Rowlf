@@ -54,4 +54,5 @@
 		"babel-loader": "^8.2.5",
 		"redux-logger": "^3.0.6"
 	}
+
 }
