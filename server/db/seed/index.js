@@ -35,6 +35,10 @@ const seed = async () => {
             let restriction = await Restriction.findOne({where: {name: tag}})
             await newRecipe.addRestriction(restriction)
         })
+        recipe.appliances.forEach(async (tag) => {
+            let appliance = await Appliance.findOne({where: {name: tag}})
+            await newRecipe.addAppliance(appliance)
+        })
     }))
     console.log('Seeding complete!')
 }

@@ -1,3 +1,3 @@
-const restrictions = ['vegetarian','glutan-free','nut-free','lactose-free']
+const restrictions = ['vegetarian','vegan','glutan-free','nut-free','lactose-free','pescatarian']
 
 module.exports = restrictions

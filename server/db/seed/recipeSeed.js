@@ -16,7 +16,8 @@ const recipes = [
             {name: 'sour cream', qty: 1/3, denom: 'cup'}
         ],
         cuisine: ['mexican'],
-        restrictions: ['glutan-free', 'nut-free']
+        restrictions: ['glutan-free', 'nut-free'],
+        appliances: ['stovetop']
     },
     {
         name: "Tomato Basil Pasta",
@@ -29,11 +30,13 @@ const recipes = [
             {name: 'garlic', qty: 4, denom: 'clove'},
             {name: 'olive oil', qty: 1/4, denom: 'cup'},
             {name: 'fresh basil', qty: 1/2, denom: 'cup'},
-            {name: 'salt', qty: 2, denom: 'taste'},
-            {name: 'pepper', qty: 2, denom: 'taste'}
+            {name: 'salt', qty: 1, denom: 'to taste'},
+            {name: 'pepper', qty: 1, denom: 'to taste'},
+            {name: 'burrata', qty: 1, denom: 'ball'},
         ],
-        cuisine: ['italian'],
-        restrictions: ['vegetarian','nut-free']
+        cuisine: ['pasta'],
+        restrictions: ['vegetarian','nut-free'],
+        appliances: ['stovetop']
     }
 ]
 

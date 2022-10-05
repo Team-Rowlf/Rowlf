@@ -15,7 +15,8 @@ const ingredients = [
     {name: 'avocado'},
     {name: 'green onion'},
     {name: 'salsa'},
-    {name: 'sour cream'}
+    {name: 'sour cream'},
+    {name: 'burrata'}
 ]
 
 module.exports = ingredients;
