@@ -148,6 +148,65 @@ const recipes = [
         appliances: ['stovetop']
     },
     {
+        name: 'Corned Beef and Cabbage',
+        url: 'https://www.allrecipes.com/recipe/16310/corned-beef-and-cabbage-i/',
+        img: 'https://www.allrecipes.com/thmb/LpXBZhpPnWOQxXYocmKCFzFSB6c=/2250x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/16310-Corned-Beef-and-Cabbage-I-372809-Photo-by-Jenbc27-2000-0281c355b76543a6bef0f8e4cd52a517.jpg',
+        servings: 6,
+        cookTime: 150,
+        ingredients: [
+            {name: 'corned beef brisket', qty: 3, denom: 'lb'},
+            {name: 'red potatoes', qty: 10, denom: 'small'},
+            {name: 'carrot', qty: 5, denom: 'medium'},
+            {name: 'cabbage head', qty: 1, denom: 'large'}
+        ],
+        cuisine: ['other'],
+        restrictions: ['nut-free','lactose-free'],
+        appliances: ['stovetop']
+    },
+    {
+        url: 'https://www.allrecipes.com/recipe/223042/chicken-parmesan/',
+        img: 'https://www.allrecipes.com/thmb/VNte5t9OkENLpZ1SN5CJVVSHNcg=/2250x0/filters:no_upscale():max_bytes(150000):strip_icc()/223042-Chicken-Parmesan-mfs_001-b5a42a1bd4564f0a880b9030a33e24d3.jpg',
+        name: 'Chicken Parmesan',
+        cuisine: ['other'],
+        appliances: ['oven', 'stovetop'],
+        restrictions: [],
+        cookTime: 45,
+        servings: 4,
+        ingredients: [
+          {
+            qty: '2',
+            name: 'chicken breast',
+            denom: 'whole'
+          },
+          { qty: 2, name: 'eggs', denom: 'large' },
+          {
+            qty: 1,
+            name: 'panko bread crumbs',
+            denom: 'cup'
+          },
+          { qty: 3/4, name: 'parmesan cheese', denom: 'cup' },
+          {
+            qty: 2,
+            name: 'flour',
+            denom: 'tbsp'
+          },
+          {
+            qty: 1/2,
+            name: 'olive oil',
+            denom: 'cup'
+          },
+          { qty: 1/2, name: 'tomato sauce', denom: 'cup' },
+          {
+            qty: 1/4,
+            name: 'fresh mozzarella',
+            denom: 'cup'
+          },
+          { qty: 1/4, name: 'fresh basil', denom: 'cup' },
+          { qty: 1/2, name: 'provolone cheese', denom: 'cup' },
+          { qty: 2, name: 'olive oil', denom: 'tsp' }
+        ]
+    },
+    {
         url: 'https://www.allrecipes.com/recipe/14685/slow-cooker-beef-stew-i/',
         img: 'https://www.allrecipes.com/thmb/VHMVLGqIcXXirxhYcqIwnUjR4a4=/2250x0/filters:no_upscale():max_bytes(150000):strip_icc()/14685-slow-cooker-beef-stew-mfs-315-e5994bd0cf47400caffbaf273504b72b.jpg',
         name: 'Slow Cooker Beef Stew',

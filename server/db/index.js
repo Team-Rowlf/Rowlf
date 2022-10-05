@@ -31,7 +31,11 @@ Recipe.belongsToMany(Restriction, { through: 'DietaryRestriction' });
 Restriction.belongsToMany(Recipe, { through: 'DietaryRestriction' });
 
 // seeding here for now; uncomment to seed
+<<<<<<< HEAD
 // seedFunc();
+=======
+seedFunc()
+>>>>>>> seed
 
 module.exports = {
 	db,
