@@ -53,6 +53,24 @@ router.put('/editMe', requireToken, async (req, res, next) => {
   }
 });
 
+//check to see if username/email already exists
+router.get('/userExists/:input', async (req, res, next) => {
+  const field = req.params.input;
+  try {
+    const user = await User.findOne({
+      where: { [field]: req.body.value },
+    });
+    if (user) {
+      res.send(true);
+    } else {
+      res.send(false);
+    }
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+});
+
 //ADMIN ROUTES for users
 //admin view all user accounts
 router.get('/account', requireToken, isAdmin, async (req, res, next) => {
