@@ -7,12 +7,7 @@ const initialState = {
 
 export const fetchIngredients = createAsyncThunk(
 	'ingredients/fetchIngredients',
-	async () => {
-		try {
-		} catch (e) {
-			console.log(e);
-		}
-	}
+	async () => {}
 );
 
 const ingredientsSlice = createSlice({
