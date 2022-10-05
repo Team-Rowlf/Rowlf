@@ -46,24 +46,19 @@ User.prototype.generateToken = function () {
 
 //checks the passed in credentials, will return the user if credentials are valid
 User.authenticate = async function ({ username, password }) {
-  try {
-    const user = await this.findOne({
-      where: {
-        username,
-      },
-    });
-    //if the user or the comparison between hashed and passed in password is falsey
-    if (!user || !(await bcrypt.compare(password, user.password))) {
-      const error = Error('Incorrect username or password');
-      error.status = 401;
-      throw error;
-    }
-    return user;
-  } catch (err) {
-    const error = Error('bad credentials');
+  const user = await this.findOne({
+    where: {
+      username,
+    },
+  });
+  console.log(await bcrypt.compare(password, user.password));
+  //if the user or the comparison between hashed and passed in password is falsey
+  if (!user || !(await bcrypt.compare(password, user.password))) {
+    const error = Error('Incorrect username or password');
     error.status = 401;
     throw error;
   }
+  return user;
 };
 
 //searches for user by passed in token (will return the user if they exist)
