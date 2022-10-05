@@ -22,7 +22,7 @@ const Recipe = db.define('recipe', {
     validate: {
       notEmpty: true,
     },
-    defaultValue: '',
+    defaultValue: 'http://www.clker.com/cliparts/3/5/b/d/1516451297769237837clipart-pots-and-pans.hi.png',
   },
   servings: {
     type: Sequelize.INTEGER,

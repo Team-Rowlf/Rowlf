@@ -7,12 +7,7 @@ const initialState = {
 
 export const fetchProfile = createAsyncThunk(
 	'profile/fetchProfile',
-	async () => {
-		try {
-		} catch (e) {
-			console.log(e);
-		}
-	}
+	async () => {}
 );
 
 const profileSlice = createSlice({
