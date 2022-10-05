@@ -1,41 +1,92 @@
-import React from 'react'
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate, Link } from 'react-router-dom';
+import { createUser } from '../features/user/userSlice';
 
 const Signup = () => {
-  return (
-    <div>
-      <img src="/largelogo.svg" alt="Logo" />
-      <form action="">
-          <div className="signup">
-              <h1>Sign Up</h1>
-              <p>Please fill in this form to create an account.</p>
-              <hr/>
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
-              <label htmlFor="fname"><b>First Name</b></label>
-              <input type="text" placeholder="Enter First Name" name="fname" id="fname" required/>
+	const [signUp, setSignUp] = React.useState({});
 
-              <label htmlFor="fname"><b>Last Name</b></label>
-              <input type="text" placeholder="Enter Last Name" name="lname" id="lname" required/>
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		dispatch(createUser({ signUp })) && navigate('/login');
+	};
+	const handleChange = (prop) => (event) => {
+		const password = document.querySelector('input[name=password]');
+		const confirm = document.querySelector('input[name=retype_password]');
+		setSignUp({
+			...signUp,
+			[prop]: event.target.value,
+		});
+		if (confirm.value === password.value) {
+			confirm.setCustomValidity('');
+		} else {
+			confirm.setCustomValidity('Passwords do not match!');
+		}
+	};
+	return (
+		<div className="signUp">
+			{' '}
+			<div className="img-signup-container">
+				<img id="img-signup-id" src="/largelogo.svg" alt="Logo" />
+			</div>
+			<form onSubmit={handleSubmit} className="form-signUp">
+				<h1>Sign Up</h1>
+				<p>Please fill in this form to create an account.</p>
+				<hr />
+				<div className="form-signup-container">
+					<label htmlFor="username"> Username: </label>
+					<input
+						name="username"
+						className="input-signUp"
+						type="text"
+						placeholder="Username"
+						onChange={handleChange('username')}
+						required
+						min={6}
+					/>
+					<label htmlFor="email"> Email: </label>
+					<input
+						name="email"
+						className="input-signUp"
+						type="email"
+						placeholder="Email"
+						onChange={handleChange('email')}
+						required
+					/>
+					<label htmlFor="password"> Password </label>
+					<input
+						name="password"
+						className="input-signUp"
+						type="password"
+						placeholder="password"
+						onChange={handleChange('password')}
+						required
+						min={5}
+					/>
+					<label htmlFor="retype_password"> Retype Password </label>
+					<input
+						name="retype_password"
+						className="input-signUp"
+						type="password"
+						placeholder="password"
+						onChange={handleChange('password')}
+						required
+						min={5}
+					/>
+					<p>
+						By creating an account you agree to our{' '}
+						<Link to="terms&privacy">Terms & Privacy</Link>
+					</p>
+					<button type="submit" className="registerbtn">
+						Register
+					</button>
+				</div>
+			</form>
+		</div>
+	);
+};
 
-              <label htmlFor="email"><b>Email</b></label>
-              <input type="text" placeholder="Enter Email" name="email" id="email" required/>
-
-              <label htmlFor="pw"><b>Password</b></label>
-              <input type="password" placeholder="Enter Password" name="psw" id="psw" required/>
-
-              <label htmlFor="pw-repeat"><b>Retype Password</b></label>
-              <input type="password" placeholder="Retype Password" name="pw-repeat" id="pw-repeat" required/>
-              <hr/>
-
-              <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-              <button type="submit" className="registerbtn">Register</button>
-          </div>
-
-          <div className="container signin">
-              <p>Already have an account? <a href="#">Sign in</a>.</p>
-          </div>
-      </form>
-    </div>
-  )
-}
-
-export default Signup
+export default Signup;
