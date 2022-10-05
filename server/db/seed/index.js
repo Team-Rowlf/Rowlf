@@ -24,7 +24,8 @@ const seed = async () => {
     await Promise.all(recipes.map(async (recipe) => {
         const newRecipe = await Recipe.create({name: recipe.name, url: recipe.url, servings: recipe.servings, cookTime: recipe.cookTime})
         recipe.ingredients.forEach(async (ingredient) => {
-            let ingredientModel = Ingredient.findOne({where: {name: ingredient.name}})
+            // later when have more recipes, may what to employ a op.like comparison for name/ingredient name
+            let [ingredientModel, created] = await Ingredient.findOrCreate({where: {name: ingredient.name}})
             await LineItem.create({ingredientId: ingredientModel.id, recipeId: newRecipe.id, qty: ingredient.qty, measurement: ingredient.denom})
         })
         recipe.cuisine.forEach(async (cuisine) => {
