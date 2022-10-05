@@ -29,12 +29,10 @@ export const createUser = createAsyncThunk(
 );
 export const validateSignupForm = createAsyncThunk(
 	'user/validateSignupForm',
-	async (validate) => {
-		console.log(validate.prop, validate.value);
-		const { data } = await axios.get(
-			`/api/user/userExists/${validate.prop}`,
-			validate.value
-		);
+	async ({ prop, value }) => {
+		const { data } = await axios.post(`/api/user/userExists/${prop}`, {
+			value,
+		});
 		return data;
 	}
 );
@@ -46,6 +44,7 @@ const initialState = {
 	status: 'idle',
 	error: null,
 	token: null,
+	formInputAvailable: true,
 };
 
 const userSlice = createSlice({
@@ -67,10 +66,10 @@ const userSlice = createSlice({
 			.addCase(createUser.rejected, (state, action) => {
 				state.status = 'failed';
 				state.error = action.error;
-				console.log(action);
 			})
 			.addCase(validateSignupForm.fulfilled, (state, action) => {
 				state.status = 'succeeded';
+				state.formInputAvailable = action.payload;
 			})
 			.addCase(fetchUser.pending, (state, action) => {
 				state.status = 'pending';
@@ -94,6 +93,8 @@ const userSlice = createSlice({
 			});
 	},
 });
+
+export const getFormInputAvailable = (state) => state.user.formInputAvailable;
 
 const { logout } = userSlice.actions;
 

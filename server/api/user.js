@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { User } = require('../db');
 const { requireToken, isAdmin } = require('./gatekeepingMiddleware');
 
+//USER ACCOUNT ROUTES
 router.post('/login', async (req, res, next) => {
 	try {
 		const { username, password } = req.body;
@@ -21,7 +22,7 @@ router.post('/signup', async (req, res, next) => {
 		res.send({ token: await user.generateToken() });
 	} catch (error) {
 		if (error.name === 'SequelizeUniqueConstraintError') {
-			res.send({ dup: 'User already exists' });
+			res.status(401).send('User already exists');
 		} else {
 			next(error);
 		}
@@ -48,6 +49,25 @@ router.put('/editMe', requireToken, async (req, res, next) => {
 		const updatedUser = await user.update({ username, email, password });
 		res.send(updatedUser);
 	} catch (error) {
+		next(error);
+	}
+});
+
+//check to see if username/email already exists
+router.post('/userExists/:input', async (req, res, next) => {
+	try {
+		const field = req.params.input;
+
+		const user = await User.findOne({
+			where: { [field]: req.body.value },
+		});
+		if (user) {
+			res.send(false);
+		} else {
+			res.send(true);
+		}
+	} catch (error) {
+		console.error(error);
 		next(error);
 	}
 });

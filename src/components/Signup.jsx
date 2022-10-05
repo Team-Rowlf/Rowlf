@@ -1,18 +1,22 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
-import { createUser, validateSignupForm } from '../features/user/userSlice';
+import {
+	createUser,
+	validateSignupForm,
+	getFormInputAvailable,
+} from '../features/user/userSlice';
 
 const Signup = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
 	const [signUp, setSignUp] = React.useState({});
+	const validate = useSelector(getFormInputAvailable);
 
 	const handleAdditionalValidate = (prop) => (event) => {
 		const value = event.target.value;
-
-		dispatch(validateSignupForm({ prop, value }));
+		value.length >= 6 && dispatch(validateSignupForm({ prop, value }));
 	};
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -32,6 +36,7 @@ const Signup = () => {
 			confirm.setCustomValidity('Passwords do not match!');
 		}
 	};
+	React.useEffect(() => {}, [validate]);
 
 	return (
 		<div className="signUp">
@@ -51,10 +56,11 @@ const Signup = () => {
 						type="text"
 						placeholder="Username"
 						onChange={handleChange('username')}
-						onBlur={handleAdditionalValidate('username')}
 						required
 						min={6}
+						onBlur={handleAdditionalValidate('username')}
 					/>
+					{!validate && <p> Username is Taken </p>}
 					<label htmlFor="email"> Email: </label>
 					<input
 						name="email"
@@ -65,6 +71,7 @@ const Signup = () => {
 						onBlur={handleAdditionalValidate('email')}
 						required
 					/>
+					{!validate && <p> Email is Taken </p>}
 					<label htmlFor="password"> Password </label>
 					<input
 						name="password"
