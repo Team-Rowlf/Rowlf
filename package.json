@@ -8,7 +8,11 @@
 		"build": "webpack",
 		"build:dev": "npm run build -- --watch --mode=development",
 		"start:dev": "JWT=cooking nodemon server --ignore src/ --ignore dist/ & npm run build:dev",
+<<<<<<< HEAD
 		"seed": "node server/db/seed"
+=======
+		"seed": "npm run server/db"
+>>>>>>> main
 	},
 	"author": "Parzidog",
 	"license": "ISC",
