@@ -10,10 +10,9 @@ const ShoppingList = () => {
 	});
 	return (
 		<div className="shoppingList-container">
-			{' '}
 			<p>
 				<u>Main Shopping List</u>
-			</p>{' '}
+			</p>
 			<ul>
 				<li> Item 1</li>
 				<li> Item 2</li>

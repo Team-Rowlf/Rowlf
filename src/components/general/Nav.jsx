@@ -2,11 +2,13 @@ import React from 'react';
 import { button, useNavigate } from 'react-router-dom';
 
 const Nav = () => {
+	
 	const navigate = useNavigate()
+
 	return (
-		<div className="nav-container">
+		<div className="nav">
 			<div className='title'>
-				<img src="/favicon.svg" alt="Logo" />
+				<img className="small-logo" src="/favicon.svg" alt="Logo" />
 				<h1>Hello Kitchen</h1>
 			</div>
 			<nav className="nav-bar">
