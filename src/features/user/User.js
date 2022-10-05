@@ -1,6 +1,13 @@
 import React from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet, Link, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 const User = () => {
+	const navigate = useNavigate();
+	const user = useSelector((state) => state.user);
+
+	React.useEffect(() => {
+		!user.isLogged && navigate('/');
+	}, [user]);
 	return (
 		<div className="user">
 			<nav className="nav-user">

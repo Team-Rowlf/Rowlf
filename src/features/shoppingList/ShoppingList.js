@@ -1,13 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-const ShoppingList = () => {
-	const user = useSelector((state) => state.user);
-	const navigate = useNavigate();
 
-	React.useEffect(() => {
-		!user.isLogged && navigate('/');
-	});
+const ShoppingList = () => {
+	// const user = useSelector((state) => state.user);
+	// const navigate = useNavigate();
+
+	// React.useEffect(() => {
+	// 	!user.isLogged && navigate('/');
+	// }, []);
 	return (
 		<div className="shoppingList-container">
 			{' '}
