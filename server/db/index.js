@@ -7,6 +7,7 @@ const Restriction = require('./models/Restriction');
 const ShoppingList = require('./models/ShoppingList');
 const Appliance = require('./models/Appliance');
 const LineItem = require('./models/LineItem');
+const seedFunc = require('./seed')
 
 User.hasMany(ShoppingList);
 ShoppingList.belongsTo(User);
@@ -28,6 +29,9 @@ Appliance.belongsToMany(Recipe, { through: 'CookingMethod' });
 
 Recipe.belongsToMany(Restriction, { through: 'DietaryRestriction' });
 Restriction.belongsToMany(Recipe, { through: 'DietaryRestriction' });
+
+// seeding here for now; uncomment to seed
+// seedFunc()
 
 module.exports = {
 	db,
