@@ -34,9 +34,6 @@ Appliance.belongsToMany(Recipe, { through: 'CookingMethod' });
 Recipe.belongsToMany(Restriction, { through: 'DietaryRestriction' });
 Restriction.belongsToMany(Recipe, { through: 'DietaryRestriction' });
 
-// seeding here for now; uncomment to seed
-seedFunc();
-
 module.exports = {
   db,
   User,
@@ -47,4 +44,5 @@ module.exports = {
   Restriction,
   Appliance,
   LineItem,
+  seedFunc
 };
