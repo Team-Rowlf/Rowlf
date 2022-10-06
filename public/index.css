@@ -1,0 +1,277 @@
+* {
+  margin: 0px;
+}
+body {
+  background-color: #E0E2DB;
+}
+.small-logo {
+  display: block;
+  width: 60px;
+  height: 60px;
+  background-color: white;
+  border-radius: 30px;
+  padding: 0px;
+}
+.large-logo {
+  text-align: center;
+  font-size: x-large;
+  padding: 25px;
+  background-color: #8B2635;
+  color: white;
+  border-bottom: 10px solid #0D730D;
+}
+.large-logo img {
+  margin: auto;
+  display: block;
+  justify-content: center;
+  text-align: center;
+  width: 250px;
+  height: 250px;
+  background-color: white;
+  border-radius: 150px;
+  margin-bottom: 25px;
+}
+.footer {
+  position: fixed;
+  margin-bottom: -50px;
+  width: 100%;
+  padding: 15px;
+  text-align: center;
+  display: flex;
+  background-color: #8B2635;
+  color: white;
+  border-top: 10px solid #0D730D;
+  margin-top: 25px;
+  font-weight: bold;
+}
+.footer div {
+  text-align: center;
+  width: 33%;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #8B2635;
+  color: white;
+  border-bottom: 10px solid #0D730D;
+}
+.nav button {
+  background-color: #0D730D;
+}
+.nav .nav-bar {
+  padding: 10px;
+}
+.nav .nav-bar button {
+  margin: 5px;
+}
+.nav .title {
+  width: 40%;
+  display: flex;
+}
+.nav .title h1 {
+  padding: 10px;
+}
+.nav .title img {
+  margin: 3px;
+}
+.login {
+  border: 5px solid #8B2635;
+  border-radius: 10px;
+  width: fit-content;
+  height: fit-content;
+  margin: auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.loginContainer {
+  background: #0D730D;
+  padding: 50px;
+  margin: auto;
+  font-weight: bolder;
+  border: 5px solid white;
+  border-radius: 10px;
+  padding-top: 25px;
+}
+.loginContainer h1 {
+  text-align: center;
+  color: white;
+}
+.loginContainer hr {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: white;
+}
+.loginContainer p {
+  text-align: center;
+  color: white;
+  font-size: small;
+  padding: 5px;
+}
+.loginContainer .box {
+  width: 360px;
+  height: 35px;
+  margin-top: 10px;
+  font-family: verdana;
+  font-size: 12px;
+}
+.loginContainer .box .fr {
+  float: right;
+}
+.loginContainer .box .fl {
+  float: left;
+  width: 110px;
+  line-height: 35px;
+  padding-left: 15px;
+  background-color: #8B2635;
+  border: 2px solid #D3EFBD;
+  border-radius: 5px;
+}
+.loginContainer .box .clr {
+  clear: both;
+}
+.textBox {
+  border-radius: 5px;
+  height: 35px;
+  width: 190px;
+  border: none;
+  padding-left: 20px;
+}
+.fontLabel {
+  color: white;
+  font-weight: bold;
+}
+.new {
+  float: left;
+}
+.submit {
+  float: right;
+  border: 2px solid #D3EFBD;
+  border-radius: 5px;
+  color: white;
+  width: 110px;
+  height: 35px;
+  background: #8B2635;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: bold;
+}
+button {
+  float: left;
+  border: 2px solid #D3EFBD;
+  border-radius: 5px;
+  color: white;
+  width: 110px;
+  height: 35px;
+  background: #8B2635;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: bold;
+}
+.signup {
+  border: 5px solid #8B2635;
+  border-radius: 10px;
+  width: fit-content;
+  height: fit-content;
+  margin: auto;
+  margin-top: 25px;
+}
+.signupContainer {
+  background: #0D730D;
+  width: 375px;
+  height: 425px;
+  padding: 50px;
+  margin: auto;
+  font-weight: bolder;
+  border: 5px solid white;
+  border-radius: 10px;
+}
+.signupContainer h1 {
+  text-align: center;
+  color: white;
+}
+.signupContainer hr {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: white;
+}
+.signupContainer p {
+  text-align: center;
+  color: white;
+  font-size: small;
+  padding: 5px;
+}
+.signupContainer .box {
+  width: 360px;
+  height: 35px;
+  margin-top: 10px;
+  font-family: verdana;
+  font-size: 12px;
+}
+.signupContainer .box .fr {
+  float: right;
+}
+.signupContainer .box .fl {
+  float: left;
+  width: 110px;
+  line-height: 35px;
+  padding-left: 15px;
+  background-color: #8B2635;
+  border: 2px solid #D3EFBD;
+  border-radius: 5px;
+}
+.signupContainer .box .clr {
+  clear: both;
+}
+.textBox {
+  border-radius: 5px;
+  height: 35px;
+  width: 190px;
+  border: none;
+  padding-left: 20px;
+}
+.fontLabel {
+  color: white;
+  font-weight: bold;
+}
+.new {
+  float: left;
+}
+.radio {
+  color: white;
+  background: #0D730D;
+  line-height: 38px;
+}
+.terms {
+  line-height: 35px;
+  text-align: center;
+  background: #0D730D;
+  color: white;
+}
+.terms a {
+  color: #8B2635;
+}
+.submit {
+  float: right;
+  border: 2px solid #D3EFBD;
+  border-radius: 5px;
+  color: white;
+  width: 110px;
+  height: 35px;
+  background: #8B2635;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: bold;
+}
+button {
+  float: left;
+  border: 2px solid #D3EFBD;
+  border-radius: 5px;
+  color: white;
+  width: 110px;
+  height: 35px;
+  background: #8B2635;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: bold;
+}

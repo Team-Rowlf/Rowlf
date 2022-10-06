@@ -8,6 +8,26 @@ require('dotenv').config();
 const SALT_ROUNDS = 10;
 
 const User = db.define('user', {
+  firstName: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+    },
+  },
+  lastName: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+    },
+  },
+  phoneNum: {
+    type: Sequelize.STRING,
+  },
+  gender: {
+    type: Sequelize.ENUM('male', 'female', 'prefer not to say', 'other'),
+  },
   username: {
     type: Sequelize.STRING,
     unique: true,
