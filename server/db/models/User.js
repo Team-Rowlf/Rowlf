@@ -7,6 +7,26 @@ require('dotenv').config();
 const SALT_ROUNDS = 10;
 
 const User = db.define('user', {
+  firstName: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+    },
+  },
+  lastName: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+    },
+  },
+  phoneNum: {
+    type: Sequelize.STRING,
+  },
+  gender: {
+    type: Sequelize.ENUM('male', 'female', 'prefer not to say', 'other'),
+  },
   username: {
     type: Sequelize.STRING,
     unique: true,
@@ -46,24 +66,19 @@ User.prototype.generateToken = function () {
 
 //checks the passed in credentials, will return the user if credentials are valid
 User.authenticate = async function ({ username, password }) {
-  try {
-    const user = await this.findOne({
-      where: {
-        username,
-      },
-    });
-    //if the user or the comparison between hashed and passed in password is falsey
-    if (!user || !(await bcrypt.compare(password, user.password))) {
-      const error = Error('Incorrect username or password');
-      error.status = 401;
-      throw error;
-    }
-    return user;
-  } catch (err) {
-    const error = Error('bad credentials');
+  const user = await this.findOne({
+    where: {
+      username,
+    },
+  });
+  console.log(await bcrypt.compare(password, user.password));
+  //if the user or the comparison between hashed and passed in password is falsey
+  if (!user || !(await bcrypt.compare(password, user.password))) {
+    const error = Error('Incorrect username or password');
     error.status = 401;
     throw error;
   }
+  return user;
 };
 
 //searches for user by passed in token (will return the user if they exist)
