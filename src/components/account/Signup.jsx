@@ -1,18 +1,28 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
-import { createUser } from '../../features/user/userSlice';
+import {
+	createUser,
+	validateSignupForm,
+	getFormInputAvailable,
+} from '../../features/user/userSlice';
 
 const Signup = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
 	const [signUp, setSignUp] = React.useState({});
+	const validate = useSelector(getFormInputAvailable);
 
+	const handleAdditionalValidate = (prop) => (event) => {
+		const value = event.target.value;
+		value.length >= 6 && dispatch(validateSignupForm({ prop, value }));
+	};
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		dispatch(createUser({ signUp })) && navigate('/login');
 	};
+
 	const handleChange = (prop) => (event) => {
 		const password = document.querySelector('input[name=password]');
 		const confirm = document.querySelector('input[name=retype_password]');
@@ -26,6 +36,7 @@ const Signup = () => {
 			confirm.setCustomValidity('Passwords do not match!');
 		}
 	};
+	React.useEffect(() => {}, [validate]);
 
 	return (
 		<>
@@ -111,7 +122,7 @@ const Signup = () => {
 				</div>
 			</div>
 		</>
-	)
-}
+	);
+};
 
 export default Signup;

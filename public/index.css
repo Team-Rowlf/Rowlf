@@ -8,6 +8,9 @@ body {
   display: block;
   width: 60px;
   height: 60px;
+  background-color: white;
+  border-radius: 30px;
+  padding: 0px;
 }
 .large-logo {
   text-align: center;
@@ -48,11 +51,29 @@ body {
 .nav {
   display: flex;
   justify-content: space-between;
-  width: 99%;
-  padding: 5px;
+  width: 100%;
+  background-color: #8B2635;
+  color: white;
+  border-bottom: 10px solid #0D730D;
 }
-.nav div {
+.nav button {
+  background-color: #0D730D;
+}
+.nav .nav-bar {
+  padding: 10px;
+}
+.nav .nav-bar button {
+  margin: 5px;
+}
+.nav .title {
+  width: 40%;
   display: flex;
+}
+.nav .title h1 {
+  padding: 10px;
+}
+.nav .title img {
+  margin: 3px;
 }
 .login {
   border: 5px solid #8B2635;

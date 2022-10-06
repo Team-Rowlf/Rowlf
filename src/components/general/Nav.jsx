@@ -13,10 +13,10 @@ const Nav = () => {
 			</div>
 			<nav className="nav-bar">
 				<button className="navbutton" onClick={navigate('/')} >Home</button>
-				<button className="navbutton" onClick={navigate('/about')} >About</button>
-				<button className="navbutton" onClick={navigate('/recipes')} >Recipes</button>
-				<button className="navbutton" onClick={navigate('/cart')} >Cart</button>
-				<button className="navbutton" onClick={navigate('/profile')} >Profile</button>
+				<button className="navbutton" onClick={navigate('/user/about')} >About</button>
+				<button className="navbutton" onClick={navigate('/user/recipes')} >Recipes</button>
+				<button className="navbutton" onClick={navigate('/user/cart')} >Cart</button>
+				<button className="navbutton" onClick={navigate('/user/profile')} >Profile</button>
 			</nav>
 		</div>
 	);
