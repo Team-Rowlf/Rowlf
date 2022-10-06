@@ -10,6 +10,7 @@ import User from './components/account/User.jsx';
 import ShoppingList from './components/account/ShoppingList.jsx';
 import Profile from './components/account/Profile.jsx';
 import { fetchUser } from './features/user/userSlice.js';
+import LeafletMap from './components/LeafletMap.jsx';
 
 function App() {
 	const navigate = useNavigate();
@@ -32,6 +33,8 @@ function App() {
 						<Route path="profile" element={<Profile />} />
 						<Route path="*" element={<NotFound />} />
 					</Route>
+					{/* below route just for testing leaflet, will move later */}
+					<Route path="/leaflet" element={<LeafletMap />}/>
 					<Route path="*" element={<NotFound />} />
 				</Routes>
 			</div>
