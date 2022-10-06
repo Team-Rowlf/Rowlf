@@ -2,7 +2,9 @@ const Sequelize = require('sequelize');
 const db = require('../db');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const { ShoppingList } = require('./ShoppingList');
+const ShoppingList = require('./ShoppingList');
+const Recipe = require('./Recipe');
+const Ingredient = require('./Ingredient');
 require('dotenv').config();
 
 const SALT_ROUNDS = 10;
@@ -201,6 +203,81 @@ User.prototype.removeRecipeFromList = async function (id) {
   let recipeToAdd = await Recipe.findByPk(id);
   let userShoppingList = await this.getCurrentList();
   await userShoppingList.removeRecipe(recipeToAdd);
+};
+
+//methods for user to favorite/unfavorite and dislike/un-dislike recipes
+//might want some other checks to make sure a recipe can't be in both favorites and dislikes
+User.prototype.addRecipeToFavorites = async function (recipeId) {
+  const recipe = await Recipe.findByPk(recipeId);
+  if (recipe !== null) {
+    await this.addFavorite(recipe);
+  }
+};
+
+User.prototype.removeRecipeFromFavorites = async function (recipeId) {
+  const recipe = await Recipe.findByPk(recipeId);
+  if (recipe !== null) {
+    await this.removeFavorite(recipe);
+  }
+};
+
+User.prototype.addRecipeToDislikes = async function (recipeId) {
+  const recipe = await Recipe.findByPk(recipeId);
+  if (recipe !== null) {
+    await this.addDislike(recipe);
+  }
+};
+
+User.prototype.removeRecipeFromDislikes = async function (recipeId) {
+  const recipe = await Recipe.findByPk(recipeId);
+  if (recipe !== null) {
+    await this.removeDislike(recipe);
+  }
+};
+
+User.prototype.addIngredientToOwned = async function (ingredientId) {
+  const ingredient = await Ingredient.findByPk(ingredientId);
+  if (ingredient !== null) {
+    await this.addOwnedIngredient(ingredient);
+  }
+};
+
+User.prototype.removeIngredientFromOwned = async function (ingredientId) {
+  const ingredient = await Ingredient.findByPk(ingredientId);
+  if (ingredient !== null) {
+    await this.removeOwnedIngredient(ingredient);
+  }
+};
+
+User.prototype.getFavorites = async function () {
+  //might be better way of doing this
+  const selfWithRecipes = await User.findByPk(this.id, {
+    include: {
+      model: Recipe,
+      as: 'favorite',
+    },
+  });
+  return selfWithRecipes.favorite;
+};
+
+User.prototype.getDislikes = async function () {
+  const selfWithRecipes = await User.findByPk(this.id, {
+    include: {
+      model: Recipe,
+      as: 'dislike',
+    },
+  });
+  return selfWithRecipes.dislike;
+};
+
+User.prototype.getOwnedIngredients = async function () {
+  const selfWithIngredients = await User.findByPk(this.id, {
+    include: {
+      model: Ingredient,
+      as: 'ownedIngredient',
+    },
+  });
+  return selfWithIngredients.ownedIngredient;
 };
 
 module.exports = User;

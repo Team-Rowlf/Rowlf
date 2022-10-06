@@ -101,7 +101,6 @@ router.post('/userExists/:input', async (req, res, next) => {
 });
 
 //USER SHOPPINGLIST QUERIES
-
 //gets back the shopping list of a user that is currently set to isComplete : false
 router.get('/me/currentList', requireToken, async (req, res, next) => {
   try {
@@ -155,7 +154,6 @@ router.put('/me/setActive', requireToken, async (req, res, next) => {
 });
 
 //USER RECIPE QUERIES
-
 router.put('/me/addRecipe', requireToken, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.user.id);
@@ -176,6 +174,92 @@ router.put('/me/removeRecipe', requireToken, async (req, res, next) => {
     next(error);
   }
 });
+
+// get favorited recipes
+router.get('/me/favoritedrecipes', requireToken, async (req, res, next) => {
+  try {
+    const user = await User.findByPk(req.user.id);
+    const favorites = await user.getFavorites();
+    res.send(favorites);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// get disliked recipes
+router.get('/me/dislikedrecipes', requireToken, async (req, res, next) => {
+  try {
+    const user = await User.findByPk(req.user.id);
+    const dislikes = await user.getDislikes();
+    res.send(dislikes);
+  } catch (err) {
+    next(err);
+  }
+});
+
+//USER INGREDIENT QUERIES
+// get owned ingredients
+router.get('/me/ownedingredients', requireToken, async (req, res, next) => {
+  try {
+    const user = await User.findByPk(req.user.id);
+    const ingredients = await user.getOwnedIngredients();
+    res.send(ingredients);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// update favorites, dislikes, and owned ingredients
+// req.body.action either 'add' or 'remove', req.body.id the recipe or ingredient
+router.put('/me/updatefavorites', requireToken, async (req, res, next) => {
+  try {
+    const user = await User.findByPk(req.user.id);
+    if (req.body.action === 'add') {
+      await user.addRecipeToFavorites(req.body.id);
+    } else if (req.body.action === 'remove') {
+      await user.removeRecipeFromFavorites(req.body.id);
+    }
+    const updatedFavorites = await user.getFavorites();
+    res.send(updatedFavorites);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.put('/me/updatedislikes', requireToken, async (req, res, next) => {
+  try {
+    const user = await User.findByPk(req.user.id);
+    if (req.body.action === 'add') {
+      await user.addRecipeToDislikes(req.body.id);
+    } else if (req.body.action === 'remove') {
+      await user.removeRecipeFromDislikes(req.body.id);
+    }
+    const updatedDislikes = await user.getDislikes();
+    res.send(updatedDislikes);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.put(
+  '/me/updateownedingredients',
+  requireToken,
+  async (req, res, next) => {
+    try {
+      const user = await User.findByPk(req.user.id);
+      if (req.body.action === 'add') {
+        await user.addIngredientToOwned(req.body.id);
+      } else if (req.body.action === 'remove') {
+        await user.removeIngredientFromOwned(req.body.id);
+      }
+      const updatedDislikes = await user.getOwnedIngredients();
+      res.send(updatedDislikes);
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
 //ADMIN ROUTES for users
 //admin view all user accounts
 router.get('/account', requireToken, isAdmin, async (req, res, next) => {
