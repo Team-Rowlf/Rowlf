@@ -11,9 +11,6 @@ const seedFunc = require('./seed');
 
 User.hasMany(ShoppingList);
 ShoppingList.belongsTo(User);
-// User.hasMany(Recipe, { as: 'favorite' });
-// User.hasMany(Recipe, { as: 'dislike' });
-// User.hasMany(Ingredient, { as: 'ownedIngredient' });
 
 User.belongsToMany(Recipe, {through: 'FavoritedRecipes', as: 'favorite'})
 User.belongsToMany(Recipe, {through: 'DislikedRecipes', as: 'dislike'})
