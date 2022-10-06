@@ -4,15 +4,15 @@ const { requireToken, isAdmin } = require('./gatekeepingMiddleware');
 
 //USER ACCOUNT ROUTES
 router.post('/login', async (req, res, next) => {
-  try {
-    const { username, password } = req.body;
-    const userData = { username: username, password: password };
-    let user = await User.authenticate(userData);
-    res.send({ token: await user.generateToken() });
-  } catch (error) {
-    console.log(error);
-    next(error);
-  }
+	try {
+		const { username, password } = req.body;
+		const userData = { username: username, password: password };
+		let user = await User.authenticate(userData);
+		res.send({ token: await user.generateToken() });
+	} catch (error) {
+		console.log(error);
+		next(error);
+	}
 });
 
 router.post('/signup', async (req, res, next) => {
@@ -91,26 +91,28 @@ router.put('/editMe', requireToken, async (req, res, next) => {
 
 //checks to see if whatever input is passed into req.params exists
 //req.body.value will be sent from the front end
-router.get('/userExists/:input', async (req, res, next) => {
-  const field = req.params.input;
-  try {
-    const user = await User.findOne({
-      where: { [field]: req.body.value },
-    });
-    if (user) {
-      res.send(true);
-    } else {
-      res.send(false);
-    }
-  } catch (error) {
-    console.error(error);
-    next(error);
-  }
+router.post('/userExists/:input', async (req, res, next) => {
+	try {
+		const field = req.params.input;
+
+		const user = await User.findOne({
+			where: { [field]: req.body.value },
+		});
+		if (user) {
+			res.send(false);
+		} else {
+			res.send(true);
+		}
+	} catch (error) {
+		console.error(error);
+		next(error);
+	}
 });
 
 //ADMIN ROUTES for users
 //admin view all user accounts
 router.get('/account', requireToken, isAdmin, async (req, res, next) => {
+
   try {
     const users = await User.findAll({
       attributes: [
@@ -133,12 +135,12 @@ router.get('/account', requireToken, isAdmin, async (req, res, next) => {
 
 //admin view a single user account
 router.get('/account/:id', requireToken, isAdmin, async (req, res, next) => {
-  try {
-    const user = await User.findByPk(req.params.id);
-    res.send(user);
-  } catch (error) {
-    next(error);
-  }
+	try {
+		const user = await User.findByPk(req.params.id);
+		res.send(user);
+	} catch (error) {
+		next(error);
+	}
 });
 
 //admin can create new user accounts
