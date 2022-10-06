@@ -14,7 +14,7 @@ const Recipe = require('../models/Recipe');
 const LineItem = require('../models/LineItem');
 
 const seed = async () => {
-    // seed some stuff here;
+    console.log('Seeding in progress...')
     await db.sync({ force: true });
     await Promise.all(users.map((user) => User.create(user)))
     await Promise.all(cuisines.map((cuisine) => Cuisine.create({name: cuisine})))
@@ -41,7 +41,6 @@ const seed = async () => {
             await newRecipe.addAppliance(appliance)
         })
     }))
-    console.log('Seeding complete!')
 }
 
 module.exports = seed;
