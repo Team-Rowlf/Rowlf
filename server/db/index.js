@@ -13,7 +13,8 @@ User.hasMany(ShoppingList);
 ShoppingList.belongsTo(User);
 User.hasMany(Recipe, { as: 'favorite' });
 User.hasMany(Recipe, { as: 'dislike' });
-User.hasMany(Ingredient, { as: 'ownedIngredient' });
+User.belongsToMany(Ingredient, { through: 'UserIngredient' });
+Ingredient.belongsToMany(User, { through: 'UserIngredient' });
 
 Recipe.belongsToMany(Cuisine, { through: 'CuisineType' });
 Cuisine.belongsToMany(Recipe, { through: 'CuisineType' });

@@ -2,6 +2,7 @@ const Sequelize = require('sequelize');
 const db = require('../db');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const { ShoppingList } = require('./ShoppingList');
 require('dotenv').config();
 
 const SALT_ROUNDS = 10;
@@ -88,5 +89,82 @@ User.beforeUpdate(async (user) => {
   const hashedPassword = await bcrypt.hash(user.password, SALT_ROUNDS);
   user.password = hashedPassword;
 });
+
+//custom user model instance methods (for querying)
+User.prototype.getCurrentList = async function () {
+  const currentList = await ShoppingList.findOne({
+    where: {
+      userId: this.id,
+      isCompleted: false,
+      attributes: ['id', 'userId'],
+      //shoppingLisy links to recipe
+      include: {
+        model: Recipe,
+        attributes: ['name', 'servings'],
+        //recipe links to lineItem, which then links to ingredient
+        include: {
+          model: LineItem,
+          attributes: ['qty', 'measurement'],
+          include: { model: Ingredient, attributes: ['name', 'isSpice'] },
+        },
+      },
+    },
+  });
+  return currentList;
+};
+
+User.prototype.getCurrentList = async function () {
+  const currentList = await ShoppingList.findOne({
+    where: {
+      userId: this.id,
+      isCompleted: false,
+      attributes: ['id', 'userId'],
+      include: {
+        model: Recipe,
+        attributes: ['name', 'servings'],
+        include: {
+          model: LineItem,
+          attributes: ['qty', 'measurement'],
+          include: { model: Ingredient, attributes: ['name', 'isSpice'] },
+        },
+      },
+    },
+  });
+
+  User.prototype.getAllLists = async function () {
+    const currentList = await ShoppingList.findOne({
+      where: {
+        userId: this.id,
+        attributes: ['id', 'userId'],
+        include: {
+          model: Recipe,
+          attributes: ['name', 'servings'],
+          include: {
+            model: LineItem,
+            attributes: ['qty', 'measurement'],
+            include: { model: Ingredient, attributes: ['name', 'isSpice'] },
+          },
+        },
+      },
+    });
+    return currentList;
+  };
+};
+
+User.prototype.setCompleted = async function (id){
+  let listToSet = await ShoppingList.findOne({
+    where: {
+      id: id,
+      userId: this.id
+    }    
+  })
+  list
+}
+
+
+
+User.prototype.addRecipeToList() = async function () {
+
+}
 
 module.exports = User;
