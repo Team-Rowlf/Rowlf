@@ -1,9 +1,10 @@
 import React from 'react';
-import About from './About.jsx';
+
+import { Link } from 'react-router-dom';
 const Footer = () => {
 	return (
 		<div className="footer">
-			<About />
+			<div> ABOUT US FOOTER </div>;<Link to="/about"> More about us </Link>
 		</div>
 	);
 };

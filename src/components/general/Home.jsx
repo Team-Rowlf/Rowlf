@@ -17,9 +17,7 @@ const Home = () => {
 			(user.isLogged && navigate('/user/shoppingList'));
 	}, [user.isLogged]);
 
-	React.useEffect(() => {
-		// dispatch(fetchUser());
-	}, []);
+	React.useEffect(() => {}, []);
 	return <Login />;
 };
 
