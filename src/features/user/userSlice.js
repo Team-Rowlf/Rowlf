@@ -44,7 +44,7 @@ const initialState = {
 	status: 'idle',
 	error: null,
 	token: null,
-	formInputAvailable: true,
+	formInputAvailable: { username: true, email: true },
 };
 
 const userSlice = createSlice({
@@ -56,6 +56,7 @@ const userSlice = createSlice({
 			state.userInfo = {};
 			state.isLogged = false;
 			state.isAdmin = false;
+			state.token = false;
 		},
 	},
 	extraReducers(builder) {
@@ -69,7 +70,8 @@ const userSlice = createSlice({
 			})
 			.addCase(validateSignupForm.fulfilled, (state, action) => {
 				state.status = 'succeeded';
-				state.formInputAvailable = action.payload;
+				const field = action.payload.field;
+				state.formInputAvailable[field] = action.payload.isAvailable;
 			})
 			.addCase(fetchUser.pending, (state, action) => {
 				state.status = 'pending';
@@ -96,7 +98,8 @@ const userSlice = createSlice({
 });
 
 export const getFormInputAvailable = (state) => state.user.formInputAvailable;
+export const isLoggedStatus = (state) => state.user.isLogged;
 
-const { logout } = userSlice.actions;
+export const { logout } = userSlice.actions;
 
 export default userSlice.reducer;

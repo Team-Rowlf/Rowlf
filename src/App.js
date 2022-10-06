@@ -10,6 +10,7 @@ import User from './components/account/User.jsx';
 import ShoppingList from './components/account/ShoppingList.jsx';
 import Profile from './components/account/Profile.jsx';
 import { fetchUser } from './features/user/userSlice.js';
+import About from './components/general/About.jsx';
 
 function App() {
 	const navigate = useNavigate();
@@ -26,6 +27,7 @@ function App() {
 					<Route index element={<Home />} />
 					<Route path="/login" element={<Login />} />
 					<Route path="/signUp" element={<Signup />} />
+					<Route path="/about" element={<About />} />
 					<Route path="/user" element={<User />}>
 						<Route index element={<ShoppingList />} />
 						<Route path="shoppingList" element={<ShoppingList />} />
