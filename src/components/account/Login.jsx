@@ -20,7 +20,7 @@ const Login = () => {
 			[prop]: event.target.value,
 		});
 	};
-	React.useEffect(() => {}, []);
+	// React.useEffect(() => {}, []);
 
 	return (
 		<>
