@@ -34,13 +34,13 @@ Restriction.belongsToMany(Recipe, { through: 'DietaryRestriction' });
 seedFunc();
 
 module.exports = {
-	db,
-	User,
-	Recipe,
-	Ingredient,
-	ShoppingList,
-	Cuisine,
-	Restriction,
-	Appliance,
-	LineItem,
+  db,
+  User,
+  Recipe,
+  Ingredient,
+  ShoppingList,
+  Cuisine,
+  Restriction,
+  Appliance,
+  LineItem,
 };
