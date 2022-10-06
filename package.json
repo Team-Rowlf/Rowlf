@@ -10,6 +10,10 @@
 		"start:dev": "JWT=cooking nodemon server --ignore src/ --ignore dist/ & npm run build:dev",
 		"seed": "node server/seed.js"
 	},
+	"engines":{
+    	"node": "^18.9.1",
+    	"npm": "^8.19.2"
+  	},
 	"author": "rowlf",
 	"license": "ISC",
 	"dependencies": {
