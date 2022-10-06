@@ -109,4 +109,23 @@ User.beforeUpdate(async (user) => {
   user.password = hashedPassword;
 });
 
+
+
+//methods for user to favorite/unfavorite and dislike/un-dislike recipes
+User.prototype.addRecipeToFavorites = async function (recipeId) {
+  
+}
+
+User.prototype.removeRecipeFromFavorites = async function (recipeId) {
+  
+}
+
+User.prototype.addRecipeToDislikes = async function (recipeId) {
+  
+}
+
+User.prototype.removeRecipeFromDislikes = async function (recipeId) {
+  
+}
+
 module.exports = User;
