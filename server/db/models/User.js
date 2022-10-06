@@ -133,11 +133,10 @@ User.prototype.getCurrentList = async function () {
   return currentList;
 };
 
-User.prototype.getCurrentList = async function () {
-  const currentList = await ShoppingList.findOne({
+User.prototype.getSingleList = async function (id) {
+  const currentList = await ShoppingList.findByPk(id, {
     where: {
       userId: this.id,
-      isCompleted: false,
       attributes: ['id', 'userId'],
       include: {
         model: Recipe,
@@ -150,41 +149,58 @@ User.prototype.getCurrentList = async function () {
       },
     },
   });
-
-  User.prototype.getAllLists = async function () {
-    const currentList = await ShoppingList.findOne({
-      where: {
-        userId: this.id,
-        attributes: ['id', 'userId'],
-        include: {
-          model: Recipe,
-          attributes: ['name', 'servings'],
-          include: {
-            model: LineItem,
-            attributes: ['qty', 'measurement'],
-            include: { model: Ingredient, attributes: ['name', 'isSpice'] },
-          },
-        },
-      },
-    });
-    return currentList;
-  };
+  return currentList;
 };
 
-User.prototype.setCompleted = async function (id){
+User.prototype.getAllLists = async function () {
+  const currentList = await ShoppingList.findAll({
+    where: {
+      userId: this.id,
+      attributes: ['id', 'userId'],
+      include: {
+        model: Recipe,
+        attributes: ['name', 'servings'],
+        include: {
+          model: LineItem,
+          attributes: ['qty', 'measurement'],
+          include: { model: Ingredient, attributes: ['name', 'isSpice'] },
+        },
+      },
+    },
+  });
+  return currentList;
+};
+
+User.prototype.setCompleted = async function (id) {
   let listToSet = await ShoppingList.findOne({
     where: {
       id: id,
-      userId: this.id
-    }    
-  })
-  list
-}
+      userId: this.id,
+    },
+  });
+  await listToSet.update({ isCompleted: true });
+};
 
+User.prototype.setActive = async function (id) {
+  let listToSet = await ShoppingList.findOne({
+    where: {
+      id: id,
+      userId: this.id,
+    },
+  });
+  await listToSet.update({ isCompleted: false });
+};
 
+User.prototype.addRecipeToList = async function (id) {
+  let recipeToAdd = await Recipe.findByPk(id);
+  let userShoppingList = await this.getCurrentList();
+  await userShoppingList.addRecipe(recipeToAdd);
+};
 
-User.prototype.addRecipeToList() = async function () {
-
-}
+User.prototype.removeRecipeFromList = async function (id) {
+  let recipeToAdd = await Recipe.findByPk(id);
+  let userShoppingList = await this.getCurrentList();
+  await userShoppingList.removeRecipe(recipeToAdd);
+};
 
 module.exports = User;

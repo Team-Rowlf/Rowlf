@@ -41,16 +41,8 @@ router.post('/signup', async (req, res, next) => {
 //user can view their own profile
 router.get('/me', requireToken, async (req, res, next) => {
   try {
-    const {
-      id,
-      firstName,
-      lastName,
-      gender,
-      phoneNum,
-      username,
-      password,
-      email,
-    } = req.user;
+    const { id, firstName, lastName, gender, phoneNum, username, email } =
+      req.user;
     const userInfo = {
       id,
       firstName,
@@ -58,7 +50,6 @@ router.get('/me', requireToken, async (req, res, next) => {
       gender,
       phoneNum,
       username,
-      password,
       email,
     };
     res.send(userInfo);
@@ -109,6 +100,82 @@ router.post('/userExists/:input', async (req, res, next) => {
   }
 });
 
+//USER SHOPPINGLIST QUERIES
+
+//gets back the shopping list of a user that is currently set to isComplete : false
+router.get('/me/currentList', requireToken, async (req, res, next) => {
+  try {
+    const user = await User.findByPk(req.user.id);
+    const currentList = await user.getCurrentList();
+    res.send(currentList);
+  } catch (error) {
+    next(error);
+  }
+});
+
+//gets back a certain list of a user based on the params passed in (not sure if the implementation here is right)
+router.get('/me/singleList', requireToken, async (req, res, next) => {
+  try {
+    const user = await User.findByPk(req.user.id);
+    const singleList = await user.getSingleList(req.body.id);
+    res.send(singleList);
+  } catch (error) {
+    next(error);
+  }
+});
+
+//gets back every list a user has had, completed or active
+router.get('/me/allLists', requireToken, async (req, res, next) => {
+  try {
+    const user = await User.findByPk(req.user.id);
+    const allLists = await user.getAllLists();
+    res.send(allLists);
+  } catch (error) {
+    next(error);
+  }
+});
+
+//
+router.put('/me/setCompleted/', requireToken, async (req, res, next) => {
+  try {
+    const user = await User.findByPk(req.user.id);
+    const listToSet = await user.setCompleted(req.body.id);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.put('/me/setActive', requireToken, async (req, res, next) => {
+  try {
+    const user = await User.findByPk(req.user.id);
+    const listToSet = await user.setActive(req.body.id);
+  } catch (error) {
+    next(error);
+  }
+});
+
+//USER RECIPE QUERIES
+
+router.put('/me/addRecipe', requireToken, async (req, res, next) => {
+  try {
+    const user = await User.findByPk(req.user.id);
+    //id will be of the recipe you want to add
+    const recipeToAdd = await user.addRecipeToList(req.body.id);
+    res.send(recipeToAdd);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.put('/me/removeRecipe', requireToken, async (req, res, next) => {
+  try {
+    const user = await User.findByPk(req.user.id);
+    const recipteToRemove = await user.removeRecipeFromList(req.body.id);
+    res.send(recipteToRemove);
+  } catch (error) {
+    next(error);
+  }
+});
 //ADMIN ROUTES for users
 //admin view all user accounts
 router.get('/account', requireToken, isAdmin, async (req, res, next) => {
