@@ -39,7 +39,7 @@ export const validateSignupForm = createAsyncThunk(
 
 const initialState = {
 	userInfo: {},
-	isLogged: false,
+	isLogged: true,
 	isAdmin: false,
 	status: 'idle',
 	error: null,
