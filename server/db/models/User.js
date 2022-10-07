@@ -3,6 +3,7 @@ const db = require('../db');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const ShoppingList = require('./ShoppingList');
+const LineItem = require('./LineItem');
 const Recipe = require('./Recipe');
 const Ingredient = require('./Ingredient');
 require('dotenv').config();
@@ -118,29 +119,36 @@ User.prototype.getCurrentList = async function () {
     where: {
       userId: this.id,
       isCompleted: false,
-      attributes: ['id', 'userId'],
-      //shoppingLisy links to recipe
+    },
+    attributes: ['id', 'userId', 'isCompleted'],
+    include: {
+      model: Recipe,
+      attributes: ['name', 'servings'],
+      //recipe links to lineItem, which then links to ingredient
       include: {
-        model: Recipe,
-        attributes: ['name', 'servings'],
-        //recipe links to lineItem, which then links to ingredient
-        include: {
-          model: LineItem,
-          attributes: ['qty', 'measurement'],
-          include: { model: Ingredient, attributes: ['name', 'isSpice'] },
-        },
+        model: LineItem,
+        attributes: ['qty', 'measurement'],
+        include: { model: Ingredient, attributes: ['name', 'isSpice'] },
       },
     },
   });
+  if (!currentList) {
+    const error = Error('list does not exist');
+    error.status = 404;
+    throw error;
+  }
   return currentList;
 };
 
 User.prototype.getSingleList = async function (id) {
-  const currentList = await ShoppingList.findByPk(id, {
+  const singleList = await ShoppingList.findOne({
     where: {
+      id: id,
       userId: this.id,
-      attributes: ['id', 'userId'],
-      include: {
+    },
+    attributes: ['id', 'userId', 'isCompleted'],
+    include: [
+      {
         model: Recipe,
         attributes: ['name', 'servings'],
         include: {
@@ -149,60 +157,118 @@ User.prototype.getSingleList = async function (id) {
           include: { model: Ingredient, attributes: ['name', 'isSpice'] },
         },
       },
-    },
+    ],
   });
-  return currentList;
+  if (!singleList) {
+    const error = Error('list does not exist');
+    error.status = 404;
+    throw error;
+  }
+  return singleList;
 };
 
 User.prototype.getAllLists = async function () {
-  const currentList = await ShoppingList.findAll({
+  const allLists = await ShoppingList.findAll({
     where: {
       userId: this.id,
-      attributes: ['id', 'userId'],
+    },
+    attributes: ['id', 'userId', 'isCompleted'],
+    include: {
+      model: Recipe,
+      attributes: ['name', 'servings'],
       include: {
-        model: Recipe,
-        attributes: ['name', 'servings'],
-        include: {
-          model: LineItem,
-          attributes: ['qty', 'measurement'],
-          include: { model: Ingredient, attributes: ['name', 'isSpice'] },
-        },
+        model: LineItem,
+        attributes: ['qty', 'measurement'],
+        include: { model: Ingredient, attributes: ['name', 'isSpice'] },
       },
     },
   });
-  return currentList;
+  if (!allLists) {
+    const error = Error('list does not exist');
+    error.status = 404;
+    throw error;
+  }
+  return allLists;
 };
 
+//will set a shoppinglist to complete
 User.prototype.setCompleted = async function (id) {
+  let listExists = await ShoppingList.findByPk(id);
   let listToSet = await ShoppingList.findOne({
     where: {
       id: id,
       userId: this.id,
     },
   });
+  if (!listExists) {
+    const error = Error(`Shopping list doesn't exist`);
+    throw error;
+  }
+  if (!listToSet) {
+    const error = Error("Shopping list doesn't belong to this user");
+    throw error;
+  }
   await listToSet.update({ isCompleted: true });
+  return listToSet;
 };
 
+//will set a shopping list back to active
 User.prototype.setActive = async function (id) {
+  let listExists = await ShoppingList.findByPk(id);
   let listToSet = await ShoppingList.findOne({
+    //shopping list must belong to the user
     where: {
       id: id,
       userId: this.id,
     },
   });
+  if (!listExists) {
+    const error = Error(`Shopping list doesn't exist`);
+    throw error;
+  }
+  if (!listToSet) {
+    const error = Error("Shopping list doesn't belong to this user");
+    throw error;
+  }
   await listToSet.update({ isCompleted: false });
+  return listToSet;
 };
 
+//will create a brand new empty shopping list for the user, if the user doesn't have an active list already
+User.prototype.createNewList = async function () {
+  const activeList = await ShoppingList.findAll({
+    where: {
+      isCompleted: false,
+    },
+  });
+  if (!activeList) {
+    let newList = await ShoppingList.create();
+    await newList.setUser(this);
+    return newList;
+  }
+};
+
+//adds recipe to the current active list, returns the instance in the recipe-list join table
 User.prototype.addRecipeToList = async function (id) {
   let recipeToAdd = await Recipe.findByPk(id);
   let userShoppingList = await this.getCurrentList();
-  await userShoppingList.addRecipe(recipeToAdd);
+  //want to add a check here to see if the recipeToAdd already exists in the shopping list
+  //this only checks if the user has a recipe of any kind, rather than just the instance
+  // if (userShoppingList.hasRecipe(recipeToAdd)) {
+  //   const error = Error('Recipe already exists in shopping list');
+  //   throw error;
+  // }
+  let result = await userShoppingList.addRecipe(recipeToAdd);
+  return result;
 };
 
+//removes recipe from the current shopping list
 User.prototype.removeRecipeFromList = async function (id) {
-  let recipeToAdd = await Recipe.findByPk(id);
+  let recipeToRemove = await Recipe.findByPk(id);
   let userShoppingList = await this.getCurrentList();
-  await userShoppingList.removeRecipe(recipeToAdd);
+  if (recipeToRemove && userShoppingList) {
+    await userShoppingList.removeRecipe(recipeToRemove);
+  }
 };
 
 //methods for user to favorite/unfavorite and dislike/un-dislike recipes

@@ -134,42 +134,51 @@ router.get('/me/allLists', requireToken, async (req, res, next) => {
   }
 });
 
-//
-router.put('/me/setCompleted/', requireToken, async (req, res, next) => {
+//set the logged in user's shoppingList to complete based on what's passed through as req.body
+//makes a new active shoppingList for the user
+router.put('/me/setCompleted', requireToken, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.user.id);
-    const listToSet = await user.setCompleted(req.body.id);
+    const listToComplete = await user.setCompleted(req.body.id);
+    await user.createNewList();
+    res.send(listToComplete);
   } catch (error) {
     next(error);
   }
 });
 
+//sets a shopping list to active, not sure if this is a necessary route, maybe if a user wants to reuse a shopping list they've used in the past?
 router.put('/me/setActive', requireToken, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.user.id);
-    const listToSet = await user.setActive(req.body.id);
+    const listToSetActive = await user.setActive(req.body.id);
+    res.send(listToSetActive);
   } catch (error) {
     next(error);
   }
 });
 
 //USER RECIPE QUERIES
+
+//adds recipe to user's shopping cart, depending on the id of the recipe passed in as req.body
 router.put('/me/addRecipe', requireToken, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.user.id);
     //id will be of the recipe you want to add
-    const recipeToAdd = await user.addRecipeToList(req.body.id);
-    res.send(recipeToAdd);
+    const addedRecipe = await user.addRecipeToList(req.body.id);
+    res.send(addedRecipe);
   } catch (error) {
     next(error);
   }
 });
 
+//same as above, but removes recipe (will send back the new shopping list)
 router.put('/me/removeRecipe', requireToken, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.user.id);
-    const recipteToRemove = await user.removeRecipeFromList(req.body.id);
-    res.send(recipteToRemove);
+    await user.removeRecipeFromList(req.body.id);
+    const newList = await user.getCurrentList();
+    res.send(newList);
   } catch (error) {
     next(error);
   }
