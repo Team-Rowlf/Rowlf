@@ -21,7 +21,7 @@ const Footer = () => {
 						Phone
 					</h5>
 					<p className="text">
-					Office : +1 000 867 5309 <br/>Office : +1 000 489 4608
+					Office : +1 619 867 5309 <br/>Fax : +1 619 489 4608
 					</p>
 				</div>
 				<div className="email">
@@ -37,24 +37,10 @@ const Footer = () => {
 					<h5 className="title-card">
 						Social
 					</h5>
-					<div className="social-media pb-3 align-left">
-						<ul>
-							<li>
-								<a className="icon-transition" href="#">
-									<span className="mbr-iconfont socicon-facebook socicon"></span>
-								</a>
-							</li>
-							<li>
-								<a className="icon-transition" href="#">
-									<span className="mbr-iconfont socicon-twitter socicon"></span>
-								</a>
-							</li>
-							<li>
-								<a className="icon-transition" href="#">
-									<span className="mbr-iconfont socicon-linkedin socicon"></span>
-								</a>
-							</li>
-						</ul>
+					<div className="social-media">
+							<a href="#" className="fa fa-google"></a>
+							<a href="#" className="fa fa-twitter"></a>
+							<a href="#" className="fa fa-instagram"></a>
 					</div>
 				</div>
 			</div>
