@@ -57,10 +57,13 @@ const seed = async () => {
         let [ingredientModel, created] = await Ingredient.findOrCreate({
           where: { name: ingredient.name },
         });
+        if (isNaN(ingredient.qty)) {
+          console.log(ingredient.qty);
+        }
         await LineItem.create({
           ingredientId: ingredientModel.id,
           recipeId: newRecipe.id,
-          qty: ingredient.qty,
+          qty: Number(ingredient.qty).toFixed(2),
           measurement: ingredient.denom,
         });
       });
