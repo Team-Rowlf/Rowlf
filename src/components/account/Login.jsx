@@ -1,18 +1,21 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { fetchUser } from '../../features/user/userSlice';
+import { loginUser, fetchUser } from '../../features/user/userSlice';
 
 const Login = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
 	const [login, setLogin] = React.useState({});
-	const loginAttempt = useSelector((state) => state.user);
+	const loginAttempt = useSelector((state) => state.user.token);
 
+	const handleRegister = () => {
+		navigate('/signUp');
+	};
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		dispatch(fetchUser({ login }));
+		dispatch(loginUser({ login }));
 	};
 	const handleChange = (prop) => (event) => {
 		setLogin({
@@ -20,7 +23,9 @@ const Login = () => {
 			[prop]: event.target.value,
 		});
 	};
-	React.useEffect(() => {}, []);
+	React.useEffect(() => {
+		loginAttempt && dispatch(fetchUser()) && navigate('/');
+	}, [loginAttempt]);
 
 	return (
 		<>
@@ -28,35 +33,56 @@ const Login = () => {
 				<img src="/largelogo.svg" alt="Logo" />
 				<h1>HELLO KITCHEN</h1>
 			</div>
-			<div className='login'>
+			<div className="login">
 				<div className="loginContainer">
 					<h1>Login</h1>
-					<p>Please fill in this form to create an account.</p>
 					<hr />
-					<form method="post" autoComplete="on">
-			
+					<form onSubmit={handleSubmit} autoComplete="on">
 						<div className="box">
-							<label htmlFor="username" className="fl fontLabel"> Username: </label>
+							<label htmlFor="username" className="fl fontLabel">
+								{' '}
+								Username:{' '}
+							</label>
 							<div className="fr">
-									<input type="text" name="username" placeholder="Username"
-										className="textBox" autoFocus="on" required/>
+								<input
+									type="text"
+									name="username"
+									placeholder="Username"
+									className="textBox"
+									autoFocus="on"
+									required
+									onChange={handleChange('username')}
+								/>
 							</div>
 							<div className="clr"></div>
 						</div>
 
-
 						<div className="box">
-							<label htmlFor="password" className="fl fontLabel"> Password: </label>
+							<label htmlFor="password" className="fl fontLabel">
+								{' '}
+								Password:{' '}
+							</label>
 							<div className="fr">
-								<input type="text" required name="password"
-									placeholder="Password" className="textBox"/>
+								<input
+									type="password"
+									required
+									name="password"
+									placeholder="Password"
+									className="textBox"
+									onChange={handleChange('password')}
+								/>
 							</div>
 							<div className="clr"></div>
 						</div>
 
-						<div className="box" >
-								<input type="Submit" name="Register" className="submit" value="Register"/>
-								<button onClick={navigate('/login')}>Login</button>
+						<div className="box">
+							<input
+								type="submit"
+								name="login"
+								className="submit"
+								value="Login"
+							/>
+							<button onClick={handleRegister}> Register </button>
 						</div>
 					</form>
 				</div>

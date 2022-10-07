@@ -269,6 +269,26 @@ router.put(
   }
 );
 
+//checks to see if whatever input is passed into req.params exists
+//req.body.value will be sent from the front end
+router.post('/userExists/:input', async (req, res, next) => {
+  try {
+    const field = req.params.input;
+
+    const user = await User.findOne({
+      where: { [field]: req.body.value },
+    });
+    if (user) {
+      res.send({ field, isAvailable: false });
+    } else {
+      res.send({ field, isAvailable: true });
+    }
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+});
+
 //ADMIN ROUTES for users
 //admin view all user accounts
 router.get('/account', requireToken, isAdmin, async (req, res, next) => {
