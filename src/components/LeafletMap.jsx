@@ -14,6 +14,9 @@ const LeafletMap = () => {
     const [marker3, setMarker3] = useState([51.525, -.1])
 
     // first step: find user's location or have them input location
+    // -- can find user location if they opt in to location services;
+    // -- should look into how to find location by zipcode if possible
+    // -- in case people don't want to opt in
     // after that, need to search nearby location for grocery stores
     // -- might require another API? unsure at the moment
     // after that, would want to find an appropriate place to actually insert the map
@@ -23,13 +26,17 @@ const LeafletMap = () => {
     // for stores, look into th GeoJSON api or something
 
     React.useEffect(() => {
-        navigator.geolocation.getCurrentPosition((position) => {
-            setLocation([position.coords.latitude, position.coords.longitude]);
-            console.log(position.coords)
-            setMarker1([position.coords.latitude+.015, position.coords.longitude-.02])
-            setMarker2([position.coords.latitude-.01, position.coords.longitude-.005])
-            setMarker3([position.coords.latitude+.02, position.coords.longitude+.015])
-        })
+        if ('geolocation' in navigator) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                setLocation([position.coords.latitude, position.coords.longitude]);
+                console.log(position.coords)
+                setMarker1([position.coords.latitude+.015, position.coords.longitude-.02])
+                setMarker2([position.coords.latitude-.01, position.coords.longitude-.005])
+                setMarker3([position.coords.latitude+.02, position.coords.longitude+.015])
+            })
+        } else {
+            // do something else
+        }
     },[])
 
     return(
