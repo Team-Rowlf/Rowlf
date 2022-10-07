@@ -7,6 +7,5 @@ router.use('/cuisines', require('./cuisines'));
 router.use('/restrictions', require('./restrictions'));
 router.use('/ingredients', require('./ingredients'));
 router.use('/appliances', require('./appliances'));
-router.use('/shoppingList', require('./shoppingList'));
 
 module.exports = router;

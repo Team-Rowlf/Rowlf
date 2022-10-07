@@ -164,9 +164,9 @@ router.put('/me/setActive', requireToken, async (req, res, next) => {
 router.put('/me/addRecipe', requireToken, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.user.id);
-    //id will be of the recipe you want to add
-    const addedRecipe = await user.addRecipeToList(req.body.id);
-    res.send(addedRecipe);
+    //sends back a the record in the join table of the two associated instances
+    const result = await user.addRecipeToList(req.body.id);
+    res.send(result);
   } catch (error) {
     next(error);
   }

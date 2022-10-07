@@ -11,106 +11,106 @@ require('dotenv').config();
 const SALT_ROUNDS = 10;
 
 const User = db.define('user', {
-	firstName: {
-		type: Sequelize.STRING,
-		allowNull: false,
-		validate: {
-			notEmpty: true,
-		},
-	},
-	lastName: {
-		type: Sequelize.STRING,
-		allowNull: false,
-		validate: {
-			notEmpty: true,
-		},
-	},
-	phoneNum: {
-		type: Sequelize.STRING,
-	},
-	gender: {
-		type: Sequelize.ENUM('male', 'female', 'prefer not to say', 'other'),
-	},
-	username: {
-		type: Sequelize.STRING,
-		unique: true,
-		allowNull: false,
-		validate: {
-			notEmpty: true,
-		},
-	},
-	email: {
-		type: Sequelize.STRING,
-		unique: true,
-		allowNull: false,
-		validate: {
-			notEmpty: true,
-			isEmail: true,
-		},
-	},
-	password: {
-		type: Sequelize.STRING,
-		allowNull: false,
-		validate: {
-			notEmpty: true,
-		},
-	},
-	isAdmin: {
-		type: Sequelize.BOOLEAN,
-		defaultValue: false,
-	},
+  firstName: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+    },
+  },
+  lastName: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+    },
+  },
+  phoneNum: {
+    type: Sequelize.STRING,
+  },
+  gender: {
+    type: Sequelize.ENUM('male', 'female', 'prefer not to say', 'other'),
+  },
+  username: {
+    type: Sequelize.STRING,
+    unique: true,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+    },
+  },
+  email: {
+    type: Sequelize.STRING,
+    unique: true,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+      isEmail: true,
+    },
+  },
+  password: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+    },
+  },
+  isAdmin: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+  },
 });
 
 //authentication class/instance methods
 
 //creates token for the user instance
 User.prototype.generateToken = function () {
-	return jwt.sign({ id: this.id }, process.env.JWT);
+  return jwt.sign({ id: this.id }, process.env.JWT);
 };
 
 //checks the passed in credentials, will return the user if credentials are valid
 User.authenticate = async function ({ username, password }) {
-	const user = await this.findOne({
-		where: {
-			username,
-		},
-	});
+  const user = await this.findOne({
+    where: {
+      username,
+    },
+  });
 
-	//if the user or the comparison between hashed and passed in password is falsey
-	if (!user || !(await bcrypt.compare(password, user.password))) {
-		const error = Error('Incorrect username or password');
-		error.status = 401;
-		throw error;
-	}
-	return user;
+  //if the user or the comparison between hashed and passed in password is falsey
+  if (!user || !(await bcrypt.compare(password, user.password))) {
+    const error = Error('Incorrect username or password');
+    error.status = 401;
+    throw error;
+  }
+  return user;
 };
 
 //searches for user by passed in token (will return the user if they exist)
 User.findByToken = async function (token) {
-	try {
-		const { id } = await jwt.verify(token, process.env.JWT);
-		const user = await User.findByPk(id);
-		if (!user) {
-			const error = Error('User does not exist');
-			throw error;
-		}
-		return user;
-	} catch (err) {
-		const error = Error('bad token');
-		error.status = 401;
-		throw error;
-	}
+  try {
+    const { id } = await jwt.verify(token, process.env.JWT);
+    const user = await User.findByPk(id);
+    if (!user) {
+      const error = Error('User does not exist');
+      throw error;
+    }
+    return user;
+  } catch (err) {
+    const error = Error('bad token');
+    error.status = 401;
+    throw error;
+  }
 };
 
 //hooks to hash password whenever a new user has been created/existing user has been updated
 User.beforeCreate(async (user) => {
-	const hashedPassword = await bcrypt.hash(user.password, SALT_ROUNDS);
-	user.password = hashedPassword;
+  const hashedPassword = await bcrypt.hash(user.password, SALT_ROUNDS);
+  user.password = hashedPassword;
 });
 
 User.beforeUpdate(async (user) => {
-	const hashedPassword = await bcrypt.hash(user.password, SALT_ROUNDS);
-	user.password = hashedPassword;
+  const hashedPassword = await bcrypt.hash(user.password, SALT_ROUNDS);
+  user.password = hashedPassword;
 });
 
 //custom user model instance methods (for querying)
@@ -252,13 +252,16 @@ User.prototype.createNewList = async function () {
 User.prototype.addRecipeToList = async function (id) {
   let recipeToAdd = await Recipe.findByPk(id);
   let userShoppingList = await this.getCurrentList();
-  //want to add a check here to see if the recipeToAdd already exists in the shopping list
-  //this only checks if the user has a recipe of any kind, rather than just the instance
-  // if (userShoppingList.hasRecipe(recipeToAdd)) {
-  //   const error = Error('Recipe already exists in shopping list');
-  //   throw error;
-  // }
-  let result = await userShoppingList.addRecipe(recipeToAdd);
+  //checking to see if the recipe is already in the shopping list
+  let recipes = await userShoppingList.getRecipes();
+  let containsRecipe = recipes.some((recipe) => {
+    return recipeToAdd.id === recipe.id;
+  });
+  if (containsRecipe) {
+    const error = Error('Recipe already exists in shopping list');
+    throw error;
+  }
+  let result = userShoppingList.addRecipe(recipeToAdd);
   return result;
 };
 
