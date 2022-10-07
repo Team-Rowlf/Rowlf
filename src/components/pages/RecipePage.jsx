@@ -16,15 +16,15 @@ const RecipePage = () => {
 	};
 
 	return !recipe.length ? (
-		'loading...'
+		<h1 className='loading'>LOADING...</h1>
 	) : (
-		<>
-			<div>
-				<img src={recipe[0].img} alt="" />
-				<p>{recipe[0].name}</p>
+		<div className='recipe-page'>
+			<div className='recipe-container'>
+				<h1>{recipe[0].name}</h1>
+				<img src={recipe[0].img} alt="dish" />
 				<ul>
 					{recipe[0].lineItems.map((item) => (
-						<li key={item.id}>{item.ingredient.name} </li>
+						<li key={item.id}>({item.qty}) {item.measurement} {item.ingredient.name} </li>
 					))}
 				</ul>
 			</div>
@@ -46,7 +46,7 @@ const RecipePage = () => {
 					Add To Card{' '}
 				</button>
 			</div>
-		</>
+		</div>
 	);
 };
 

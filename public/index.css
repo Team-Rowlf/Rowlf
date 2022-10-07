@@ -275,3 +275,17 @@ button {
   cursor: pointer;
   font-weight: bold;
 }
+.recipe-page {
+  display: block;
+  margin: auto;
+}
+.recipe-page .loading {
+  margin: auto;
+}
+.recipe-page .recipe-container {
+  margin: auto;
+  width: 100vw;
+}
+.recipe-page .recipe-container img {
+  max-width: 500px;
+}
