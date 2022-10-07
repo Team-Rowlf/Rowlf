@@ -17,13 +17,16 @@ const Nav = () => {
 				<button className="navbutton" onClick={() => navigate('/')}>
 					Home
 				</button>
-				<button className="navbutton" onClick={() => navigate('/user/about')}>
+				<button className="navbutton" onClick={() => navigate('/about')}>
 					About
 				</button>
 				<button className="navbutton" onClick={() => navigate('/user/recipes')}>
 					Recipes
 				</button>
-				<button className="navbutton" onClick={() => navigate('/user/cart')}>
+				<button
+					className="navbutton"
+					onClick={() => navigate('/user/shoppingList')}
+				>
 					Cart
 				</button>
 				<button className="navbutton" onClick={() => navigate('/user/profile')}>

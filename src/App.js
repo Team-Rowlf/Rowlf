@@ -9,9 +9,10 @@ import NotFound from './components/general/NotFound.jsx';
 import User from './components/account/User.jsx';
 import ShoppingList from './components/account/ShoppingList.jsx';
 import Profile from './components/account/Profile.jsx';
-import { fetchUser } from './features/user/userSlice.js';
 import About from './components/general/About.jsx';
-
+import Recipes from './components/pages/Recipes.jsx';
+import RecipePage from './components/pages/RecipePage.jsx';
+import { fetchUser } from './features/user/userSlice.js';
 function App() {
 	const navigate = useNavigate();
 	const state = useSelector((state) => state);
@@ -31,6 +32,8 @@ function App() {
 					<Route path="/user" element={<User />}>
 						<Route index element={<ShoppingList />} />
 						<Route path="shoppingList" element={<ShoppingList />} />
+						<Route path="recipes" element={<Recipes />} />
+						<Route path="recipes/:recipeId" element={<RecipePage />} />
 						<Route path="profile" element={<Profile />} />
 						<Route path="*" element={<NotFound />} />
 					</Route>
