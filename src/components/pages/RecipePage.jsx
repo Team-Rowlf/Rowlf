@@ -22,29 +22,31 @@ const RecipePage = () => {
 			<div className='recipe-container'>
 				<h1>{recipe[0].name}</h1>
 				<img src={recipe[0].img} alt="dish" />
+				<div className='recipe-buttons'>
+					<button className="navButton" value="like" onClick={handlePreference}>
+						Like
+					</button>
+					<button
+						className="navButton"
+						value="dislike"
+						onClick={handlePreference}
+					>
+						Dislike
+					</button>
+					<button 
+						className="navButton" 
+						value="add to card"					
+						onClick={handleCart}
+					>
+						Add To Card
+					</button>
+				</div>
+				<h3>Ingredients</h3>
 				<ul>
 					{recipe[0].lineItems.map((item) => (
 						<li key={item.id}>({item.qty}) {item.measurement} {item.ingredient.name} </li>
 					))}
 				</ul>
-			</div>
-			<div>
-				<button className="navButton" value="like" onClick={handlePreference}>
-					{' '}
-					Like{' '}
-				</button>
-				<button
-					className="navButton"
-					value="dislike"
-					onClick={handlePreference}
-				>
-					{' '}
-					Dislike{' '}
-				</button>
-				<button className="navButton" onClick={handleCart}>
-					{' '}
-					Add To Card{' '}
-				</button>
 			</div>
 		</div>
 	);
