@@ -9,7 +9,7 @@ const Nav = () => {
 
 	return (
 		<div className="nav">
-			<div className="title">
+			<div className="nav-title">
 				<img className="small-logo" src="/favicon.svg" alt="Logo" />
 				<h1>Hello Kitchen</h1>
 			</div>
