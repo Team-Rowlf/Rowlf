@@ -181,7 +181,7 @@ const Signup = () => {
 								<input
 									type="Password"
 									name="confirm_password"
-									placeholder="confirm password"
+									placeholder="Confirm Password"
 									className="textBox"
 									onChange={handleChange('password')}
 									required
@@ -232,7 +232,7 @@ const Signup = () => {
 						<div className="box">
 							{/* <input type="Submit" name="Register" className="submit" /> */}
 							<button type="Submit" name="Register" className="submit">
-								Register
+								Signup
 							</button>
 							<button onClick={handleLogin}>Login</button>
 						</div>

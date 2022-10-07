@@ -1,6 +1,9 @@
 * {
   margin: 0px;
 }
+#root {
+  min-height: 100vh;
+}
 body {
   background-color: #E0E2DB;
 }
@@ -17,7 +20,7 @@ body {
   font-size: x-large;
   padding: 25px;
   background-color: #8B2635;
-  color: white;
+  color: #D3EFBD;
   border-bottom: 10px solid #0D730D;
 }
 .large-logo img {
@@ -30,23 +33,6 @@ body {
   background-color: white;
   border-radius: 150px;
   margin-bottom: 25px;
-}
-.footer {
-  position: fixed;
-  margin-bottom: -50px;
-  width: 100%;
-  padding: 15px;
-  text-align: center;
-  display: flex;
-  background-color: #8B2635;
-  color: white;
-  border-top: 10px solid #0D730D;
-  margin-top: 25px;
-  font-weight: bold;
-}
-.footer div {
-  text-align: center;
-  width: 33%;
 }
 .nav {
   display: flex;
@@ -178,8 +164,7 @@ button {
 }
 .signupContainer {
   background: #0D730D;
-  width: 375px;
-  height: 425px;
+  width: 450px;
   padding: 50px;
   margin: auto;
   font-weight: bolder;
@@ -202,7 +187,7 @@ button {
   padding: 5px;
 }
 .signupContainer .box {
-  width: 360px;
+  width: 400px;
   height: 35px;
   margin-top: 10px;
   font-family: verdana;
@@ -213,7 +198,7 @@ button {
 }
 .signupContainer .box .fl {
   float: left;
-  width: 110px;
+  width: 150px;
   line-height: 35px;
   padding-left: 15px;
   background-color: #8B2635;
@@ -274,4 +259,45 @@ button {
   text-transform: uppercase;
   cursor: pointer;
   font-weight: bold;
+}
+.footer {
+  margin-bottom: -50px;
+  width: 100%;
+  padding: 15px;
+  text-align: center;
+  display: block;
+  background-color: #8B2635;
+  color: white;
+  border-top: 10px solid #0D730D;
+  margin-top: 25px;
+  margin-bottom: 0px;
+  font-weight: bold;
+}
+.footer .footer-upper {
+  width: 100%;
+  display: flex;
+}
+.footer .footer-upper div {
+  width: 25%;
+}
+.footer .footer-lower {
+  width: 95%;
+  display: flex;
+}
+.footer .footer-lower .media-container-row {
+  margin-right: 0px;
+  margin-left: auto;
+  padding-top: 10px;
+  color: #D3EFBD;
+}
+.title-card {
+  font-size: xx-large;
+  padding-bottom: 10px;
+}
+.text {
+  font-weight: normal;
+}
+a,
+.title-card {
+  color: #D3EFBD;
 }
