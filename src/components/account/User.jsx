@@ -1,21 +1,24 @@
 import React from 'react';
 import { Outlet, Link, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import Nav from '../general/Nav.jsx';
+import { fetchRecipes } from '../../features/recipes/recipesSlice';
 const User = () => {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 	const user = useSelector((state) => state.user);
 
 	React.useEffect(() => {
 		!user.isLogged && navigate('/');
 	}, [user]);
+
+	React.useEffect(() => {
+		dispatch(fetchRecipes());
+	}, []);
+
 	return (
 		<div className="user">
-			<nav className="nav-user">
-				<Link to="shoppingList"> shoppingList </Link>
-				<Link to="profile"> profile</Link>
-				<Link to="purchased/wishlist"> purchased/wishlist </Link>
-				<Link to="recipes"> recipes </Link>
-			</nav>
+			<Nav />
 			<Outlet />
 		</div>
 	);

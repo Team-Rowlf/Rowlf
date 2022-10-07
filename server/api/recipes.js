@@ -34,6 +34,7 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
+//ADMIN ROUTES
 // delete recipe
 router.delete('/:id', requireToken, isAdmin, async (req, res, next) => {
   try {

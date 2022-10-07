@@ -12,9 +12,12 @@ const seedFunc = require('./seed');
 User.hasMany(ShoppingList);
 ShoppingList.belongsTo(User);
 
-User.belongsToMany(Recipe, {through: 'FavoritedRecipes', as: 'favorite'})
-User.belongsToMany(Recipe, {through: 'DislikedRecipes', as: 'dislike'})
-User.belongsToMany(Ingredient, {through: 'UserOwnedIngredients', as: 'ownedIngredient'})
+User.belongsToMany(Recipe, { through: 'FavoritedRecipes', as: 'favorite' });
+User.belongsToMany(Recipe, { through: 'DislikedRecipes', as: 'dislike' });
+User.belongsToMany(Ingredient, {
+  through: 'UserOwnedIngredients',
+  as: 'ownedIngredient',
+});
 
 Recipe.belongsToMany(Cuisine, { through: 'CuisineType' });
 Cuisine.belongsToMany(Recipe, { through: 'CuisineType' });
@@ -41,5 +44,5 @@ module.exports = {
   Restriction,
   Appliance,
   LineItem,
-  seedFunc
+  seedFunc,
 };

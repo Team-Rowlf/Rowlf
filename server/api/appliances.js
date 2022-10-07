@@ -26,6 +26,7 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
+//ADMIN ROUTES
 // add new appliance; require isAdmin middleware
 router.post('/add-appliance', requireToken, isAdmin, async (req, res, next) => {
   try {
