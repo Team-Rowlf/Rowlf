@@ -276,46 +276,6 @@ const recipes = [
         ]
       },
       {
-        url: 'https://www.allrecipes.com/recipe/23600/worlds-best-lasagna/',
-        img: 'https://www.allrecipes.com/thmb/SFQwnEJPxr27sfhf0ZkdKueFeQc=/2250x0/filters:no_upscale():max_bytes(150000):strip_icc()/23600-worlds-best-lasagna-armag-1x1-1-339b21b9f88b48c9943def663f43889c.jpg',
-        name: "World's Best Lasagna",
-        cuisine: ['pasta'],
-        appliances: ['stovetop','oven'],
-        restrictions: [],
-        cookTime: 195,
-        servings: 12,
-        ingredients: [
-          { qty: '1', name: 'sweet Italian sausage', denom: 'pound' },
-          { qty: '¾', name: 'lean ground beef', denom: 'pound' },
-          { qty: '½', name: 'minced onion', denom: 'cup' },
-          { qty: '2', name: 'garlic, crushed', denom: 'cloves' },
-          { qty: '1', name: 'crushed tomatoes', denom: '(28 ounce) can' },
-          { qty: '2', name: 'tomato paste', denom: '(6 ounce) cans' },
-          {
-            qty: '2',
-            name: 'canned tomato sauce',
-            denom: '(6.5 ounce) cans'
-          },
-          { qty: '½', name: 'water', denom: 'cup' },
-          { qty: '2', name: 'white sugar', denom: 'tablespoons' },
-          { qty: '1 ½', name: 'dried basil leaves', denom: 'teaspoons' },
-          { qty: '½', name: 'fennel seeds', denom: 'teaspoon' },
-          { qty: '1', name: 'Italian seasoning', denom: 'teaspoon' },
-          {
-            qty: '1 ½',
-            name: 'salt, divided, or to taste',
-            denom: 'teaspoons'
-          },
-          { qty: '¼', name: 'ground black pepper', denom: 'teaspoon' },
-          { qty: '4', name: 'chopped fresh parsley', denom: 'tablespoons' },
-          { qty: '12', name: 'lasagna noodles', denom: '' },
-          { qty: '16', name: 'ricotta cheese', denom: 'ounces' },
-          { qty: '1', name: 'egg', denom: '' },
-          { qty: '¾', name: 'mozzarella cheese, sliced', denom: 'pound' },
-          { qty: '¾', name: 'grated Parmesan cheese', denom: 'cup' }
-        ]
-      },
-      {
         url: 'https://www.allrecipes.com/recipe/26317/chicken-pot-pie-ix/',
         img: 'https://www.allrecipes.com/thmb/H36Ok67wp6E167fVlY7jVduNSw4=/2250x0/filters:no_upscale():max_bytes(150000):strip_icc()/26317-chicken-pot-pie-mfs-480-7e84da80505a410fa75139eab67a652f.jpg',
         name: 'Chicken Pot Pie',
@@ -2102,7 +2062,7 @@ const recipes = [
       },
       { qty: 1/4, name: 'chicken broth', denom: 'cup' },
       {
-        qty: '3/2',
+        qty: 3/2,
         name: 'taco seasoning',
         denom: 'tbsp'
       },

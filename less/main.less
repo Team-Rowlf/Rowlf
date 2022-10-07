@@ -2,6 +2,9 @@
 * {
     margin: 0px;
 }
+#root{
+    min-height: 100vh;
+}
 body{
     background-color: @backgroundLight;
 }
@@ -20,7 +23,7 @@ body{
     font-size: x-large;
     padding: 25px;
     background-color: @red;
-    color: white;
+    color: @lightGreen;
     border-bottom: 10px solid @darkGreen;
     img {
         margin: auto;
@@ -34,22 +37,4 @@ body{
         margin-bottom: 25px;;
     }
     
-}
-
-.footer {
-    position: fixed;
-    margin-bottom: -50px;
-    width: 100%;
-    padding: 15px;
-    text-align: center;
-    display: flex;
-    background-color: @red;
-    color: white;
-    border-top: 10px solid @darkGreen;
-    margin-top: 25px;
-    font-weight: bold;
-    div{
-        text-align: center;
-        width: 33%;
-    }
 }
