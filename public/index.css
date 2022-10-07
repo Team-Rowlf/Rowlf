@@ -1,6 +1,9 @@
 * {
   margin: 0px;
 }
+#root {
+  min-height: 100vh;
+}
 body {
   background-color: #E0E2DB;
 }
@@ -17,7 +20,7 @@ body {
   font-size: x-large;
   padding: 25px;
   background-color: #8B2635;
-  color: white;
+  color: #D3EFBD;
   border-bottom: 10px solid #0D730D;
 }
 .large-logo img {
@@ -30,23 +33,6 @@ body {
   background-color: white;
   border-radius: 150px;
   margin-bottom: 25px;
-}
-.footer {
-  position: fixed;
-  margin-bottom: -50px;
-  width: 100%;
-  padding: 15px;
-  text-align: center;
-  display: flex;
-  background-color: #8B2635;
-  color: white;
-  border-top: 10px solid #0D730D;
-  margin-top: 25px;
-  font-weight: bold;
-}
-.footer div {
-  text-align: center;
-  width: 33%;
 }
 .nav {
   display: flex;
@@ -65,14 +51,15 @@ body {
 .nav .nav-bar button {
   margin: 5px;
 }
-.nav .title {
+.nav .nav-title {
   width: 40%;
   display: flex;
 }
-.nav .title h1 {
+.nav .nav-title h1 {
   padding: 10px;
+  color: #D3EFBD;
 }
-.nav .title img {
+.nav .nav-title img {
   margin: 3px;
 }
 .login {
@@ -178,8 +165,7 @@ button {
 }
 .signupContainer {
   background: #0D730D;
-  width: 375px;
-  height: 425px;
+  width: 450px;
   padding: 50px;
   margin: auto;
   font-weight: bolder;
@@ -202,7 +188,7 @@ button {
   padding: 5px;
 }
 .signupContainer .box {
-  width: 360px;
+  width: 400px;
   height: 35px;
   margin-top: 10px;
   font-family: verdana;
@@ -213,7 +199,7 @@ button {
 }
 .signupContainer .box .fl {
   float: left;
-  width: 110px;
+  width: 150px;
   line-height: 35px;
   padding-left: 15px;
   background-color: #8B2635;
@@ -288,4 +274,102 @@ button {
 }
 .recipe-page .recipe-container img {
   max-width: 500px;
+}
+.footer {
+  margin-bottom: -50px;
+  width: 100%;
+  padding: 15px;
+  text-align: center;
+  display: block;
+  background-color: #8B2635;
+  color: white;
+  border-top: 10px solid #0D730D;
+  margin-top: 25px;
+  margin-bottom: 0px;
+  font-weight: bold;
+}
+.footer .footer-upper {
+  width: 100%;
+  display: flex;
+}
+.footer .footer-upper div {
+  width: 25%;
+}
+.footer .footer-lower {
+  width: 95%;
+  display: flex;
+}
+.footer .footer-lower .media-container-row {
+  margin-right: 0px;
+  margin-left: auto;
+  padding-top: 10px;
+  color: #D3EFBD;
+}
+.title-card {
+  font-size: xx-large;
+  padding-bottom: 10px;
+}
+.text {
+  font-weight: normal;
+}
+a,
+.title-card {
+  color: #D3EFBD;
+}
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 50%;
+}
+.fa-twitter {
+  background: #0D730D;
+  color: white;
+}
+.fa-google {
+  background: #0D730D;
+  color: white;
+}
+.fa-instagram {
+  background: #0D730D;
+  color: white;
+}
+.social-media {
+  display: flex;
+  min-width: 200px;
+  margin: auto;
+}
+.shoppingList-container {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+.shoppingList-container h1 {
+  padding: 35px;
+}
+.shoppingList-container .recipe {
+  max-width: 30%;
+  margin: auto;
+  font-size: x-large;
+  font-weight: bold;
+  text-align: left;
+}
+.shoppingList-container .recipe .ingredients {
+  font-size: normal;
+  font-weight: normal;
+  margin: auto;
+  max-width: 75%;
+  display: block;
+}
+.shoppingList-container .recipe .ingredients .ingredient-checkbox {
+  display: block;
+}
+.shoppingList-container .recipe .ingredients .ingredient-checkbox input {
+  margin: 15px;
+}
+.shoppingList-container .recipe input {
+  margin: 15px;
 }
