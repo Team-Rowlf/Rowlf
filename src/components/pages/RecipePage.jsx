@@ -23,8 +23,15 @@ const RecipePage = () => {
 				<img src={recipe[0].img} alt="" />
 				<p>{recipe[0].name}</p>
 				<ul>
+					<p> Ingredients: </p>
 					{recipe[0].lineItems.map((item) => (
-						<li key={item.id}>{item.ingredient.name} </li>
+						<li key={item.id}>
+							{item.ingredient.name}{' '}
+							<span>
+								{' '}
+								({item.qty} {item.measurement})
+							</span>
+						</li>
 					))}
 				</ul>
 			</div>
