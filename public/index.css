@@ -41,15 +41,21 @@ body {
   background-color: #8B2635;
   color: white;
   border-bottom: 10px solid #0D730D;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 .nav button {
+  text-shadow: 3px black;
   background-color: #0D730D;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 .nav .nav-bar {
   padding: 10px;
 }
 .nav .nav-bar button {
   margin: 5px;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  background-color: #0D730D;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 .nav .nav-title {
   width: 40%;
@@ -58,9 +64,11 @@ body {
 .nav .nav-title h1 {
   padding: 10px;
   color: #D3EFBD;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 .nav .nav-title img {
   margin: 3px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
 .login {
   border: 5px solid #8B2635;
@@ -261,6 +269,57 @@ button {
   cursor: pointer;
   font-weight: bold;
 }
+.loading {
+  margin: auto;
+  width: 100vw;
+  text-align: center;
+  margin-top: 25px;
+  min-height: 40vw;
+}
+.recipe-page {
+  display: block;
+  margin: auto;
+  padding: 25px;
+  text-align: center;
+}
+.recipe-page .recipe-container {
+  margin: auto;
+  width: 100vw;
+}
+.recipe-page .recipe-container h1 {
+  margin: auto;
+  text-align: center;
+}
+.recipe-page .recipe-container img {
+  max-width: 500px;
+  margin: 15px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+.recipe-page .recipe-container h3 {
+  padding: 5px;
+  padding-top: 25px;
+  text-decoration: underline;
+}
+.recipe-page .recipe-container ul {
+  max-width: fit-content;
+  margin: auto;
+}
+.recipe-page .recipe-container ul li {
+  padding: 5px;
+  text-align: left;
+}
+.recipe-buttons {
+  display: flex;
+  margin: auto;
+  width: fit-content;
+  min-height: 40px;
+}
+.recipe-buttons button {
+  margin: 5px;
+  justify-content: center;
+  border-radius: 15px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
 .footer {
   margin-bottom: -50px;
   width: 100%;
@@ -273,6 +332,7 @@ button {
   margin-top: 25px;
   margin-bottom: 0px;
   font-weight: bold;
+  box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.5);
 }
 .footer .footer-upper {
   width: 100%;
@@ -294,9 +354,11 @@ button {
 .title-card {
   font-size: xx-large;
   padding-bottom: 10px;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 .text {
   font-weight: normal;
+  text-shadow: 1px 1px 2px #000000;
 }
 a,
 .title-card {
@@ -310,6 +372,8 @@ a,
   text-decoration: none;
   margin: 5px 2px;
   border-radius: 50%;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 .fa-twitter {
   background: #0D730D;
@@ -332,6 +396,7 @@ a,
   display: block;
   margin: auto;
   text-align: center;
+  min-height: 70vh;
 }
 .shoppingList-container h1 {
   padding: 35px;

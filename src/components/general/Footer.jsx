@@ -8,7 +8,7 @@ const Footer = () => {
 		<div className="footer">
 			<div className="footer-upper">
 				<div className="address">
-					<h5 className="pb-3 title-card">
+					<h5 className="title-card">
 						Address
 					</h5>
 					<p className="text">
