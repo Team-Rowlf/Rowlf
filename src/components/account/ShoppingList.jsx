@@ -19,7 +19,6 @@ const ShoppingList = () => {
 		});
 	};
 	const handleCheck = (event) => {
-		console.dir(event.target);
 		const input = document.querySelector(
 			`input[value="${event.target.value}"]`
 		);
@@ -43,25 +42,23 @@ const ShoppingList = () => {
 				const ingredients = recipe.lineItems;
 
 				return (
-					<div className="recipe" key={recipe.id} onClick={handleCheckAll}>
+					<div className="recipe" key={recipe.id}>
 						<input
 							type="checkbox"
 							className="recipe-checkbox"
 							value={recipe.name}
+							onClick={handleCheckAll}
 						/>{' '}
 						{recipe.name}
 						<div className="ingredients" key={ingredients.name}>
 							{ingredients.map((ingredient) => {
 								return (
-									<div
-										className="ingredient-checkbox"
-										key={ingredient.id}
-										onClick={handleCheck}
-									>
+									<div className="ingredient-checkbox" key={ingredient.id}>
 										<input
 											type="checkbox"
 											value={ingredient.ingredient.name}
 											name={recipe.name}
+											onClick={handleCheck}
 										/>
 										{ingredient.ingredient.name}
 									</div>
