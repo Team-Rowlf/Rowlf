@@ -2,94 +2,75 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 const ShoppingList = () => {
+	const shoppingList = useSelector((state) =>
+		state.recipes.recipes.slice(0, 3)
+	);
 
-	let shoppingList = [
-		{
-			name: 'Recipe 1',
-			lineItems:
-			[
-				{
-					ingredients:
-					[
-						{name:'Ingredient 1', quantity: 1, measurement: 'tbsp'},
-						{name:'Ingredient 2', quantity: 1, measurement: 'tbsp'},
-						{name:'Ingredient 3', quantity:1, measurement: 'tbsp'},
-						{name:'Ingredient 4', quantity: 1, measurement: 'tbsp'}
-					]
-				}
-			]
-		},
-		{
-			name: 'Recipe 2',
-			 lineItems:
-			 [
-				{
-					ingredients:
-					[
-						{name:'Ingredient 1', quantity: 1, measurement: 'tbsp'},
-						{name:'Ingredient 2', quantity: 1, measurement: 'tbsp'},
-						{name:'Ingredient 3', quantity:1, measurement: 'tbsp'},
-						{name:'Ingredient 4', quantity: 1, measurement: 'tbsp'}
-					]
-				}
-			]
-		},
-		{
-			name: 'Recipe 3', 
-			lineItems:
-			[
-				{
-					ingredients:
-					[
-						{name:'Ingredient 1', quantity: 1, measurement: 'tbsp'},
-						{name:'Ingredient 2', quantity: 1, measurement: 'tbsp'},
-						{name:'Ingredient 3', quantity:1, measurement: 'tbsp'},
-						{name:'Ingredient 4', quantity: 1, measurement: 'tbsp'}
-					]
-				}
-			]
-		},
-		{
-			name: 'Recipe 4', 
-			lineItems:
-			[
-				{
-					ingredients:
-					[
-						{name:'Ingredient 1', quantity: 1, measurement: 'tbsp'},
-						{name:'Ingredient 2', quantity: 1, measurement: 'tbsp'},
-						{name:'Ingredient 3', quantity:1, measurement: 'tbsp'},
-						{name:'Ingredient 4', quantity: 1, measurement: 'tbsp'}
-					]
-				}
-			]
-		}
-	]
+	const handleCheckAll = (event) => {
+		const checkAll = document.querySelectorAll(
+			`input[name="${event.target.value}"]`
+		);
 
-	return (
+		checkAll.forEach((input) => {
+			input.checked = event.target.checked;
+			input.checked
+				? input.parentNode.classList.add('have-item')
+				: input.parentNode.classList.remove('have-item');
+		});
+	};
+	const handleCheck = (event) => {
+		console.dir(event.target);
+		const input = document.querySelector(
+			`input[value="${event.target.value}"]`
+		);
+
+		input.checked
+			? input.parentNode.classList.add('have-item')
+			: input.parentNode.classList.remove('have-item');
+	};
+
+	return !shoppingList.length ? (
+		<p>
+			<b> No items</b>
+		</p>
+	) : (
 		<div className="shoppingList-container">
 			<h1>
 				<u>Main Shopping List</u>
 			</h1>
 
-			{shoppingList.map(recipe=>{
-					const ingredients = recipe.lineItems
-					console.log('INGREDIENTS: ',ingredients)
-					return(
-						<div className="recipe" key={recipe.name}>
-							<input type="checkbox" className="recipe-checkbox" value="Recipe1.name"/> {recipe.name}
-							<div className="ingredients" key={ingredients.name}>
-								{ingredients.map(ingredient=>{
-									return(
-										<div className="ingredient-checkbox" key={ingredient.name}>
-											<input type="checkbox" value={ingredient.ingredients.name}/> (x{ingredient.ingredients.quantity} {ingredient.ingredients.measurement}) {ingredient.ingredients.name}
-										</div>
-									)
-								})}
-							</div>
+			{shoppingList.map((recipe) => {
+				const ingredients = recipe.lineItems;
+
+				return (
+					<div className="recipe" key={recipe.id} onClick={handleCheckAll}>
+						<input
+							type="checkbox"
+							className="recipe-checkbox"
+							value={recipe.name}
+						/>{' '}
+						{recipe.name}
+						<div className="ingredients" key={ingredients.name}>
+							{ingredients.map((ingredient) => {
+								return (
+									<div
+										className="ingredient-checkbox"
+										key={ingredient.id}
+										onClick={handleCheck}
+									>
+										<input
+											type="checkbox"
+											value={ingredient.ingredient.name}
+											name={recipe.name}
+										/>
+										{ingredient.ingredient.name}
+									</div>
+								);
+							})}
 						</div>
-					)
-				})}
+					</div>
+				);
+			})}
 		</div>
 	);
 };
