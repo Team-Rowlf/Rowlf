@@ -13,7 +13,9 @@ const User = () => {
 	}, [user]);
 
 	React.useEffect(() => {
-		dispatch(fetchRecipes());
+		// dispatch(fetchRecipes());
+		// instead of fetchRecipes here, maybe do something like count all recipes
+		// will help with paginating later
 	}, []);
 
 	return (

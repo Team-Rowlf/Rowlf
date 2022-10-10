@@ -525,3 +525,13 @@ a,
 .shoppingList-container .recipe input {
   margin: 15px;
 }
+
+/* putting in some basic styling for prev/next links here for now */
+.prevNext {
+  color: blue;
+  margin: .5em
+}
+.disabled {
+  pointer-events: none;
+  color: lightgray;
+}

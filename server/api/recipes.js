@@ -5,14 +5,38 @@ const { requireToken, isAdmin } = require('./gatekeepingMiddleware');
 // get all recipes
 router.get('/', async (req, res, next) => {
   try {
-    const recipes = await Recipe.findAll({
-      include: [
-        { model: Cuisine },
-        { model: Restriction },
-        { model: LineItem, include: { model: Ingredient } },
-      ],
-    });
-    res.send(recipes);
+    if (req.query.page) {
+      console.log(`cuisine: ${req.query.cuisine} restriction: ${req.query.restriction}`)
+      const cuisineObj = { model: Cuisine };
+      const restrictionObj = { model: Restriction };
+      if (req.query.cuisine !== 'all') {
+        cuisineObj.where = { name: [req.query.cuisine] };
+      }
+      if (req.query.restriction !== 'all') {
+        restrictionObj.where = { name: [req.query.restriction] };
+      }
+      const { rows, count } = await Recipe.findAndCountAll({
+        distinct: true,
+        offset: (req.query.page -1)*24,
+        limit: 24,
+        include: [
+          cuisineObj, 
+          restrictionObj,
+          { model: LineItem, include: { model: Ingredient } }
+        ]
+      })
+      res.send({ rows, count })
+    }
+    else {
+      const { rows, count } = await Recipe.findAndCountAll({
+        include: [
+          { model: Cuisine },
+          { model: Restriction },
+          { model: LineItem, include: { model: Ingredient } },
+        ],
+      });
+      res.send({ rows, count });
+    }
   } catch (err) {
     next(err);
   }
