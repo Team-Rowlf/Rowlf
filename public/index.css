@@ -500,30 +500,37 @@ a,
   min-height: 70vh;
 }
 .shoppingList-container h1 {
-  padding: 35px;
+  padding: 3%;
 }
 .shoppingList-container .recipe {
-  max-width: 30%;
+  max-width: fit-content;
   margin: auto;
   font-size: x-large;
   font-weight: bold;
   text-align: left;
+  flex-wrap: nowrap;
+  padding-top: 2.5%;
 }
 .shoppingList-container .recipe .ingredients {
   font-size: normal;
   font-weight: normal;
   margin: auto;
-  max-width: 75%;
+  max-width: 80%;
   display: block;
+  white-space: nowrap;
 }
 .shoppingList-container .recipe .ingredients .ingredient-checkbox {
   display: block;
 }
 .shoppingList-container .recipe .ingredients .ingredient-checkbox input {
-  margin: 15px;
+  margin: 5%;
 }
 .shoppingList-container .recipe input {
   margin: 15px;
+}
+.have-item {
+  color: grey;
+  text-decoration: line-through;
 }
 
 /* putting in some basic styling for prev/next links here for now */
