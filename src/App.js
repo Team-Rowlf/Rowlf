@@ -10,8 +10,8 @@ import User from './components/account/User.jsx';
 import ShoppingList from './components/account/ShoppingList.jsx';
 import Profile from './components/account/Profile.jsx';
 import About from './components/general/About.jsx';
-import Recipes from './components/pages/Recipes.jsx';
-import RecipePage from './components/pages/RecipePage.jsx';
+import Recipes from './components/pages/AllRecipes.jsx';
+import RecipePage from './components/pages/SingleRecipe.jsx';
 import { fetchUser } from './features/user/userSlice.js';
 import LeafletMap from './components/leaflet/LeafletMap.jsx';
 
