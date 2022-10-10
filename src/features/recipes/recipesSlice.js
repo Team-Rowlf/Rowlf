@@ -12,8 +12,8 @@ export const fetchRecipes = createAsyncThunk(
 export const fetchRecipesByPage = createAsyncThunk(
 	'recipes/fetchRecipesByPage',
 	async (params) => {
-		const {page, cuisine, restriction} = params;
-		const { data } = await axios.get(`/api/recipes?page=${page}&cuisine=${cuisine}&restriction=${restriction}`);
+		const {page, cuisine, restriction, sortDirection} = params;
+		const { data } = await axios.get(`/api/recipes?page=${page}&cuisine=${cuisine}&restriction=${restriction}` + (sortDirection.length ? `&sort=${sortDirection}` : ''));
 		return data;
 	}
 );

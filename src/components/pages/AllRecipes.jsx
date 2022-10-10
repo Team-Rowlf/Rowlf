@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
 	getRecipeStatus,
-	setSortRecipes,
-	setFilterRecipes,
 	fetchRecipesByPage,
 	fetchRecipes,
 } from '../../features/recipes/recipesSlice';
@@ -16,14 +14,9 @@ const Recipes = () => {
 	const navigate = useNavigate();
 	const recipes = useSelector((state) => state.recipes.recipes);
 	const recipeCount = useSelector((state) => state.recipes.count);
-	const filterRecipes = useSelector((state) => state.recipes.filterRecipes);
 	const recipeStatus = useSelector(getRecipeStatus);
-	const [searchParams, setSearchParams] = useSearchParams()
+	const [searchParams] = useSearchParams()
 	const [page, setPage] = useState(searchParams.get('page'))
-	const [filter, setFilter] = React.useState({
-		cuisines: 'all',
-		restrictions: 'all',
-	});
 	const [cuisineFilter, setCuisineFilter] = useState('all')
 	const [restrictionFilter, setRestrictionFilter] = useState('all')
 	const [sortDirection, setSortDirection] = useState('')
@@ -50,31 +43,24 @@ const Recipes = () => {
 		'pescatarian',
 	];
 
-	// want to try to move filtering into backend; will mesh better with paginating
 	React.useEffect(() => {
 		if (page) {
-			dispatch(fetchRecipesByPage({page: page, cuisine: cuisineFilter, restriction: restrictionFilter})) 
+			dispatch(fetchRecipesByPage({page: page, cuisine: cuisineFilter, restriction: restrictionFilter, sortDirection: sortDirection})) 
 		} else {
 			dispatch(fetchRecipes());
 		}
 	},[page])
-
-
-	React.useEffect(() => {
-		dispatch(setFilterRecipes());
-	}, [recipeStatus]);
 
 	React.useEffect(() => {
 		if (Number(page) !== 1) {
 			navigate('/user/recipes?page=1')
 			setPage(1)
 		} else {
-			dispatch(fetchRecipesByPage({page: page, cuisine: cuisineFilter, restriction: restrictionFilter}))
+			dispatch(fetchRecipesByPage({page: page, cuisine: cuisineFilter, restriction: restrictionFilter, sortDirection: sortDirection}))
 		}
-	}, [filter, cuisineFilter, restrictionFilter]);
+	}, [cuisineFilter, restrictionFilter, sortDirection]);
 
 	const handlefilter = (prop) => (event) => {
-		setFilter({ ...filter, [prop]: event.target.value });
 		if (prop === 'cuisines') setCuisineFilter(event.target.value)
 		if (prop === 'restrictions') setRestrictionFilter(event.target.value)
 	};
@@ -157,19 +143,6 @@ const Recipes = () => {
 				</div>
 			</div>
 			<div className="recipes-list">
-				{/* {filterRecipes.nomatch ? (
-					<p>{filterRecipes.nomatch}</p>
-				) : (
-					filterRecipes.slice(1, 25).map((recipe) => (
-						<Link key={recipe.id} to={`${recipe.id}`}>
-							<div className="recipe">
-								<h3>{recipe.name}</h3>
-								<p>Serving Size: {recipe.servings} </p>
-								<img src={recipe.img} alt="recipe" />
-							</div>
-						</Link>
-					))
-				)} */}
 				{recipes.length ? recipes.map((recipe) => (
 					<Link key={recipe.id} to={`${recipe.id}`}>
 						<div className="recipe">
