@@ -6,7 +6,6 @@ const { requireToken, isAdmin } = require('./gatekeepingMiddleware');
 router.get('/', async (req, res, next) => {
   try {
     if (req.query.page) {
-      console.log(`cuisine: ${req.query.cuisine} restriction: ${req.query.restriction}`)
       const cuisineObj = { model: Cuisine };
       const restrictionObj = { model: Restriction };
       let orderArr = ['id','asc'] // default order by recipe id
