@@ -21,7 +21,7 @@ const Footer = () => {
 						Phone
 					</h5>
 					<p className="text">
-					Office : +1 619 867 5309 <br/>Fax : +1 619 489 4608
+					Office : +1 619 867 5309 <br/>Fax : +1 678 999 8212
 					</p>
 				</div>
 				<div className="email">
