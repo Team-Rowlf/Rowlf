@@ -421,6 +421,14 @@ button {
   margin: auto;
   margin-top: 15px;
 }
+.prevNext {
+  color: blue;
+  margin: 0.5em;
+}
+.disabled {
+  pointer-events: none;
+  color: lightgray;
+}
 .footer {
   margin-bottom: -50px;
   width: 100%;

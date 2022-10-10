@@ -9,6 +9,15 @@ export const fetchRecipes = createAsyncThunk(
 	}
 );
 
+export const fetchRecipesByPage = createAsyncThunk(
+	'recipes/fetchRecipesByPage',
+	async (params) => {
+		const {page, cuisine, restriction, sortDirection} = params;
+		const { data } = await axios.get(`/api/recipes?page=${page}&cuisine=${cuisine}&restriction=${restriction}` + (sortDirection.length ? `&sort=${sortDirection}` : ''));
+		return data;
+	}
+);
+
 const initialState = {
 	recipes: [],
 	filterRecipes: [],
@@ -56,12 +65,25 @@ const recipesSlice = createSlice({
 			})
 			.addCase(fetchRecipes.fulfilled, (state, action) => {
 				state.status = 'succeeded';
-				state.recipes = action.payload;
+				state.recipes = action.payload.rows;
+				state.count = action.payload.count;
 			})
 			.addCase(fetchRecipes.rejected, (state, action) => {
 				state.status = 'failed';
 				state.error = action.error;
-			});
+			})
+			.addCase(fetchRecipesByPage.pending, (state, action) => {
+				state.status = 'pending';
+			})
+			.addCase(fetchRecipesByPage.fulfilled, (state, action) => {
+				state.status = 'succeeded';
+				state.recipes = action.payload.rows;
+				state.count = action.payload.count;
+			})
+			.addCase(fetchRecipesByPage.rejected, (state, action) => {
+				state.status = 'failed';
+				state.error = action.error;
+			});	
 	},
 });
 
