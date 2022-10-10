@@ -13,40 +13,40 @@ import About from './components/general/About.jsx';
 import Recipes from './components/pages/Recipes.jsx';
 import RecipePage from './components/pages/RecipePage.jsx';
 import { fetchUser } from './features/user/userSlice.js';
-import LeafletMap from './components/LeafletMap.jsx';
+import LeafletMap from './components/leaflet/LeafletMap.jsx';
 
 function App() {
-	const navigate = useNavigate();
-	const state = useSelector((state) => state);
-	const dispatch = useDispatch();
-	React.useEffect(() => {
-		// dispatch(fetchUser());
-	}, []);
+  const navigate = useNavigate();
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    // dispatch(fetchUser());
+  }, []);
 
-	return (
-		<>
-			<div id="main">
-				<Routes>
-					<Route index element={<Home />} />
-					<Route path="/login" element={<Login />} />
-					<Route path="/signUp" element={<Signup />} />
-					<Route path="/about" element={<About />} />
-					<Route path="/user" element={<User />}>
-						<Route index element={<ShoppingList />} />
-						<Route path="shoppingList" element={<ShoppingList />} />
-						<Route path="recipes" element={<Recipes />} />
-						<Route path="recipes/:recipeId" element={<RecipePage />} />
-						<Route path="profile" element={<Profile />} />
-						<Route path="*" element={<NotFound />} />
-					</Route>
-					{/* below route just for testing leaflet, will move later */}
-					<Route path="/leaflet" element={<LeafletMap />}/>
-					<Route path="*" element={<NotFound />} />
-				</Routes>
-			</div>
-			<Footer />
-		</>
-	);
+  return (
+    <>
+      <div id="main">
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signUp" element={<Signup />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/user" element={<User />}>
+            <Route index element={<ShoppingList />} />
+            <Route path="shoppingList" element={<ShoppingList />} />
+            <Route path="recipes" element={<Recipes />} />
+            <Route path="recipes/:recipeId" element={<RecipePage />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+          {/* below route just for testing leaflet, will move later */}
+          <Route path="/leaflet" element={<LeafletMap />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </div>
+      <Footer />
+    </>
+  );
 }
 
 export default App;
