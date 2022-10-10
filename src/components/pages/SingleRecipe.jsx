@@ -15,9 +15,8 @@ const RecipePage = () => {
 	const dispatch = useDispatch();
 	const { recipeId } = useParams();
 	const token = useSelector(getUserToken);
-	const profile = useSelector((state) => state.profile);
-	const getUserLikesId = useSelector(getAllLikesId);
 
+	const getUserLikesId = useSelector(getAllLikesId);
 	const getUserDisLikesId = useSelector(getAllDislikesId);
 
 	React.useEffect(() => {
