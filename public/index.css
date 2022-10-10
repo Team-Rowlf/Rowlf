@@ -330,6 +330,10 @@ button {
   border-radius: 15px;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
+.recipe-instructions-url {
+  color: blue;
+  margin-top: 1em;
+}
 .recipe-container {
   margin: auto;
   display: flex;
