@@ -39,7 +39,7 @@ export const validateSignupForm = createAsyncThunk(
 
 const initialState = {
 	userInfo: {},
-	isLogged: true,
+	isLogged: false,
 	isAdmin: false,
 	status: 'idle',
 	error: null,
@@ -80,6 +80,7 @@ const userSlice = createSlice({
 				state.status = 'succeeded';
 				state.userInfo = action.payload;
 				state.isLogged = true;
+				state.token = localStorage.getItem('token');
 				//check for admin
 				// state.isAdmin = action.payload.isAdmin ? action.payload.isAdmin : false;
 			})
@@ -99,6 +100,7 @@ const userSlice = createSlice({
 
 export const getFormInputAvailable = (state) => state.user.formInputAvailable;
 export const isLoggedStatus = (state) => state.user.isLogged;
+export const getUserToken = (state) => state.user.token;
 
 export const { logout } = userSlice.actions;
 

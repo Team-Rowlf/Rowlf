@@ -53,7 +53,7 @@ const Recipes = () => {
 	};
 
 	return !recipes.length ? (
-		<h1 className='loading'>LOADING...</h1>
+		<h1 className="loading">LOADING...</h1>
 	) : (
 		// "recipe-container" flex column
 		// "rotd&filter"      flex row side by side like the wireframe example
@@ -65,23 +65,26 @@ const Recipes = () => {
 					{recipes.slice(0, 1).map((recipe) => (
 						<div key={recipe.id} className="rotd-container">
 							<h1 className="rotd-title">Recipe of the Day</h1>
-								<div className="img">
-									<Link to={`${recipe.id}`}>
-										<img src={recipe.img} alt="recipe" />
-										<h2>{recipe.name}</h2>
-										<p> Serving Size: {recipe.servings} </p>
-									</Link>
-								</div>
+							<div className="img">
+								<Link to={`${recipe.id}`}>
+									<img src={recipe.img} alt="recipe" />
+									<h2>{recipe.name}</h2>
+									<p> Serving Size: {recipe.servings} </p>
+								</Link>
+							</div>
 						</div>
 					))}
 				</div>
 				<div className="filter-title">
 					<h3>Filters:</h3>
-				</div><br/>
+				</div>
+				<br />
 				<div className="filter-recipe">
 					<div className="filter">
 						<select name="filter-serving-size" onChange={handleSort}>
-							<option value="" selected disabled>Serving Size</option>
+							<option value="" disabled>
+								Serving Size
+							</option>
 							<option value="ascending"> Ascending </option>
 							<option value="descending"> Descending </option>
 						</select>
@@ -92,10 +95,13 @@ const Recipes = () => {
 							onChange={handlefilter('cuisines')}
 							defaultValue="all"
 						>
-							<option value="all" selected disabled> Cuisine </option>
+							<option value="all" disabled>
+								{' '}
+								Cuisine{' '}
+							</option>
 							{cuisines.map((ele, index) => (
 								<option value={ele} key={index}>
-									{ele[0].toUpperCase()+ele.slice(1)}
+									{ele[0].toUpperCase() + ele.slice(1)}
 								</option>
 							))}
 						</select>
@@ -105,11 +111,14 @@ const Recipes = () => {
 							name="filter-diet"
 							onChange={handlefilter('restrictions')}
 							defaultValue="all"
-							>
-							<option value="all" selected disabled> Diet </option>
+						>
+							<option value="all" disabled>
+								{' '}
+								Diet{' '}
+							</option>
 							{restrictions.map((ele, index) => (
 								<option value={ele} key={index}>
-									{ele[0].toUpperCase()+ele.slice(1)}
+									{ele[0].toUpperCase() + ele.slice(1)}
 								</option>
 							))}
 						</select>
@@ -121,8 +130,8 @@ const Recipes = () => {
 					<p>{filterRecipes.nomatch}</p>
 				) : (
 					filterRecipes.slice(1, 25).map((recipe) => (
-						<Link to={`${recipe.id}`}>
-							<div key={recipe.id} className="recipe">
+						<Link to={`${recipe.id}`} key={recipe.id}>
+							<div className="recipe">
 								<h3>{recipe.name}</h3>
 								<p>Serving Size: {recipe.servings} </p>
 								<img src={recipe.img} alt="recipe" />
