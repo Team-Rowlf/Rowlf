@@ -421,6 +421,14 @@ button {
   margin: auto;
   margin-top: 15px;
 }
+.prevNext {
+  color: blue;
+  margin: 0.5em;
+}
+.disabled {
+  pointer-events: none;
+  color: lightgray;
+}
 .footer {
   margin-bottom: -50px;
   width: 100%;
@@ -531,14 +539,4 @@ a,
 .have-item {
   color: grey;
   text-decoration: line-through;
-}
-
-/* putting in some basic styling for prev/next links here for now */
-.prevNext {
-  color: blue;
-  margin: .5em
-}
-.disabled {
-  pointer-events: none;
-  color: lightgray;
 }
