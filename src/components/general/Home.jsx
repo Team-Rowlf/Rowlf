@@ -1,11 +1,10 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, Link, Outlet } from 'react-router-dom';
-import { fetchUser } from '../../features/user/userSlice.js';
 import Login from '../account/Login.jsx';
+import Signup from '../account/Signup.jsx'
 
 const Home = () => {
-	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const user = useSelector((state) => state.user);
 

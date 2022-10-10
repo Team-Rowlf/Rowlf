@@ -1,39 +1,19 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const fetchUser = createAsyncThunk('user/fetchUser', async () => {
-	const token = window.localStorage.getItem('token');
-	if (token) {
-		const { data } = await axios.get('/api/user/me', {
-			headers: { authorization: token },
-		});
-		return data;
-	}
-});
-
-export const loginUser = createAsyncThunk(
-	'user/loginUser',
-	async ({ login }) => {
-		const { data } = await axios.post('/api/user/login', login);
-		return data;
+export const fetchUser = createAsyncThunk(
+	'user/fetchUser',
+	async ({ loginAttempt }) => {
+		return true;
+		const { data: login } = axios.get('/api/user', loginAttempt);
 	}
 );
 
 export const createUser = createAsyncThunk(
 	'user/createUser',
 	async ({ signUp }) => {
-		console.log(signUp);
-		const { data: create } = await axios.post('/api/user/signup', signUp);
+		const { data: create } = axios.post('/api/user', signUp);
 		return create;
-	}
-);
-export const validateSignupForm = createAsyncThunk(
-	'user/validateSignupForm',
-	async ({ prop, value }) => {
-		const { data } = await axios.post(`/api/user/userExists/${prop}`, {
-			value,
-		});
-		return data;
 	}
 );
 
@@ -82,18 +62,11 @@ const userSlice = createSlice({
 				state.isLogged = true;
 				state.token = localStorage.getItem('token');
 				//check for admin
-				// state.isAdmin = action.payload.isAdmin ? action.payload.isAdmin : false;
+				state.isAdmin = action.payload.isAdmin;
 			})
 			.addCase(fetchUser.rejected, (state, action) => {
 				state.status = 'failed';
 				state.error = action.error;
-			})
-			.addCase(loginUser.fulfilled, (state, action) => {
-				state.token = action.payload.token;
-				localStorage.setItem('token', state.token);
-			})
-			.addCase(loginUser.rejected, (state, action) => {
-				(state.status = 'failed'), (state.error = action.error);
 			});
 	},
 });
