@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, Link, Outlet } from 'react-router-dom';
+import { fetchUser } from '../../features/user/userSlice.js';
 import Login from '../account/Login.jsx';
 import Signup from '../account/Signup.jsx'
 import { fetchUser } from '../../features/user/userSlice';
@@ -17,7 +18,9 @@ const Home = () => {
 			(user.isLogged && navigate('/user/shoppingList'));
 	}, [user.isLogged]);
 
-	React.useEffect(() => {}, []);
+	React.useEffect(() => {
+		localStorage.getItem('token') && dispatch(fetchUser());
+	}, []);
 	return <Login />;
 };
 

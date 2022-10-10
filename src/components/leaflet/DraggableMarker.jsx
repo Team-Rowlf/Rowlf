@@ -1,4 +1,5 @@
-import React, { useState, useMemo, useRef } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
+import { Marker, Popup } from 'react-leaflet';
 
 function DraggableMarker() {
   const [draggable, setDraggable] = useState(false);
@@ -36,4 +37,5 @@ function DraggableMarker() {
     </Marker>
   );
 }
+
 export default DraggableMarker;
