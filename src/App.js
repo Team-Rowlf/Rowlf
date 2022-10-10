@@ -13,13 +13,13 @@ import About from './components/general/About.jsx';
 import Recipes from './components/pages/AllRecipes.jsx';
 import RecipePage from './components/pages/SingleRecipe.jsx';
 import { fetchUser } from './features/user/userSlice.js';
+import Likes from './components/pages/Likes.jsx';
+import Dislikes from './components/pages/Dislikes.jsx';
 function App() {
 	const navigate = useNavigate();
 	const state = useSelector((state) => state);
 	const dispatch = useDispatch();
-	React.useEffect(() => {
-		// dispatch(fetchUser());
-	}, []);
+	React.useEffect(() => {}, []);
 
 	return (
 		<>
@@ -34,7 +34,11 @@ function App() {
 						<Route path="shoppingList" element={<ShoppingList />} />
 						<Route path="recipes" element={<Recipes />} />
 						<Route path="recipes/:recipeId" element={<RecipePage />} />
-						<Route path="profile" element={<Profile />} />
+						<Route path="profile" element={<Profile />}>
+							<Route index element={<Likes />} />
+							<Route path="likes" element={<Likes />} />
+							<Route path="dislikes" element={<Dislikes />} />
+						</Route>
 						<Route path="*" element={<NotFound />} />
 					</Route>
 					<Route path="*" element={<NotFound />} />
