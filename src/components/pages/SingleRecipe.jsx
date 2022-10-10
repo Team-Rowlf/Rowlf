@@ -103,6 +103,7 @@ const RecipePage = () => {
 						Add To Card
 					</button>
 				</div>
+				<a className='recipe-instructions-url' href={recipe[0].url} target="_blank">Link to Instructions</a>
 				<h3>Ingredients</h3>
 				<ul>
 					{recipe[0].lineItems.map((item) => (

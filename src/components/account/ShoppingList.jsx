@@ -28,10 +28,15 @@ const ShoppingList = () => {
 			: input.parentNode.classList.remove('have-item');
 	};
 
+	const capitalize = string => {
+		let arr  = string.split(' ');
+		arr=arr.map(itm=>itm[0].toUpperCase()+itm.slice(1))
+		string = arr.join(' ');
+		return string;
+	}
+
 	return !shoppingList.length ? (
-		<p>
-			<b> No items</b>
-		</p>
+		<h1 className='loading'>LOADING...</h1>
 	) : (
 		<div className="shoppingList-container">
 			<h1>
@@ -49,7 +54,7 @@ const ShoppingList = () => {
 							value={recipe.name}
 							onClick={handleCheckAll}
 						/>{' '}
-						{recipe.name}
+						{capitalize(recipe.name)}
 						<div className="ingredients" key={ingredients.name}>
 							{ingredients.map((ingredient) => {
 								return (
@@ -60,7 +65,7 @@ const ShoppingList = () => {
 											name={recipe.name}
 											onClick={handleCheck}
 										/>
-										{ingredient.ingredient.name}
+										{capitalize(ingredient.ingredient.name)} ({ingredient.qty} {capitalize(ingredient.measurement)}) 
 									</div>
 								);
 							})}

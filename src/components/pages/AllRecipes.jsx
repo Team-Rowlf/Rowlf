@@ -1,22 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
 	getRecipeStatus,
-	setSortRecipes,
-	setFilterRecipes,
+	fetchRecipesByPage,
+	fetchRecipes,
 } from '../../features/recipes/recipesSlice';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+
+// after pagination implemented, then work on moving filtering to the backend as well
 
 const Recipes = () => {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 	const recipes = useSelector((state) => state.recipes.recipes);
-	const filterRecipes = useSelector((state) => state.recipes.filterRecipes);
+	const recipeCount = useSelector((state) => state.recipes.count);
 	const recipeStatus = useSelector(getRecipeStatus);
-	const [filter, setFilter] = React.useState({
-		cuisines: 'all',
-		restrictions: 'all',
-	});
+	const [searchParams] = useSearchParams();
+	const [page, setPage] = useState(searchParams.get('page'));
+	const [cuisineFilter, setCuisineFilter] = useState('all');
+	const [restrictionFilter, setRestrictionFilter] = useState('all');
+	const [sortDirection, setSortDirection] = useState('');
 	const cuisines = [
+		'all',
 		'american',
 		'asian',
 		'mexican',
@@ -29,6 +34,7 @@ const Recipes = () => {
 		'other',
 	];
 	const restrictions = [
+		'all',
 		'vegetarian',
 		'vegan',
 		'glutan-free',
@@ -38,21 +44,56 @@ const Recipes = () => {
 	];
 
 	React.useEffect(() => {
-		dispatch(setFilterRecipes());
-	}, [recipeStatus]);
+		if (page) {
+			dispatch(
+				fetchRecipesByPage({
+					page: page,
+					cuisine: cuisineFilter,
+					restriction: restrictionFilter,
+					sortDirection: sortDirection,
+				})
+			);
+		} else {
+			dispatch(fetchRecipes());
+		}
+	}, [page]);
 
 	React.useEffect(() => {
-		dispatch(setFilterRecipes(filter));
-	}, [filter]);
+		if (Number(page) !== 1) {
+			navigate('/user/recipes?page=1');
+			setPage(1);
+		} else {
+			dispatch(
+				fetchRecipesByPage({
+					page: page,
+					cuisine: cuisineFilter,
+					restriction: restrictionFilter,
+					sortDirection: sortDirection,
+				})
+			);
+		}
+	}, [cuisineFilter, restrictionFilter, sortDirection]);
 
 	const handlefilter = (prop) => (event) => {
-		setFilter({ ...filter, [prop]: event.target.value });
+		if (prop === 'cuisines') setCuisineFilter(event.target.value);
+		if (prop === 'restrictions') setRestrictionFilter(event.target.value);
 	};
 	const handleSort = (event) => {
-		dispatch(setSortRecipes(event.target.value));
+		setSortDirection(event.target.value);
 	};
 
-	return !recipes.length ? (
+	const showRecipeOfDay = () => {
+		return !(
+			cuisineFilter !== 'all' ||
+			restrictionFilter !== 'all' ||
+			Number(page) !== 1
+		);
+	};
+
+	// will want a different way to get recipe of the day; maybe some random variable generator or formula?
+	// possible, simple way: convert date into an int somehow, then take modulus of total recipe count. then that will be recipe id for recipe of the day
+	// in the future, could have a better system if incorporated a rating system; highest rated would be recipe of the day, rolling basis or something
+	return recipeStatus === 'pending' ? (
 		<h1 className="loading">LOADING...</h1>
 	) : (
 		// "recipe-container" flex column
@@ -62,18 +103,23 @@ const Recipes = () => {
 		<div className="recipe-container">
 			<div className="rotd&filter">
 				<div className="rotd">
-					{recipes.slice(0, 1).map((recipe) => (
-						<div key={recipe.id} className="rotd-container">
-							<h1 className="rotd-title">Recipe of the Day</h1>
-							<div className="img">
-								<Link to={`${recipe.id}`}>
-									<img src={recipe.img} alt="recipe" />
-									<h2>{recipe.name}</h2>
-									<p> Serving Size: {recipe.servings} </p>
-								</Link>
+					{/* having only show recipe of the day if not filtering */}
+					{showRecipeOfDay() ? (
+						recipes.slice(0, 1).map((recipe) => (
+							<div key={recipe.id} className="rotd-container">
+								<h1 className="rotd-title">Recipe of the Day</h1>
+								<div className="img">
+									<Link to={`${recipe.id}`}>
+										<img src={recipe.img} alt="recipe" />
+										<h2>{recipe.name}</h2>
+										<p> Serving Size: {recipe.servings} </p>
+									</Link>
+								</div>
 							</div>
-						</div>
-					))}
+						))
+					) : (
+						<></>
+					)}
 				</div>
 				<div className="filter-title">
 					<h3>Filters:</h3>
@@ -81,7 +127,11 @@ const Recipes = () => {
 				<br />
 				<div className="filter-recipe">
 					<div className="filter">
-						<select name="filter-serving-size" onChange={handleSort}>
+						<select
+							name="filter-serving-size"
+							onChange={handleSort}
+							defaultValue={sortDirection}
+						>
 							<option value="" disabled>
 								Serving Size
 							</option>
@@ -93,7 +143,7 @@ const Recipes = () => {
 						<select
 							name="filter-cuisines"
 							onChange={handlefilter('cuisines')}
-							defaultValue="all"
+							defaultValue={cuisineFilter}
 						>
 							<option value="all" disabled>
 								{' '}
@@ -110,7 +160,7 @@ const Recipes = () => {
 						<select
 							name="filter-diet"
 							onChange={handlefilter('restrictions')}
-							defaultValue="all"
+							defaultValue={restrictionFilter}
 						>
 							<option value="all" disabled>
 								{' '}
@@ -126,11 +176,9 @@ const Recipes = () => {
 				</div>
 			</div>
 			<div className="recipes-list">
-				{filterRecipes.nomatch ? (
-					<p>{filterRecipes.nomatch}</p>
-				) : (
-					filterRecipes.slice(1, 25).map((recipe) => (
-						<Link to={`${recipe.id}`} key={recipe.id}>
+				{recipes.length ? (
+					recipes.map((recipe) => (
+						<Link key={recipe.id} to={`${recipe.id}`}>
 							<div className="recipe">
 								<h3>{recipe.name}</h3>
 								<p>Serving Size: {recipe.servings} </p>
@@ -138,7 +186,29 @@ const Recipes = () => {
 							</div>
 						</Link>
 					))
+				) : (
+					<p>No Matches</p>
 				)}
+			</div>
+			<div className="prev-next-links">
+				<Link
+					to={`/user/recipes?page=${Number(page) - 1}`}
+					className={Number(page) === 1 ? 'prevNext disabled' : 'prevNext'}
+					onClick={() => setPage(+page - 1)}
+				>
+					Prev
+				</Link>
+				<Link
+					to={`/user/recipes?page=${Number(page) + 1}`}
+					className={
+						Number(page) * 24 + 1 >= recipeCount
+							? 'prevNext disabled'
+							: 'prevNext'
+					}
+					onClick={() => setPage(+page + 1)}
+				>
+					Next
+				</Link>
 			</div>
 		</div>
 	);
