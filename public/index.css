@@ -1,5 +1,6 @@
 * {
   margin: 0px;
+  max-width: 100%;
 }
 #root {
   min-height: 100vh;
@@ -20,7 +21,7 @@ body {
   font-size: x-large;
   padding: 25px;
   background-color: #8B2635;
-  color: #D3EFBD;
+  color: white;
   border-bottom: 10px solid #0D730D;
 }
 .large-logo img {
@@ -34,8 +35,24 @@ body {
   border-radius: 150px;
   margin-bottom: 25px;
 }
+.footer {
+  position: fixed;
+  margin-bottom: -50px;
+  width: 100%;
+  padding: 15px;
+  text-align: center;
+  display: flex;
+  background-color: #8B2635;
+  color: white;
+  border-top: 10px solid #0D730D;
+  margin-top: 25px;
+  font-weight: bold;
+}
+.footer div {
+  text-align: center;
+  width: 33%;
+}
 img {
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
   margin: auto;
   border-radius: 25px;
   max-width: 300px;
@@ -353,7 +370,7 @@ button {
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
   margin: auto;
   max-width: 500px;
-  padding: 15px;
+  padding: 3%;
   color: white;
   background-color: #8B2635;
   border: 2px solid black;
@@ -375,36 +392,44 @@ button {
   max-width: 500px;
   margin: auto;
 }
+.filter-title {
+  margin: auto;
+  padding-top: 3%;
+  max-width: fit-content;
+}
+.filter-title h3 {
+  max-width: fit-content;
+}
 .filter-recipe {
-  padding: 15px;
+  padding: 3%;
   margin: auto;
   display: flex;
 }
 .filter-recipe .filter {
   margin: auto;
-  padding: 10px;
+  padding: 2%;
 }
 .filter-recipe .filter label {
-  padding: 10px;
+  padding: 2%;
   font-size: larger;
   font-weight: bolder;
 }
 .filter-recipe .filter select {
-  padding: 5px;
+  padding: 1%;
   font-size: larger;
 }
 .recipes-list {
   display: flex;
   flex-wrap: wrap;
-  padding: 10px;
+  padding: 2%;
 }
 .recipes-list a {
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
   margin: auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 15px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  padding: 2%;
+  border-radius: 3%;
   text-decoration: none;
   background-color: #D0D2C6;
 }
@@ -423,7 +448,8 @@ button {
 }
 .recipes-list a .recipe img {
   margin: auto;
-  margin-top: 15px;
+  margin-top: 3%;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 .prevNext {
   color: blue;
