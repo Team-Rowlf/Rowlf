@@ -73,7 +73,7 @@ const _addRecipesToArray = (recipeArray, array) => {
 const testingFunction = async () => {
     await db.sync();
     const recipeArray = []
-    for (let i =99 ; i < 101; i++) {
+    for (let i =97 ; i < 101; i++) {
         // let randIndex= Math.floor(Math.random()*100)
         let testRecipe = await Recipe.findByPk(i, {
             include: [
