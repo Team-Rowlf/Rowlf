@@ -3,6 +3,7 @@ const { Recipe, ShoppingList, LineItem, Ingredient, db } = require('../db');
 // get rid of db import later; just importing now for testing purposes
 
 
+
 // first goal: write a helper method that takes in shopping list
 // - want to return a properly formatted JSON object
 // - to start, try just turning a single LineItem into JSON
@@ -97,3 +98,6 @@ testingFunction()
 
 // copy/pasting console.log results here to test out for now:
 // https://www.amazon.com/afx/ingredients/verify
+
+// looking at documentation, may not even need an api route... will play around
+// if no api route needed, then may want to move helper file to front end component or something
