@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { icon } from 'leaflet';
 import * as esri from 'esri-leaflet-geocoder';
@@ -13,12 +13,19 @@ const LeafletMap = () => {
   const userIcon = icon({ iconUrl: '/chefs-hat.svg', iconSize: [30, 30] });
   const [searchLocation, setSearchLocation] = useState(null);
   const [searched, setSearched] = useState(false);
+  const [markerLocation, setMarkerLocation] = useState(null);
+  const [dragged, setDragged] = useState(false);
+
+  const markerRef = useRef(null);
+  const marker = markerRef.current;
 
   async function showGroceryStores(latLng) {
     const { data: esriKey } = await axios.get('/api/esri/key');
     // returning some results that are not grocery stores, but are tagged as grocery
     // possible workaround: at least for us, could try to compile a list of major national/regional grocery stores
     // might be tedious though; but that way, could at least filter through results and only inclue results that somewhat make sense
+    // console.log('show stores:', latLng);
+
     let obj = new esri.Geocode({
       apikey: esriKey,
     })
@@ -30,12 +37,27 @@ const LeafletMap = () => {
       });
   }
 
+  //this function gets back the coordinates from the draggable marker component
+  function getDraggedMarkerLocation(data) {
+    setMarkerLocation(data);
+    setDragged(!dragged);
+  }
+
+  //run whenever the marker is dragged
+  React.useEffect(() => {
+    if (markerLocation) {
+      setLocation(markerLocation);
+      showGroceryStores(markerLocation);
+    }
+  }, [dragged]);
+
   //function that is passed to LeafletSearchField to get back coordinates
   function getLocation(data) {
     setSearchLocation(data);
     setSearched(!searched);
   }
 
+  //whenever searched state changes (whenever the getLocation function runs, set the location)
   React.useEffect(() => {
     if (searchLocation) {
       setLocation(searchLocation);
@@ -72,9 +94,14 @@ const LeafletMap = () => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker icon={userIcon} position={location} draggable={true}>
+        {/* <Marker icon={userIcon} position={location} draggable={true}>
           <Popup>You are here.</Popup>
-        </Marker>
+        </Marker> */}
+        <DraggableMarker
+          icon={userIcon}
+          position={location}
+          func={getDraggedMarkerLocation}
+        ></DraggableMarker>
         {stores.map((store, idx) => {
           return (
             <Marker key={idx} position={store.latlng}>

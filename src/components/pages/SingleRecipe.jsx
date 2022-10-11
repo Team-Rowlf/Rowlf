@@ -74,6 +74,17 @@ const RecipePage = () => {
 		dispatch(addToList(recipe));
 	};
 
+	const handleInstructions = (event) => {
+		window.location.href = recipe[0].url;
+	};
+
+	const capitalize = (string) => {
+		let arr = string.split(' ');
+		arr = arr.map((itm) => itm[0].toUpperCase() + itm.slice(1));
+		string = arr.join(' ');
+		return string;
+	};
+
 	return !recipe.length ? (
 		<h1 className="loading">LOADING...</h1>
 	) : (
@@ -103,6 +114,13 @@ const RecipePage = () => {
 					>
 						Add To Card
 					</button>
+					<button
+						className="navButton"
+						value="instructions"
+						onClick={handleInstructions}
+					>
+						Instructions
+					</button>
 				</div>
 				<a
 					className="recipe-instructions-url"
@@ -115,7 +133,8 @@ const RecipePage = () => {
 				<ul>
 					{recipe[0].lineItems.map((item) => (
 						<li key={item.id}>
-							({item.qty}) {item.measurement} {item.ingredient.name}{' '}
+							{capitalize(item.ingredient.name)} ({item.qty}{' '}
+							{capitalize(item.measurement)})
 						</li>
 					))}
 				</ul>
