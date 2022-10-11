@@ -2,20 +2,22 @@ const router = require('express').Router();
 const { Recipe, ShoppingList, LineItem, Ingredient, db } = require('../db');
 // get rid of db import later; just importing now for testing purposes
 
+router.get('/testingredients', async (req, res, next) => {
+    try {
+        const ingredients = await testingFunction();
+        res.send(ingredients)
+    } catch(err) {
+        next(err)
+    }
+})
 
-
-// first goal: write a helper method that takes in shopping list
-// - want to return a properly formatted JSON object
-// - to start, try just turning a single LineItem into JSON
-// - -- after that, can do a full recipe, and after that, can try to do a whole shopping list
-// - goal for today at least is be able to copy/paste return value into the verify site to see if it works
-// - after that, can try to play around with posting to the other site, even without a tag; might work without it based on documentation?
+// will need to write a route later that takes in user's shopping list and returns an object like in the testfunction()
+// - then, should be mostly there to hooking it up; would just need to findByPk the shoppinglist (and include all other models)
+// - after that, initialize a new array, pass in the shoppinglist.recipes to the _addRecipesToArray with the array, and then return {ingredients: array}
 
 const _addIngredientToArray = (lineItem, array) => {
-    // console.log('logging lineItem in helper function', lineItem)
     const ingredientObj = {
         name: lineItem.ingredient.name,
-        // will likely want to build out some more robust methods for unit/amount (ex: for the 1 'to taste' stuff I put in; cant to like tablespoon or something; also change abrevs to full name capitalized?)
         quantityList: [{
             unit: _convertMeasurementFormat(lineItem.measurement),
             amount: lineItem.qty 
@@ -74,9 +76,9 @@ const _addRecipesToArray = (recipeArray, array) => {
 const testingFunction = async () => {
     await db.sync();
     const recipeArray = []
-    for (let i =97 ; i < 101; i++) {
-        // let randIndex= Math.floor(Math.random()*100)
-        let testRecipe = await Recipe.findByPk(i, {
+    for (let i =0 ; i < 3; i++) {
+        let randIndex= Math.floor(Math.random()*100)
+        let testRecipe = await Recipe.findByPk(randIndex, {
             include: [
                 { model: LineItem, include: { model: Ingredient } },
               ]
@@ -86,7 +88,8 @@ const testingFunction = async () => {
     // console.log(recipeArray)
     let ingredientArray = [];
     _addRecipesToArray(recipeArray, ingredientArray)
-    let ingredientJSON = JSON.stringify({ingredients: ingredientArray})
+
+    let ingredientJSON = {ingredients: ingredientArray}
     console.log(ingredientJSON)
     return ingredientJSON
 }
@@ -94,10 +97,9 @@ const testingFunction = async () => {
 // should note that later, will want to somehow exclude marked off items? or leave it to the user to do so...
 // -- may require some sort of refactor, or need to have some sort of consolidation method on shopping list page
 
-testingFunction()
+// testingFunction()
 
 // copy/pasting console.log results here to test out for now:
 // https://www.amazon.com/afx/ingredients/verify
 
-// looking at documentation, may not even need an api route... will play around
-// if no api route needed, then may want to move helper file to front end component or something
+module.exports = router;
