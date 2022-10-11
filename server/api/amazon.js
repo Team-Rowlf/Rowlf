@@ -35,34 +35,65 @@ const _convertMeasurementFormat = (measurement) => {
         return 'TBSP'
     } else if (measurement === 'oz') {
         return 'OUNCES'
-    } else if ((measurement === 'clove') || (measurement === 'cloves')) {
+    } else if (measurement.includes('clove')) {
         return 'CLOVES'
-    } else if ((measurement === 'pinches') || (measurement === 'pinch') || (measurement === 'to taste')) {
+    } else if (measurement.includes('pinch') || (measurement === 'to taste')) {
         return 'PINCHES'
-    } else if ((measurement === 'stalk') || (measurement === 'stalks')) {
+    } else if (measurement.includes('stalk')) {
         return 'STALKS'
+    } else if (measurement.includes('bunch')) {
+        return 'BUNCHES'
+    } else if ((measurement === 'leaf') || (measurement === 'leaves')) {
+        return 'LEAVES'
+    } else if (measurement.includes('slice')) {
+        return 'SLICES'
+    } else if (measurement.includes('can')) {
+        return 'JP_CANS' // unsure what this means; doesn't seem to be accurate; may want to update seed file with oz instead of cans
     }
     else {
         return 'COUNT' // catchall for now
     }
 } 
 
+const _addRecipeToArray = (recipe, array) => {
+    for (index in recipe.lineItems) {
+        _addIngredientToArray(recipe.lineItems[index],array)
+    }
+}
+
+// would pass ShoppingList.recipes to this method
+const _addRecipesToArray = (recipeArray, array) => {
+    for (index in recipeArray) {
+        _addRecipeToArray(recipeArray[index], array)
+    }
+}
+
 // funny to note: pie crust for chicken pot pie recipe populates as oreo pie crust on amazon; could be something to show in video
 // demonstrate that users should validate their cart items before adding to cart/purchasing
 const testingFunction = async () => {
     await db.sync();
-    let testRecipe = await Recipe.findByPk(11, {
-        include: [
-            { model: LineItem, include: { model: Ingredient } },
-          ]
-    });
-    let ingredientArray = [];
-    for (index in testRecipe.lineItems) {
-        _addIngredientToArray(testRecipe.lineItems[index], ingredientArray)
+    const recipeArray = []
+    for (let i =99 ; i < 101; i++) {
+        // let randIndex= Math.floor(Math.random()*100)
+        let testRecipe = await Recipe.findByPk(i, {
+            include: [
+                { model: LineItem, include: { model: Ingredient } },
+              ]
+        });
+        recipeArray.push(testRecipe)
     }
+    // console.log(recipeArray)
+    let ingredientArray = [];
+    _addRecipesToArray(recipeArray, ingredientArray)
     let ingredientJSON = JSON.stringify({ingredients: ingredientArray})
     console.log(ingredientJSON)
     return ingredientJSON
 }
 
+// should note that later, will want to somehow exclude marked off items? or leave it to the user to do so...
+// -- may require some sort of refactor, or need to have some sort of consolidation method on shopping list page
+
 testingFunction()
+
+// copy/pasting console.log results here to test out for now:
+// https://www.amazon.com/afx/ingredients/verify
