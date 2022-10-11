@@ -1,16 +1,19 @@
-import axios from 'axios';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import {
+	fetchRemoveFromShoppingList,
 	fetchShoppingList,
-	removeFromList,
+	getListStatus,
 } from '../../features/shoppingList/shoppingListSlice';
 
 const ShoppingList = () => {
 	const dispatch = useDispatch();
 	const location = useLocation();
-	const shoppingList = useSelector((state) => state.shoppingList.shoppingList);
+	const shoppingList = useSelector(
+		(state) => state.shoppingList.shoppingList.recipes
+	);
+	const listStatus = useSelector(getListStatus);
 
 	const handleCheckAll = (event) => {
 		const checkAll = document.querySelectorAll(
@@ -41,20 +44,22 @@ const ShoppingList = () => {
 		return string;
 	};
 	const handleRemoveRecipe = (id) => {
-		dispatch(removeFromList({ id }));
+		console.log('handle', id);
+		dispatch(fetchRemoveFromShoppingList({ id }));
 	};
-	React.useEffect(() => {
-		shoppingList.length && dispatch();
-	}, [location]);
+	// React.useEffect(() => {
+	// 	shoppingList && dispatch();
+	// }, [location]);
 	React.useEffect(() => {
 		dispatch(fetchShoppingList());
 	}, []);
+	React.useEffect(() => {}, [listStatus]);
 
 	const inLineStyle = {
 		display: `flex`,
 	};
 
-	return !shoppingList.length ? (
+	return !shoppingList ? (
 		<h1 className="loading">No Recipe </h1>
 	) : (
 		<div className="shoppingList-container">

@@ -9,7 +9,10 @@ import {
 	userDisLikeRecipe,
 	userLikeRecipe,
 } from '../../features/profile/profileSlice';
-import { addToList } from '../../features/shoppingList/shoppingListSlice';
+import {
+	addToList,
+	fetchAddtoShoppingList,
+} from '../../features/shoppingList/shoppingListSlice';
 import { getUserToken } from '../../features/user/userSlice';
 
 const RecipePage = () => {
@@ -71,7 +74,7 @@ const RecipePage = () => {
 	};
 
 	const handleCart = (event) => {
-		dispatch(addToList(recipe));
+		dispatch(fetchAddtoShoppingList({ id: Number(recipeId) }));
 	};
 
 	const handleInstructions = (event) => {
