@@ -133,9 +133,8 @@ User.prototype.getCurrentList = async function () {
     },
   });
   if (!currentList) {
-    const error = Error('list does not exist');
-    error.status = 404;
-    throw error;
+    const newList = await this.createNewList();
+    return newList;
   }
   return currentList;
 };
@@ -184,7 +183,7 @@ User.prototype.getAllLists = async function () {
     },
   });
   if (!allLists) {
-    const error = Error('list does not exist');
+    const error = Error('lists do not exist');
     error.status = 404;
     throw error;
   }
@@ -241,7 +240,8 @@ User.prototype.createNewList = async function () {
       isCompleted: false,
     },
   });
-  if (!activeList) {
+  console.log('activeList', activeList);
+  if (!activeList || activeList.length === 0) {
     let newList = await ShoppingList.create();
     await newList.setUser(this);
     return newList;
