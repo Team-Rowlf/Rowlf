@@ -1,0 +1,40 @@
+.shoppingList-container{
+    display:block;
+    margin: auto;
+    text-align: center;
+    min-height: 70vh;
+    h1{
+        padding: 3%;
+    }
+    .recipe{
+        max-width: fit-content;
+        margin: auto;
+        font-size: x-large;
+        font-weight: bold;
+        text-align: left;
+        flex-wrap: nowrap;
+        padding-top: 2.5%;
+        .ingredients{
+            font-size: normal;
+            font-weight: normal;
+            margin: auto;
+            max-width: 80%;
+            display: block;
+            white-space: nowrap;
+            .ingredient-checkbox{
+                display: block;
+                input{
+                    margin: 5%;
+                }
+            }
+        }
+        input {
+            margin: 15px;
+        }
+    }
+}
+
+.have-item{
+    color: grey;
+    text-decoration: line-through;
+}

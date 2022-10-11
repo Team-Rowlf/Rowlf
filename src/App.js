@@ -9,10 +9,16 @@ import NotFound from './components/general/NotFound.jsx';
 import User from './components/account/User.jsx';
 import ShoppingList from './components/account/ShoppingList.jsx';
 import Profile from './components/account/Profile.jsx';
-
+import About from './components/general/About.jsx';
+import Recipes from './components/pages/AllRecipes.jsx';
+import RecipePage from './components/pages/SingleRecipe.jsx';
+import { fetchUser } from './features/user/userSlice.js';
+import Likes from './components/pages/Likes.jsx';
+import Dislikes from './components/pages/Dislikes.jsx';
 function App() {
 	const state = useSelector((state) => state);
 	const dispatch = useDispatch();
+	React.useEffect(() => {}, []);
 
 	return (
 		<>
@@ -21,10 +27,17 @@ function App() {
 					<Route index element={<Home />} />
 					<Route path="/login" element={<Login />} />
 					<Route path="/signUp" element={<Signup />} />
+					<Route path="/about" element={<About />} />
 					<Route path="/user" element={<User />}>
 						<Route index element={<ShoppingList />} />
 						<Route path="shoppingList" element={<ShoppingList />} />
-						<Route path="profile" element={<Profile />} />
+						<Route path="recipes" element={<Recipes />} />
+						<Route path="recipes/:recipeId" element={<RecipePage />} />
+						<Route path="profile" element={<Profile />}>
+							<Route index element={<Likes />} />
+							<Route path="likes" element={<Likes />} />
+							<Route path="dislikes" element={<Dislikes />} />
+						</Route>
 						<Route path="*" element={<NotFound />} />
 					</Route>
 					<Route path="*" element={<NotFound />} />
