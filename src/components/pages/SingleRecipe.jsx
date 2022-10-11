@@ -9,6 +9,7 @@ import {
 	userDisLikeRecipe,
 	userLikeRecipe,
 } from '../../features/profile/profileSlice';
+import { addToList } from '../../features/shoppingList/shoppingListSlice';
 import { getUserToken } from '../../features/user/userSlice';
 
 const RecipePage = () => {
@@ -70,7 +71,7 @@ const RecipePage = () => {
 	};
 
 	const handleCart = (event) => {
-		console.log(event.target.value);
+		dispatch(addToList(recipe));
 	};
 
 	return !recipe.length ? (
@@ -103,7 +104,13 @@ const RecipePage = () => {
 						Add To Card
 					</button>
 				</div>
-				<a className='recipe-instructions-url' href={recipe[0].url} target="_blank">Link to Instructions</a>
+				<a
+					className="recipe-instructions-url"
+					href={recipe[0].url}
+					target="_blank"
+				>
+					Link to Instructions
+				</a>
 				<h3>Ingredients</h3>
 				<ul>
 					{recipe[0].lineItems.map((item) => (
