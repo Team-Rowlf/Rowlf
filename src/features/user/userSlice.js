@@ -22,7 +22,6 @@ export const loginUser = createAsyncThunk(
 export const createUser = createAsyncThunk(
 	'user/createUser',
 	async ({ signUp }) => {
-		console.log(signUp);
 		const { data: create } = await axios.post('/api/user/signup', signUp);
 		return create;
 	}
