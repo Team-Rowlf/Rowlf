@@ -8,7 +8,7 @@ router.get('/', async (req, res, next) => {
     if (req.query.page) {
       const cuisineObj = { model: Cuisine };
       const restrictionObj = { model: Restriction };
-      let orderArr = ['id','asc'] // default order by recipe id
+      let orderArr = ['id', 'asc']; // default order by recipe id
       if (req.query.cuisine !== 'all') {
         cuisineObj.where = { name: [req.query.cuisine] };
       }
@@ -16,22 +16,24 @@ router.get('/', async (req, res, next) => {
         restrictionObj.where = { name: [req.query.restriction] };
       }
       if (req.query.sort) {
-        orderArr = req.query.sort === 'ascending' ? ['servings', 'asc'] : ['servings', 'desc']
+        orderArr =
+          req.query.sort === 'ascending'
+            ? ['servings', 'asc']
+            : ['servings', 'desc'];
       }
       const { rows, count } = await Recipe.findAndCountAll({
         distinct: true,
         order: [orderArr],
-        offset: (req.query.page -1)*24,
+        offset: (req.query.page - 1) * 24,
         limit: 24,
         include: [
-          cuisineObj, 
+          cuisineObj,
           restrictionObj,
-          { model: LineItem, include: { model: Ingredient } }
-        ]
-      })
-      res.send({ rows, count })
-    }
-    else {
+          { model: LineItem, include: { model: Ingredient } },
+        ],
+      });
+      res.send({ rows, count });
+    } else {
       const { rows, count } = await Recipe.findAndCountAll({
         include: [
           { model: Cuisine },

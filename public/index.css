@@ -570,3 +570,20 @@ a,
   color: grey;
   text-decoration: line-through;
 }
+#map {
+  height: 800px;
+}
+.leaflet-container {
+  height: 100vh;
+  width: 100wh;
+}
+.leaflet-control-geosearch {
+  display: flex;
+  justify-content: end;
+}
+.leaflet-control-geosearch button {
+  width: 30px;
+  height: 31px;
+  position: absolute;
+  display: none;
+}
