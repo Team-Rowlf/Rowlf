@@ -30,7 +30,7 @@ const recipes = [
         ingredients: [
             {name: 'spaghetti', qty: 3/4, denom: 'lb'},
             {name: 'cherry tomatoes', qty: 4, denom: 'cup'},
-            {name: 'garlic', qty: 4, denom: 'clove'},
+            {name: 'garlic', qty: 4, denom: 'cloves'},
             {name: 'olive oil', qty: 1/4, denom: 'cup'},
             {name: 'fresh basil', qty: 1/2, denom: 'cup'},
             {name: 'salt', qty: 1, denom: 'to taste'},
@@ -104,7 +104,7 @@ const recipes = [
             {name: 'celery', qty: 2, denom: 'stalk'},
             {name: 'salt', qty: 1, denom: 'tsp'},
             {name: 'pepper', qty: 1, denom: 'to taste'},
-            {name: 'garlic', qty: 3, denom: 'clove'},
+            {name: 'garlic', qty: 3, denom: 'cloves'},
             {name: 'diced tomatoes', qty: 28, denom: 'oz'},
             {name: 'white beans', qty: 3/2, denom: 'cup'},
             {name: 'green beans', qty: 1, denom: 'cup'},
@@ -135,7 +135,7 @@ const recipes = [
             {name: 'serrano pepper', qty: 1, denom: 'whole'},
             {name: 'canola oil', qty: 1/4, denom: 'cup'},
             {name: 'shallot', qty: 3, denom: 'whole'},
-            {name: 'garlic', qty: 3, denom: 'clove'},
+            {name: 'garlic', qty: 3, denom: 'cloves'},
             {name: 'shrimp', qty: 12, denom: 'oz'},
             {name: 'egg', qty: 2, denom: 'whole'},
             {name: 'green onion', qty: 4, denom: 'stalk'},
@@ -231,7 +231,7 @@ const recipes = [
           { qty: 1, name: 'celery', denom: 'stalk' },
           { qty: 1, name: 'Worcestershire sauce', denom: 'tsp' },
           { qty: 1, name: 'paprika', denom: 'tsp' },
-          { qty: 1, name: 'garlic', denom: 'clove' },
+          { qty: 1, name: 'garlic', denom: 'cloves' },
           { qty: 1, name: 'bay leaf', denom: 'large' }
         ]
       },
@@ -301,7 +301,7 @@ const recipes = [
           { qty: 1/4, name: 'celery seed', denom: 'tsp' },
           { qty: 7/4, name: 'chicken broth', denom: 'cup' },
           { qty: 2/3, name: 'milk', denom: 'cup' },
-          { qty: 2, name: 'unbaked pie crusts', denom: '(9 inch)' }
+          { qty: 2, name: 'pie crust', denom: '(9 inch)' }
         ]
       },
       {
@@ -581,7 +581,7 @@ const recipes = [
           { qty: 2, name: 'olive oil', denom: 'tbsp' },
           { qty: 1, name: 'lemon juice', denom: 'tbsp' },
           { qty: 2, name: 'parsley', denom: 'tbsp' },
-          { qty: 1, name: 'garlic', denom: 'clove' },
+          { qty: 1, name: 'garlic', denom: 'cloves' },
           { qty: 1/2, name: 'oregano', denom: 'tsp' },
           { qty: 1/2, name: 'pepper', denom: 'tsp' },
           { qty: 1, name: 'tuna steak', denom: 'lb' }
@@ -1717,7 +1717,7 @@ const recipes = [
       { qty: 4, name: 'fish sauce', denom: 'tsp' },
       { qty: 1/4, name: 'water', denom: 'cup' },
       { qty: 2, name: 'lime juice', denom: 'tbsp' },
-      { qty: 1, name: 'garlic', denom: 'clove' },
+      { qty: 1, name: 'garlic', denom: 'cloves' },
       { qty: 2, name: 'white sugar', denom: 'tbsp' },
       { qty: 1/2, name: 'garlic chili sauce', denom: 'tsp' },
       { qty: 3, name: 'hoisin sauce', denom: 'tbsp' },
@@ -1937,7 +1937,7 @@ const recipes = [
     ingredients: [
       { qty: 1, name: 'vegetable oil', denom: 'tsp' },
       { qty: 2, name: 'onion', denom: 'tbsp' },
-      { qty: 1, name: 'garlic', denom: 'clove' },
+      { qty: 1, name: 'garlic', denom: 'cloves' },
       {
         qty: 2,
         name: 'green chiles',
@@ -2997,7 +2997,7 @@ const recipes = [
     ingredients: [
       { qty: 1/4, name: 'ghee', denom: 'cup' },
       { qty: 1/2, name: 'onion', denom: 'medium' },
-      { qty: 1, name: 'garlic', denom: 'clove' },
+      { qty: 1, name: 'garlic', denom: 'cloves' },
       { qty: 1, name: 'cauliflower', denom: 'head' },
       { qty: 1, name: 'mushrooms', denom: 'cup' },
       { qty: 1/2, name: 'heavy whipping cream', denom: 'cup' },
