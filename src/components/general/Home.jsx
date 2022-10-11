@@ -6,6 +6,8 @@ import Login from '../account/Login.jsx';
 
 const Home = () => {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	
 	const user = useSelector((state) => state.user);
 
 	React.useEffect(() => {
