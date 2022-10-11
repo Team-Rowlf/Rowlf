@@ -6,9 +6,10 @@ import Login from '../account/Login.jsx';
 import Signup from '../account/Signup.jsx';
 
 const Home = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const user = useSelector((state) => state.user);
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	
+	const user = useSelector((state) => state.user);
 
   React.useEffect(() => {
     (user.isLogged &&
