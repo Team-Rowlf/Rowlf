@@ -16,6 +16,7 @@ const Recipes = () => {
 	const [sortDirection, setSortDirection] = useState('');
 	const [page, setPage] = useState(1);
 	const [list, setList] = useState(filteredRecipes.slice(0,25))
+	const [showROTD, setShowROTD] = useState(true);
 
 	const cuisines = [
 		'all',
@@ -49,6 +50,7 @@ const Recipes = () => {
 				sortDirection: sortDirection,
 			})
 		);
+		setShowROTD((cuisineFilter === 'all') && (restrictionFilter === 'all'))
 	},[cuisineFilter,restrictionFilter,sortDirection]);
 	
 	useEffect(() => {
@@ -61,14 +63,6 @@ const Recipes = () => {
 	};
 	const handleSort = (event) => {
 		setSortDirection(event.target.value);
-	};
-
-	const showRecipeOfDay = () => {
-		return !(
-			cuisineFilter !== 'all' ||
-			restrictionFilter !== 'all' ||
-			Number(page) !== 1
-		);
 	};
 
 	// in the future, could have a different formula for recipe of the day; highest rated would be recipe of the day, rolling basis or something
@@ -91,8 +85,8 @@ const Recipes = () => {
 	const date = new Date;
 	const day = date.getDate();
 	const month = date.getMonth();
-	let id = (day*month) % recipes.length
-	let rotd = recipes[id]
+	const id = (recipes.length - 1) % (day*month)
+	const rotd = recipes[id]
 
 
 	return recipeStatus === 'pending' ? (
@@ -102,7 +96,7 @@ const Recipes = () => {
 			<div className="rotd&filter">
 				<div className="rotd">
 					{/* having only show recipe of the day if not filtering */}
-					{showRecipeOfDay() && recipes.length ? (
+					{showROTD && recipes.length ? (
 							<div key={recipes[id].id} className="rotd-container">
 								<h1 className="rotd-title">Recipe of the Day</h1>
 								<div className="img">
