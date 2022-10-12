@@ -2,23 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
 	getRecipeStatus,
-	fetchRecipesByPage,
-	fetchRecipes,
+	fetchFilteredRecipes,
 } from '../../features/recipes/recipesSlice';
-import { Link, useNavigate, useSearchParams } from 'react-router-dom';
-
-// after pagination implemented, then work on moving filtering to the backend as well
+import { Link } from 'react-router-dom';
 
 const Recipes = () => {
 	const dispatch = useDispatch();
-	const navigate = useNavigate();
 	const recipes = useSelector((state) => state.recipes.recipes);
-	const recipeCount = useSelector((state) => state.recipes.count);
+	const filteredRecipes = useSelector((state) => state.recipes.filterRecipes);
 	const recipeStatus = useSelector(getRecipeStatus);
 	const [cuisineFilter, setCuisineFilter] = useState('all');
 	const [restrictionFilter, setRestrictionFilter] = useState('all');
 	const [sortDirection, setSortDirection] = useState('');
-	const [searchParams] = useSearchParams();
 	const [page, setPage] = useState(1);
 	const [list, setList] = useState(recipes.slice(0, 25));
 
@@ -92,17 +87,7 @@ const Recipes = () => {
 		setSortDirection(event.target.value);
 	};
 
-	const showRecipeOfDay = () => {
-		return !(
-			cuisineFilter !== 'all' ||
-			restrictionFilter !== 'all' ||
-			Number(page) !== 1
-		);
-	};
-
-	// will want a different way to get recipe of the day; maybe some random variable generator or formula?
-	// possible, simple way: convert date into an int somehow, then take modulus of total recipe count. then that will be recipe id for recipe of the day
-	// in the future, could have a better system if incorporated a rating system; highest rated would be recipe of the day, rolling basis or something
+	// in the future, could have a different formula for recipe of the day; highest rated would be recipe of the day, rolling basis or something
 
 	//handle scroll for infinite scrolling
 	useEffect(() => {
@@ -136,7 +121,7 @@ const Recipes = () => {
 			<div className="rotd&filter">
 				<div className="rotd">
 					{/* having only show recipe of the day if not filtering */}
-					{showRecipeOfDay() && recipes.length ? (
+					{showROTD && recipes.length ? (
 						<div key={recipes[id].id} className="rotd-container">
 							<h1 className="rotd-title">Recipe of the Day</h1>
 							<div className="img">
