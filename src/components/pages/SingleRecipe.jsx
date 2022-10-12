@@ -43,7 +43,7 @@ const RecipePage = () => {
 		}
 	}, [getUserLikesId, getUserDisLikesId]);
 
-	const handlePreference = (prop) => (event) => {
+	const handlePreference = (prop) => async (event) => {
 		const like = document.querySelector(`button[value="like"]`);
 		const dislike = document.querySelector(`button[value="dislike"]`);
 
@@ -63,6 +63,20 @@ const RecipePage = () => {
 				  dislike.classList.remove('dislike-recipe')
 				: (addLike=true) && dispatch(userLikeRecipe({ token, action: 'add', id: recipeId })) &&
 				  like.classList.add('like-recipe');
+			// if (like.className.includes('like-recipe')) {
+			// 	like.className = 'navButton'
+			// 	 dispatch(userLikeRecipe({ token, action: 'remove', id: recipeId }));
+			// 	removeLike = true;
+			// 	console.log(like.classList, like.className)
+			// } else {
+			// 	addLike = true;
+			// 	like.classList.add('like-recipe');
+			// 	if (dislike.classList.contains('dislike-recipe')) {
+			// 		dislike.className = 'navButton'
+			// 		 dispatch(userDisLikeRecipe({ token, action: 'remove', id: recipeId }));
+			// 	}
+			// 	 dispatch(userLikeRecipe({ token, action: 'add', id: recipeId }));
+			// }
 		} else {
 			dislike.classList.contains('dislike-recipe')
 				? (removeDislike=true) && dispatch(
