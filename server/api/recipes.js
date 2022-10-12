@@ -5,6 +5,7 @@ const { requireToken, isAdmin } = require('./gatekeepingMiddleware');
 // get all recipes
 router.get('/', async (req, res, next) => {
   try {
+    // not really using this statement anymore with endless scrolling; might later refactor to delete it
     if (req.query.page) {
       const cuisineObj = { model: Cuisine };
       const restrictionObj = { model: Restriction };
@@ -26,6 +27,32 @@ router.get('/', async (req, res, next) => {
         order: [orderArr],
         offset: (req.query.page - 1) * 24,
         limit: 24,
+        include: [
+          cuisineObj,
+          restrictionObj,
+          { model: LineItem, include: { model: Ingredient } },
+        ],
+      });
+      res.send({ rows, count });
+    } else if (req.query.cuisine || req.query.restriction) {
+      const cuisineObj = { model: Cuisine };
+      const restrictionObj = { model: Restriction };
+      let orderArr = ['id', 'asc']; // default order by recipe id
+      if (req.query.cuisine !== 'all') {
+        cuisineObj.where = { name: [req.query.cuisine] };
+      }
+      if (req.query.restriction !== 'all') {
+        restrictionObj.where = { name: [req.query.restriction] };
+      }
+      if (req.query.sort) {
+        orderArr =
+          req.query.sort === 'ascending'
+            ? ['servings', 'asc']
+            : ['servings', 'desc'];
+      }
+      const { rows, count } = await Recipe.findAndCountAll({
+        distinct: true,
+        order: [orderArr],
         include: [
           cuisineObj,
           restrictionObj,

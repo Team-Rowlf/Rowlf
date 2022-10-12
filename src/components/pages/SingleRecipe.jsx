@@ -9,8 +9,8 @@ import {
 	userDisLikeRecipe,
 	userLikeRecipe,
 } from '../../features/profile/profileSlice';
+import { clearSingleRecipe, fetchSingleRecipe } from '../../features/recipes/recipesSlice';
 import {
-	addToList,
 	fetchAddtoShoppingList,
 } from '../../features/shoppingList/shoppingListSlice';
 import { getUserToken } from '../../features/user/userSlice';
@@ -19,9 +19,14 @@ const RecipePage = () => {
 	const dispatch = useDispatch();
 	const { recipeId } = useParams();
 	const token = useSelector(getUserToken);
-
+	const recipe = useSelector((state) => state.recipes.singleRecipe)
 	const getUserLikesId = useSelector(getAllLikesId);
 	const getUserDisLikesId = useSelector(getAllDislikesId);
+
+	React.useEffect(() => {
+		dispatch(fetchSingleRecipe(recipeId))
+		return () => dispatch(clearSingleRecipe())
+	},[])
 
 	React.useEffect(() => {
 		(getUserLikesId.includes(Number(recipeId)) &&
@@ -33,9 +38,6 @@ const RecipePage = () => {
 					.querySelector(`button[value="dislike"]`)
 					.classList.add('dislike-recipe'));
 	}, [getUserLikesId, getUserDisLikesId]);
-
-	const recipes = useSelector((state) => state.recipes.recipes);
-	const recipe = recipes.filter((recipe) => recipe.id === Number(recipeId));
 
 	const handlePreference = (prop) => (event) => {
 		const like = document.querySelector(`button[value="like"]`);
@@ -78,7 +80,7 @@ const RecipePage = () => {
 	};
 
 	const handleInstructions = (event) => {
-		window.location.href = recipe[0].url;
+		window.open(recipe.url, '_blank')
 	};
 
 	const capitalize = (string) => {
@@ -88,13 +90,13 @@ const RecipePage = () => {
 		return string;
 	};
 
-	return !recipe.length ? (
+	return !recipe.name ? (
 		<h1 className="loading">LOADING...</h1>
 	) : (
 		<div className="recipe-page">
 			<div className="recipe-container">
-				<h1>{recipe[0].name}</h1>
-				<img src={recipe[0].img} alt="dish" />
+				<h1>{recipe.name}</h1>
+				<img src={recipe.img} alt="dish" />
 				<div className="recipe-buttons">
 					<button
 						className="navButton"
@@ -112,10 +114,10 @@ const RecipePage = () => {
 					</button>
 					<button
 						className="navButton"
-						value="add to card"
+						value="add to list"
 						onClick={handleCart}
 					>
-						Add To Card
+						Add To List
 					</button>
 					<button
 						className="navButton"
@@ -125,16 +127,9 @@ const RecipePage = () => {
 						Instructions
 					</button>
 				</div>
-				<a
-					className="recipe-instructions-url"
-					href={recipe[0].url}
-					target="_blank"
-				>
-					Link to Instructions
-				</a>
 				<h3>Ingredients</h3>
 				<ul>
-					{recipe[0].lineItems.map((item) => (
+					{recipe.lineItems.map((item) => (
 						<li key={item.id}>
 							{capitalize(item.ingredient.name)} ({item.qty}{' '}
 							{capitalize(item.measurement)})
