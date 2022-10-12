@@ -108,10 +108,10 @@ const RecipePage = () => {
 					</button>
 					<button
 						className="navButton"
-						value="add to card"
+						value="add to list"
 						onClick={handleCart}
 					>
-						Add To Card
+						Add To List
 					</button>
 					<button
 						className="navButton"
