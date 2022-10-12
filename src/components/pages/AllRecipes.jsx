@@ -2,25 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
 	getRecipeStatus,
-	fetchRecipesByPage,
-	fetchRecipes,
+	fetchFilteredRecipes,
 } from '../../features/recipes/recipesSlice';
-import { Link, useNavigate, useSearchParams } from 'react-router-dom';
-
-// after pagination implemented, then work on moving filtering to the backend as well
+import { Link } from 'react-router-dom';
 
 const Recipes = () => {
 	const dispatch = useDispatch();
-	const navigate = useNavigate();
 	const recipes = useSelector((state) => state.recipes.recipes);
-	const recipeCount = useSelector((state) => state.recipes.count);
+	const filteredRecipes = useSelector((state) => state.recipes.filterRecipes);
 	const recipeStatus = useSelector(getRecipeStatus);
 	const [cuisineFilter, setCuisineFilter] = useState('all');
 	const [restrictionFilter, setRestrictionFilter] = useState('all');
 	const [sortDirection, setSortDirection] = useState('');
-	const [searchParams] = useSearchParams();
 	const [page, setPage] = useState(1);
-	const [list, setList] = useState(recipes.slice(0,25))
+	const [list, setList] = useState(filteredRecipes.slice(0,25))
 
 	const cuisines = [
 		'all',
@@ -45,44 +40,20 @@ const Recipes = () => {
 		'lactose-free',
 		'pescatarian',
 	];
-
-	// useEffect(() => {
-	// 	if (page) {
-	// 		setList(
-	// 			dispatch(
-	// 				fetchRecipesByPage({
-	// 					page: page,
-	// 					cuisine: cuisineFilter,
-	// 					restriction: restrictionFilter,
-	// 					sortDirection: sortDirection,
-	// 				})
-	// 			)
-	// 			);
-	// 			console.log('LIST1: ', list)
-	// 		// setList(list=>[recipes.slice(0,25)])
-	// 	} else {
-	// 		setList(dispatch(fetchRecipes()));
-	// 		console.log('LIST2: ', list)
-	// 		// setList(list=>[recipes.slice(0,25)])
-	// 	}
-	// }, [page]);
-
-	// useEffect(() => {
-		// if (Number(page) !== 1) {
-		// 	navigate('/user/recipes?page=1');
-		// 	setPage(1);
-		// } else {
-			// dispatch(
-			// 	fetchRecipesByPage({
-			// 		page: page,
-			// 		cuisine: cuisineFilter,
-			// 		restriction: restrictionFilter,
-			// 		sortDirection: sortDirection,
-			// 	})
-			// 	);
-			// 	setList(list=>[recipes.slice(0,25)])
-		// }
-	// }, [cuisineFilter, restrictionFilter, sortDirection]);
+	
+	useEffect(() => {
+		dispatch(
+			fetchFilteredRecipes({
+				cuisine: cuisineFilter,
+				restriction: restrictionFilter,
+				sortDirection: sortDirection,
+			})
+		);
+	},[cuisineFilter,restrictionFilter,sortDirection]);
+	
+	useEffect(() => {
+		if (recipeStatus === 'succeeded') setList(filteredRecipes.slice(0,25))
+	},[recipeStatus])
 
 	const handlefilter = (prop) => (event) => {
 		if (prop === 'cuisines') setCuisineFilter(event.target.value);
@@ -111,7 +82,7 @@ const Recipes = () => {
 	}, []);
 
 	useEffect(()=>{
-		setList(recipes.slice(0,(25*Number(page))))
+		setList(filteredRecipes.slice(0,(25*Number(page))))
 	},[page])
 
 	function handleScroll() {
