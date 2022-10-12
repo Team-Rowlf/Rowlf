@@ -1,4 +1,5 @@
 const router = require('express').Router();
+
 const { User } = require('../db');
 const { requireToken, isAdmin } = require('./gatekeepingMiddleware');
 
@@ -106,6 +107,7 @@ router.get('/me/currentList', requireToken, async (req, res, next) => {
 	try {
 		const user = await User.findByPk(req.user.id);
 		const currentList = await user.getCurrentList();
+		// console.log(`api`, currentList);
 		res.send(currentList);
 	} catch (error) {
 		next(error);

@@ -1,21 +1,21 @@
-
 * {
     margin: 0px;
+    max-width: 100%;
 }
-#root{
-    min-height: 100vh;
+#root {
+  min-height: 100vh;
 }
-body{
-    background-color: @backgroundLight;
+body {
+  background-color: @backgroundLight;
 }
 
 .small-logo {
-    display: block;
-    width: 60px;
-    height: 60px;
-    background-color: white;
-    border-radius: 30px;
-    padding: 0px;
+  display: block;
+  width: 60px;
+  height: 60px;
+  background-color: white;
+  border-radius: 30px;
+  padding: 0px;
 }
 
 .large-logo {
@@ -23,7 +23,7 @@ body{
     font-size: x-large;
     padding: 25px;
     background-color: @red;
-    color: @lightGreen;
+    color: white;
     border-bottom: 10px solid @darkGreen;
     img {
         margin: auto;
@@ -39,9 +39,26 @@ body{
     
 }
 
-img{
-    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
-    margin:auto;
+.footer {
+    position: fixed;
+    margin-bottom: -50px;
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    background-color: @red;
+    color: white;
+    border-top: 10px solid @darkGreen;
+    margin-top: 25px;
+    font-weight: bold;
+    div{
+        text-align: center;
+        width: 33%;
+    }
+}
+
+img {
+    margin: auto;
     border-radius: 25px;
     max-width: 300px;
-}
+} 
