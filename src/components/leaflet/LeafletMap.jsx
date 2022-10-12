@@ -23,7 +23,6 @@ const LeafletMap = () => {
     // returning some results that are not grocery stores, but are tagged as grocery
     // possible workaround: at least for us, could try to compile a list of major national/regional grocery stores
     // might be tedious though; but that way, could at least filter through results and only inclue results that somewhat make sense
-
     let obj = new esri.Geocode({
       apikey: esriKey,
     })
@@ -35,19 +34,6 @@ const LeafletMap = () => {
         console.log(results);
       });
   }
-
-  // const locatorUrl =
-  //   'http://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer';
-
-  // // Find places and add them to the map
-  // function findPlaces(category, pt) {
-  //   locator.addressToLocations(locatorUrl, {
-  //     location: pt,
-  //     categories: [category],
-  //     maxLocations: 25,
-  //     outFields: ['Place_addr', 'PlaceName'],
-  //   });
-  // }
 
   //this function gets back the coordinates from the draggable marker component
   function getDraggedMarkerLocation(data) {
@@ -80,7 +66,6 @@ const LeafletMap = () => {
   // -- can find user location if they opt in to location services;
   // -- defaulting to san fran if users opt out
   // -- should look into how to find location by zipcode/address if possible
-
   React.useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(

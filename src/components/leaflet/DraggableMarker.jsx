@@ -1,5 +1,5 @@
 import React from 'react';
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { Marker, Popup } from 'react-leaflet';
 
 function DraggableMarker(props) {
