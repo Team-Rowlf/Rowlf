@@ -49,9 +49,6 @@ const ShoppingList = () => {
 		console.log('handle', id);
 		dispatch(fetchRemoveFromShoppingList({ id }));
 	};
-	// React.useEffect(() => {
-	// 	shoppingList && dispatch();
-	// }, [location]);
 	React.useEffect(() => {
 		dispatch(fetchShoppingList());
 	}, []);
