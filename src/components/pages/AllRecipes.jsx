@@ -119,6 +119,12 @@ const Recipes = () => {
 		setPage(page=>page+1);
 	}
 
+	const date = new Date;
+	const day = date.getDate();
+	const month = date.getMonth();
+	let id = recipes.length % (day*month)
+	let rotd = recipes[id]
+
 
 	return recipeStatus === 'pending' ? (
 		<h1 className="loading">LOADING...</h1>
@@ -127,19 +133,17 @@ const Recipes = () => {
 			<div className="rotd&filter">
 				<div className="rotd">
 					{/* having only show recipe of the day if not filtering */}
-					{showRecipeOfDay() ? (
-						list.slice(0, 1).map((recipe) => (
-							<div key={recipe.id} className="rotd-container">
+					{showRecipeOfDay() && recipes.length ? (
+							<div key={recipes[id].id} className="rotd-container">
 								<h1 className="rotd-title">Recipe of the Day</h1>
 								<div className="img">
-									<Link to={`${recipe.id}`}>
-										<img src={recipe.img} alt="recipe" />
-										<h2>{recipe.name}</h2>
-										<p> Serving Size: {recipe.servings} </p>
+									<Link to={`${recipes[id].id}`}>
+										<img src={recipes[id].img} alt="recipe" />
+										<h2>{recipes[id].name}</h2>
+										<p> Serving Size: {recipes[id].servings} </p>
 									</Link>
 								</div>
 							</div>
-						))
 					) : (
 						<></>
 					)}
