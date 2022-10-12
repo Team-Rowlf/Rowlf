@@ -85,8 +85,13 @@ const Recipes = () => {
 	const date = new Date;
 	const day = date.getDate();
 	const month = date.getMonth();
+<<<<<<< HEAD
 	const id = (recipes.length - 1) % (day*month)
 	const rotd = recipes[id]
+=======
+	let id = (recipes.length-1) % (day*month) 
+	let rotd = recipes[id]
+>>>>>>> 4054da77e816f0cc81cf5e041843b0e9bde02897
 
 
 	return recipeStatus === 'pending' ? (
