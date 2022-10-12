@@ -573,6 +573,22 @@ a,
   color: grey;
   text-decoration: line-through;
 }
+.list-buttons {
+  flex-direction: row;
+  display: flex;
+  margin: 1em;
+  justify-content: center;
+  align-items: baseline;
+}
+.list-buttons div {
+  margin: 0.5em;
+}
+.recipe-name-link {
+  color: black;
+}
+.recipe-name-link:hover {
+  color: blue;
+}
 #map {
   height: 800px;
 }
