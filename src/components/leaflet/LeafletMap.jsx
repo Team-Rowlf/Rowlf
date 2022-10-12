@@ -2,8 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { icon } from 'leaflet';
 import * as esri from 'esri-leaflet-geocoder';
-// will refactor and move axios call to store
-import axios from 'axios';
 import LeafletSearchField from './LeafletSearchField.jsx';
 import DraggableMarker from './DraggableMarker.jsx';
 
@@ -11,29 +9,29 @@ const LeafletMap = () => {
   const [location, setLocation] = useState(null);
   const [stores, setStores] = useState([]);
   const userIcon = icon({ iconUrl: '/chefs-hat.svg', iconSize: [30, 30] });
+  const cartIcon = icon({
+    iconUrl: '/images/shoppingCart.png',
+    iconSize: [30, 30],
+  });
   const [searchLocation, setSearchLocation] = useState(null);
   const [searched, setSearched] = useState(false);
   const [markerLocation, setMarkerLocation] = useState(null);
   const [dragged, setDragged] = useState(false);
 
-  const markerRef = useRef(null);
-  const marker = markerRef.current;
-
   async function showGroceryStores(latLng) {
-    const { data: esriKey } = await axios.get('/api/esri/key');
+    const esriKey = process.env.ESRI_KEY;
     // returning some results that are not grocery stores, but are tagged as grocery
     // possible workaround: at least for us, could try to compile a list of major national/regional grocery stores
     // might be tedious though; but that way, could at least filter through results and only inclue results that somewhat make sense
-    // console.log('show stores:', latLng);
-
     let obj = new esri.Geocode({
       apikey: esriKey,
     })
-      .category('Grocery')
+      .category('grocery')
       .nearby(latLng, 10)
       .run((error, results, response) => {
         if (error) return;
         setStores(results.results);
+        console.log(results);
       });
   }
 
@@ -68,7 +66,6 @@ const LeafletMap = () => {
   // -- can find user location if they opt in to location services;
   // -- defaulting to san fran if users opt out
   // -- should look into how to find location by zipcode/address if possible
-
   React.useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -89,23 +86,21 @@ const LeafletMap = () => {
   return location ? (
     <div>
       <MapContainer id="map" center={location} zoom={13} scrollWheelZoom={true}>
-        {<LeafletSearchField func={getLocation} />}
+        {<LeafletSearchField setLocation={getLocation} />}
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {/* <Marker icon={userIcon} position={location} draggable={true}>
-          <Popup>You are here.</Popup>
-        </Marker> */}
         <DraggableMarker
           icon={userIcon}
           position={location}
-          func={getDraggedMarkerLocation}
+          setMarkerLocation={getDraggedMarkerLocation}
+          searched={searched}
         ></DraggableMarker>
         {stores.map((store, idx) => {
           return (
-            <Marker key={idx} position={store.latlng}>
-              <Popup>
+            <Marker key={idx} position={store.latlng} icon={cartIcon}>
+              <Popup className="popup">
                 {store.text} <br /> {store.properties.Place_addr}
               </Popup>
             </Marker>
