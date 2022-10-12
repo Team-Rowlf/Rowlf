@@ -31,7 +31,8 @@ const RecipePage = () => {
 	},[])
 
 	React.useEffect(() => {
-		(getUserLikesId.includes(Number(recipeId)) &&
+		if (recipe.id) {
+			(getUserLikesId.includes(Number(recipeId)) &&
 			document
 				.querySelector(`button[value="like"]`)
 				.classList.add('like-recipe')) ||
@@ -39,6 +40,7 @@ const RecipePage = () => {
 				document
 					.querySelector(`button[value="dislike"]`)
 					.classList.add('dislike-recipe'));
+		}
 	}, [getUserLikesId, getUserDisLikesId]);
 
 	const handlePreference = (prop) => (event) => {
