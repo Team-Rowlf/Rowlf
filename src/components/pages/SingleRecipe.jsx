@@ -9,35 +9,37 @@ import {
 	userDisLikeRecipe,
 	userLikeRecipe,
 } from '../../features/profile/profileSlice';
-import { clearSingleRecipe, fetchSingleRecipe } from '../../features/recipes/recipesSlice';
 import {
-	fetchAddtoShoppingList,
-} from '../../features/shoppingList/shoppingListSlice';
+	clearSingleRecipe,
+	fetchSingleRecipe,
+} from '../../features/recipes/recipesSlice';
+import { fetchAddtoShoppingList } from '../../features/shoppingList/shoppingListSlice';
 import { getUserToken } from '../../features/user/userSlice';
+import chalk from 'chalk';
 
 const RecipePage = () => {
 	const dispatch = useDispatch();
 	const { recipeId } = useParams();
 	const token = useSelector(getUserToken);
-	const recipe = useSelector((state) => state.recipes.singleRecipe)
+	const recipe = useSelector((state) => state.recipes.singleRecipe);
 	const getUserLikesId = useSelector(getAllLikesId);
 	const getUserDisLikesId = useSelector(getAllDislikesId);
 
 	React.useEffect(() => {
-		dispatch(fetchSingleRecipe(recipeId))
-		return () => dispatch(clearSingleRecipe())
-	},[])
+		dispatch(fetchSingleRecipe(recipeId));
+		return () => dispatch(clearSingleRecipe());
+	}, []);
 
-	React.useEffect(() => {
-		(getUserLikesId.includes(Number(recipeId)) &&
-			document
-				.querySelector(`button[value="like"]`)
-				.classList.add('like-recipe')) ||
-			(getUserDisLikesId.includes(Number(recipeId)) &&
-				document
-					.querySelector(`button[value="dislike"]`)
-					.classList.add('dislike-recipe'));
-	}, [getUserLikesId, getUserDisLikesId]);
+	// React.useEffect(() => {
+	// 	(getUserLikesId.includes(Number(recipeId)) &&
+	// 		document
+	// 			.querySelector(`button[value="like"]`)
+	// 			.classList.add('like-recipe')) ||
+	// 		(getUserDisLikesId.includes(Number(recipeId)) &&
+	// 			document
+	// 				.querySelector(`button[value="dislike"]`)
+	// 				.classList.add('dislike-recipe'));
+	// }, [getUserLikesId, getUserDisLikesId]);
 
 	const handlePreference = (prop) => (event) => {
 		const like = document.querySelector(`button[value="like"]`);
@@ -80,7 +82,7 @@ const RecipePage = () => {
 	};
 
 	const handleInstructions = (event) => {
-		window.open(recipe.url, '_blank')
+		window.open(recipe.url, '_blank');
 	};
 
 	const capitalize = (string) => {

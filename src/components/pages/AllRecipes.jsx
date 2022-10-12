@@ -20,7 +20,7 @@ const Recipes = () => {
 	const [sortDirection, setSortDirection] = useState('');
 	const [searchParams] = useSearchParams();
 	const [page, setPage] = useState(1);
-	const [list, setList] = useState(recipes.slice(0,25))
+	const [list, setList] = useState(recipes.slice(0, 25));
 
 	const cuisines = [
 		'all',
@@ -68,20 +68,20 @@ const Recipes = () => {
 	// }, [page]);
 
 	// useEffect(() => {
-		// if (Number(page) !== 1) {
-		// 	navigate('/user/recipes?page=1');
-		// 	setPage(1);
-		// } else {
-			// dispatch(
-			// 	fetchRecipesByPage({
-			// 		page: page,
-			// 		cuisine: cuisineFilter,
-			// 		restriction: restrictionFilter,
-			// 		sortDirection: sortDirection,
-			// 	})
-			// 	);
-			// 	setList(list=>[recipes.slice(0,25)])
-		// }
+	// if (Number(page) !== 1) {
+	// 	navigate('/user/recipes?page=1');
+	// 	setPage(1);
+	// } else {
+	// dispatch(
+	// 	fetchRecipesByPage({
+	// 		page: page,
+	// 		cuisine: cuisineFilter,
+	// 		restriction: restrictionFilter,
+	// 		sortDirection: sortDirection,
+	// 	})
+	// 	);
+	// 	setList(list=>[recipes.slice(0,25)])
+	// }
 	// }, [cuisineFilter, restrictionFilter, sortDirection]);
 
 	const handlefilter = (prop) => (event) => {
@@ -110,21 +110,24 @@ const Recipes = () => {
 		return () => window.removeEventListener('scroll', handleScroll);
 	}, []);
 
-	useEffect(()=>{
-		setList(recipes.slice(0,(25*Number(page))))
-	},[page])
+	useEffect(() => {
+		setList(recipes.slice(0, 25 * Number(page)));
+	}, [page]);
 
 	function handleScroll() {
-		if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
-		setPage(page=>page+1);
+		if (
+			window.innerHeight + document.documentElement.scrollTop !==
+			document.documentElement.offsetHeight
+		)
+			return;
+		setPage((page) => page + 1);
 	}
 
-	const date = new Date;
+	const date = new Date();
 	const day = date.getDate();
 	const month = date.getMonth();
-	let id = (day*month) % recipes.length
-	let rotd = recipes[id]
-
+	let id = (day * month) % recipes.length;
+	let rotd = recipes[id];
 
 	return recipeStatus === 'pending' ? (
 		<h1 className="loading">LOADING...</h1>
@@ -134,16 +137,16 @@ const Recipes = () => {
 				<div className="rotd">
 					{/* having only show recipe of the day if not filtering */}
 					{showRecipeOfDay() && recipes.length ? (
-							<div key={recipes[id].id} className="rotd-container">
-								<h1 className="rotd-title">Recipe of the Day</h1>
-								<div className="img">
-									<Link to={`${recipes[id].id}`}>
-										<img src={recipes[id].img} alt="recipe" />
-										<h2>{recipes[id].name}</h2>
-										<p> Serving Size: {recipes[id].servings} </p>
-									</Link>
-								</div>
+						<div key={recipes[id].id} className="rotd-container">
+							<h1 className="rotd-title">Recipe of the Day</h1>
+							<div className="img">
+								<Link to={`${recipes[id].id}`}>
+									<img src={recipes[id].img} alt="recipe" />
+									<h2>{recipes[id].name}</h2>
+									<p> Serving Size: {recipes[id].servings} </p>
+								</Link>
 							</div>
+						</div>
 					) : (
 						<></>
 					)}
