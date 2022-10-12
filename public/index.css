@@ -376,13 +376,16 @@ button {
   border: 2px solid black;
   border-radius: 25px;
 }
-.img h2 {
+.img a {
+  text-decoration: none;
+}
+.img a h2 {
   text-align: center;
   padding: 5px;
   color: white;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
-.img p {
+.img a p {
   padding: 5px;
   color: white;
   font-weight: bold;
@@ -391,6 +394,7 @@ button {
 .img img {
   max-width: 500px;
   margin: auto;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
 .filter-title {
   margin: auto;
@@ -460,7 +464,6 @@ button {
   color: lightgray;
 }
 .footer {
-  margin-bottom: -50px;
   width: 100%;
   padding: 15px;
   text-align: center;

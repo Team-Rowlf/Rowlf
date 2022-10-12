@@ -29,13 +29,14 @@ const ShoppingList = () => {
 		});
 	};
 	const handleCheck = (event) => {
-		const input = document.querySelector(
+		const inputs = document.querySelectorAll(
 			`input[value="${event.target.value}"]`
 		);
-
-		input.checked
-			? input.parentNode.classList.add('have-item')
-			: input.parentNode.classList.remove('have-item');
+		inputs.forEach((input) => {
+			input.checked
+				? input.parentNode.classList.add('have-item')
+				: input.parentNode.classList.remove('have-item');
+		});
 	};
 
 	const capitalize = (string) => {
