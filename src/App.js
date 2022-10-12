@@ -24,7 +24,7 @@ function App() {
 	const login = useSelector((state) => state.user.isLogged);
 
 	React.useEffect(() => {
-		navigate(`${location.pathname}`);
+		// navigate(`${location.pathname}`);
 		// dispatch(fetchUser());
 	}, []);
 

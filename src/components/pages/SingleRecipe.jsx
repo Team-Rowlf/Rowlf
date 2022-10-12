@@ -30,58 +30,48 @@ const RecipePage = () => {
 		return () => dispatch(clearSingleRecipe());
 	}, []);
 
-	// React.useEffect(() => {
-	// 	(getUserLikesId.includes(Number(recipeId)) &&
-	// 		document
-	// 			.querySelector(`button[value="like"]`)
-	// 			.classList.add('like-recipe')) ||
-	// 		(getUserDisLikesId.includes(Number(recipeId)) &&
-	// 			document
-	// 				.querySelector(`button[value="dislike"]`)
-	// 				.classList.add('dislike-recipe'));
-	// }, [getUserLikesId, getUserDisLikesId]);
+	React.useEffect(() => {
+		getUserLikesId.includes(Number(recipeId))
+			? document
+					.querySelector(`button[value="like"]`)
+					?.classList.add('like-recipe')
+			: document
+					.querySelector(`button[value="like"]`)
+					?.classList.remove('like-recipe');
+
+		getUserDisLikesId.includes(Number(recipeId))
+			? document
+					.querySelector(`button[value="dislike"]`)
+					?.classList.add('dislike-recipe')
+			: document
+					.querySelector(`button[value="dislike"]`)
+					?.classList.remove('dislike-recipe');
+	}, [getUserLikesId, getUserDisLikesId]);
 
 	const handlePreference = (prop) => (event) => {
-		const like = document.querySelector(`button[value="like"]`);
-		const dislike = document.querySelector(`button[value="dislike"]`);
-
-		// if you like it check if the button has a certain class to add/remove class and dispatch to add/remove database then check if opposite is present
-
-		if (prop === `like`) {
-			like.classList.contains('like-recipe')
-				? dispatch(userLikeRecipe({ token, action: 'remove', id: recipeId })) &&
-				  like.classList.remove('like-recipe')
-				: dislike.classList.contains('dislike-recipe')
-				? dispatch(userLikeRecipe({ token, action: 'add', id: recipeId })) &&
-				  dispatch(
-						userDisLikeRecipe({ token, action: 'remove', id: recipeId })
-				  ) &&
-				  like.classList.add('like-recipe') &&
-				  dislike.classList.remove('dislike-recipe')
-				: dispatch(userLikeRecipe({ token, action: 'add', id: recipeId })) &&
-				  like.classList.add('like-recipe');
-		} else {
-			dislike.classList.contains('dislike-recipe')
+		if (prop === 'like') {
+			getUserLikesId.includes(Number(recipeId))
+				? dispatch(userLikeRecipe({ token, action: 'remove', id: recipeId }))
+				: getUserDisLikesId.includes(Number(recipeId))
 				? dispatch(
 						userDisLikeRecipe({ token, action: 'remove', id: recipeId })
-				  ) && dislike.classList.remove('dislike-recipe')
-				: like.classList.contains('like-recipe')
-				? dispatch(userDisLikeRecipe({ token, action: 'add', id: recipeId })) &&
-				  dispatch(userLikeRecipe({ token, action: 'remove', id: recipeId })) &&
-				  like.classList.remove('like-recipe') &&
-				  dislike.classList.add('dislike-recipe')
-				: dispatch(userDisLikeRecipe({ token, action: 'add', id: recipeId })) &&
-				  dislike.classList.add('dislike-recipe');
+				  ) && dispatch(userLikeRecipe({ token, action: 'add', id: recipeId }))
+				: dispatch(userLikeRecipe({ token, action: 'add', id: recipeId }));
+		} else {
+			getUserDisLikesId.includes(Number(recipeId))
+				? dispatch(userDisLikeRecipe({ token, action: 'remove', id: recipeId }))
+				: getUserLikesId.includes(Number(recipeId))
+				? dispatch(userLikeRecipe({ token, action: 'remove', id: recipeId })) &&
+				  dispatch(userDisLikeRecipe({ token, action: 'add', id: recipeId }))
+				: dispatch(userDisLikeRecipe({ token, action: 'add', id: recipeId }));
 		}
-		dispatch(getUserLikes({ token }));
-		dispatch(getUserDisLikes({ token }));
 	};
 
-	const handleCart = (event) => {
+	const handleCart = () => {
 		dispatch(fetchAddtoShoppingList({ id: Number(recipeId) }));
 	};
 
-	const handleInstructions = (event) => {
+	const handleInstructions = () => {
 		window.open(recipe.url, '_blank');
 	};
 
