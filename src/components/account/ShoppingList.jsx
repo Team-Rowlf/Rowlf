@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import {
 	fetchRemoveFromShoppingList,
 	fetchShoppingList,
@@ -80,7 +80,7 @@ const ShoppingList = () => {
 										value={recipe.name}
 										onClick={handleCheckAll}
 									/>{' '}
-									{capitalize(recipe.name)}{' '}
+									<Link className='recipe-name-link' to={`/user/recipes/${recipe.id}`}>{capitalize(recipe.name)}</Link>{' '}
 									<button
 										className="remove-item-list"
 										onClick={() => handleRemoveRecipe(recipe.id)}

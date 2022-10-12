@@ -583,6 +583,12 @@ a,
 .list-buttons div {
   margin: 0.5em;
 }
+.recipe-name-link {
+  color: black;
+}
+.recipe-name-link:hover {
+  color: blue;
+}
 #map {
   height: 800px;
 }
