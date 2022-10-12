@@ -91,7 +91,7 @@ const Recipes = () => {
 	const date = new Date;
 	const day = date.getDate();
 	const month = date.getMonth();
-	let id = (day*month) % recipes.length
+	let id = (recipes.length-1) % (day*month) 
 	let rotd = recipes[id]
 
 
