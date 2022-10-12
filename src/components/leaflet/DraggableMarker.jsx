@@ -3,7 +3,6 @@ import { useCallback, useMemo, useRef, useState } from 'react';
 import { Marker, Popup } from 'react-leaflet';
 
 function DraggableMarker(props) {
-  const [draggable, setDraggable] = useState(false);
   const [position, setPosition] = useState(props.position);
   const markerRef = useRef(null);
   const eventHandlers = useMemo(
@@ -22,11 +21,9 @@ function DraggableMarker(props) {
     props.func(position);
   }, [position]);
 
-  const toggleDraggable = useCallback(() => {
-    setDraggable((d) => !d);
-  }, []);
-
-  // console.log(position);
+  React.useEffect(() => {
+    setPosition(props.position);
+  }, [props.position]);
 
   return (
     <Marker
@@ -36,7 +33,7 @@ function DraggableMarker(props) {
       ref={markerRef}
       icon={props.icon}
     >
-      <Popup>You are here. Click and hold to drag</Popup>
+      <Popup className="popup">You are here. Click and hold to drag</Popup>
     </Marker>
   );
 }

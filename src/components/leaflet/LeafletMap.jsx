@@ -20,7 +20,8 @@ const LeafletMap = () => {
   const marker = markerRef.current;
 
   async function showGroceryStores(latLng) {
-    const { data: esriKey } = await axios.get('/api/esri/key');
+    // const { data: esriKey } = await axios.get('/api/esri/key');
+    const esriKey = process.env.ESRI_KEY;
     // returning some results that are not grocery stores, but are tagged as grocery
     // possible workaround: at least for us, could try to compile a list of major national/regional grocery stores
     // might be tedious though; but that way, could at least filter through results and only inclue results that somewhat make sense
@@ -65,6 +66,7 @@ const LeafletMap = () => {
     }
   }, [searched]);
 
+  console.log(location);
   // -- can find user location if they opt in to location services;
   // -- defaulting to san fran if users opt out
   // -- should look into how to find location by zipcode/address if possible
@@ -94,18 +96,16 @@ const LeafletMap = () => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {/* <Marker icon={userIcon} position={location} draggable={true}>
-          <Popup>You are here.</Popup>
-        </Marker> */}
         <DraggableMarker
           icon={userIcon}
           position={location}
           func={getDraggedMarkerLocation}
+          searched={searched}
         ></DraggableMarker>
         {stores.map((store, idx) => {
           return (
             <Marker key={idx} position={store.latlng}>
-              <Popup>
+              <Popup className="popup">
                 {store.text} <br /> {store.properties.Place_addr}
               </Popup>
             </Marker>
