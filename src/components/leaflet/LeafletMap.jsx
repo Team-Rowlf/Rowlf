@@ -2,8 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { icon } from 'leaflet';
 import * as esri from 'esri-leaflet-geocoder';
-// will refactor and move axios call to store
-import axios from 'axios';
 import LeafletSearchField from './LeafletSearchField.jsx';
 import DraggableMarker from './DraggableMarker.jsx';
 
@@ -20,7 +18,6 @@ const LeafletMap = () => {
   const marker = markerRef.current;
 
   async function showGroceryStores(latLng) {
-    // const { data: esriKey } = await axios.get('/api/esri/key');
     const esriKey = process.env.ESRI_KEY;
     // returning some results that are not grocery stores, but are tagged as grocery
     // possible workaround: at least for us, could try to compile a list of major national/regional grocery stores
@@ -66,7 +63,6 @@ const LeafletMap = () => {
     }
   }, [searched]);
 
-  console.log(location);
   // -- can find user location if they opt in to location services;
   // -- defaulting to san fran if users opt out
   // -- should look into how to find location by zipcode/address if possible
@@ -91,7 +87,7 @@ const LeafletMap = () => {
   return location ? (
     <div>
       <MapContainer id="map" center={location} zoom={13} scrollWheelZoom={true}>
-        {<LeafletSearchField func={getLocation} />}
+        {<LeafletSearchField setLocation={getLocation} />}
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -99,7 +95,7 @@ const LeafletMap = () => {
         <DraggableMarker
           icon={userIcon}
           position={location}
-          func={getDraggedMarkerLocation}
+          setMarkerLocation={getDraggedMarkerLocation}
           searched={searched}
         ></DraggableMarker>
         {stores.map((store, idx) => {

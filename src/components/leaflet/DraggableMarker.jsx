@@ -5,6 +5,7 @@ import { Marker, Popup } from 'react-leaflet';
 function DraggableMarker(props) {
   const [position, setPosition] = useState(props.position);
   const markerRef = useRef(null);
+  //gets the location and sets marker position whenever the marker is dragged
   const eventHandlers = useMemo(
     () => ({
       dragend() {
@@ -17,10 +18,12 @@ function DraggableMarker(props) {
     []
   );
 
+  //function that updates the position of the center in the map component using marker's location after it's been dragged
   React.useEffect(() => {
-    props.func(position);
+    props.setMarkerLocation(position);
   }, [position]);
 
+  //whenever position is updated in the map component, the marker's position will also be updated
   React.useEffect(() => {
     setPosition(props.position);
   }, [props.position]);
