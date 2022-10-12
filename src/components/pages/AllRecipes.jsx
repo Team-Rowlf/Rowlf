@@ -15,7 +15,8 @@ const Recipes = () => {
 	const [restrictionFilter, setRestrictionFilter] = useState('all');
 	const [sortDirection, setSortDirection] = useState('');
 	const [page, setPage] = useState(1);
-	const [list, setList] = useState(recipes.slice(0, 25));
+	const [list, setList] = useState(filteredRecipes.slice(0, 25));
+	const [showROTD, setShowROTD] = useState(true);
 
 	const cuisines = [
 		'all',
@@ -41,43 +42,20 @@ const Recipes = () => {
 		'pescatarian',
 	];
 
-	// useEffect(() => {
-	// 	if (page) {
-	// 		setList(
-	// 			dispatch(
-	// 				fetchRecipesByPage({
-	// 					page: page,
-	// 					cuisine: cuisineFilter,
-	// 					restriction: restrictionFilter,
-	// 					sortDirection: sortDirection,
-	// 				})
-	// 			)
-	// 			);
-	// 			console.log('LIST1: ', list)
-	// 		// setList(list=>[recipes.slice(0,25)])
-	// 	} else {
-	// 		setList(dispatch(fetchRecipes()));
-	// 		console.log('LIST2: ', list)
-	// 		// setList(list=>[recipes.slice(0,25)])
-	// 	}
-	// }, [page]);
+	useEffect(() => {
+		dispatch(
+			fetchFilteredRecipes({
+				cuisine: cuisineFilter,
+				restriction: restrictionFilter,
+				sortDirection: sortDirection,
+			})
+		);
+		setShowROTD(cuisineFilter === 'all' && restrictionFilter === 'all');
+	}, [cuisineFilter, restrictionFilter, sortDirection]);
 
-	// useEffect(() => {
-	// if (Number(page) !== 1) {
-	// 	navigate('/user/recipes?page=1');
-	// 	setPage(1);
-	// } else {
-	// dispatch(
-	// 	fetchRecipesByPage({
-	// 		page: page,
-	// 		cuisine: cuisineFilter,
-	// 		restriction: restrictionFilter,
-	// 		sortDirection: sortDirection,
-	// 	})
-	// 	);
-	// 	setList(list=>[recipes.slice(0,25)])
-	// }
-	// }, [cuisineFilter, restrictionFilter, sortDirection]);
+	useEffect(() => {
+		if (recipeStatus === 'succeeded') setList(filteredRecipes.slice(0, 25));
+	}, [recipeStatus]);
 
 	const handlefilter = (prop) => (event) => {
 		if (prop === 'cuisines') setCuisineFilter(event.target.value);
@@ -96,7 +74,7 @@ const Recipes = () => {
 	}, []);
 
 	useEffect(() => {
-		setList(recipes.slice(0, 25 * Number(page)));
+		setList(filteredRecipes.slice(0, 25 * Number(page)));
 	}, [page]);
 
 	function handleScroll() {
@@ -111,8 +89,8 @@ const Recipes = () => {
 	const date = new Date();
 	const day = date.getDate();
 	const month = date.getMonth();
-	let id = (day * month) % recipes.length;
-	let rotd = recipes[id];
+	const id = (recipes.length - 1) % (day * month);
+	const rotd = recipes[id];
 
 	return recipeStatus === 'pending' ? (
 		<h1 className="loading">LOADING...</h1>
