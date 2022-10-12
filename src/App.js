@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 import Footer from './components/general/Footer.jsx';
 import Home from './components/general/Home.jsx';
 import Login from './components/account/Login.jsx';
@@ -12,14 +11,12 @@ import Profile from './components/account/Profile.jsx';
 import About from './components/general/About.jsx';
 import Recipes from './components/pages/AllRecipes.jsx';
 import RecipePage from './components/pages/SingleRecipe.jsx';
-import { fetchUser } from './features/user/userSlice.js';
 import Likes from './components/pages/Likes.jsx';
 import Dislikes from './components/pages/Dislikes.jsx';
 import LeafletMap from './components/leaflet/LeafletMap.jsx';
 import AmazonFreshForm from './components/amazon/AmazonFreshForm.js';
 function App() {
-  const state = useSelector((state) => state);
-  const dispatch = useDispatch();
+
   React.useEffect(() => {}, []);
 
   return (

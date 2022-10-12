@@ -9,6 +9,10 @@ import {
 	userDisLikeRecipe,
 	userLikeRecipe,
 } from '../../features/profile/profileSlice';
+import {
+	addToList,
+	fetchAddtoShoppingList,
+} from '../../features/shoppingList/shoppingListSlice';
 import { getUserToken } from '../../features/user/userSlice';
 
 const RecipePage = () => {
@@ -70,19 +74,19 @@ const RecipePage = () => {
 	};
 
 	const handleCart = (event) => {
-		console.log(event.target.value);
+		dispatch(fetchAddtoShoppingList({ id: Number(recipeId) }));
 	};
 
 	const handleInstructions = (event) => {
-		window.location.href=recipe[0].url;
+		window.location.href = recipe[0].url;
 	};
 
-	const capitalize = string => {
-		let arr  = string.split(' ');
-		arr=arr.map(itm=>itm[0].toUpperCase()+itm.slice(1))
+	const capitalize = (string) => {
+		let arr = string.split(' ');
+		arr = arr.map((itm) => itm[0].toUpperCase() + itm.slice(1));
 		string = arr.join(' ');
 		return string;
-	}
+	};
 
 	return !recipe.length ? (
 		<h1 className="loading">LOADING...</h1>
@@ -121,11 +125,19 @@ const RecipePage = () => {
 						Instructions
 					</button>
 				</div>
+				<a
+					className="recipe-instructions-url"
+					href={recipe[0].url}
+					target="_blank"
+				>
+					Link to Instructions
+				</a>
 				<h3>Ingredients</h3>
 				<ul>
 					{recipe[0].lineItems.map((item) => (
 						<li key={item.id}>
-							{capitalize(item.ingredient.name)} ({item.qty} {capitalize(item.measurement)})
+							{capitalize(item.ingredient.name)} ({item.qty}{' '}
+							{capitalize(item.measurement)})
 						</li>
 					))}
 				</ul>
