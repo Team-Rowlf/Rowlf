@@ -16,18 +16,13 @@ export const fetchShoppingList = createAsyncThunk(
 export const fetchAddtoShoppingList = createAsyncThunk(
 	'shoppingList/fetchAddtoShoppingList',
 	async ({ id }) => {
-		try {
-			const token = localStorage.getItem('token');
-			const { data } = await axios.put(
-				`/api/user/me/addRecipe`,
-				{ id },
-				{ headers: { authorization: token } }
-			);
-			Toastify({text: "Added recipe to shopping list!", duration:1500, newWindow: true, gravity: "bottom", position: "right", backgroundColor: "#0D730D"}).showToast();
-			return data;
-		} catch (err) {
-			Toastify({text: "Recipe already in shopping list", duration:1500, newWindow: true, gravity: "bottom", position: "right", backgroundColor: "#8B2635"}).showToast();
-		}
+		const token = localStorage.getItem('token');
+		const { data } = await axios.put(
+			`/api/user/me/addRecipe`,
+			{ id },
+			{ headers: { authorization: token } }
+		);
+		return data;
 	}
 );
 export const fetchRemoveFromShoppingList = createAsyncThunk(
@@ -73,10 +68,12 @@ const shoppingListSlice = createSlice({
 			.addCase(fetchAddtoShoppingList.fulfilled, (state, action) => {
 				state.status = 'succeeded';
 				state.shoppingList = action.payload;
+				Toastify({text: "Added recipe to shopping list!", duration:1500, newWindow: true, gravity: "bottom", position: "right", backgroundColor: "#0D730D"}).showToast();
 			})
 			.addCase(fetchAddtoShoppingList.rejected, (state, action) => {
 				state.status = 'failed';
 				state.error = action.error;
+				Toastify({text: "Recipe already in shopping list", duration:1500, newWindow: true, gravity: "bottom", position: "right", backgroundColor: "#8B2635"}).showToast();
 			})
 			.addCase(fetchRemoveFromShoppingList.pending, (state, action) => {
 				state.status = 'pending';
