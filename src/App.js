@@ -17,8 +17,6 @@ import Dislikes from './components/pages/Dislikes.jsx';
 import LeafletMap from './components/leaflet/LeafletMap.jsx';
 import AmazonFreshForm from './components/amazon/AmazonFreshForm.js';
 function App() {
-  React.useEffect(() => {}, []);
-
   return (
     <>
       <div id="main">
