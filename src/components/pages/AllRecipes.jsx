@@ -71,9 +71,7 @@ const Recipes = () => {
 		);
 	};
 
-	// will want a different way to get recipe of the day; maybe some random variable generator or formula?
-	// possible, simple way: convert date into an int somehow, then take modulus of total recipe count. then that will be recipe id for recipe of the day
-	// in the future, could have a better system if incorporated a rating system; highest rated would be recipe of the day, rolling basis or something
+	// in the future, could have a different formula for recipe of the day; highest rated would be recipe of the day, rolling basis or something
 
 	//handle scroll for infinite scrolling
 	useEffect(() => {
