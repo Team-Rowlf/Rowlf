@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import chalk from 'chalk';
+import Toastify from 'toastify-js';
 
 export const fetchShoppingList = createAsyncThunk(
 	'shoppingList/fetchShoppingList',
@@ -16,14 +16,18 @@ export const fetchShoppingList = createAsyncThunk(
 export const fetchAddtoShoppingList = createAsyncThunk(
 	'shoppingList/fetchAddtoShoppingList',
 	async ({ id }) => {
-		const token = localStorage.getItem('token');
-
-		const { data } = await axios.put(
-			`/api/user/me/addRecipe`,
-			{ id },
-			{ headers: { authorization: token } }
-		);
-		return data;
+		try {
+			const token = localStorage.getItem('token');
+			const { data } = await axios.put(
+				`/api/user/me/addRecipe`,
+				{ id },
+				{ headers: { authorization: token } }
+			);
+			Toastify({text: "Added recipe to shopping list!", duration:1500, newWindow: true, gravity: "bottom", position: "right", backgroundColor: "#0D730D"}).showToast();
+			return data;
+		} catch (err) {
+			Toastify({text: "Recipe already in shopping list", duration:1500, newWindow: true, gravity: "bottom", position: "right", backgroundColor: "#8B2635"}).showToast();
+		}
 	}
 );
 export const fetchRemoveFromShoppingList = createAsyncThunk(
