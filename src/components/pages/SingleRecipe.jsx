@@ -10,7 +10,6 @@ import {
 	userLikeRecipe,
 } from '../../features/profile/profileSlice';
 import {
-	addToList,
 	fetchAddtoShoppingList,
 } from '../../features/shoppingList/shoppingListSlice';
 import { getUserToken } from '../../features/user/userSlice';

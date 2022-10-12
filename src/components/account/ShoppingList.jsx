@@ -6,6 +6,7 @@ import {
 	fetchShoppingList,
 	getListStatus,
 } from '../../features/shoppingList/shoppingListSlice';
+import AmazonFreshForm from '../amazon/AmazonFreshForm';
 
 const ShoppingList = () => {
 	const dispatch = useDispatch();
@@ -60,53 +61,69 @@ const ShoppingList = () => {
 	};
 
 	return !shoppingList ? (
-		<h1 className="loading">No Recipe </h1>
+		<h1 className="loading">Loading...</h1>
 	) : (
 		<div className="shoppingList-container">
 			<h1>
 				<u>Main Shopping List</u>
 			</h1>
 
-			{shoppingList.map((recipe) => {
-				const ingredients = recipe.lineItems;
+			{shoppingList.length ? 
+				<div> 
+					{shoppingList.map((recipe) => {
+						const ingredients = recipe.lineItems;
 
-				return (
-					<div className="recipe" key={recipe.id}>
-						<div style={inLineStyle}>
-							<input
-								type="checkbox"
-								className="recipe-checkbox"
-								value={recipe.name}
-								onClick={handleCheckAll}
-							/>{' '}
-							{capitalize(recipe.name)}{' '}
-							<button
-								className="remove-item-list"
-								onClick={() => handleRemoveRecipe(recipe.id)}
-							>
-								{' '}
-								&#9747;
-							</button>
+						return (
+							<div className="recipe" key={recipe.id}>
+								<div style={inLineStyle}>
+									<input
+										type="checkbox"
+										className="recipe-checkbox"
+										value={recipe.name}
+										onClick={handleCheckAll}
+									/>{' '}
+									{capitalize(recipe.name)}{' '}
+									<button
+										className="remove-item-list"
+										onClick={() => handleRemoveRecipe(recipe.id)}
+									>
+										{' '}
+										&#9747;
+									</button>
+								</div>
+								<div className="ingredients" key={ingredients.name}>
+									{ingredients.map((ingredient) => {
+										return (
+											<div className="ingredient-checkbox" key={ingredient.id}>
+												<input
+													type="checkbox"
+													value={ingredient.ingredient.name}
+													name={recipe.name}
+													onClick={handleCheck}
+												/>
+												{capitalize(ingredient.ingredient.name)} ({ingredient.qty}{' '}
+												{capitalize(ingredient.measurement)})
+											</div>
+										);
+									})}
+								</div>
+							</div>
+						);
+					})}
+					<div className='list-buttons'>
+						<div className='mark-as-complete'>
+							(List complete placeholder)
 						</div>
-						<div className="ingredients" key={ingredients.name}>
-							{ingredients.map((ingredient) => {
-								return (
-									<div className="ingredient-checkbox" key={ingredient.id}>
-										<input
-											type="checkbox"
-											value={ingredient.ingredient.name}
-											name={recipe.name}
-											onClick={handleCheck}
-										/>
-										{capitalize(ingredient.ingredient.name)} ({ingredient.qty}{' '}
-										{capitalize(ingredient.measurement)})
-									</div>
-								);
-							})}
+						<div className='find-stores-nearby'>
+							(Map integration placeholder)
+						</div>
+						<div className='order-on-amazon'>
+							<AmazonFreshForm/>
 						</div>
 					</div>
-				);
-			})}
+				</div>
+				: <h3>No recipes in current list</h3>
+			}
 		</div>
 	);
 };
