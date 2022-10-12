@@ -9,31 +9,45 @@ const LeafletMap = () => {
   const [location, setLocation] = useState(null);
   const [stores, setStores] = useState([]);
   const userIcon = icon({ iconUrl: '/chefs-hat.svg', iconSize: [30, 30] });
+  const cartIcon = icon({
+    iconUrl: '/images/shoppingCart.png',
+    iconSize: [30, 30],
+  });
   const [searchLocation, setSearchLocation] = useState(null);
   const [searched, setSearched] = useState(false);
   const [markerLocation, setMarkerLocation] = useState(null);
   const [dragged, setDragged] = useState(false);
-
-  const markerRef = useRef(null);
-  const marker = markerRef.current;
 
   async function showGroceryStores(latLng) {
     const esriKey = process.env.ESRI_KEY;
     // returning some results that are not grocery stores, but are tagged as grocery
     // possible workaround: at least for us, could try to compile a list of major national/regional grocery stores
     // might be tedious though; but that way, could at least filter through results and only inclue results that somewhat make sense
-    // console.log('show stores:', latLng);
 
     let obj = new esri.Geocode({
       apikey: esriKey,
     })
-      .category('Grocery')
+      .category('grocery')
       .nearby(latLng, 10)
       .run((error, results, response) => {
         if (error) return;
         setStores(results.results);
+        console.log(results);
       });
   }
+
+  // const locatorUrl =
+  //   'http://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer';
+
+  // // Find places and add them to the map
+  // function findPlaces(category, pt) {
+  //   locator.addressToLocations(locatorUrl, {
+  //     location: pt,
+  //     categories: [category],
+  //     maxLocations: 25,
+  //     outFields: ['Place_addr', 'PlaceName'],
+  //   });
+  // }
 
   //this function gets back the coordinates from the draggable marker component
   function getDraggedMarkerLocation(data) {
@@ -100,7 +114,7 @@ const LeafletMap = () => {
         ></DraggableMarker>
         {stores.map((store, idx) => {
           return (
-            <Marker key={idx} position={store.latlng}>
+            <Marker key={idx} position={store.latlng} icon={cartIcon}>
               <Popup className="popup">
                 {store.text} <br /> {store.properties.Place_addr}
               </Popup>
