@@ -13,6 +13,7 @@ import RecipePage from '../pages/SingleRecipe.jsx';
 import Likes from '../pages/Likes.jsx';
 import Dislikes from '../pages/Dislikes.jsx';
 import LeafletMap from '../leaflet/LeafletMap.jsx';
+import EditProfile from '../account/EditProfile.jsx';
 
 const RoutesComponent = () => {
     return (
@@ -30,6 +31,7 @@ const RoutesComponent = () => {
 					<Route index element={<Likes />} />
 					<Route path="likes" element={<Likes />} />
 					<Route path="dislikes" element={<Dislikes />} />
+					<Route path="edit" element={<EditProfile />} />
 				</Route>
 				<Route path="*" element={<NotFound />} />
 			</Route>

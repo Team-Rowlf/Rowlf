@@ -4,30 +4,37 @@ import { Link } from 'react-router-dom';
 
 const Likes = () => {
 	const likes = useSelector((state) => state.profile.likes);
-	const likedRecipes = [];
-	let recipe = [];
-	const recipes = useSelector(state=>state.recipes)
+	let likedRecipes = [];
+	const recipes = useSelector(state=>state.recipes.recipes)
 	
 
 	likes.map(liked=>{
-		
-		console.log("RECIPE: ", recipe)
+		recipes.map(itm=>{
+			if(itm.id == liked.id){
+				likedRecipes.push(itm);
+			}
+		})
 	})
 
-	console.log("LIKES: ",likes)
+	const capitalize = (string) => {
+		let arr = string.split(' ');
+		arr = arr.map((itm) => itm[0].toUpperCase() + itm.slice(1));
+		string = arr.join(' ');
+		return string;
+	};
 
 	return !likes.length ? (
 		<div className="likes"> No Recipes </div>
 	) : (
 		<div className="likes">
-			{likes.map((recipe) => (
+			{likedRecipes.map((recipe) => (
 				<div key={recipe.id}>
 					<Link to={`/user/recipes/${recipe.id}`}> {recipe.name}</Link>
 					<details>
 						<summary> Ingredients: </summary>
-						{/* <ul>
-							{recipe.ingredients.map(ingredient=><ul>ingredient.name</ul>)}
-						</ul> */}
+						<ul>
+							{recipe.lineItems.map(ingredient=><ul key={ingredient.id}>{capitalize(ingredient.ingredient.name)}</ul>)}
+						</ul>
 					</details>
 				</div>
 			))}

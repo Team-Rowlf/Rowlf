@@ -1,5 +1,6 @@
+const sequelize = require('sequelize');
 
-export const _addIngredientToArray = (lineItem, array) => {
+const _addIngredientToArray = (lineItem, array) => {
     const ingredientObj = {
         name: lineItem.ingredient.name,
         quantityList: [{
@@ -11,7 +12,7 @@ export const _addIngredientToArray = (lineItem, array) => {
     return array
 }
 
-export const _convertMeasurementFormat = (measurement) => {
+const _convertMeasurementFormat = (measurement) => {
     if (measurement === 'lb') {
         return 'POUNDS'
     } else if (measurement === 'cup') {
@@ -42,15 +43,21 @@ export const _convertMeasurementFormat = (measurement) => {
     }
 } 
 
-export const _addRecipeToArray = (recipe, array) => {
+const _addRecipeToArray = (recipe, array) => {
     for (index in recipe.lineItems) {
         _addIngredientToArray(recipe.lineItems[index],array)
     }
 }
 
-export const _addRecipesToArray = (recipeArray, array) => {
+const _addRecipesToArray = (recipeArray, array) => {
     for (index in recipeArray) {
         _addRecipeToArray(recipeArray[index], array)
     }
 }
 
+module.exports = {
+	_addIngredientToArray,
+    _addRecipeToArray,
+    _addRecipesToArray,
+    _convertMeasurementFormat
+};

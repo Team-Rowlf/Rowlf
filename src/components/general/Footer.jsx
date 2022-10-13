@@ -5,7 +5,7 @@ const Footer = () => {
   const location = useLocation();
 
   return (
-    <div className="footer">
+    <footer className="footer">
       <div className="footer-upper">
         <div className="address">
           <h5 className="title-card">Address</h5>
@@ -72,7 +72,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 
