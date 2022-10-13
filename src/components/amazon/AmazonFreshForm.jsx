@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 
@@ -8,7 +8,7 @@ const AmazonFreshForm = () => {
 		(state) => state.shoppingList.shoppingList.recipes
 	);
 
-    React.useEffect(() => {
+    useEffect(() => {
         async function getIngredients () {
             const {data} = await axios.post('/api/amazon/convertshoppinglist', shoppingList)
             setIngredients(JSON.stringify(data))
