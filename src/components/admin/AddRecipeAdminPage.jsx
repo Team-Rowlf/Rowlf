@@ -17,6 +17,32 @@ const AddRecipeAdminPage = () => {
         servings: '',
         cookTime: '',
     });
+    const [cuisine, setCuisine] = useState('');
+    const [restriction, setRestriction] = useState('');
+
+    const cuisines = [
+		'',
+		'american',
+		'asian',
+		'mexican',
+		'pasta',
+		'mediterranean',
+		'salad',
+		'soup',
+		'fusion',
+		'healthy',
+		'other',
+	];
+
+	const restrictions = [
+		'',
+		'vegetarian',
+		'vegan',
+		'glutan-free',
+		'nut-free',
+		'lactose-free',
+		'pescatarian',
+	];
 
     useEffect(() => {
         const token = window.localStorage.getItem('token');
@@ -53,17 +79,23 @@ const AddRecipeAdminPage = () => {
         console.log(recipe)
         dispatch(attemptAddRecipe({
             recipeDetails: recipe,
-            cuisines: [],
-            restrictions: []
+            cuisines: [cuisine],
+            restrictions: restriction.length ? [restriction] : []
         }))
 
         // navigate('/adminportal');
         // Toastify({text: `New product created: ${form.name}!`, duration:2500 ,gravity: "bottom", position: "left", backgroundColor: "#ff8300"}).showToast();
     };
 
+    const handleCuisineChange = (event) => {
+        setCuisine(event.target.value)
+    }
+    const handleRestrictionChange = (event) => {
+        setRestriction(event.target.value)
+    }
     const checkDisabled = () => {
         // later add in checks for cuisine, restrictions? at least for cuisine; don't necessarily need restriction
-        return !form.name.length || !form.url.length || !form.img.length || !form.servings.length || !form.cookTime.length
+        return !form.name.length || !form.url.length || !form.img.length || !form.servings.length || !form.cookTime.length || !cuisine.length
     };
 
     return (
@@ -119,12 +151,28 @@ const AddRecipeAdminPage = () => {
                     />
                 </div>
                 {/* need selector for cuisines */}
-                <div>
-                    (Cuisine placeholder)
+                <div className="form-line">
+                    Select a cuisine: 
+                    <select defaultValue={cuisine} id='cuisine-selector'  onChange={handleCuisineChange}>
+                        {cuisines.map((ele, index) => (
+							<option value={ele} key={index}>
+								{ele.length ? ele[0].toUpperCase() + ele.slice(1) : ''}
+							</option>
+						))}
+                    </select>
                 </div>
                 {/* need selector for restrictions */}
                 <div>
-                    (Restriction placeholder)
+                <div className="form-line">
+                    Select a restriction (optional): 
+                    <select defaultValue={restriction} id='restriction-selector'  onChange={handleRestrictionChange}>
+                        {restrictions.map((ele, index) => (
+							<option value={ele} key={index}>
+								{ele.length ? ele[0].toUpperCase() + ele.slice(1) : ''}
+							</option>
+						))}
+                    </select>
+                </div>
                 </div>
                 {/* may even need for appliance if want to use that later */}
                 
