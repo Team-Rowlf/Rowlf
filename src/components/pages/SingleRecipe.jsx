@@ -10,12 +10,24 @@ import {
 	userLikeRecipe,
 } from '../../features/profile/profileSlice';
 import {
+<<<<<<< HEAD
+	fetchAddtoShoppingList,
+	getListStatus
+} from '../../features/shoppingList/shoppingListSlice';
+import { getUserToken } from '../../features/user/userSlice';
+import Toastify from 'toastify-js'
+=======
 	clearSingleRecipe,
 	fetchSingleRecipe,
 } from '../../features/recipes/recipesSlice';
 import { fetchAddtoShoppingList } from '../../features/shoppingList/shoppingListSlice';
 import { getUserToken } from '../../features/user/userSlice';
 import chalk from 'chalk';
+<<<<<<< HEAD
+>>>>>>> refs/rewritten/onto
+=======
+import { ToastContainer, toast } from 'react-toastify';
+>>>>>>> 6691024 (changed toast notifications to match existing notifcations; removed previous module I was using)
 
 const RecipePage = () => {
 	const dispatch = useDispatch();
@@ -31,6 +43,71 @@ const RecipePage = () => {
 	}, []);
 
 	React.useEffect(() => {
+<<<<<<< HEAD
+		if (recipe.id) {
+			(getUserLikesId.includes(Number(recipeId)) &&
+			document
+				.querySelector(`button[value="like"]`)
+				.classList.add('like-recipe')) ||
+			(getUserDisLikesId.includes(Number(recipeId)) &&
+				document
+					.querySelector(`button[value="dislike"]`)
+					.classList.add('dislike-recipe'));
+		}
+	}, [getUserLikesId, getUserDisLikesId]);
+
+	const handlePreference = (prop) => async (event) => {
+		const like = document.querySelector(`button[value="like"]`);
+		const dislike = document.querySelector(`button[value="dislike"]`);
+
+		// if you like it check if the button has a certain class to add/remove class and dispatch to add/remove database then check if opposite is present
+		let addLike, removeLike, addDislike, removeDislike = false;
+
+		if (prop === `like`) {
+			like.classList.contains('like-recipe')
+				? (removeLike=true) && dispatch(userLikeRecipe({ token, action: 'remove', id: recipeId })) &&
+				  like.classList.remove('like-recipe') 
+				: dislike.classList.contains('dislike-recipe')
+				? (addLike=true) && dispatch(userLikeRecipe({ token, action: 'add', id: recipeId })) &&
+				  dispatch(
+						userDisLikeRecipe({ token, action: 'remove', id: recipeId })
+				  ) &&
+				  like.classList.add('like-recipe') &&
+				  dislike.classList.remove('dislike-recipe')
+				: (addLike=true) && dispatch(userLikeRecipe({ token, action: 'add', id: recipeId })) &&
+				  like.classList.add('like-recipe');
+			// if (like.className.includes('like-recipe')) {
+			// 	like.className = 'navButton'
+			// 	 dispatch(userLikeRecipe({ token, action: 'remove', id: recipeId }));
+			// 	removeLike = true;
+			// 	console.log(like.classList, like.className)
+			// } else {
+			// 	addLike = true;
+			// 	like.classList.add('like-recipe');
+			// 	if (dislike.classList.contains('dislike-recipe')) {
+			// 		dislike.className = 'navButton'
+			// 		 dispatch(userDisLikeRecipe({ token, action: 'remove', id: recipeId }));
+			// 	}
+			// 	 dispatch(userLikeRecipe({ token, action: 'add', id: recipeId }));
+			// }
+		} else {
+			dislike.classList.contains('dislike-recipe')
+				? (removeDislike=true) && dispatch(
+						userDisLikeRecipe({ token, action: 'remove', id: recipeId })
+				  ) && dislike.classList.remove('dislike-recipe')
+				: like.classList.contains('like-recipe')
+				? (addDislike=true) && dispatch(userDisLikeRecipe({ token, action: 'add', id: recipeId })) &&
+				  dispatch(userLikeRecipe({ token, action: 'remove', id: recipeId })) &&
+				  like.classList.remove('like-recipe') &&
+				  dislike.classList.add('dislike-recipe')
+				: (addDislike=true) && dispatch(userDisLikeRecipe({ token, action: 'add', id: recipeId })) &&
+				  dislike.classList.add('dislike-recipe')
+		}
+		const message = addDislike ? "Recipe added to 'Dislikes'" : (removeDislike ? "Recipe removed from 'Dislikes'" : (addLike ? "Recipe added to 'Likes'" : "Recipe removed from 'Likes'"))
+		Toastify({text: message, duration:1500, newWindow: true, gravity: "bottom", position: "right", backgroundColor: "#8B2635"}).showToast();
+		dispatch(getUserLikes({ token }));
+		dispatch(getUserDisLikes({ token }));
+=======
 		getUserLikesId.includes(Number(recipeId))
 			? document
 					.querySelector(`button[value="like"]`)
@@ -65,6 +142,22 @@ const RecipePage = () => {
 				  dispatch(userDisLikeRecipe({ token, action: 'add', id: recipeId }))
 				: dispatch(userDisLikeRecipe({ token, action: 'add', id: recipeId }));
 		}
+<<<<<<< HEAD
+>>>>>>> refs/rewritten/onto
+=======
+		const message = addDislike ? "Added to 'Dislikes'" : (removeDislike ? "Removed from 'Dislikes'" : (addLike ? "Added to 'Likes'" : "Removed from 'Likes'"))
+		const color = (addLike || removeDislike) ? "#0D730D" : "#8B2635";
+		toast.success(message, {
+			position: 'bottom-right',
+			autoClose: 1500,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+			theme: 'dark',
+		})
+>>>>>>> 6691024 (changed toast notifications to match existing notifcations; removed previous module I was using)
 	};
 
 	const handleCart = () => {
@@ -129,6 +222,7 @@ const RecipePage = () => {
 					))}
 				</ul>
 			</div>
+			<ToastContainer limit={1} />
 		</div>
 	);
 };
