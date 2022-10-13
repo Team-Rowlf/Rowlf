@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Outlet, Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Nav from '../general/Nav.jsx';
@@ -18,11 +18,11 @@ const User = () => {
 
 	const user = useSelector((state) => state.user);
 
-	React.useEffect(() => {
+	useEffect(() => {
 		!user.isLogged && navigate('/');
 	}, [user]);
 
-	React.useEffect(() => {
+	useEffect(() => {
 		if (token) {
 			dispatch(fetchRecipes());
 			dispatch(getUserLikes({ token }));

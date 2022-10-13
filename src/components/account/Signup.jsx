@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import {
@@ -14,7 +14,7 @@ const Signup = () => {
 	const handleLogin = () => {
 		navigate('/login');
 	};
-	const [signUp, setSignUp] = React.useState({});
+	const [signUp, setSignUp] = useState({});
 	const validate = useSelector(getFormInputAvailable);
 
 	const handleAdditionalValidate = (prop) => (event) => {
@@ -40,7 +40,7 @@ const Signup = () => {
 			confirm.setCustomValidity('Passwords do not match!');
 		}
 	};
-	React.useEffect(() => {}, [validate]);
+	useEffect(() => {}, [validate]);
 
 	return (
 		<>
