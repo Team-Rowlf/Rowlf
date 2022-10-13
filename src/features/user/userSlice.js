@@ -13,9 +13,13 @@ export const fetchUser = createAsyncThunk('user/fetchUser', async () => {
 
 export const loginUser = createAsyncThunk(
 	'user/loginUser',
-	async ({ login }) => {
-		const { data } = await axios.post('/api/user/login', login);
-		return data;
+	async ({ login }, { rejectWithValue }) => {
+		try {
+			const { data } = await axios.post('/api/user/login', login);
+			return data;
+		} catch (error) {
+			return rejectWithValue(error.response.data);
+		}
 	}
 );
 
@@ -58,6 +62,9 @@ const userSlice = createSlice({
 			state.isAdmin = false;
 			state.token = false;
 		},
+		setError: (state) => {
+			state.error = null;
+		},
 	},
 	extraReducers(builder) {
 		builder
@@ -93,7 +100,8 @@ const userSlice = createSlice({
 				localStorage.setItem('token', state.token);
 			})
 			.addCase(loginUser.rejected, (state, action) => {
-				(state.status = 'failed'), (state.error = action.error);
+				state.status = 'failed';
+				state.error = action.payload;
 			});
 	},
 });
@@ -101,7 +109,8 @@ const userSlice = createSlice({
 export const getFormInputAvailable = (state) => state.user.formInputAvailable;
 export const isLoggedStatus = (state) => state.user.isLogged;
 export const getUserToken = (state) => state.user.token;
+export const getError = (state) => state.user.error;
 
-export const { logout } = userSlice.actions;
+export const { logout, setError } = userSlice.actions;
 
 export default userSlice.reducer;

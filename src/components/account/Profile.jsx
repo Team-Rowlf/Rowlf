@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Outlet } from 'react-router-dom';
 
 const Profile = () => {
 	const profile = useSelector((state) => state.profile);
-	React.useEffect(() => {}, [profile]);
+	useEffect(() => {}, [profile]);
 	return (
 		<div className="profile">
 			<p>
