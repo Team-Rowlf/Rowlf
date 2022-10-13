@@ -4,6 +4,7 @@ import { icon } from 'leaflet';
 import * as esri from 'esri-leaflet-geocoder';
 import LeafletSearchField from './LeafletSearchField.jsx';
 import DraggableMarker from './DraggableMarker.jsx';
+import axios from 'axios';
 
 const LeafletMap = () => {
   const [location, setLocation] = useState(null);
@@ -17,6 +18,20 @@ const LeafletMap = () => {
   const [searched, setSearched] = useState(false);
   const [markerLocation, setMarkerLocation] = useState(null);
   const [dragged, setDragged] = useState(false);
+  let mapRef = useRef();
+
+  //REMINDER: REMOVE KEY FROM INDEX HTML IN GOOGLE SCRIPT
+  const service = new google.maps.places.PlacesService(mapRef);
+  service.nearbySearch(
+    {
+      location: location,
+      radius: 500,
+      type: ['grocery'],
+    },
+    function (results, status) {
+      console.log(results);
+    }
+  );
 
   async function showGroceryStores(latLng) {
     const esriKey = process.env.ESRI_KEY;
@@ -31,7 +46,6 @@ const LeafletMap = () => {
       .run((error, results, response) => {
         if (error) return;
         setStores(results.results);
-        console.log(results);
       });
   }
 
@@ -73,6 +87,7 @@ const LeafletMap = () => {
           const latLng = [position.coords.latitude, position.coords.longitude];
           setLocation(latLng);
           showGroceryStores(latLng);
+          nearbySearch(latLng);
         },
         () => {
           const sanFranLatLng = [37.7749, -122.4194];
@@ -85,7 +100,13 @@ const LeafletMap = () => {
 
   return location ? (
     <div>
-      <MapContainer id="map" center={location} zoom={13} scrollWheelZoom={true}>
+      <MapContainer
+        ref={mapRef}
+        id="map"
+        center={location}
+        zoom={13}
+        scrollWheelZoom={true}
+      >
         {<LeafletSearchField setLocation={getLocation} />}
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
