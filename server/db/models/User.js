@@ -77,8 +77,12 @@ User.authenticate = async function ({ username, password }) {
 	});
 
 	//if the user or the comparison between hashed and passed in password is falsey
-	if (!user || !(await bcrypt.compare(password, user.password))) {
-		const error = Error('Incorrect username or password');
+	if (!user) {
+		const error = Error(' Invalid Username ');
+		error.status = 401;
+		return;
+	} else if (!(await bcrypt.compare(password, user.password))) {
+		const error = Error('Incorrect password');
 		error.status = 401;
 		throw error;
 	}

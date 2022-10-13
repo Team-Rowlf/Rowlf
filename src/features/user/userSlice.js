@@ -93,7 +93,9 @@ const userSlice = createSlice({
 				localStorage.setItem('token', state.token);
 			})
 			.addCase(loginUser.rejected, (state, action) => {
-				(state.status = 'failed'), (state.error = action.error);
+				state.status = 'failed';
+				state.error = action.error;
+				console.log(action);
 			});
 	},
 });
