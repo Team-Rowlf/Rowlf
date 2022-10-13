@@ -64,6 +64,24 @@ const Recipes = () => {
 	const handleSort = (event) => {
 		setSortDirection(event.target.value);
 	};
+	const rotatehelper = (val, minA, maxA, minB, maxB) => {
+		return minB + ((val - minA) * (maxB - minB)) / (maxA - minA);
+	};
+	const handleMouseMove = (event) => {
+		let img = event.target;
+		console.log(img);
+		let imgRect = event.target.parentNode.getBoundingClientRect();
+		let width = imgRect.width;
+		let height = imgRect.height;
+		let mouseX = event.nativeEvent.offsetX;
+		let mouseY = event.nativeEvent.offsetY;
+		let rotateY = rotatehelper(mouseX, 0, 180, -15, 25);
+		let rotateX = rotatehelper(mouseY, 0, 250, 15, -25);
+		let brightness = rotatehelper(mouseY, 0, 250, 1.5, 0.5);
+
+		img.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+		img.style.filter = `brightness(${brightness})`;
+	};
 
 	// in the future, could have a different formula for recipe of the day; highest rated would be recipe of the day, rolling basis or something
 
@@ -172,10 +190,19 @@ const Recipes = () => {
 				{list.length ? (
 					list.map((recipe) => (
 						<Link key={recipe.id} to={`${recipe.id}`}>
-							<div className="recipe">
+							<div className="recipe recipes-list-hover">
 								<h3>{recipe.name}</h3>
 								<p>Serving Size: {recipe.servings} </p>
-								<img src={recipe.img} alt="recipe" />
+								<img
+									src={recipe.img}
+									alt="recipe"
+									onMouseMove={handleMouseMove}
+									onMouseLeave={(event) => {
+										event.target.style.transform =
+											'rotateX(0deg) rotateY(0deg)';
+										event.target.style.filter = 'brightness(1)';
+									}}
+								/>
 							</div>
 						</Link>
 					))
