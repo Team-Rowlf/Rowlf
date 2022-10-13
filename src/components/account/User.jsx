@@ -3,7 +3,7 @@ import { Outlet, Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Nav from '../general/Nav.jsx';
 import { fetchRecipes } from '../../features/recipes/recipesSlice';
-import { getUserToken } from '../../features/user/userSlice.js';
+import { fetchUser, getUserToken } from '../../features/user/userSlice.js';
 import {
 	getUserDisLikes,
 	getUserLikes,
@@ -14,19 +14,25 @@ import { ToastContainer, toast } from 'react-toastify';
 const User = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-	const token = useSelector(getUserToken);
 
 	const user = useSelector((state) => state.user);
 
 	useEffect(() => {
-		!user.isLogged && navigate('/');
-	}, [user]);
+		const token = window.localStorage.getItem('token');
+		if (!user.isLogged && !token) {
+			navigate('/')
+		}
+	},[user.isLogged])
 
 	useEffect(() => {
+		const token = window.localStorage.getItem('token');
 		if (token) {
+			dispatch(fetchUser());
 			dispatch(fetchRecipes());
 			dispatch(getUserLikes({ token }));
 			dispatch(getUserDisLikes({ token }));
+			// may want to move this toast elsewhere; perhaps inside userSlice
+			// currently fires off every time you refresh page
 			toast.success('🎉 Success 🎉!', {
 				position: 'bottom-right',
 				autoClose: 3000,
@@ -37,6 +43,8 @@ const User = () => {
 				progress: undefined,
 				theme: 'dark',
 			});
+		} else {
+			navigate('/')
 		}
 	}, []);
 

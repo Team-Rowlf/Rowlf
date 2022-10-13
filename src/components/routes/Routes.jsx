@@ -13,6 +13,7 @@ import RecipePage from '../pages/SingleRecipe.jsx';
 import Likes from '../pages/Likes.jsx';
 import Dislikes from '../pages/Dislikes.jsx';
 import LeafletMap from '../leaflet/LeafletMap.jsx';
+import AdminPortal from '../admin/AdminPortal.jsx';
 
 const RoutesComponent = () => {
     return (
@@ -33,6 +34,7 @@ const RoutesComponent = () => {
 				</Route>
 				<Route path="*" element={<NotFound />} />
 			</Route>
+			<Route path = "/adminportal" element={<AdminPortal />} />
 			<Route path="leaflet" element={<LeafletMap />} />
 			<Route path="*" element={<NotFound />} />
 		</Routes>

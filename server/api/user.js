@@ -41,7 +41,7 @@ router.post('/signup', async (req, res, next) => {
 //user can view their own profile
 router.get('/me', requireToken, async (req, res, next) => {
 	try {
-		const { id, firstName, lastName, gender, phoneNum, username, email } =
+		const { id, firstName, lastName, gender, phoneNum, username, email, isAdmin } =
 			req.user;
 		const userInfo = {
 			id,
@@ -51,6 +51,7 @@ router.get('/me', requireToken, async (req, res, next) => {
 			phoneNum,
 			username,
 			email,
+			isAdmin
 		};
 		res.send(userInfo);
 	} catch (error) {

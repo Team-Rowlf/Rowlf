@@ -1,6 +1,7 @@
 import React, { useEffect } from "react"; 
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Nav from "../general/Nav.jsx";
 
 const AdminPortal = () => {
     const user = useSelector((state) => state.user);
@@ -8,14 +9,15 @@ const AdminPortal = () => {
 
     useEffect(() => {
         const token = window.localStorage.getItem('token');
-        if ((user.id && !user.isAdmin) || !token) {
+        if ((user.isLogged && !user.isAdmin) || !token) {
             navigate('/');
             // add in toast error here; 'user not authorized'
         }
-    },[user.id])
+    },[user.isLogged])
 
     return (
         <div id="admin-portal">
+            <Nav />
             <h1>Welcome back to the Admin Portal</h1>
             <div className="admin-portal-link-container">
                 <div className="admin-portal-link">
@@ -32,4 +34,4 @@ const AdminPortal = () => {
     )
 };
 
-export default AdminPortal
+export default AdminPortal;

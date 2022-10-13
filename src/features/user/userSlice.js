@@ -88,8 +88,7 @@ const userSlice = createSlice({
 				state.userInfo = action.payload;
 				state.isLogged = true;
 				state.token = localStorage.getItem('token');
-				//check for admin
-				// state.isAdmin = action.payload.isAdmin ? action.payload.isAdmin : false;
+				state.isAdmin = action.payload.isAdmin;
 			})
 			.addCase(fetchUser.rejected, (state, action) => {
 				state.status = 'failed';
