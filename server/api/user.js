@@ -9,10 +9,7 @@ router.post('/login', async (req, res, next) => {
 		const { username, password } = req.body;
 		const userData = { username: username, password: password };
 		let user = await User.authenticate(userData);
-
-		!user
-			? res.status(401).send({ error: 'Invalid Username' })
-			: res.send({ token: await user.generateToken() });
+		res.send({ token: await user.generateToken() });
 	} catch (error) {
 		next(error);
 	}

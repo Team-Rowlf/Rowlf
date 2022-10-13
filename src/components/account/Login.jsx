@@ -1,15 +1,23 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { loginUser, fetchUser } from '../../features/user/userSlice';
+import {
+	loginUser,
+	fetchUser,
+	getError,
+	setError,
+	isLoggedStatus,
+} from '../../features/user/userSlice';
+import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
-
 const Login = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
 	const [login, setLogin] = React.useState({});
 	const loginAttempt = useSelector((state) => state.user.token);
+	const loginAttempError = useSelector(getError);
+	const isLogged = useSelector(isLoggedStatus);
 
 	const handleRegister = () => {
 		navigate('/signUp');
@@ -28,8 +36,26 @@ const Login = () => {
 		loginAttempt && dispatch(fetchUser()) && navigate('/');
 	}, [loginAttempt]);
 
+	React.useEffect(() => {
+		console.log(isLogged);
+		if (loginAttempError) {
+			toast.error(loginAttempError, {
+				position: 'bottom-center',
+				autoClose: 3000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: 'dark',
+			});
+			dispatch(setError());
+		}
+	}, [loginAttempError, isLogged]);
+
 	return (
 		<>
+			<ToastContainer limit={1} />
 			<div className="large-logo">
 				<img src="/largelogo.svg" alt="Logo" />
 				<h1>HELLO KITCHEN</h1>

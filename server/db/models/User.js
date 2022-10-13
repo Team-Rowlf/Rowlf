@@ -80,7 +80,7 @@ User.authenticate = async function ({ username, password }) {
 	if (!user) {
 		const error = Error(' Invalid Username ');
 		error.status = 401;
-		return;
+		throw error;
 	} else if (!(await bcrypt.compare(password, user.password))) {
 		const error = Error('Incorrect password');
 		error.status = 401;
