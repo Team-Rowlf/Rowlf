@@ -6,7 +6,7 @@ const Profile = () => {
 	const profile = useSelector((state) => state.profile);
 	React.useEffect(() => {}, [profile]);
 	return (
-		<div className="profile-container">
+		<div className="profile">
 			<p>
 				<u>Profile</u>
 			</p>

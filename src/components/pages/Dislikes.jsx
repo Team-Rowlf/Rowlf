@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Dislikes = () => {
 	const dislikes = useSelector((state) => state.profile.dislikes);
+	console.log("DISLIKES: ",dislikes)
 	return !dislikes.length ? (
 		<div className="dislikes"> No Recipes </div>
 	) : (

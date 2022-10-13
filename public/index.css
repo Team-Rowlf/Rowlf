@@ -3,10 +3,13 @@
   max-width: 100%;
 }
 #root {
-  min-height: 100vh;
+  min-height: 100%;
 }
 body {
   background-color: #E0E2DB;
+}
+.main {
+  min-height: 65vh;
 }
 .small-logo {
   display: block;
@@ -53,7 +56,6 @@ body {
   width: 33%;
 }
 img {
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
   margin: auto;
   border-radius: 25px;
   max-width: 300px;
@@ -473,7 +475,7 @@ button {
   color: white;
   border-top: 10px solid #0D730D;
   margin-top: 25px;
-  margin-bottom: 0px;
+  margin-bottom: 50px;
   font-weight: bold;
   box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.5);
 }
@@ -487,6 +489,7 @@ button {
 .footer .footer-lower {
   width: 95%;
   display: flex;
+  flex-wrap: wrap;
 }
 .footer .footer-lower .media-container-row {
   margin-right: 0px;
