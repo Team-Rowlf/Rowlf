@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
 import { GeoSearchControl } from 'leaflet-geosearch';
 import { useMap } from 'react-leaflet';
-// import { EsriProvider } from 'leaflet-geosearch';
 import { OpenStreetMapProvider } from 'leaflet-geosearch';
-// import { GeoApiFrProvider } from 'leaflet-geosearch';
 
 const LeafletSearchField = (props) => {
   // const provider = new MapBoxProvider({
@@ -12,10 +10,9 @@ const LeafletSearchField = (props) => {
   //   },
   // });
 
-  // const provider = new EsriProvider();
   const provider = new OpenStreetMapProvider();
-  // const provider = new GeoApiFrProvider();
 
+  //configuration for leaflet-geosearch
   const searchControl = new GeoSearchControl({
     provider: provider,
     style: 'bar',
@@ -31,7 +28,7 @@ const LeafletSearchField = (props) => {
   //grab the coordinates for the map component
   map.on('geosearch/showlocation', function (event) {
     //using props function as workaround to pass coordinates back up to map component
-    props.func([event.location.y, event.location.x]);
+    props.setLocation([event.location.y, event.location.x]);
   });
   return null;
 };

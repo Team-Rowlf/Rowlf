@@ -30,7 +30,7 @@ const recipes = [
         ingredients: [
             {name: 'spaghetti', qty: 3/4, denom: 'lb'},
             {name: 'cherry tomatoes', qty: 4, denom: 'cup'},
-            {name: 'garlic', qty: 4, denom: 'clove'},
+            {name: 'garlic', qty: 4, denom: 'cloves'},
             {name: 'olive oil', qty: 1/4, denom: 'cup'},
             {name: 'fresh basil', qty: 1/2, denom: 'cup'},
             {name: 'salt', qty: 1, denom: 'to taste'},
@@ -53,7 +53,7 @@ const recipes = [
             {name: 'vegan cheese', qty: 3/2, denom: "cup"},
             {name: 'sweet potato', qty: 1, denom: 'whole'},
             {name: 'red bell pepper', qty: 1, denom: 'whole'},
-            {name: 'black beans', qty: 1/2, denom: 'cup'},
+            {name: 'canned black beans', qty: 1/2, denom: 'cup'},
             {name: 'green onion', qty: 1/4, denom: 'cup'},
             {name: 'serrano pepper', qty: 1, denom: 'whole'},
             {name: 'guacamole', qty: 1, denom: 'to taste'},
@@ -72,8 +72,8 @@ const recipes = [
         servings: 2,
         cookTime: 50,
         ingredients: [
-            {name: 'black or pinto beans', qty: 1, denom: 'cup'},
-            {name: 'chipotle pepper', qty: 1, denom: 'canned'},
+            {name: 'canned black or pinto beans', qty: 1, denom: 'cup'},
+            {name: 'canned chipotle pepper', qty: 1, denom: 'whole'},
             {name: 'olive oil', qty: 1/2, denom: 'tsp'},
             {name: 'cooked rice', qty: 1, denom: 'cup'},
             {name: 'arugula', qty: 2, denom: 'cup'},
@@ -104,9 +104,9 @@ const recipes = [
             {name: 'celery', qty: 2, denom: 'stalk'},
             {name: 'salt', qty: 1, denom: 'tsp'},
             {name: 'pepper', qty: 1, denom: 'to taste'},
-            {name: 'garlic', qty: 3, denom: 'clove'},
-            {name: 'diced tomatoes', qty: 28, denom: 'oz'},
-            {name: 'white beans', qty: 3/2, denom: 'cup'},
+            {name: 'garlic', qty: 3, denom: 'cloves'},
+            {name: 'canned diced tomatoes', qty: 28, denom: 'oz'},
+            {name: 'canned white beans', qty: 3/2, denom: 'cup'},
             {name: 'green beans', qty: 1, denom: 'cup'},
             {name: 'vegetable broth', qty: 4, denom: 'cup'},
             {name: 'bay leaf', qty: 2, denom: 'leaves'},
@@ -135,7 +135,7 @@ const recipes = [
             {name: 'serrano pepper', qty: 1, denom: 'whole'},
             {name: 'canola oil', qty: 1/4, denom: 'cup'},
             {name: 'shallot', qty: 3, denom: 'whole'},
-            {name: 'garlic', qty: 3, denom: 'clove'},
+            {name: 'garlic', qty: 3, denom: 'cloves'},
             {name: 'shrimp', qty: 12, denom: 'oz'},
             {name: 'egg', qty: 2, denom: 'whole'},
             {name: 'green onion', qty: 4, denom: 'stalk'},
@@ -231,7 +231,7 @@ const recipes = [
           { qty: 1, name: 'celery', denom: 'stalk' },
           { qty: 1, name: 'Worcestershire sauce', denom: 'tsp' },
           { qty: 1, name: 'paprika', denom: 'tsp' },
-          { qty: 1, name: 'garlic', denom: 'clove' },
+          { qty: 1, name: 'garlic', denom: 'cloves' },
           { qty: 1, name: 'bay leaf', denom: 'large' }
         ]
       },
@@ -301,7 +301,7 @@ const recipes = [
           { qty: 1/4, name: 'celery seed', denom: 'tsp' },
           { qty: 7/4, name: 'chicken broth', denom: 'cup' },
           { qty: 2/3, name: 'milk', denom: 'cup' },
-          { qty: 2, name: 'unbaked pie crusts', denom: '(9 inch)' }
+          { qty: 2, name: 'pie crust', denom: '(9 inch)' }
         ]
       },
       {
@@ -515,9 +515,9 @@ const recipes = [
           { qty: 1, name: 'frozen peas', denom: 'cup' },
           { qty: 10, name: 'canned tuna', denom: 'oz' },
           {
-            qty: 2,
+            qty: 22,
             name: 'condensed cream of mushroom soup',
-            denom: 'can'
+            denom: 'oz'
           },
           { qty: 2.25, name: 'canned sliced mushrooms', denom: 'oz' },
           { qty: 1, name: 'potato chips', denom: 'cup' }
@@ -581,7 +581,7 @@ const recipes = [
           { qty: 2, name: 'olive oil', denom: 'tbsp' },
           { qty: 1, name: 'lemon juice', denom: 'tbsp' },
           { qty: 2, name: 'parsley', denom: 'tbsp' },
-          { qty: 1, name: 'garlic', denom: 'clove' },
+          { qty: 1, name: 'garlic', denom: 'cloves' },
           { qty: 1/2, name: 'oregano', denom: 'tsp' },
           { qty: 1/2, name: 'pepper', denom: 'tsp' },
           { qty: 1, name: 'tuna steak', denom: 'lb' }
@@ -789,14 +789,14 @@ const recipes = [
             denom: 'oz'
           },
           {
-            qty: 1,
+            qty: 10.75,
             name: 'condensed cream of mushroom soup',
-            denom: 'can '
+            denom: 'oz '
           },
           {
-            qty: 1,
+            qty: 10.75,
             name: 'condensed cream of chicken soup',
-            denom: 'can '
+            denom: 'oz '
           },
           { qty: 1/4, name: 'butter', denom: 'cup' },
           { qty: 1, name: 'milk', denom: 'cup' },
@@ -924,7 +924,7 @@ const recipes = [
           { qty: 1, name: 'onion', denom: 'medium' },
           { qty: 14.5, name: 'stewed tomatoes', denom: 'oz' },
           { qty: 15, name: 'tomato sauce', denom: 'oz' },
-          { qty: 15, name: 'kidney beans', denom: 'oz' },
+          { qty: 15, name: 'canned kidney beans', denom: 'oz' },
           { qty: 3/2, name: 'water', denom: 'cup' },
           { qty: 1, name: 'chili powder', denom: 'pinch' },
           { qty: 1, name: 'garlic powder', denom: 'pinch' },
@@ -971,15 +971,15 @@ const recipes = [
           { qty: 1, name: 'pepper', denom: 'tbsp' },
           {
             qty: 15,
-            name: 'kidney beans',
+            name: 'canned kidney beans',
             denom: 'oz'
           },
           {
             qty: 15,
-            name: 'garbanzo beans',
+            name: 'canned garbanzo beans',
             denom: 'oz'
           },
-          { qty: 15, name: 'black beans', denom: 'oz' },
+          { qty: 15, name: 'canned black beans', denom: 'oz' },
           { qty: 15, name: 'corn', denom: 'oz' }
         ]
       },
@@ -1000,7 +1000,7 @@ const recipes = [
           { qty: 4, name: 'chicken broth', denom: 'cup' },
           { qty: 3, name: 'fish sauce', denom: 'tbsp' },
           { qty: 1, name: 'brown sugar', denom: 'tbsp' },
-          { qty: 3, name: 'coconut milk', denom: '(13.5 ounce) cans' },
+          { qty: 40.5, name: 'coconut milk', denom: 'oz' },
           {
             qty: 1/2,
             name: 'shiitake mushrooms',
@@ -1040,7 +1040,7 @@ const recipes = [
           { qty: 1, name: 'oregano', denom: 'tsp' },
           {
             qty: 15,
-            name: 'black beans',
+            name: 'canned black beans',
             denom: 'oz'
           },
           {
@@ -1120,8 +1120,8 @@ const recipes = [
           { qty: 1, name: 'butter', denom: 'tbsp' },
           { qty: 1/2, name: 'onion', denom: 'cup' },
           { qty: 1/2, name: 'celery', denom: 'cup' },
-          { qty: 4, name: 'chicken broth', denom: 'can' },
-          { qty: 1, name: 'vegetable broth', denom: 'can' },
+          { qty: 58, name: 'chicken broth', denom: 'oz' },
+          { qty: 14.5, name: 'vegetable broth', denom: 'oz' },
           { qty: 1/2, name: 'cooked chicken breast', denom: 'lb' },
           { qty: 3/2, name: 'egg noodles', denom: 'cup' },
           { qty: 1, name: 'carrot', denom: 'cup' },
@@ -1637,7 +1637,7 @@ const recipes = [
       { qty: 1, name: 'cooking spray', denom: 'spray' },
       {
         qty: 16,
-        name: 'black beans',
+        name: 'canned black beans',
         denom: 'oz'
       },
       {
@@ -1717,7 +1717,7 @@ const recipes = [
       { qty: 4, name: 'fish sauce', denom: 'tsp' },
       { qty: 1/4, name: 'water', denom: 'cup' },
       { qty: 2, name: 'lime juice', denom: 'tbsp' },
-      { qty: 1, name: 'garlic', denom: 'clove' },
+      { qty: 1, name: 'garlic', denom: 'cloves' },
       { qty: 2, name: 'white sugar', denom: 'tbsp' },
       { qty: 1/2, name: 'garlic chili sauce', denom: 'tsp' },
       { qty: 3, name: 'hoisin sauce', denom: 'tbsp' },
@@ -1937,7 +1937,7 @@ const recipes = [
     ingredients: [
       { qty: 1, name: 'vegetable oil', denom: 'tsp' },
       { qty: 2, name: 'onion', denom: 'tbsp' },
-      { qty: 1, name: 'garlic', denom: 'clove' },
+      { qty: 1, name: 'garlic', denom: 'cloves' },
       {
         qty: 2,
         name: 'green chiles',
@@ -2094,9 +2094,9 @@ const recipes = [
       },
       { qty: 2, name: 'butter', denom: 'tbsp' },
       {
-        qty: 2,
+        qty: 21,
         name: 'condensed cream of chicken soup',
-        denom: '(10.5 ounce) cans'
+        denom: 'oz'
       },
       { qty: 1, name: 'onion', denom: 'medium' },
       {
@@ -2121,12 +2121,12 @@ const recipes = [
       { qty: 1, name: 'onion', denom: 'medium' },
       {
         qty: 16,
-        name: 'chili beans',
+        name: 'canned chili beans',
         denom: 'oz'
       },
       {
         qty: 15,
-        name: 'kidney beans',
+        name: 'canned kidney beans',
         denom: 'oz'
       },
       {
@@ -2138,7 +2138,7 @@ const recipes = [
       { qty: 1, name: 'water', denom: 'cup' },
       {
         qty: 29,
-        name: 'diced tomatoes',
+        name: 'canned diced tomatoes',
         denom: 'oz'
       },
       {
@@ -2474,7 +2474,7 @@ const recipes = [
       { qty: 2, name: 'cherry tomatoes', denom: 'cup' },
       {
         qty: 15,
-        name: 'garbanzo beans',
+        name: 'canned garbanzo beans',
         denom: 'oz'
       },
       { qty: 1, name: 'lime', denom: 'whole' },
@@ -2514,7 +2514,7 @@ const recipes = [
     servings: 4,
     ingredients: [
       { qty: 4, name: 'hoagie rolls', denom: 'whole' },
-      { qty: 1, name: 'beef consomme', denom: '(10.5 ounce) can' },
+      { qty: 10.5, name: 'beef consomme', denom: 'oz' },
       { qty: 1, name: 'water', denom: 'cup' },
       { qty: 1, name: 'deli roast beef', denom: 'lb' },
       { qty: 8, name: 'provolone cheese', denom: 'slices' }
@@ -2758,7 +2758,7 @@ const recipes = [
         name: 'vegetable broth',
         denom: 'cup'
       },
-      { qty: 3.5, name: 'black beans', denom: 'cup' },
+      { qty: 3.5, name: 'canned black beans', denom: 'cup' },
       { qty: 1, name: 'cumin', denom: 'tsp' },
       { qty: 1/4, name: 'cayenne pepper', denom: 'tsp' }
     ]
@@ -2900,14 +2900,14 @@ const recipes = [
       { qty: 1, name: 'jalapeno pepper', denom: 'medium' },
       { qty: 2, name: 'garlic', denom: 'cloves' },
       {
-        qty: 1,
-        name: 'black beans, rinsed and drained',
-        denom: 'can'
+        qty: 15,
+        name: 'canned black beans',
+        denom: 'oz'
       },
       {
-        qty: 1,
-        name: 'fire-roasted diced tomatoes',
-        denom: 'can'
+        qty: 14.5,
+        name: 'canned fire-roasted diced tomatoes',
+        denom: 'oz'
       },
       { qty: 1, name: 'corn', denom: 'cup' },
       { qty: 1, name: 'quinoa', denom: 'cup' },
@@ -2954,16 +2954,16 @@ const recipes = [
         denom: 'lb'
       },
       { qty: 1/2, name: 'chicken broth', denom: 'cup' },
-      { qty: 1, name: 'corn', denom: '(15 ounce) can' },
+      { qty: 15, name: 'canned corn', denom: 'oz' },
       {
-        qty: 1,
-        name: 'black beans',
-        denom: '(15 ounce) can'
+        qty: 15,
+        name: 'canned black beans',
+        denom: 'oz'
       },
       {
-        qty: 1,
-        name: 'diced tomatoes and green chilies',
-        denom: '(10 ounce) can'
+        qty: 10,
+        name: 'canned diced tomatoes',
+        denom: 'oz'
       },
       {
         qty: 1,
@@ -2997,7 +2997,7 @@ const recipes = [
     ingredients: [
       { qty: 1/4, name: 'ghee', denom: 'cup' },
       { qty: 1/2, name: 'onion', denom: 'medium' },
-      { qty: 1, name: 'garlic', denom: 'clove' },
+      { qty: 1, name: 'garlic', denom: 'cloves' },
       { qty: 1, name: 'cauliflower', denom: 'head' },
       { qty: 1, name: 'mushrooms', denom: 'cup' },
       { qty: 1/2, name: 'heavy whipping cream', denom: 'cup' },
@@ -3017,14 +3017,14 @@ const recipes = [
     cookTime: 55,
     servings: 6,
     ingredients: [
-      { qty: 1, name: 'diced tomatoes', denom: '(28 ounce) can' },
+      { qty: 28, name: 'canned diced tomatoes', denom: 'oz' },
       { qty: 3, name: 'water', denom: 'cup' },
       {
-        qty: 1,
-        name: 'kidney beans',
-        denom: '(15.5 ounce) can'
+        qty: 15.5,
+        name: 'canned kidney beans',
+        denom: 'oz'
       },
-      { qty: 1, name: 'red beans', denom: '(15.5 ounce) can' },
+      { qty: 15.5, name: 'canned red beans', denom: 'oz' },
       { qty: 1, name: 'yellow onion', denom: 'medium' },
       { qty: 6, name: 'tomato paste', denom: 'oz' },
       {

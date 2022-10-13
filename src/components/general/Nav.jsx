@@ -29,7 +29,7 @@ const Nav = () => {
           className="navbutton"
           onClick={() => navigate('/user/shoppingList')}
         >
-          Cart
+          List
         </button>
         <button className="navbutton" onClick={() => dispatch(logout())}>
           Logout
