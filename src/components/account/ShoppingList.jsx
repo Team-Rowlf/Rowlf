@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import {
@@ -6,7 +6,7 @@ import {
 	fetchShoppingList,
 	getListStatus,
 } from '../../features/shoppingList/shoppingListSlice';
-import AmazonFreshForm from '../amazon/AmazonFreshForm';
+import AmazonFreshForm from '../amazon/AmazonFreshForm.jsx';
 
 const ShoppingList = () => {
 	const dispatch = useDispatch();
@@ -49,10 +49,10 @@ const ShoppingList = () => {
 		console.log('handle', id);
 		dispatch(fetchRemoveFromShoppingList({ id }));
 	};
-	React.useEffect(() => {
+	useEffect(() => {
 		dispatch(fetchShoppingList());
 	}, []);
-	React.useEffect(() => {}, [listStatus]);
+	useEffect(() => {}, [listStatus]);
 
 	const inLineStyle = {
 		display: `flex`,
