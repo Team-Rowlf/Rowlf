@@ -18,6 +18,8 @@ const Login = () => {
 	const loginAttempt = useSelector((state) => state.user.token);
 	const loginAttempError = useSelector(getError);
 	const isLogged = useSelector(isLoggedStatus);
+	const ToastSuccessId = 'ToastSuccessId';
+	const ToastErrorId = 'ToastErrorId';
 
 	const handleRegister = () => {
 		navigate('/signUp');
@@ -33,7 +35,20 @@ const Login = () => {
 		});
 	};
 	useEffect(() => {
-		loginAttempt && dispatch(fetchUser());
+		loginAttempt &&
+			dispatch(fetchUser()) &&
+			toast.success('🎉 Success Login 🎉!', {
+				position: 'bottom-right',
+				autoClose: 3000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: 'dark',
+				toastId: ToastSuccessId,
+			}) &&
+			navigate('/');
 	}, [loginAttempt]);
 
 	useEffect(() => {
@@ -47,6 +62,7 @@ const Login = () => {
 				draggable: true,
 				progress: undefined,
 				theme: 'dark',
+				toastId: ToastErrorId,
 			});
 			dispatch(setError());
 		}
@@ -54,7 +70,7 @@ const Login = () => {
 
 	return (
 		<>
-			<ToastContainer limit={1} />
+			{/* <ToastContainer /> */}
 			<div className="large-logo">
 				<img src="/largelogo.svg" alt="Logo" />
 				<h1>HELLO KITCHEN</h1>

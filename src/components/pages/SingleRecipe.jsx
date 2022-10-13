@@ -81,6 +81,7 @@ const RecipePage = () => {
 			? "Added to 'Likes'"
 			: "Removed from 'Likes'";
 		const color = addLike || removeDislike ? '#0D730D' : '#8B2635';
+
 		toast.success(message, {
 			position: 'top-right',
 			autoClose: 1500,
@@ -90,6 +91,7 @@ const RecipePage = () => {
 			draggable: true,
 			progress: undefined,
 			theme: 'dark',
+			toastId: message,
 		});
 	};
 
@@ -155,7 +157,6 @@ const RecipePage = () => {
 					))}
 				</ul>
 			</div>
-			<ToastContainer limit={1} />
 		</div>
 	);
 };

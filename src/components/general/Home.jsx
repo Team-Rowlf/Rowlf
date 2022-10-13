@@ -4,6 +4,7 @@ import { useNavigate, Link, Outlet } from 'react-router-dom';
 import { fetchUser } from '../../features/user/userSlice.js';
 import Login from '../account/Login.jsx';
 import Signup from '../account/Signup.jsx';
+import { toast } from 'react-toastify';
 
 const Home = () => {
 	const navigate = useNavigate();

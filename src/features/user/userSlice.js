@@ -89,16 +89,7 @@ const userSlice = createSlice({
 				state.userInfo = action.payload;
 				state.isLogged = true;
 				state.token = localStorage.getItem('token');
-				toast.success('🎉 Success Login 🎉!', {
-					position: 'bottom-right',
-					autoClose: 3000,
-					hideProgressBar: false,
-					closeOnClick: true,
-					pauseOnHover: true,
-					draggable: true,
-					progress: undefined,
-					theme: 'dark',
-				});
+
 				//check for admin
 				// state.isAdmin = action.payload.isAdmin ? action.payload.isAdmin : false;
 			})

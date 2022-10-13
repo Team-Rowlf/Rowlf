@@ -33,7 +33,6 @@ const User = () => {
 	return (
 		<div className="user">
 			<Nav />
-			<ToastContainer limit={1} />
 			<Outlet />
 		</div>
 	);
