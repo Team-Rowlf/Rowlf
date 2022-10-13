@@ -13,7 +13,7 @@ const Nav = () => {
     if (user.isAdmin) {
       setIsAdmin(true);
     }
-  },[user.id,user.isAdmin]);
+  },[user.isAdmin]);
 
   return (
     <div className="nav">
@@ -24,9 +24,12 @@ const Nav = () => {
         <h1>Hello Kitchen</h1>
       </div>
       <nav className="nav-bar">
-        <button className="navbutton" onClick={() => navigate('/adminportal')}>
-          Admin
-        </button>
+        {isAdmin ?
+          <button className="navbutton" onClick={() => navigate('/adminportal')}>
+            Admin
+          </button>
+          : <></>
+        }
         <button className="navbutton" onClick={() => navigate('/user/profile')}>
           Profile
         </button>

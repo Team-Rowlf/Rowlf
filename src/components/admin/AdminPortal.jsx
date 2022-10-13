@@ -1,11 +1,18 @@
 import React, { useEffect } from "react"; 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { fetchUser } from "../../features/user/userSlice.js";
 import Nav from "../general/Nav.jsx";
 
 const AdminPortal = () => {
     const user = useSelector((state) => state.user);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+
+    useEffect(() => {
+        dispatch(fetchUser())
+    },[]);
 
     useEffect(() => {
         const token = window.localStorage.getItem('token');
@@ -13,7 +20,7 @@ const AdminPortal = () => {
             navigate('/');
             // add in toast error here; 'user not authorized'
         }
-    },[user.isLogged])
+    },[user.isLogged]);
 
     return (
         <div id="admin-portal">
