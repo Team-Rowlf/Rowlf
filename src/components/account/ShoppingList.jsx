@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import {
@@ -49,10 +49,10 @@ const ShoppingList = () => {
 		console.log('handle', id);
 		dispatch(fetchRemoveFromShoppingList({ id }));
 	};
-	React.useEffect(() => {
+	useEffect(() => {
 		dispatch(fetchShoppingList());
 	}, []);
-	React.useEffect(() => {}, [listStatus]);
+	useEffect(() => {}, [listStatus]);
 
 	const inLineStyle = {
 		display: `flex`,

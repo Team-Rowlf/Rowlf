@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import {
@@ -24,12 +24,12 @@ const RecipePage = () => {
 	const getUserLikesId = useSelector(getAllLikesId);
 	const getUserDisLikesId = useSelector(getAllDislikesId);
 
-	React.useEffect(() => {
+	useEffect(() => {
 		dispatch(fetchSingleRecipe(recipeId));
 		return () => dispatch(clearSingleRecipe());
 	}, []);
 
-	React.useEffect(() => {
+	useEffect(() => {
 		getUserLikesId.includes(Number(recipeId))
 			? document
 					.querySelector(`button[value="like"]`)
