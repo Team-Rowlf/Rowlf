@@ -2,13 +2,42 @@
     display: flex;
     flex-direction: column;
 }
-
 .admin-portal-link-container {
     display: flex;
     flex-direction: row;
     // could later add in some styling where under certain width, flex-direction becomes column
 }
-
 .admin-portal-link {
     margin: .5em;
+}
+table, th, td {
+    border: 1px solid;
+}
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+.allusers-header, .allrecipes-header {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    div {
+        margin: .25em;
+    }
+}
+.display-info {
+    flex-direction: row;
+    display: flex;
+
+}
+.display-text {
+    font-style: italic;
+    margin-right: 1em;
+}
+.sort-checkbox {
+    margin: .5em
 }

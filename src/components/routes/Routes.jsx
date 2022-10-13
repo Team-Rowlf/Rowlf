@@ -14,6 +14,9 @@ import Likes from '../pages/Likes.jsx';
 import Dislikes from '../pages/Dislikes.jsx';
 import LeafletMap from '../leaflet/LeafletMap.jsx';
 import AdminPortal from '../admin/AdminPortal.jsx';
+import AllUsersAdminPage from '../admin/AllUsersAdminPage.jsx';
+import AllRecipesAdminPage from '../admin/AllRecipesAdminPage.jsx';
+import AddRecipeAdminPage from '../admin/AddRecipeAdminPage.jsx';
 
 const RoutesComponent = () => {
     return (
@@ -34,7 +37,10 @@ const RoutesComponent = () => {
 				</Route>
 				<Route path="*" element={<NotFound />} />
 			</Route>
-			<Route path = "/adminportal" element={<AdminPortal />} />
+			<Route path="/adminportal" element={<AdminPortal />} />
+			<Route path="/adminportal/allusers" element={<AllUsersAdminPage />} />
+			<Route path="/adminportal/allrecipes" element={<AllRecipesAdminPage />} />
+			<Route path="/adminportal/addrecipe" element={<AddRecipeAdminPage />} />
 			<Route path="leaflet" element={<LeafletMap />} />
 			<Route path="*" element={<NotFound />} />
 		</Routes>

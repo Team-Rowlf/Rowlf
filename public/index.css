@@ -623,3 +623,37 @@ a,
 .admin-portal-link {
   margin: 0.5em;
 }
+table,
+th,
+td {
+  border: 1px solid;
+}
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+.allusers-header,
+.allrecipes-header {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+.allusers-header div,
+.allrecipes-header div {
+  margin: 0.25em;
+}
+.display-info {
+  flex-direction: row;
+  display: flex;
+}
+.display-text {
+  font-style: italic;
+  margin-right: 1em;
+}
+.sort-checkbox {
+  margin: 0.5em;
+}
