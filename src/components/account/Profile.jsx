@@ -4,7 +4,6 @@ import { Link, Outlet } from 'react-router-dom';
 import Dislikes from '../pages/Dislikes.jsx';
 import Likes from '../pages/Likes.jsx';
 import EditProfile from './EditProfile.jsx';
-import ProfileFrame from './ProfileFrame.jsx';
 
 const Profile = () => {
 	const profile = useSelector((state) => state.profile);
@@ -16,33 +15,12 @@ const Profile = () => {
 		for (let i = 0; i < tablinks.length; i++) {
 			tablinks[i].className = tablinks[i].className.replace(" active", "");
 		}
-		if(event){
-			console.log(event)
-			if(event.target){
-				event.target.className += " active";
-			}
+		
+		console.log(event)
+		if(event.target){
+			event.target.className += " active";
 		}
 		
-		else if(event.target == undefined){
-			return(
-				<Likes />
-			)
-		}
-		else if (event.target.id == "likes"){
-			return(
-				<Likes />
-			)
-		}
-		else if (event.target.id == "dislikes"){
-			return(
-				<Dislikes />
-			)
-		}
-		else if (event.target.id == "edit"){
-			return(
-				<EditProfile />
-			)
-		}
 	}
 
 	return (
@@ -50,7 +28,7 @@ const Profile = () => {
 			<nav>
 				
 				<Link to={'likes'}>
-					<button  className="tab" id="likes"  onClick={OnClick}>
+					<button  className="tab active" id="likes"  onClick={OnClick}>
 							Likes 
 					</button>
 				</Link >

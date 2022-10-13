@@ -24,7 +24,11 @@ const Likes = () => {
 	};
 
 	return !likes.length ? (
-		<div className="likes"> No Recipes </div>
+		<div className="dislikes"> 
+			<h2>
+				No Liked Recipes 
+			</h2>
+		</div>
 	) : (
 		<div className="likes">
 			{likedRecipes.map((recipe) => (
@@ -33,7 +37,7 @@ const Likes = () => {
 					<details>
 						<summary> Ingredients: </summary>
 						<ul>
-							{recipe.lineItems.map(ingredient=><ul key={ingredient.id}>{capitalize(ingredient.ingredient.name)}</ul>)}
+							{recipe.lineItems.map(ingredient=><li key={ingredient.id}>{capitalize(ingredient.ingredient.name)}</li>)}
 						</ul>
 					</details>
 				</div>
