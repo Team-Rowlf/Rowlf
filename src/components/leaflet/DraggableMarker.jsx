@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useMemo, useRef, useState } from 'react';
 import { Marker, Popup } from 'react-leaflet';
 
@@ -19,12 +19,12 @@ function DraggableMarker(props) {
   );
 
   //function that updates the position of the center in the map component using marker's location after it's been dragged
-  React.useEffect(() => {
+  useEffect(() => {
     props.setMarkerLocation(position);
   }, [position]);
 
   //whenever position is updated in the map component, the marker's position will also be updated
-  React.useEffect(() => {
+  useEffect(() => {
     setPosition(props.position);
   }, [props.position]);
 

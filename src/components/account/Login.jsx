@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -14,7 +14,7 @@ const Login = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
-	const [login, setLogin] = React.useState({});
+	const [login, setLogin] = useState({});
 	const loginAttempt = useSelector((state) => state.user.token);
 	const loginAttempError = useSelector(getError);
 	const isLogged = useSelector(isLoggedStatus);
@@ -32,12 +32,11 @@ const Login = () => {
 			[prop]: event.target.value,
 		});
 	};
-	React.useEffect(() => {
+	useEffect(() => {
 		loginAttempt && dispatch(fetchUser()) && navigate('/');
 	}, [loginAttempt]);
 
-	React.useEffect(() => {
-		console.log(isLogged);
+	useEffect(() => {
 		if (loginAttempError) {
 			toast.error(loginAttempError, {
 				position: 'bottom-center',
