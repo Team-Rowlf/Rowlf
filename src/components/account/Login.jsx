@@ -70,7 +70,6 @@ const Login = () => {
 
 	return (
 		<>
-			{/* <ToastContainer /> */}
 			<div className="large-logo">
 				<img src="/largelogo.svg" alt="Logo" />
 				<h1>HELLO KITCHEN</h1>
