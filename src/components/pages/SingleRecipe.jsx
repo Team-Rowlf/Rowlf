@@ -48,33 +48,36 @@ const RecipePage = () => {
 		const dislike = document.querySelector(`button[value="dislike"]`);
 
 		// if you like it check if the button has a certain class to add/remove class and dispatch to add/remove database then check if opposite is present
+		let addLike, removeLike, addDislike, removeDislike = false;
 
 		if (prop === `like`) {
 			like.classList.contains('like-recipe')
-				? dispatch(userLikeRecipe({ token, action: 'remove', id: recipeId })) &&
-				  like.classList.remove('like-recipe')
+				? (removeLike=true) && dispatch(userLikeRecipe({ token, action: 'remove', id: recipeId })) &&
+				  like.classList.remove('like-recipe') 
 				: dislike.classList.contains('dislike-recipe')
-				? dispatch(userLikeRecipe({ token, action: 'add', id: recipeId })) &&
+				? (addLike=true) && dispatch(userLikeRecipe({ token, action: 'add', id: recipeId })) &&
 				  dispatch(
 						userDisLikeRecipe({ token, action: 'remove', id: recipeId })
 				  ) &&
 				  like.classList.add('like-recipe') &&
 				  dislike.classList.remove('dislike-recipe')
-				: dispatch(userLikeRecipe({ token, action: 'add', id: recipeId })) &&
+				: (addLike=true) && dispatch(userLikeRecipe({ token, action: 'add', id: recipeId })) &&
 				  like.classList.add('like-recipe');
 		} else {
 			dislike.classList.contains('dislike-recipe')
-				? dispatch(
+				? (removeDislike=true) && dispatch(
 						userDisLikeRecipe({ token, action: 'remove', id: recipeId })
 				  ) && dislike.classList.remove('dislike-recipe')
 				: like.classList.contains('like-recipe')
-				? dispatch(userDisLikeRecipe({ token, action: 'add', id: recipeId })) &&
+				? (addDislike=true) && dispatch(userDisLikeRecipe({ token, action: 'add', id: recipeId })) &&
 				  dispatch(userLikeRecipe({ token, action: 'remove', id: recipeId })) &&
 				  like.classList.remove('like-recipe') &&
 				  dislike.classList.add('dislike-recipe')
-				: dispatch(userDisLikeRecipe({ token, action: 'add', id: recipeId })) &&
-				  dislike.classList.add('dislike-recipe');
+				: (addDislike=true) && dispatch(userDisLikeRecipe({ token, action: 'add', id: recipeId })) &&
+				  dislike.classList.add('dislike-recipe')
 		}
+		const message = addDislike ? "Recipe added to 'Dislikes'" : (removeDislike ? "Recipe removed from 'Dislikes'" : (addLike ? "Recipe added to 'Likes'" : "Recipe removed from 'Likes'"))
+		Toastify({text: message, duration:1500, newWindow: true, gravity: "bottom", position: "right", backgroundColor: "#8B2635"}).showToast();
 		dispatch(getUserLikes({ token }));
 		dispatch(getUserDisLikes({ token }));
 	};
