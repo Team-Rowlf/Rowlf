@@ -1,11 +1,11 @@
 import React from 'react';
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { Marker, Popup } from 'react-leaflet';
 
 function DraggableMarker(props) {
-  const [draggable, setDraggable] = useState(false);
   const [position, setPosition] = useState(props.position);
   const markerRef = useRef(null);
+  //gets the location and sets marker position whenever the marker is dragged
   const eventHandlers = useMemo(
     () => ({
       dragend() {
@@ -18,15 +18,15 @@ function DraggableMarker(props) {
     []
   );
 
+  //function that updates the position of the center in the map component using marker's location after it's been dragged
   React.useEffect(() => {
-    props.func(position);
+    props.setMarkerLocation(position);
   }, [position]);
 
-  const toggleDraggable = useCallback(() => {
-    setDraggable((d) => !d);
-  }, []);
-
-  // console.log(position);
+  //whenever position is updated in the map component, the marker's position will also be updated
+  React.useEffect(() => {
+    setPosition(props.position);
+  }, [props.position]);
 
   return (
     <Marker
@@ -36,7 +36,7 @@ function DraggableMarker(props) {
       ref={markerRef}
       icon={props.icon}
     >
-      <Popup>You are here. Click and hold to drag</Popup>
+      <Popup className="popup">You are here. Click and hold to drag</Popup>
     </Marker>
   );
 }
