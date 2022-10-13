@@ -14,6 +14,25 @@ export const fetchAllUsers = createAsyncThunk('admin/fetchAllUsers',
         }
 });
 
+export const attemptAddRecipe = createAsyncThunk('admin/attemptAddRecipe', 
+    async (params) => {
+        const token = window.localStorage.getItem('token');
+        if (token) {
+            const { recipeDetails, cuisines, restrictions } = params;
+            const { data } = await axios.post('/api/recipes/add-recipe', 
+                {
+                    recipeDetails,
+                    cuisines,
+                    restrictions
+                },
+                {
+                    headers: { authorization: token },
+                });
+            return data;
+        }
+    }
+)
+
 const initialState = {
     allUsers: [],
     numUsers: NaN,

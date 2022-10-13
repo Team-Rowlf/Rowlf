@@ -37,7 +37,10 @@ const ModifyRecipeAdminPage = () => {
     },[user.isLogged]);
 
     return (
-        <h1 className="loading">PlaceHolder Component for Updating Recipe {params.id}</h1>
+        <div>
+            <Nav />
+            <h1 className="loading">PlaceHolder Component for Updating Recipe {params.id}</h1>
+        </div>
     )
 }
 
