@@ -33,7 +33,7 @@ const Login = () => {
 		});
 	};
 	useEffect(() => {
-		loginAttempt && dispatch(fetchUser()) && navigate('/');
+		loginAttempt && dispatch(fetchUser());
 	}, [loginAttempt]);
 
 	useEffect(() => {
