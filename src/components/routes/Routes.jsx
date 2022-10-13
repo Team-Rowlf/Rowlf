@@ -17,6 +17,7 @@ import AdminPortal from '../admin/AdminPortal.jsx';
 import AllUsersAdminPage from '../admin/AllUsersAdminPage.jsx';
 import AllRecipesAdminPage from '../admin/AllRecipesAdminPage.jsx';
 import AddRecipeAdminPage from '../admin/AddRecipeAdminPage.jsx';
+import ModifyRecipeAdminPage from '../admin/ModifyRecipeAdminPage.jsx';
 
 const RoutesComponent = () => {
     return (
@@ -41,6 +42,7 @@ const RoutesComponent = () => {
 			<Route path="/adminportal/allusers" element={<AllUsersAdminPage />} />
 			<Route path="/adminportal/allrecipes" element={<AllRecipesAdminPage />} />
 			<Route path="/adminportal/addrecipe" element={<AddRecipeAdminPage />} />
+			<Route path="/adminportal/updaterecipe/:id" element={<ModifyRecipeAdminPage />} />
 			<Route path="leaflet" element={<LeafletMap />} />
 			<Route path="*" element={<NotFound />} />
 		</Routes>

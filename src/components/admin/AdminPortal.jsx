@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"; 
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { fetchUser } from "../../features/user/userSlice.js";
 import Nav from "../general/Nav.jsx";
 import { toast } from 'react-toastify';
