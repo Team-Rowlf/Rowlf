@@ -23,7 +23,11 @@ import Toastify from 'toastify-js'
 import { fetchAddtoShoppingList } from '../../features/shoppingList/shoppingListSlice';
 import { getUserToken } from '../../features/user/userSlice';
 import chalk from 'chalk';
+<<<<<<< HEAD
 >>>>>>> refs/rewritten/onto
+=======
+import { ToastContainer, toast } from 'react-toastify';
+>>>>>>> 6691024 (changed toast notifications to match existing notifcations; removed previous module I was using)
 
 const RecipePage = () => {
 	const dispatch = useDispatch();
@@ -138,7 +142,22 @@ const RecipePage = () => {
 				  dispatch(userDisLikeRecipe({ token, action: 'add', id: recipeId }))
 				: dispatch(userDisLikeRecipe({ token, action: 'add', id: recipeId }));
 		}
+<<<<<<< HEAD
 >>>>>>> refs/rewritten/onto
+=======
+		const message = addDislike ? "Added to 'Dislikes'" : (removeDislike ? "Removed from 'Dislikes'" : (addLike ? "Added to 'Likes'" : "Removed from 'Likes'"))
+		const color = (addLike || removeDislike) ? "#0D730D" : "#8B2635";
+		toast.success(message, {
+			position: 'bottom-right',
+			autoClose: 1500,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+			theme: 'dark',
+		})
+>>>>>>> 6691024 (changed toast notifications to match existing notifcations; removed previous module I was using)
 	};
 
 	const handleCart = () => {
@@ -203,6 +222,7 @@ const RecipePage = () => {
 					))}
 				</ul>
 			</div>
+			<ToastContainer limit={1} />
 		</div>
 	);
 };

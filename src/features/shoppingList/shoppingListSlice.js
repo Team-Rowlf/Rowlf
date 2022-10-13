@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import Toastify from 'toastify-js';
 
 export const fetchShoppingList = createAsyncThunk(
@@ -68,12 +69,30 @@ const shoppingListSlice = createSlice({
 			.addCase(fetchAddtoShoppingList.fulfilled, (state, action) => {
 				state.status = 'succeeded';
 				state.shoppingList = action.payload;
-				Toastify({text: "Added recipe to shopping list!", duration:1500, newWindow: true, gravity: "bottom", position: "right", backgroundColor: "#0D730D"}).showToast();
+				toast.success("Added recipe to shopping list!", {
+					position: 'bottom-right',
+					autoClose: 1500,
+					hideProgressBar: false,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: undefined,
+					theme: 'dark',
+				})
 			})
 			.addCase(fetchAddtoShoppingList.rejected, (state, action) => {
 				state.status = 'failed';
 				state.error = action.error;
-				Toastify({text: "Recipe already in shopping list", duration:1500, newWindow: true, gravity: "bottom", position: "right", backgroundColor: "#8B2635"}).showToast();
+				toast.warning("Recipe already in shopping list", {
+					position: 'bottom-right',
+					autoClose: 1500,
+					hideProgressBar: false,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: undefined,
+					theme: 'dark',
+				})
 			})
 			.addCase(fetchRemoveFromShoppingList.pending, (state, action) => {
 				state.status = 'pending';
