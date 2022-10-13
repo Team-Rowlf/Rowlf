@@ -15,7 +15,7 @@ const Recipes = () => {
 	const [restrictionFilter, setRestrictionFilter] = useState('all');
 	const [sortDirection, setSortDirection] = useState('');
 	const [page, setPage] = useState(1);
-	const [list, setList] = useState(filteredRecipes.slice(0,25))
+	const [list, setList] = useState(filteredRecipes.slice(0, 25));
 	const [showROTD, setShowROTD] = useState(true);
 
 	const cuisines = [
@@ -41,7 +41,7 @@ const Recipes = () => {
 		'lactose-free',
 		'pescatarian',
 	];
-	
+
 	useEffect(() => {
 		dispatch(
 			fetchFilteredRecipes({
@@ -50,12 +50,12 @@ const Recipes = () => {
 				sortDirection: sortDirection,
 			})
 		);
-		setShowROTD((cuisineFilter === 'all') && (restrictionFilter === 'all'))
-	},[cuisineFilter,restrictionFilter,sortDirection]);
-	
+		setShowROTD(cuisineFilter === 'all' && restrictionFilter === 'all');
+	}, [cuisineFilter, restrictionFilter, sortDirection]);
+
 	useEffect(() => {
-		if (recipeStatus === 'succeeded') setList(filteredRecipes.slice(0,25))
-	},[recipeStatus])
+		if (recipeStatus === 'succeeded') setList(filteredRecipes.slice(0, 25));
+	}, [recipeStatus]);
 
 	const handlefilter = (prop) => (event) => {
 		if (prop === 'cuisines') setCuisineFilter(event.target.value);
@@ -73,21 +73,24 @@ const Recipes = () => {
 		return () => window.removeEventListener('scroll', handleScroll);
 	}, []);
 
-	useEffect(()=>{
-		setList(filteredRecipes.slice(0,(25*Number(page))))
-	},[page])
+	useEffect(() => {
+		setList(filteredRecipes.slice(0, 25 * Number(page)));
+	}, [page]);
 
 	function handleScroll() {
-		if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
-		setPage(page=>page+1);
+		if (
+			window.innerHeight + document.documentElement.scrollTop !==
+			document.documentElement.offsetHeight
+		)
+			return;
+		setPage((page) => page + 1);
 	}
 
-	const date = new Date;
+	const date = new Date();
 	const day = date.getDate();
 	const month = date.getMonth();
-	const id = (recipes.length - 1) % (day*month)
-	const rotd = recipes[id]
-
+	const id = (recipes.length - 1) % (day * month);
+	const rotd = recipes[id];
 
 	return recipeStatus === 'pending' ? (
 		<h1 className="loading">LOADING...</h1>
@@ -97,16 +100,16 @@ const Recipes = () => {
 				<div className="rotd">
 					{/* having only show recipe of the day if not filtering */}
 					{showROTD && recipes.length ? (
-							<div key={recipes[id].id} className="rotd-container">
-								<h1 className="rotd-title">Recipe of the Day</h1>
-								<div className="img">
-									<Link to={`${recipes[id].id}`}>
-										<img src={recipes[id].img} alt="recipe" />
-										<h2>{recipes[id].name}</h2>
-										<p> Serving Size: {recipes[id].servings} </p>
-									</Link>
-								</div>
+						<div key={recipes[id].id} className="rotd-container">
+							<h1 className="rotd-title">Recipe of the Day</h1>
+							<div className="img">
+								<Link to={`${recipes[id].id}`}>
+									<img src={recipes[id].img} alt="recipe" />
+									<h2>{recipes[id].name}</h2>
+									<p> Serving Size: {recipes[id].servings} </p>
+								</Link>
 							</div>
+						</div>
 					) : (
 						<></>
 					)}
