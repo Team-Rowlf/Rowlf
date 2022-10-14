@@ -17,6 +17,8 @@ const Recipes = () => {
 	const [page, setPage] = useState(1);
 	const [list, setList] = useState(filteredRecipes.slice(0, 25));
 	const [showROTD, setShowROTD] = useState(true);
+	let load = undefined;
+	let loading = undefined;
 
 	const cuisines = [
 		'all',
@@ -50,6 +52,7 @@ const Recipes = () => {
 				sortDirection: sortDirection,
 			})
 		);
+		
 		setShowROTD(cuisineFilter === 'all' && restrictionFilter === 'all');
 	}, [cuisineFilter, restrictionFilter, sortDirection]);
 
@@ -65,25 +68,57 @@ const Recipes = () => {
 		setSortDirection(event.target.value);
 	};
 
+	const rotatehelper = (val, minA, maxA, minB, maxB) => {
+		return minB + ((val - minA) * (maxB - minB)) / (maxA - minA);
+	};
+
+	const handleMouseMove = (event) => {
+		let img = event.target;
+
+		let mouseX = event.nativeEvent.offsetX;
+		let mouseY = event.nativeEvent.offsetY;
+		let rotateY = rotatehelper(mouseX, 0, 180, -25, 25);
+		let rotateX = rotatehelper(mouseY, 0, 250, 25, -25);
+		let brightness = rotatehelper(mouseY, 0, 250, 1.5, 0.5);
+
+		img.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+		img.style.filter = `brightness(${brightness})`;
+	};
+
 	// in the future, could have a different formula for recipe of the day; highest rated would be recipe of the day, rolling basis or something
 
 	//handle scroll for infinite scrolling
-	useEffect(() => {
-		window.addEventListener('scroll', handleScroll);
-		return () => window.removeEventListener('scroll', handleScroll);
-	}, []);
+	// useEffect(() => {
+	// 	window.addEventListener('scroll', handleScroll);
+	// 	return () => window.removeEventListener('scroll', handleScroll);
+	// }, []);
 
 	useEffect(() => {
 		setList(filteredRecipes.slice(0, 25 * Number(page)));
 	}, [page]);
 
-	function handleScroll() {
-		if (
-			window.innerHeight + document.documentElement.scrollTop !==
-			document.documentElement.offsetHeight
-		)
-			return;
+	// function handleScroll() {
+	// 	if (
+	// 		window.innerHeight + document.documentElement.scrollTop !==
+	// 		document.documentElement.offsetHeight
+	// 	)
+	// 		return;
+	// 	setPage((page) => page + 1);
+	// }
+
+	
+	const handleLoad = () =>{
+		function reset () {
+			console.log("FINISHED TIMER!!")
+			load.innerHTML = 'Load More';
+			load.classList.remove('fa-spin');
+		}
+		load = document.getElementById('load');
+		loading = document.getElementById('loading')
 		setPage((page) => page + 1);
+		load.innerHTML = 'Loading'
+		load.classList.add('fa-spin');
+		setTimeout(reset,2000)
 	}
 
 	const date = new Date();
@@ -172,10 +207,23 @@ const Recipes = () => {
 				{list.length ? (
 					list.map((recipe) => (
 						<Link key={recipe.id} to={`${recipe.id}`}>
-							<div className="recipe">
+							<div
+								className="recipe recipes-list-hover"
+								onMouseLeave={(event) => {
+									event.target.lastChild.style.transform
+										? (event.target.lastChild.style.transform =
+												'rotateX(0deg) rotateY(0deg)')
+										: '';
+									event.target.lastChild.style.filter = 'brightness(1)';
+								}}
+							>
 								<h3>{recipe.name}</h3>
 								<p>Serving Size: {recipe.servings} </p>
-								<img src={recipe.img} alt="recipe" />
+								<img
+									src={recipe.img}
+									alt="recipe"
+									onMouseMove={handleMouseMove}
+								/>
 							</div>
 						</Link>
 					))
@@ -183,6 +231,7 @@ const Recipes = () => {
 					<h2>No Matches</h2>
 				)}
 			</div>
+			<button id='load' className='button ' onClick={handleLoad}>Load More</button>
 		</div>
 	);
 };
