@@ -115,6 +115,7 @@ const RecipePage = () => {
 	) : (
 		<div className="recipe-page">
 			<div className="recipe-container">
+				{!recipe.isActive ? <p className='not-active-warning'>(Note: this recipe is not active in our database. It may have some outdated information.)</p> : <></>}
 				<h1>{recipe.name}</h1>
 				<img src={recipe.img} alt="dish" />
 				<div className="recipe-buttons">

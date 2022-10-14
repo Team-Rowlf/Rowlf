@@ -18,6 +18,7 @@ router.get('/', async (req, res, next) => {
       }
       const { rows, count } = await Recipe.findAndCountAll({
         distinct: true,
+        where: {isActive: true},
         order: [orderArr],
         offset: (req.query.page - 1) * 25,
         limit: 25,
@@ -46,6 +47,7 @@ router.get('/', async (req, res, next) => {
       }
       const { rows, count } = await Recipe.findAndCountAll({
         distinct: true,
+        where: {isActive: true},
         order: [orderArr],
         include: [
           cuisineObj,
@@ -56,6 +58,7 @@ router.get('/', async (req, res, next) => {
       res.send({ rows, count });
     } else {
       const { rows, count } = await Recipe.findAndCountAll({
+        where: {isActive: true},
         include: [
           { model: Cuisine },
           { model: Restriction },

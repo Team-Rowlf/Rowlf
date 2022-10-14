@@ -357,6 +357,10 @@ button {
 .dislike-recipe {
   background: red;
 }
+.not-active-warning {
+  color: red;
+  font-style: italic;
+}
 .recipe-container {
   margin: auto;
   display: flex;
