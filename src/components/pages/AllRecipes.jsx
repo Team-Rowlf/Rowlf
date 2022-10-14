@@ -17,6 +17,8 @@ const Recipes = () => {
 	const [page, setPage] = useState(1);
 	const [list, setList] = useState(filteredRecipes.slice(0, 25));
 	const [showROTD, setShowROTD] = useState(true);
+	let load = undefined;
+	let loading = undefined;
 
 	const cuisines = [
 		'all',
@@ -50,6 +52,7 @@ const Recipes = () => {
 				sortDirection: sortDirection,
 			})
 		);
+		
 		setShowROTD(cuisineFilter === 'all' && restrictionFilter === 'all');
 	}, [cuisineFilter, restrictionFilter, sortDirection]);
 
@@ -68,22 +71,37 @@ const Recipes = () => {
 	// in the future, could have a different formula for recipe of the day; highest rated would be recipe of the day, rolling basis or something
 
 	//handle scroll for infinite scrolling
-	useEffect(() => {
-		window.addEventListener('scroll', handleScroll);
-		return () => window.removeEventListener('scroll', handleScroll);
-	}, []);
+	// useEffect(() => {
+	// 	window.addEventListener('scroll', handleScroll);
+	// 	return () => window.removeEventListener('scroll', handleScroll);
+	// }, []);
 
 	useEffect(() => {
 		setList(filteredRecipes.slice(0, 25 * Number(page)));
 	}, [page]);
 
-	function handleScroll() {
-		if (
-			window.innerHeight + document.documentElement.scrollTop !==
-			document.documentElement.offsetHeight
-		)
-			return;
+	// function handleScroll() {
+	// 	if (
+	// 		window.innerHeight + document.documentElement.scrollTop !==
+	// 		document.documentElement.offsetHeight
+	// 	)
+	// 		return;
+	// 	setPage((page) => page + 1);
+	// }
+
+	
+	const handleLoad = () =>{
+		function reset () {
+			console.log("FINISHED TIMER!!")
+			load.innerHTML = 'Load More';
+			load.classList.remove('fa-spin');
+		}
+		load = document.getElementById('load');
+		loading = document.getElementById('loading')
 		setPage((page) => page + 1);
+		load.innerHTML = 'Loading'
+		load.classList.add('fa-spin');
+		setTimeout(reset,2000)
 	}
 
 	const date = new Date();
@@ -183,6 +201,7 @@ const Recipes = () => {
 					<h2>No Matches</h2>
 				)}
 			</div>
+			<button id='load' className='button ' onClick={handleLoad}>Load More</button>
 		</div>
 	);
 };
