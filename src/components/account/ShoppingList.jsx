@@ -8,6 +8,7 @@ import {
 } from '../../features/shoppingList/shoppingListSlice';
 import AmazonFreshForm from '../amazon/AmazonFreshForm.jsx';
 import { ToastContainer } from 'react-toastify';
+import { decimalToFraction } from '../../helperfunctions/fractions';
 
 const ShoppingList = () => {
 	const dispatch = useDispatch();
@@ -100,7 +101,7 @@ const ShoppingList = () => {
 													name={recipe.name}
 													onClick={handleCheck}
 												/>
-												{capitalize(ingredient.ingredient.name)} ({ingredient.qty}{' '}
+												{capitalize(ingredient.ingredient.name)} ({ingredient.measurement.toLowerCase() !== 'to taste' ? `${decimalToFraction(ingredient.qty)} ` : ''}
 												{capitalize(ingredient.measurement)})
 											</div>
 										);
