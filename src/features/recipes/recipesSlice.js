@@ -12,8 +12,8 @@ export const fetchRecipes = createAsyncThunk(
 export const fetchRecipesByPage = createAsyncThunk(
 	'recipes/fetchRecipesByPage',
 	async (params) => {
-		const {page, cuisine, restriction} = params;
-		const { data } = await axios.get(`/api/recipes?page=${page}&cuisine=${cuisine}&restriction=${restriction}`);
+		const {page, cuisine, restriction, active} = params;
+		const { data } = await axios.get(`/api/recipes?page=${page}&cuisine=${cuisine}&restriction=${restriction}` + (active === 'both' ? '' : (active === 'yes' ? '&active=yes' : '&active=no')));
 		return data;
 	}
 );
@@ -33,6 +33,27 @@ export const fetchSingleRecipe = createAsyncThunk(
 		const { data } = await axios.get(`/api/recipes/${id}`);
 		return data;
 	}
+)
+
+//admin only functionality
+export const attemptUpdateRecipe = createAsyncThunk('recipes/attemptUpdateRecipe',
+    async (params) => {
+        const token = window.localStorage.getItem('token');
+        if (token) {
+            const { recipeDetails, cuisines, restrictions, ingredients } = params;
+            const { data } = await axios.put(`/api/recipes/${recipeDetails.id}`, 
+                {
+                    recipeDetails,
+                    cuisines,
+                    restrictions,
+                    ingredients
+                },
+                {
+                    headers: { authorization: token },
+                });
+            return data;
+        }
+    }
 )
 
 const initialState = {
@@ -102,7 +123,17 @@ const recipesSlice = createSlice({
 			.addCase(fetchSingleRecipe.rejected, (state, action) => {
 				state.status = 'failed';
 				state.error = action.error;
-			});	
+			})
+			.addCase(attemptUpdateRecipe.pending, (state, action) => {
+                state.status = 'pending';
+            })
+            .addCase(attemptUpdateRecipe.fulfilled, (state, action) => {
+				state.singleRecipe = action.payload;
+                state.status = 'succeeded';
+            })
+            .addCase(attemptUpdateRecipe.rejected, (state, action) => {
+                state.status = 'failed';
+            });	
 	},
 });
 

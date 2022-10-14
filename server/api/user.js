@@ -107,7 +107,6 @@ router.get('/me/currentList', requireToken, async (req, res, next) => {
 	try {
 		const user = await User.findByPk(req.user.id);
 		const currentList = await user.getCurrentList();
-		// console.log(`api`, currentList);
 		res.send(currentList);
 	} catch (error) {
 		next(error);
@@ -276,7 +275,6 @@ router.put(
 router.get('/all', requireToken, isAdmin, async (req, res, next) => {
 	try {
 		if (req.query.page) {
-			console.log('req.query.sort', req.query.sort)
 			const orderArr = (req.query.sort === 'true') ? [Sequelize.fn('lower',Sequelize.col('lastName')), 'asc'] : ['id','asc']
 			const { rows, count } = await User.findAndCountAll({
 				order: [orderArr],

@@ -3,7 +3,7 @@ import Nav from "../general/Nav.jsx";
 import { toast } from 'react-toastify';
 import { fetchUser } from "../../features/user/userSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { attemptAddRecipe } from "../../features/admin/adminSlice.js";
 
 const AddRecipeAdminPage = () => {
@@ -76,7 +76,7 @@ const AddRecipeAdminPage = () => {
           [props]: event.target.value,
         });
     };
-    const handleSubmit = async (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
         let recipe = { ...form };
         recipe.servings = Number(recipe.servings);

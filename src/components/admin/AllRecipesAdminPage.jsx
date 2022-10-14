@@ -17,6 +17,7 @@ const AllRecipesAdminPage = () => {
     const [page, setPage]  = useState(searchParams.get('page'))
     const [cuisineFilter, setCuisineFilter] = useState('all');
 	const [restrictionFilter, setRestrictionFilter] = useState('all');
+    const [activeFilter, setActiveFiler] = useState('both');
     
     const cuisines = [
 		'all',
@@ -42,6 +43,8 @@ const AllRecipesAdminPage = () => {
 		'pescatarian',
 	];
 
+    const statuses = ['both','yes','no']
+
     useEffect(() => {
         const token = window.localStorage.getItem('token');
         if ((user.isLogged && !user.isAdmin) || !token) {
@@ -65,19 +68,23 @@ const AllRecipesAdminPage = () => {
             dispatch(fetchRecipesByPage({
                 page: page,
 				cuisine: cuisineFilter,
-				restriction: restrictionFilter
+				restriction: restrictionFilter,
+                active: activeFilter
 			}))
         }
         return () => {
             dispatch(clearFilteredRecipes())
         }
-    },[user.isAdmin, page, cuisineFilter, restrictionFilter]);
+    },[user.isAdmin, page, cuisineFilter, restrictionFilter, activeFilter]);
 
     const handleCuisineFilterChange = (event) => {
         setCuisineFilter(event.target.value)
     }
     const handleRestrictionFilterChange = (event) => {
         setRestrictionFilter(event.target.value)
+    }
+    const handleActiveFilterChange = (event) => {
+        setActiveFiler(event.target.value)
     }
 
     return (
@@ -98,8 +105,18 @@ const AllRecipesAdminPage = () => {
                         </div>
                         <div>
                             <label htmlFor='restriction-filter'>Filter by Restriction: </label>
-                            <select defaultValue={restrictionFilter} id='cuisine-selector'  onChange={handleRestrictionFilterChange}>
+                            <select defaultValue={restrictionFilter} id='restriction-selector'  onChange={handleRestrictionFilterChange}>
                             {restrictions.map((ele, index) => (
+								<option value={ele} key={index}>
+									{ele[0].toUpperCase() + ele.slice(1)}
+								</option>
+							))}
+                            </select>
+                        </div>
+                        <div>
+                        <label htmlFor='active-filter'>Filter by Active Status: </label>
+                            <select defaultValue={activeFilter} id='active-selector'  onChange={handleActiveFilterChange}>
+                            {statuses.map((ele, index) => (
 								<option value={ele} key={index}>
 									{ele[0].toUpperCase() + ele.slice(1)}
 								</option>
@@ -124,6 +141,7 @@ const AllRecipesAdminPage = () => {
                                 <th>Image Url</th>
                                 <th>Cuisines</th>
                                 <th>Restrictions</th>
+                                <th>Active?</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -140,6 +158,7 @@ const AllRecipesAdminPage = () => {
                                     <td className="recipe-url">{recipe.img}</td>
                                     <td>{recipe.cuisines.length ? recipe.cuisines.map(cuisine => cuisine.name.toUpperCase()).join(', ') : 'NO CUISINES'}</td>
                                     <td>{recipe.restrictions.length ? recipe.restrictions.map(restriction => restriction.name.toUpperCase()).join(', ') : 'NO RESTRICIONS'}</td>
+                                    <td>{recipe.isActive ? 'YES' : 'NO'}</td>
                                 </tr>
                                 );
                             })}

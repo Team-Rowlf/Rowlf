@@ -121,7 +121,7 @@ User.beforeUpdate(async (user) => {
 
 //custom user model instance methods (for querying)
 User.prototype.getCurrentList = async function () {
-	const [currentList, create] = await ShoppingList.findOrCreate({
+	const [currentList, created] = await ShoppingList.findOrCreate({
 		where: {
 			userId: this.id,
 			isCompleted: false,
@@ -138,6 +138,13 @@ User.prototype.getCurrentList = async function () {
 			},
 		},
 	});
+	// fix for new accounts seeing 'loading... ' after logging in for first time
+	if (created) {
+		const newListWithRecipeModel = await ShoppingList.findByPk(currentList.id, {
+			include: {model: Recipe}
+		})
+		return newListWithRecipeModel
+	}
 
 	return currentList;
 };

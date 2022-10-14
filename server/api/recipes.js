@@ -9,6 +9,7 @@ router.get('/', async (req, res, next) => {
       // this statement being used in admin portal
       const cuisineObj = { model: Cuisine };
       const restrictionObj = { model: Restriction };
+      const activeObj = {};
       let orderArr = ['id', 'asc'];
       if (req.query.cuisine !== 'all') {
         cuisineObj.where = { name: [req.query.cuisine] };
@@ -16,8 +17,12 @@ router.get('/', async (req, res, next) => {
       if (req.query.restriction !== 'all') {
         restrictionObj.where = { name: [req.query.restriction] };
       }
+      if (req.query.active) {
+        activeObj.isActive = (req.query.active === 'yes' ? true : false)
+      }
       const { rows, count } = await Recipe.findAndCountAll({
         distinct: true,
+        where: activeObj,
         order: [orderArr],
         offset: (req.query.page - 1) * 25,
         limit: 25,
@@ -46,6 +51,7 @@ router.get('/', async (req, res, next) => {
       }
       const { rows, count } = await Recipe.findAndCountAll({
         distinct: true,
+        where: {isActive: true},
         order: [orderArr],
         include: [
           cuisineObj,
@@ -56,6 +62,7 @@ router.get('/', async (req, res, next) => {
       res.send({ rows, count });
     } else {
       const { rows, count } = await Recipe.findAndCountAll({
+        where: {isActive: true},
         include: [
           { model: Cuisine },
           { model: Restriction },
@@ -86,7 +93,7 @@ router.get('/:id', async (req, res, next) => {
 });
 
 //ADMIN ROUTES
-// delete recipe
+// delete recipe; won't use this route after all, will just change isActive to false
 router.delete('/:id', requireToken, isAdmin, async (req, res, next) => {
   try {
     const recipe = await Recipe.findByPk(req.params.id);
@@ -108,10 +115,50 @@ router.put('/:id', requireToken, isAdmin, async (req, res, next) => {
       ],
     });
 
-    // very basic implementation so far; would only account for updating it's own field values
-    // may want to consider cases for updating Cuisine, Restriction, etc as well later
-    await recipe.update(req.body);
-    res.send(recipe);
+    // non-elegant brute force method of making sure all associations accurate
+    // if time later, can revisit and refactor to only change associations that were modified
+    let cuisineCopy = [...recipe.cuisines];
+    for (let i in cuisineCopy) {
+      await recipe.removeCuisine(cuisineCopy[i]);
+    };
+    let restrictionCopy = [...recipe.restrictions];
+    for (let i in restrictionCopy) {
+      await recipe.removeRestriction(restrictionCopy[i]);
+    }
+    let lineItemCopy = [...recipe.lineItems];
+    for (let i in lineItemCopy) {
+      await recipe.removeLineItem(lineItemCopy[i]);
+      await lineItemCopy[i].destroy();
+    }
+
+    await recipe.update(req.body.recipeDetails);
+    for (let i in req.body.cuisines) {
+      const cuisine = await Cuisine.findOne({where: {name: req.body.cuisines[i]}})
+      await recipe.addCuisine(cuisine)
+    }
+    for (let i in req.body.restrictions) {
+      const restriction = await Restriction.findOne({where: {name: req.body.restrictions[i]}})
+      await recipe.addRestriction(restriction)
+    }
+    for (let i in req.body.ingredients) {
+      const [ingredient, created] = await Ingredient.findOrCreate({where: {name: req.body.ingredients[i].name}})
+      const lineItem = await LineItem.create({
+        ingredientId: ingredient.id,
+        recipeId: recipe.id,
+        qty: Number(req.body.ingredients[i].qty).toFixed(2),
+        measurement: req.body.ingredients[i].measurement,
+      });
+      await recipe.addLineItem(lineItem);
+    }
+
+    const updatedRecipe = await Recipe.findByPk(req.params.id, {
+      include: [
+        { model: Cuisine },
+        { model: Restriction },
+        { model: LineItem, include: { model: Ingredient } },
+      ],
+    });
+    res.send(updatedRecipe);
   } catch (err) {
     next(err);
   }
@@ -138,7 +185,6 @@ router.post('/add-recipe', requireToken, isAdmin, async (req, res, next) => {
         recipeId: recipe.id
       })
     });
-    // may want to include cuisine, restrictions, lineItems? guess not necessary though
     const updated = await Recipe.findByPk(recipe.id);
     res.send(updated);
   } catch (err) {
