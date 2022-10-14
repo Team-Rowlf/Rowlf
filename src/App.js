@@ -15,6 +15,7 @@ import { fetchUser } from './features/user/userSlice.js';
 import Likes from './components/pages/Likes.jsx';
 import Dislikes from './components/pages/Dislikes.jsx';
 import LeafletMap from './components/leaflet/LeafletMap.jsx';
+import MapMain from './components/googleMaps/MapMain.jsx';
 import AmazonFreshForm from './components/amazon/AmazonFreshForm.js';
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Route>
           <Route path="leaflet" element={<LeafletMap />} />
+          <Route path="mapMain" element={<MapMain />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

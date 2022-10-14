@@ -21,17 +21,17 @@ const LeafletMap = () => {
   let mapRef = useRef();
 
   //REMINDER: REMOVE KEY FROM INDEX HTML IN GOOGLE SCRIPT
-  const service = new google.maps.places.PlacesService(mapRef);
-  service.nearbySearch(
-    {
-      location: location,
-      radius: 500,
-      type: ['grocery'],
-    },
-    function (results, status) {
-      console.log(results);
-    }
-  );
+  // const service = new google.maps.places.PlacesService(MapContainer);
+  // service.nearbySearch(
+  //   {
+  //     location: location,
+  //     radius: 500,
+  //     type: ['grocery'],
+  //   },
+  //   function (results, status) {
+  //     console.log(results);
+  //   }
+  // );
 
   async function showGroceryStores(latLng) {
     const esriKey = process.env.ESRI_KEY;
