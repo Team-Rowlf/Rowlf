@@ -11,7 +11,6 @@ router.post('/login', async (req, res, next) => {
     let user = await User.authenticate(userData);
     res.send({ token: await user.generateToken() });
   } catch (error) {
-    console.log(error);
     next(error);
   }
 });

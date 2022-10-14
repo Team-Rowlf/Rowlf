@@ -1,47 +1,13 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
 import Footer from './components/general/Footer.jsx';
-import Home from './components/general/Home.jsx';
-import Login from './components/account/Login.jsx';
-import Signup from './components/account/Signup.jsx';
-import NotFound from './components/general/NotFound.jsx';
-import User from './components/account/User.jsx';
-import ShoppingList from './components/account/ShoppingList.jsx';
-import Profile from './components/account/Profile.jsx';
-import About from './components/general/About.jsx';
-import Recipes from './components/pages/AllRecipes.jsx';
-import RecipePage from './components/pages/SingleRecipe.jsx';
-import { fetchUser } from './features/user/userSlice.js';
-import Likes from './components/pages/Likes.jsx';
-import Dislikes from './components/pages/Dislikes.jsx';
-import LeafletMap from './components/leaflet/LeafletMap.jsx';
-import MapMain from './components/googleMaps/MapMain.jsx';
-import AmazonFreshForm from './components/amazon/AmazonFreshForm.js';
+import RoutesComponent from './components/routes/Routes.jsx';
+import { ToastContainer } from 'react-toastify';
 function App() {
   return (
     <>
       <div id="main">
-        <Routes>
-          <Route index element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signUp" element={<Signup />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/user" element={<User />}>
-            <Route index element={<ShoppingList />} />
-            <Route path="shoppingList" element={<ShoppingList />} />
-            <Route path="recipes" element={<Recipes />} />
-            <Route path="recipes/:recipeId" element={<RecipePage />} />
-            <Route path="profile" element={<Profile />}>
-              <Route index element={<Likes />} />
-              <Route path="likes" element={<Likes />} />
-              <Route path="dislikes" element={<Dislikes />} />
-            </Route>
-            <Route path="*" element={<NotFound />} />
-          </Route>
-          <Route path="leaflet" element={<LeafletMap />} />
-          <Route path="mapMain" element={<MapMain />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <RoutesComponent />
+        <ToastContainer />
       </div>
       <Footer />
     </>

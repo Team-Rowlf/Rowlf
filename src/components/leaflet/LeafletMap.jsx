@@ -56,7 +56,7 @@ const LeafletMap = () => {
   }
 
   //run whenever the marker is dragged
-  React.useEffect(() => {
+  useEffect(() => {
     if (markerLocation) {
       setLocation(markerLocation);
       showGroceryStores(markerLocation);
@@ -70,7 +70,7 @@ const LeafletMap = () => {
   }
 
   //whenever searched state changes (whenever the getLocation function runs, set the location)
-  React.useEffect(() => {
+  useEffect(() => {
     if (searchLocation) {
       setLocation(searchLocation);
       showGroceryStores(searchLocation);
@@ -80,7 +80,7 @@ const LeafletMap = () => {
   // -- can find user location if they opt in to location services;
   // -- defaulting to san fran if users opt out
   // -- should look into how to find location by zipcode/address if possible
-  React.useEffect(() => {
+  useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {

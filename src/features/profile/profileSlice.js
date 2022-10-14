@@ -68,9 +68,11 @@ const profileSlice = createSlice({
     builder
       .addCase(userLikeRecipe.fulfilled, (state, action) => {
         state.status = 'succeeded';
+        state.likes = action.payload;
       })
       .addCase(userDisLikeRecipe.fulfilled, (state, action) => {
         state.status = 'succeeded';
+        state.dislikes = action.payload;
       })
       .addCase(getUserLikes.fulfilled, (state, action) => {
         state.status = 'succeeded';

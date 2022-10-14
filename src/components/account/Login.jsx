@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { loginUser, fetchUser } from '../../features/user/userSlice';
-
+import {
+	loginUser,
+	fetchUser,
+	getError,
+	setError,
+	isLoggedStatus,
+} from '../../features/user/userSlice';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 const Login = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
-	const [login, setLogin] = React.useState({});
+	const [login, setLogin] = useState({});
 	const loginAttempt = useSelector((state) => state.user.token);
+	const loginAttempError = useSelector(getError);
+	const isLogged = useSelector(isLoggedStatus);
+	const ToastSuccessId = 'ToastSuccessId';
+	const ToastErrorId = 'ToastErrorId';
 
 	const handleRegister = () => {
 		navigate('/signUp');
@@ -23,9 +34,39 @@ const Login = () => {
 			[prop]: event.target.value,
 		});
 	};
-	React.useEffect(() => {
-		loginAttempt && dispatch(fetchUser()) && navigate('/');
+	useEffect(() => {
+		loginAttempt &&
+			dispatch(fetchUser()) &&
+			toast.success('🎉 Success Login 🎉!', {
+				position: 'bottom-right',
+				autoClose: 3000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: 'dark',
+				toastId: ToastSuccessId,
+			}) &&
+			navigate('/');
 	}, [loginAttempt]);
+
+	useEffect(() => {
+		if (loginAttempError) {
+			toast.error(loginAttempError, {
+				position: 'bottom-center',
+				autoClose: 3000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: 'dark',
+				toastId: ToastErrorId,
+			});
+			dispatch(setError());
+		}
+	}, [loginAttempError, isLogged]);
 
 	return (
 		<>
