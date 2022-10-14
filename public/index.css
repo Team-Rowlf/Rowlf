@@ -3,10 +3,13 @@
   max-width: 100%;
 }
 #root {
-  min-height: 100vh;
+	min-height: 100vh;
 }
 body {
   background-color: #E0E2DB;
+}
+.main {
+  min-height: 65vh;
 }
 .small-logo {
   display: block;
@@ -56,6 +59,10 @@ img {
   margin: auto;
   border-radius: 25px;
   max-width: 300px;
+}
+.root {
+  display: flex;
+  flex-direction: column;
 }
 .nav {
   display: flex;
@@ -474,33 +481,43 @@ button {
   color: lightgray;
 }
 .footer {
-  width: 100%;
-  padding: 15px;
+  min-height: fit-content;
+  padding: 0;
+  padding-top: 1%;
   text-align: center;
   display: block;
   background-color: #8B2635;
   color: white;
   border-top: 10px solid #0D730D;
-  margin-top: 25px;
-  margin-bottom: 0px;
+  margin-top: 5%;
   font-weight: bold;
   box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.5);
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }
 .footer .footer-upper {
   width: 100%;
   display: flex;
+  padding: 0.5%;
 }
 .footer .footer-upper div {
   width: 25%;
 }
 .footer .footer-lower {
-  width: 95%;
+  width: 100%;
   display: flex;
+  flex-wrap: wrap;
+}
+.footer .footer-lower .col {
+  min-width: 100%;
 }
 .footer .footer-lower .media-container-row {
+  padding: 0.5%;
+  padding-bottom: 1.5%;
   margin-right: 0px;
   margin-left: auto;
-  padding-top: 10px;
   color: #D3EFBD;
 }
 .title-card {
@@ -543,6 +560,11 @@ a,
   display: flex;
   min-width: 200px;
   margin: auto;
+}
+.bottom {
+  display: flex;
+  flex-direction: column;
+  min-height: 200px;
 }
 .shoppingList-container {
   display: block;
@@ -622,66 +644,87 @@ a,
 .popup {
   max-width: none;
 }
-#admin-portal {
+.profile {
+  margin: 0;
   display: flex;
   flex-direction: column;
+  min-height: 60vh;
 }
-.admin-portal-link-container {
+.profile nav {
   display: flex;
-  flex-direction: row;
+  padding: 2%;
+  padding-bottom: 0px;
+  border-bottom: 3px solid #8B2635;
 }
-.admin-portal-link {
-  margin: 0.5em;
+.tab {
+  border: 3px solid #8B2635;
+  border-radius: 5px 5px 0px 0px ;
+  padding: 0.5%;
+  margin: 0.25%;
+  margin-bottom: -3px;
+  background-color: #8B2635;
+  font-size: large;
+  font-weight: bold;
 }
-table,
-th,
-td {
-  border: 1px solid;
+.active {
+  background-color: #E0E2DB;
+  border-bottom: 6px solid #E0E2DB;
+  color: #0D730D;
 }
-table {
-  margin-left: auto;
-  margin-right: auto;
-}
-td {
-  min-width: 50px;
-  max-width: 150px;
-  overflow: scroll;
-  height: 50px;
-  white-space: nowrap;
-  padding: 5px;
-}
-.allusers-header,
-.allrecipes-header {
-  margin-left: auto;
-  margin-right: auto;
+.likes,
+.dislikes {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 50px;
-}
-.allusers-header div,
-.allrecipes-header div {
-  margin: 0.25em;
-}
-.display-info {
-  flex-direction: row;
-  display: flex;
-}
-.display-text {
-  font-style: italic;
-  margin-right: 1em;
-}
-.sort-checkbox {
-  margin: 0.5em;
-}
-.no-recipes-message {
   margin: auto;
-  text-align: center;
-  margin-top: 25px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2%;
+  flex-wrap: wrap;
+  font-size: x-large;
 }
-.recipe-id-link {
-  color: blue;
+.likes h2,
+.dislikes h2 {
+  min-width: 100%;
+  text-align: center;
+  font-size: medium;
+}
+.likes div,
+.dislikes div {
+  padding: 1.5%;
+  display: flex;
+  min-width: fit-content;
+  flex-direction: column;
+}
+.likes div a,
+.dislikes div a {
+  justify-content: center;
+  color: #0D730D;
+  font-size: x-large;
+  font-weight: bold;
+  padding: 1%;
+  display: block;
+  width: fit-content;
+  margin-top: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 250px;
+}
+.likes div a div,
+.dislikes div a div {
+  min-height: 200px;
+  margin: auto;
+}
+.likes div a div img,
+.dislikes div a div img {
+  max-width: 200px;
+  margin: auto;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+.likes div a h2,
+.dislikes div a h2 {
+  text-align: center;
+  margin-bottom: 0%;
+  margin-top: auto;
 }
 .recipe-id-link:hover {
   color: purple;

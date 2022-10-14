@@ -13,6 +13,7 @@ import RecipePage from '../pages/SingleRecipe.jsx';
 import Likes from '../pages/Likes.jsx';
 import Dislikes from '../pages/Dislikes.jsx';
 import LeafletMap from '../leaflet/LeafletMap.jsx';
+import EditProfile from '../account/EditProfile.jsx';
 import AdminPortal from '../admin/AdminPortal.jsx';
 import AllUsersAdminPage from '../admin/AllUsersAdminPage.jsx';
 import AllRecipesAdminPage from '../admin/AllRecipesAdminPage.jsx';
@@ -35,6 +36,7 @@ const RoutesComponent = () => {
 					<Route index element={<Likes />} />
 					<Route path="likes" element={<Likes />} />
 					<Route path="dislikes" element={<Dislikes />} />
+					<Route path="edit" element={<EditProfile />} />
 				</Route>
 				<Route path="*" element={<NotFound />} />
 			</Route>
