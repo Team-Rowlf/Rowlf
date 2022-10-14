@@ -1,116 +1,130 @@
 .recipe-container {
-  margin: auto;
-  display: flex;
-  flex-direction: column;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
 }
 .rotd-container {
-  margin: auto;
-  text-align: center;
-  .rotd-title {
-    text-align: center;
-    padding: 5%;
-    text-shadow: 2px 2px 4px grey;
-    font-weight: bolder;
-  }
+	margin: auto;
+	text-align: center;
+	.rotd-title {
+		text-align: center;
+		padding: 5%;
+		text-shadow: 2px 2px 4px grey;
+		font-weight: bolder;
+	}
 }
 .img {
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
-  margin: auto;
-  max-width: 500px;
-  padding: 3%;
-  color: white;
-  background-color: @red;
-  border: 2px solid black;
-  border-radius: 25px;
-  a {
-    text-decoration: none;
-    h2 {
-      text-align: center;
-      padding: 5px;
-      color: white;
-      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-    }
-    p {
-      padding: 5px;
-      color: white;
-      font-weight: bold;
-      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-    }
-  }
-  img {
-    max-width: 500px;
-    margin: auto;
-    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
-  }
+	box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+	margin: auto;
+	max-width: 500px;
+	padding: 3%;
+	color: white;
+	background-color: @red;
+	border: 2px solid black;
+	border-radius: 25px;
+	a {
+		text-decoration: none;
+		h2 {
+			text-align: center;
+			padding: 5px;
+			color: white;
+			text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+		}
+		p {
+			padding: 5px;
+			color: white;
+			font-weight: bold;
+			text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+		}
+	}
+	img {
+		max-width: 500px;
+		margin: auto;
+		box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+	}
 }
 
 .filter-title {
-  margin: auto;
-  padding-top: 3%;
-  max-width: fit-content;
-  h3 {
-    max-width: fit-content;
-  }
+	margin: auto;
+	padding-top: 3%;
+	max-width: fit-content;
+	h3 {
+		max-width: fit-content;
+	}
 }
 
 .filter-recipe {
-  padding: 3%;
-  margin: auto;
-  display: flex;
-  .filter {
-    margin: auto;
-    padding: 2%;
-    label {
-      padding: 2%;
-      font-size: larger;
-      font-weight: bolder;
-    }
-    select {
-      padding: 1%;
-      font-size: larger;
-    }
-  }
+	padding: 3%;
+	margin: auto;
+	display: flex;
+	.filter {
+		margin: auto;
+		padding: 2%;
+		label {
+			padding: 2%;
+			font-size: larger;
+			font-weight: bolder;
+		}
+		select {
+			padding: 1%;
+			font-size: larger;
+		}
+	}
 }
 .recipes-list {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 2%;
-  a {
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
-    margin: auto;
-    margin-top: 2%;
-    margin-bottom: 2%;
-    padding: 2%;
-    border-radius: 3%;
-    text-decoration: none;
-    background-color: #d0d2c6;
-    .recipe {
-      margin: auto;
-      width: 325px;
-      height: 400px;
-      color: black;
-      text-align: center;
-      h3 {
-        padding: 5px;
-      }
-      p {
-        padding: 5px;
-      }
-      img {
-        margin: auto;
-        margin-top: 3%;
-        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
-      }
-    }
-  }
+	display: flex;
+	flex-wrap: wrap;
+	padding: 2%;
+	overflow-x: hidden;
+	a {
+		box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
+		margin: auto;
+		margin-top: 2%;
+		margin-bottom: 2%;
+		padding: 2%;
+		border-radius: 3%;
+		text-decoration: none;
+		background-color: #d0d2c6;
+		.recipe {
+			margin: auto;
+			width: 325px;
+			height: 400px;
+			color: black;
+			text-align: center;
+			h3 {
+				padding: 5px;
+			}
+			p {
+				padding: 5px;
+			}
+			img {
+				margin: auto;
+				margin-top: 3%;
+				box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
+			}
+		}
+	}
+}
+.recipes-list-hover {
+	margin: 4px;
+	transform: scale(1);
+	perspective: 300px;
+}
+.recipes-list-hover:hover {
+	z-index: 10;
+	transform: scale(1.25);
+	width: 100%;
+}
+.recipes-list-hover {
+	transition: all 250ms ease-out;
 }
 .prevNext {
-  color: blue;
-  margin: 0.5em;
+	color: blue;
+	margin: 0.5em;
 }
 .disabled {
-  pointer-events: none;
-  color: lightgray;
+	pointer-events: none;
+	color: lightgray;
 }
 
 #load{
