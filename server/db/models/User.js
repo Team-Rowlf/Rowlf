@@ -6,6 +6,8 @@ const ShoppingList = require('./ShoppingList');
 const LineItem = require('./LineItem');
 const Recipe = require('./Recipe');
 const Ingredient = require('./Ingredient');
+const Cuisine = require('./Cuisine');
+const Restriction = require('./Restriction');
 require('dotenv').config();
 
 const SALT_ROUNDS = 10;
@@ -330,6 +332,11 @@ User.prototype.getFavorites = async function () {
 		include: {
 			model: Recipe,
 			as: 'favorite',
+			include: [
+				{ model: Cuisine },
+				{ model: Restriction },
+				{ model: LineItem, include: { model: Ingredient } },
+			],
 		},
 	});
 	return selfWithRecipes.favorite;
@@ -340,6 +347,11 @@ User.prototype.getDislikes = async function () {
 		include: {
 			model: Recipe,
 			as: 'dislike',
+			include: [
+				{ model: Cuisine },
+				{ model: Restriction },
+				{ model: LineItem, include: { model: Ingredient } },
+			],
 		},
 	});
 	return selfWithRecipes.dislike;
