@@ -120,8 +120,6 @@ router.put('/:id', requireToken, isAdmin, async (req, res, next) => {
 // create new recipe; would also want isAdmin middleware to only allow them to create recipes
 router.post('/add-recipe', requireToken, isAdmin, async (req, res, next) => {
   try {
-    // writing under assumption that req.body will recieve object with {recipeDetails, cuisines, restrictions}
-    // might need to also input ingredients with qtys; would need to find or create line items and ingredients if not already exist
     const recipe = await Recipe.create(req.body.recipeDetails);
     req.body.cuisines.forEach(async (tag) => {
       const cuisine = await Cuisine.findOne({ where: { name: tag } });

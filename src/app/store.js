@@ -6,6 +6,18 @@ import profileSlice from '../features/profile/profileSlice';
 import shoppingListSlice from '../features/shoppingList/shoppingListSlice';
 import adminSlice from '../features/admin/adminSlice';
 
+import {
+	persistReducer,
+	persistStore,
+	FLUSH,
+	REHYDRATE,
+	PAUSE,
+	PERSIST,
+	PURGE,
+	REGISTER,
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+
 const rootReducer = combineReducers({
 	user: userSlice,
 	recipes: recipesSlice,
@@ -14,7 +26,19 @@ const rootReducer = combineReducers({
 	admin: adminSlice,
 });
 
+const persistConfig = {
+	key: 'root',
+	storage,
+};
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
 export const store = configureStore({
-	reducer: rootReducer,
-	middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+	reducer: persistedReducer,
+	middleware: (getDefaultMiddleware) =>
+		getDefaultMiddleware({
+			serializableCheck: {
+				ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+			},
+		}).concat(logger),
 });
+export const persistor = persistStore(store);

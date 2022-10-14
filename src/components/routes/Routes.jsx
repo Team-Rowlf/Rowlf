@@ -20,8 +20,8 @@ import AddRecipeAdminPage from '../admin/AddRecipeAdminPage.jsx';
 import ModifyRecipeAdminPage from '../admin/ModifyRecipeAdminPage.jsx';
 
 const RoutesComponent = () => {
-    return (
-        <Routes>
+	return (
+		<Routes>
 			<Route index element={<Home />} />
 			<Route path="/login" element={<Login />} />
 			<Route path="/signUp" element={<Signup />} />
@@ -46,7 +46,7 @@ const RoutesComponent = () => {
 			<Route path="leaflet" element={<LeafletMap />} />
 			<Route path="*" element={<NotFound />} />
 		</Routes>
-    )
+	);
 };
 
 export default RoutesComponent;

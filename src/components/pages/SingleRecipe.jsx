@@ -13,7 +13,6 @@ import {
 } from '../../features/recipes/recipesSlice';
 import { fetchAddtoShoppingList } from '../../features/shoppingList/shoppingListSlice';
 import { getUserToken } from '../../features/user/userSlice';
-import chalk from 'chalk';
 import { ToastContainer, toast } from 'react-toastify';
 
 const RecipePage = () => {
@@ -46,30 +45,45 @@ const RecipePage = () => {
 					.querySelector(`button[value="dislike"]`)
 					?.classList.remove('dislike-recipe');
 	}, [getUserLikesId, getUserDisLikesId]);
-		
 
 	const handlePreference = (prop) => (event) => {
-		let addLike, removeLike, addDislike, removeDislike = false;
+		let addLike,
+			removeLike,
+			addDislike,
+			removeDislike = false;
 		if (prop === 'like') {
 			getUserLikesId.includes(Number(recipeId))
 				? dispatch(userLikeRecipe({ token, action: 'remove', id: recipeId }))
 				: (removeLike = true) && getUserDisLikesId.includes(Number(recipeId))
-				? (addLike = true) && dispatch(
+				? (addLike = true) &&
+				  dispatch(
 						userDisLikeRecipe({ token, action: 'remove', id: recipeId })
-				  ) && dispatch(userLikeRecipe({ token, action: 'add', id: recipeId }))
-				: (addLike = true) && dispatch(userLikeRecipe({ token, action: 'add', id: recipeId }));
+				  ) &&
+				  dispatch(userLikeRecipe({ token, action: 'add', id: recipeId }))
+				: (addLike = true) &&
+				  dispatch(userLikeRecipe({ token, action: 'add', id: recipeId }));
 		} else {
 			getUserDisLikesId.includes(Number(recipeId))
-				? (removeDislike = true) && dispatch(userDisLikeRecipe({ token, action: 'remove', id: recipeId }))
+				? (removeDislike = true) &&
+				  dispatch(userDisLikeRecipe({ token, action: 'remove', id: recipeId }))
 				: getUserLikesId.includes(Number(recipeId))
-				? (addDislike = true) && dispatch(userLikeRecipe({ token, action: 'remove', id: recipeId })) &&
+				? (addDislike = true) &&
+				  dispatch(userLikeRecipe({ token, action: 'remove', id: recipeId })) &&
 				  dispatch(userDisLikeRecipe({ token, action: 'add', id: recipeId }))
-				: (addDislike = true) && dispatch(userDisLikeRecipe({ token, action: 'add', id: recipeId }));
+				: (addDislike = true) &&
+				  dispatch(userDisLikeRecipe({ token, action: 'add', id: recipeId }));
 		}
-		const message = addDislike ? "Added to 'Dislikes'" : (removeDislike ? "Removed from 'Dislikes'" : (addLike ? "Added to 'Likes'" : "Removed from 'Likes'"))
-		const color = (addLike || removeDislike) ? "#0D730D" : "#8B2635";
+		const message = addDislike
+			? "Added to 'Dislikes'"
+			: removeDislike
+			? "Removed from 'Dislikes'"
+			: addLike
+			? "Added to 'Likes'"
+			: "Removed from 'Likes'";
+		const color = addLike || removeDislike ? '#0D730D' : '#8B2635';
+
 		toast.success(message, {
-			position: 'bottom-right',
+			position: 'top-right',
 			autoClose: 1500,
 			hideProgressBar: false,
 			closeOnClick: true,
@@ -77,7 +91,8 @@ const RecipePage = () => {
 			draggable: true,
 			progress: undefined,
 			theme: 'dark',
-		})
+			toastId: message,
+		});
 	};
 
 	const handleCart = () => {

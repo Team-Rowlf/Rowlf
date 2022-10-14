@@ -9,7 +9,7 @@ import {
 	getUserLikes,
 } from '../../features/profile/profileSlice.js';
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const User = () => {
 	const navigate = useNavigate();
@@ -31,18 +31,6 @@ const User = () => {
 			dispatch(fetchRecipes());
 			dispatch(getUserLikes({ token }));
 			dispatch(getUserDisLikes({ token }));
-			// may want to move this toast elsewhere; perhaps inside userSlice
-			// currently fires off every time you refresh page
-			toast.success('🎉 Success 🎉!', {
-				position: 'bottom-right',
-				autoClose: 3000,
-				hideProgressBar: false,
-				closeOnClick: true,
-				pauseOnHover: true,
-				draggable: true,
-				progress: undefined,
-				theme: 'dark',
-			});
 		} else {
 			navigate('/')
 		}
@@ -51,7 +39,6 @@ const User = () => {
 	return (
 		<div className="user">
 			<Nav />
-			<ToastContainer limit={1} />
 			<Outlet />
 		</div>
 	);
