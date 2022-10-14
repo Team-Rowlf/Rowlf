@@ -7,6 +7,7 @@ import {
 	getListStatus,
 } from '../../features/shoppingList/shoppingListSlice';
 import AmazonFreshForm from '../amazon/AmazonFreshForm.jsx';
+import { ToastContainer } from 'react-toastify';
 
 const ShoppingList = () => {
 	const dispatch = useDispatch();
@@ -122,6 +123,7 @@ const ShoppingList = () => {
 				</div>
 				: <h3>No recipes in current list</h3>
 			}
+			<ToastContainer limit={1} />
 		</div>
 	);
 };

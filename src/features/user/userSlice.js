@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { toast } from 'react-toastify';
 
 export const fetchUser = createAsyncThunk('user/fetchUser', async () => {
 	const token = window.localStorage.getItem('token');
@@ -87,11 +86,9 @@ const userSlice = createSlice({
 			.addCase(fetchUser.fulfilled, (state, action) => {
 				state.status = 'succeeded';
 				state.userInfo = action.payload;
-				state.isLogged = true;
+				state.isLogged = action.payload ? true : false
 				state.token = localStorage.getItem('token');
-
-				//check for admin
-				// state.isAdmin = action.payload.isAdmin ? action.payload.isAdmin : false;
+				state.isAdmin = action.payload ? action.payload.isAdmin : false;
 			})
 			.addCase(fetchUser.rejected, (state, action) => {
 				state.status = 'failed';

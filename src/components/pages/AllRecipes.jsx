@@ -64,6 +64,7 @@ const Recipes = () => {
 	const handleSort = (event) => {
 		setSortDirection(event.target.value);
 	};
+
 	const rotatehelper = (val, minA, maxA, minB, maxB) => {
 		return minB + ((val - minA) * (maxB - minB)) / (maxA - minA);
 	};
