@@ -5,35 +5,36 @@ import React, {
   useMemo,
   useCallback,
 } from 'react';
-import {
-  GoogleMap,
-  Marker,
-  MarkerClusterer,
-  InfoWindow,
-} from '@react-google-maps/api';
+import { GoogleMap, Marker, InfoWindow } from '@react-google-maps/api';
 import PlaceAutoComplete from './PlaceAutocomplete.jsx';
 
 const Map = () => {
   const [location, setLocation] = useState(null);
-  // const [map, setMap] = useState({});
   const [stores, setStores] = useState([]);
   const [selectedStore, setSelectedStore] = useState(null);
   const [userClicked, setUserClicked] = useState(false);
-  const [selected, setSelected] = useState(null);
   const [searchLocation, setSearchLocation] = useState(null);
   const [searched, setSearched] = useState(false);
 
   const mapRef = useRef();
   //refer to map instance as "mapRef.current"
-  const onLoad = useCallback((map) => (mapRef.current = map), []);
+  const onMapLoad = useCallback((map) => (mapRef.current = map), []);
 
-  useEffect(() => {}, [location]);
+  function onMarkerDragEnd(event) {
+    const latlng = { lat: event.latLng.lat(), lng: event.latLng.lng() };
+    setLocation(latlng);
+    setNearbyStores(latlng);
+  }
 
   const options = useMemo(
     () => ({
       mapId: '7fb386391a2ca376',
       clickableIcons: false,
       disableDefaultUI: true,
+      zoomControl: true,
+      zoomControlOptions: {
+        position: google.maps.ControlPosition.LEFT_TOP,
+      },
     }),
     []
   );
@@ -48,14 +49,12 @@ const Map = () => {
     let service = new google.maps.places.PlacesService(mapRef.current);
     service.nearbySearch(request, callback);
 
-    function callback(results, status) {
+    function callback(results, status, pagination) {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
         setStores(results);
       }
     }
   }
-  console.log(stores);
-  console.log(userClicked);
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -77,11 +76,13 @@ const Map = () => {
     }
   }, []);
 
+  //function used in placesAutocomplete component to pass back the location searched
   function getSearchLocation(data) {
     setSearchLocation(data);
     setSearched(!searched);
   }
 
+  //setting the map's new location based off the search location passed from placesAutocomplete
   useEffect(() => {
     if (searchLocation) {
       setLocation(searchLocation);
@@ -97,7 +98,7 @@ const Map = () => {
           zoom={15}
           center={location && location}
           options={options}
-          onLoad={(map) => onLoad(map)}
+          onLoad={(map) => onMapLoad(map)}
         >
           <PlaceAutoComplete setSearchLocation={getSearchLocation} />
           <Marker
@@ -108,9 +109,11 @@ const Map = () => {
               url: '/chefs-hat.svg',
               scaledSize: new window.google.maps.Size(30, 30),
             }}
+            onDragEnd={onMarkerDragEnd}
           />
           {userClicked ? (
             <InfoWindow
+              options={{ pixelOffset: new window.google.maps.Size(-13, -20) }}
               position={location && location}
               onCloseClick={() => setUserClicked(false)}
             >
@@ -137,15 +140,37 @@ const Map = () => {
             })}
           {selectedStore ? (
             <InfoWindow
-              className="store-info"
+              options={{ pixelOffset: new window.google.maps.Size(-12, -8) }}
               position={selectedStore.geometry.location}
               onCloseClick={() => {
                 setSelectedStore(null);
               }}
             >
-              <div>
-                <p>{selectedStore.name}</p>
-                <p>{selectedStore.vicinity}</p>
+              <div className="store-info-container">
+                <img
+                  className="store-img"
+                  src={
+                    selectedStore.photos
+                      ? selectedStore.photos[0].getUrl({
+                          maxWidth: 500,
+                          maxHeight: 500,
+                        })
+                      : '/images/stockStore.jpeg'
+                  }
+                  width="200"
+                  height="150"
+                />
+                <h2 className="store-name">
+                  {selectedStore.name}
+                  {selectedStore.business_status !== 'OPERATIONAL' ? (
+                    <p>(Closed)</p>
+                  ) : null}
+                </h2>
+                <div className="store-info">
+                  <div className="selectedStore-address">
+                    <p>{selectedStore.vicinity}</p>
+                  </div>
+                </div>
               </div>
             </InfoWindow>
           ) : null}

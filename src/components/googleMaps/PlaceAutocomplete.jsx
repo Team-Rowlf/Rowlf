@@ -23,17 +23,21 @@ const PlaceAutoComplete = ({ setSearchLocation }) => {
       onSelect={handleSelect}
     >
       {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-        <div key={suggestions.description} className="location-input-container">
+        <div key={suggestions.placeId} className="location-input-container">
           <input
             {...getInputProps({
               placeholder: 'Search Place...',
               className: 'location-search-input',
             })}
           />
-          <div className="autocomplete-dropdown-container">
+          <div
+            key={suggestions.placeId}
+            className="autocomplete-dropdown-container"
+          >
             {suggestions.map((suggestion) => {
               return (
                 <div
+                  key={suggestion.placeId}
                   className="suggestion-locations"
                   {...getSuggestionItemProps(suggestion, {})}
                 >
