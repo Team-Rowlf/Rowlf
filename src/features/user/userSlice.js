@@ -11,6 +11,22 @@ export const fetchUser = createAsyncThunk('user/fetchUser', async () => {
 	}
 });
 
+
+export const editUser = createAsyncThunk(
+	'user/editUser',
+	async ({ signUp }) => {
+		const token = window.localStorage.getItem('token');
+		if (token) {
+			const { data } = await axios.put('/api/user/editMe', signUp, {
+				headers: { authorization: token },
+
+		});
+			console.log('EDIT: ',data)
+			return data;
+		}
+	}
+);
+
 export const loginUser = createAsyncThunk(
 	'user/loginUser',
 	async ({ login }, { rejectWithValue }) => {
