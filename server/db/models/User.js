@@ -6,6 +6,8 @@ const ShoppingList = require('./ShoppingList');
 const LineItem = require('./LineItem');
 const Recipe = require('./Recipe');
 const Ingredient = require('./Ingredient');
+const Cuisine = require('./Cuisine');
+const Restriction = require('./Restriction');
 require('dotenv').config();
 
 const SALT_ROUNDS = 10;
@@ -119,7 +121,7 @@ User.beforeUpdate(async (user) => {
 
 //custom user model instance methods (for querying)
 User.prototype.getCurrentList = async function () {
-	const [currentList, create] = await ShoppingList.findOrCreate({
+	const [currentList, created] = await ShoppingList.findOrCreate({
 		where: {
 			userId: this.id,
 			isCompleted: false,
@@ -136,6 +138,13 @@ User.prototype.getCurrentList = async function () {
 			},
 		},
 	});
+	// fix for new accounts seeing 'loading... ' after logging in for first time
+	if (created) {
+		const newListWithRecipeModel = await ShoppingList.findByPk(currentList.id, {
+			include: {model: Recipe}
+		})
+		return newListWithRecipeModel
+	}
 
 	return currentList;
 };
@@ -330,6 +339,11 @@ User.prototype.getFavorites = async function () {
 		include: {
 			model: Recipe,
 			as: 'favorite',
+			include: [
+				{ model: Cuisine },
+				{ model: Restriction },
+				{ model: LineItem, include: { model: Ingredient } },
+			],
 		},
 	});
 	return selfWithRecipes.favorite;
@@ -340,6 +354,11 @@ User.prototype.getDislikes = async function () {
 		include: {
 			model: Recipe,
 			as: 'dislike',
+			include: [
+				{ model: Cuisine },
+				{ model: Restriction },
+				{ model: LineItem, include: { model: Ingredient } },
+			],
 		},
 	});
 	return selfWithRecipes.dislike;

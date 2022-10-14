@@ -32,6 +32,10 @@ const Recipe = db.define('recipe', {
     type: Sequelize.INTEGER,
     allowNull: false,
   },
+  isActive: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: true,
+  }
 });
 
 module.exports = Recipe;

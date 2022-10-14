@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { toast } from 'react-toastify';
 
 export const fetchUser = createAsyncThunk('user/fetchUser', async () => {
   const token = window.localStorage.getItem('token');
@@ -11,6 +10,20 @@ export const fetchUser = createAsyncThunk('user/fetchUser', async () => {
     return data;
   }
 });
+
+export const editUser = createAsyncThunk(
+  'user/editUser',
+  async ({ signUp }) => {
+    const token = window.localStorage.getItem('token');
+    if (token) {
+      const { data } = await axios.put('/api/user/editMe', signUp, {
+        headers: { authorization: token },
+      });
+      console.log('EDIT: ', data);
+      return data;
+    }
+  }
+);
 
 export const loginUser = createAsyncThunk(
   'user/loginUser',
@@ -87,11 +100,9 @@ const userSlice = createSlice({
       .addCase(fetchUser.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.userInfo = action.payload;
-        state.isLogged = true;
+        state.isLogged = action.payload ? true : false;
         state.token = localStorage.getItem('token');
-
-        //check for admin
-        // state.isAdmin = action.payload.isAdmin ? action.payload.isAdmin : false;
+        state.isAdmin = action.payload ? action.payload.isAdmin : false;
       })
       .addCase(fetchUser.rejected, (state, action) => {
         state.status = 'failed';

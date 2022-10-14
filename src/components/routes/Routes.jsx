@@ -13,6 +13,12 @@ import RecipePage from '../pages/SingleRecipe.jsx';
 import Likes from '../pages/Likes.jsx';
 import Dislikes from '../pages/Dislikes.jsx';
 import LeafletMap from '../leaflet/LeafletMap.jsx';
+import EditProfile from '../account/EditProfile.jsx';
+import AdminPortal from '../admin/AdminPortal.jsx';
+import AllUsersAdminPage from '../admin/AllUsersAdminPage.jsx';
+import AllRecipesAdminPage from '../admin/AllRecipesAdminPage.jsx';
+import AddRecipeAdminPage from '../admin/AddRecipeAdminPage.jsx';
+import ModifyRecipeAdminPage from '../admin/ModifyRecipeAdminPage.jsx';
 import MapMain from '../googleMaps/MapMain.jsx';
 
 const RoutesComponent = () => {
@@ -31,11 +37,20 @@ const RoutesComponent = () => {
           <Route index element={<Likes />} />
           <Route path="likes" element={<Likes />} />
           <Route path="dislikes" element={<Dislikes />} />
+          <Route path="edit" element={<EditProfile />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Route>
+      <Route path="/adminportal" element={<AdminPortal />} />
+      <Route path="/adminportal/allusers" element={<AllUsersAdminPage />} />
+      <Route path="/adminportal/allrecipes" element={<AllRecipesAdminPage />} />
+      <Route path="/adminportal/addrecipe" element={<AddRecipeAdminPage />} />
+      <Route
+        path="/adminportal/updaterecipe/:id"
+        element={<ModifyRecipeAdminPage />}
+      />
+      <Route path="groceryMap" element={<MapMain />} />
       <Route path="leaflet" element={<LeafletMap />} />
-      <Route path="mapMain" element={<MapMain />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
