@@ -115,13 +115,50 @@ router.put('/:id', requireToken, isAdmin, async (req, res, next) => {
       ],
     });
 
-    console.log('LOGGING REQ.BODY',req.body)
+    // non-elegant brute force method of making sure all associations accurate
+    // if time later, can revisit and refactor to only change associations that were modified
+    let cuisineCopy = [...recipe.cuisines];
+    for (let i in cuisineCopy) {
+      await recipe.removeCuisine(cuisineCopy[i]);
+    };
+    let restrictionCopy = [...recipe.restrictions];
+    for (let i in restrictionCopy) {
+      await recipe.removeRestriction(restrictionCopy[i]);
+    }
+    let lineItemCopy = [...recipe.lineItems];
+    for (let i in lineItemCopy) {
+      await recipe.removeLineItem(lineItemCopy[i]);
+      await lineItemCopy[i].destroy();
+    }
 
-    // very basic implementation so far; would only account for updating it's own field values
-    // may want to consider cases for updating Cuisine, Restriction, etc as well later
     await recipe.update(req.body.recipeDetails);
-    console.log('LOGGING RECIPE IN API ROUTE',recipe)
-    res.send(recipe);
+    for (let i in req.body.cuisines) {
+      const cuisine = await Cuisine.findOne({where: {name: req.body.cuisines[i]}})
+      await recipe.addCuisine(cuisine)
+    }
+    for (let i in req.body.restrictions) {
+      const restriction = await Restriction.findOne({where: {name: req.body.restrictions[i]}})
+      await recipe.addRestriction(restriction)
+    }
+    for (let i in req.body.ingredients) {
+      const [ingredient, created] = await Ingredient.findOrCreate({where: {name: req.body.ingredients[i].name}})
+      const lineItem = await LineItem.create({
+        ingredientId: ingredient.id,
+        recipeId: recipe.id,
+        qty: Number(req.body.ingredients[i].qty).toFixed(2),
+        measurement: req.body.ingredients[i].measurement,
+      });
+      await recipe.addLineItem(lineItem);
+    }
+
+    const updatedRecipe = await Recipe.findByPk(req.params.id, {
+      include: [
+        { model: Cuisine },
+        { model: Restriction },
+        { model: LineItem, include: { model: Ingredient } },
+      ],
+    });
+    res.send(updatedRecipe);
   } catch (err) {
     next(err);
   }
@@ -148,7 +185,6 @@ router.post('/add-recipe', requireToken, isAdmin, async (req, res, next) => {
         recipeId: recipe.id
       })
     });
-    // may want to include cuisine, restrictions, lineItems? guess not necessary though
     const updated = await Recipe.findByPk(recipe.id);
     res.send(updated);
   } catch (err) {

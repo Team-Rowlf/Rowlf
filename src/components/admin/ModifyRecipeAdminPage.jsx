@@ -5,7 +5,6 @@ import { fetchUser } from "../../features/user/userSlice.js";
 import Nav from "../general/Nav.jsx";
 import { toast } from 'react-toastify';
 import { attemptUpdateRecipe, clearSingleRecipe, fetchSingleRecipe, getRecipeStatus } from "../../features/recipes/recipesSlice.js";
-// import { resetAdminStatus } from "../../features/admin/adminSlice.js";
 
 const ModifyRecipeAdminPage = () => {
     const user = useSelector((state) => state.user);
@@ -13,7 +12,6 @@ const ModifyRecipeAdminPage = () => {
     const dispatch = useDispatch();
     const params = useParams();
     const status = useSelector(getRecipeStatus)
-    const adminStatus = useSelector((state) => state.admin.status)
     const recipe = useSelector((state) => state.recipes.singleRecipe)
     const [form, setForm] = useState({
         name: '',
@@ -55,7 +53,6 @@ const ModifyRecipeAdminPage = () => {
 		'pescatarian',
 	];
 
-    // then, have some sort of update form and a save and back button
     useEffect(() => {
         dispatch(fetchUser())
         dispatch(fetchSingleRecipe(params.id))
@@ -66,7 +63,11 @@ const ModifyRecipeAdminPage = () => {
 
     useEffect(() => {
         if ((status === 'succeeded') && recipe.name) {
-            setForm(recipe);
+            // casting ints to strings for button disabled check
+            let copy = {...recipe};
+            copy.servings = copy.servings.toString();
+            copy.cookTime = copy.cookTime.toString();
+            setForm(copy);
 
             let cuisineTags = recipe.cuisines.map(cuisine => cuisine.name);
             setCuisines([...cuisineTags]);
@@ -98,18 +99,21 @@ const ModifyRecipeAdminPage = () => {
         }
     },[user.isLogged]);
 
-    // when saved, send toast noti
     const handleChange = (props) => (event) => {
         setForm({
           ...form,
           [props]: event.target.value,
         });
     };
-    const handleCuisineChange = (event) => {
-        setCuisine(event.target.value)
+    const handleCuisineChange = (idx) => (event) => {
+        let copy = [...cuisines];
+        copy[idx] = event.target.value;
+        setCuisines([...copy])
     }
-    const handleRestrictionChange = (event) => {
-        setRestriction(event.target.value)
+    const handleRestrictionChange = (idx) => (event) => {
+        let copy = [...restrictions];
+        copy[idx] = event.target.value;
+        setRestrictions([...copy])
     }
     const addTag = (props) => (event) => {
         event.preventDefault();
@@ -149,6 +153,19 @@ const ModifyRecipeAdminPage = () => {
         copy.pop();
         setLineItems([...copy]);
     }
+    const checkLineItemsIngredients = () => {
+        if (!lineItems) return true;
+        if (lineItems.length > 1) {
+            let names = lineItems.map(item => item.name.length)
+            return names.includes(0)
+        } else {
+            return !lineItems[0].name.length
+        }
+    };
+    const checkCuisinesNotEmpty = () => {
+        let filtered = cuisines.filter(cuisine => cuisine.length);
+        return !filtered.length
+    }
     const validateLineItemsQtyMeasure = () => {
         const copy = [...lineItems];
         copy.forEach(lineItem => {
@@ -168,16 +185,18 @@ const ModifyRecipeAdminPage = () => {
         updatedRecipe.servings = Number(updatedRecipe.servings);
         updatedRecipe.cookTime = Number(updatedRecipe.cookTime)
         let ingredients = validateLineItemsQtyMeasure();
+        let cuisinesFiltered = cuisines.filter(cuisine => cuisine.length)
+        let restrictionsFiltered = restrictions.filter(restriction => restriction.length)
+
+        // console.log(form)
 
         dispatch(attemptUpdateRecipe({
             recipeDetails: updatedRecipe,
-            cuisines: cuisines,
-            restrictions: restrictions,
+            cuisines: cuisinesFiltered,
+            restrictions: restrictionsFiltered,
             ingredients: ingredients
         }))
 
-        // if successful, fire off a toast here
-        // do we want to navigate as well or not?
         toast.success("Changes saved!", {
             position: 'bottom-right',
             autoClose: 1500,
@@ -189,6 +208,16 @@ const ModifyRecipeAdminPage = () => {
             theme: 'dark',
         })
     }
+
+    const checkDisabled = () => {
+        return !form.name.length 
+            || !form.url.length 
+            || !form.img.length 
+            || !form.servings.length 
+            || !form.cookTime.length 
+            || checkLineItemsIngredients()
+            || checkCuisinesNotEmpty()
+    };
 
     return (
         <div>
@@ -273,7 +302,7 @@ const ModifyRecipeAdminPage = () => {
                             return(
                                 <div key={idx} className="cuisine-form-line">
                                     <label htmlFor="cuisines">{`Cuisine ${idx+1}`}</label>
-                                    <select defaultValue={cuisine} className='cuisine-selector' onChange={handleCuisineChange}>
+                                    <select defaultValue={cuisine} className='cuisine-selector' onChange={handleCuisineChange(idx)}>
                                         {cuisineTypes.map((ele, index) => (
                                             <option value={ele} key={index}>
                                                 {ele.length ? ele[0].toUpperCase() + ele.slice(1) : ''}
@@ -295,7 +324,7 @@ const ModifyRecipeAdminPage = () => {
                             return(
                                 <div key={idx} className="restriction-form-line">
                                     <label htmlFor="restrictions">{`Restriction ${idx+1}`}</label>
-                                    <select defaultValue={restriction} className='restriction-selector' onChange={handleRestrictionChange}>
+                                    <select defaultValue={restriction} className='restriction-selector' onChange={handleRestrictionChange(idx)}>
                                         {restrictionTypes.map((ele, index) => (
                                             <option value={ele} key={index}>
                                                 {ele.length ? ele[0].toUpperCase() + ele.slice(1) : ''}
@@ -329,14 +358,14 @@ const ModifyRecipeAdminPage = () => {
                                             name="quantity"
                                             type="number"
                                             value={lineItem.qty}
-                                            onChange={handleLineItemChange(idx,"name")}
+                                            onChange={handleLineItemChange(idx,"qty")}
                                         />
                                     <input
                                             className="modify-ingredient-form"
                                             placeholder="Measurement"
                                             name="measurement"
                                             value={lineItem.measurement}
-                                            onChange={handleLineItemChange(idx,"name")}
+                                            onChange={handleLineItemChange(idx,"measurement")}
                                         />
                                 </div>
                             )
@@ -347,7 +376,7 @@ const ModifyRecipeAdminPage = () => {
                             : <></>
                         }
                     </div>
-                    <button className={''} type="submit">
+                    <button className={checkDisabled() ? 'navbutton disabled' :'navbutton'} type="submit" disabled={checkDisabled()}>
                         Save Changes
                     </button>
                 </form>
