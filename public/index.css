@@ -471,7 +471,6 @@ button {
   color: lightgray;
 }
 .footer {
-  width: 100%;
   min-height: fit-content;
   padding: 0;
   padding-top: 1%;
@@ -483,6 +482,10 @@ button {
   margin-top: 5%;
   font-weight: bold;
   box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.5);
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }
 .footer .footer-upper {
   width: 100%;
@@ -699,11 +702,13 @@ a,
 .likes div a div,
 .dislikes div a div {
   min-height: 200px;
+  margin: auto;
 }
 .likes div a div img,
 .dislikes div a div img {
   max-width: 200px;
   margin: auto;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 .likes div a h2,
 .dislikes div a h2 {

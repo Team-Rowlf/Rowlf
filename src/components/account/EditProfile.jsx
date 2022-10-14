@@ -2,14 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import {
-	createUser,
+	editUser,
 	validateSignupForm,
 	getFormInputAvailable,
+	fetchUser
 } from '../../features/user/userSlice';
 
 const EditProfile = () => {
   const dispatch = useDispatch();
 	const navigate = useNavigate();
+	let user = useSelector((state) => state.user.userInfo);
+
+	console.log('USER: ',user)
 
 	const handleLogin = () => {
 		navigate('/login');
@@ -24,7 +28,7 @@ const EditProfile = () => {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 
-		dispatch(createUser({ signUp })) && navigate('/login');
+		dispatch(editUser({ signUp }));
 	};
 
 	const handleChange = (prop) => (event) => {
@@ -42,12 +46,20 @@ const EditProfile = () => {
 	};
 	useEffect(() => {}, [validate]);
 
+
+	const capitalize = (string) => {
+		let arr = string.split(' ');
+		arr = arr.map((itm) => itm[0].toUpperCase() + itm.slice(1));
+		string = arr.join(' ');
+		return string;
+	};
+
 	return (
 		<>
 			<div className="signup">
 				<div className="signupContainer">
-					<h1>Edit Profile</h1>
-					<p>Please fill in this form to edit your account.</p>
+					{user.firstName ? <h1>Edit {capitalize(user.firstName)}'s Profile</h1> : <h1>Edit Profile</h1>}
+					<p>Please change the information on this form to edit your account.</p>
 					<hr />
 					<form onSubmit={handleSubmit} autoComplete="on">
 						<div className="box">
@@ -59,12 +71,12 @@ const EditProfile = () => {
 								<input
 									type="text"
 									name="firstName"
-									placeholder="First Name"
 									className="textBox"
 									autoFocus="on"
 									onChange={handleChange('firstName')}
 									required
 									min={3}
+									defaultValue={capitalize(user.firstName)}
 								/>
 							</div>
 							<div className="clr"></div>
@@ -79,7 +91,7 @@ const EditProfile = () => {
 								<input
 									type="text"
 									name="lastName"
-									placeholder="Last Name"
+									defaultValue={capitalize(user.lastName)}
 									className="textBox"
 									onChange={handleChange('lastName')}
 									required
@@ -98,7 +110,7 @@ const EditProfile = () => {
 								<input
 									type="text"
 									name="username"
-									placeholder="username"
+									defaultValue={user.username}
 									className="textBox"
 									onChange={handleChange('username')}
 									required
@@ -122,7 +134,7 @@ const EditProfile = () => {
 									required
 									name="phoneNum"
 									maxLength="10"
-									placeholder="Phone Number"
+									defaultValue={user.phoneNum}
 									className="textBox"
 									onChange={handleChange('phoneNum')}
 								/>
@@ -139,7 +151,7 @@ const EditProfile = () => {
 								<input
 									type="email"
 									name="email"
-									placeholder="Email"
+									defaultValue={user.email}
 									className="textBox"
 									required
 									onChange={handleChange('email')}
@@ -199,6 +211,7 @@ const EditProfile = () => {
 								value="male"
 								onChange={handleChange('Gender')}
 								required
+								defaultChecked={user.gender=='male' ? true : false}
 							/>{' '}
 							Male &nbsp;
 							<input
@@ -207,6 +220,7 @@ const EditProfile = () => {
 								value="female"
 								onChange={handleChange('Gender')}
 								required
+								defaultChecked={user.gender=='female' ? true : false}
 							/>{' '}
 							Female &nbsp;
 							<input
@@ -215,6 +229,7 @@ const EditProfile = () => {
 								value="other"
 								onChange={handleChange('Gender')}
 								required
+								defaultChecked={user.gender=='other' ? true : false}
 							/>{' '}
 							Other
 						</div>
@@ -227,9 +242,8 @@ const EditProfile = () => {
 
 						<div className="box">
 							<button type="Submit" name="Register" className="submit">
-								Signup
+								Edit Profile
 							</button>
-							<button onClick={handleLogin}>Login</button>
 						</div>
 					</form>
 				</div>
