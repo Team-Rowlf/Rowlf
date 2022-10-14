@@ -10,13 +10,13 @@ const Profile = () => {
 	useEffect(() => {}, [profile]);
 	useEffect(() => {}, [OnClick]);
 
+
 	const OnClick = (event) => {
 		let tablinks = document.getElementsByClassName("tab");
 		for (let i = 0; i < tablinks.length; i++) {
 			tablinks[i].className = tablinks[i].className.replace(" active", "");
 		}
 		
-		console.log(event)
 		if(event.target){
 			event.target.className += " active";
 		}

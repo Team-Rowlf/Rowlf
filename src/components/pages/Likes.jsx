@@ -6,7 +6,10 @@ const Likes = () => {
 	const likes = useSelector((state) => state.profile.likes);
 	let likedRecipes = [];
 	const recipes = useSelector(state=>state.recipes.recipes)
-	
+
+	if(document.getElementById("liked")){
+		document.getElementById("liked").className += " active"
+	}
 
 	likes.map(liked=>{
 		recipes.map(itm=>{
@@ -33,7 +36,13 @@ const Likes = () => {
 		<div className="likes">
 			{likedRecipes.map((recipe) => (
 				<div key={recipe.id}>
-					<Link to={`/user/recipes/${recipe.id}`}> {recipe.name}</Link>
+					
+					<Link to={`/user/recipes/${recipe.id}`}> 
+						<div>
+							<img src={recipe.img} alt="recipe" />
+						</div>
+						<h2>{recipe.name}</h2>
+					</Link>
 					<details>
 						<summary> Ingredients: </summary>
 						<ul>

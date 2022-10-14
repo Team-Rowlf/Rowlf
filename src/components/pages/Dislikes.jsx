@@ -7,6 +7,7 @@ const Dislikes = () => {
 	let dislikedRecipes = [];
 	const recipes = useSelector(state=>state.recipes.recipes)
 	
+	
 
 	dislikes.map(liked=>{
 		recipes.map(itm=>{
@@ -31,9 +32,14 @@ const Dislikes = () => {
 		</div>
 	) : (
 		<div className="dislikes">
-			{dislikes.map((recipe) => (
+			{dislikedRecipes.map((recipe) => (
 				<div key={recipe.id}>
-					<Link to={`/user/recipes/${recipe.id}`}> {recipe.name}</Link>
+					<Link to={`/user/recipes/${recipe.id}`}> 
+						<div>
+							<img src={recipe.img} alt="recipe" />
+						</div>
+						<h2>{recipe.name}</h2>
+					</Link>
 					<details>
 						<summary> Ingredients: </summary>
 						<ul>

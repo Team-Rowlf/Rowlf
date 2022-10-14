@@ -677,10 +677,9 @@ a,
 }
 .likes div,
 .dislikes div {
-  padding: 3%;
+  padding: 1.5%;
   display: flex;
-  min-width: 33vw;
-  width: 100%;
+  min-width: fit-content;
   flex-direction: column;
 }
 .likes div a,
@@ -690,6 +689,27 @@ a,
   font-size: x-large;
   font-weight: bold;
   padding: 1%;
+  display: block;
+  width: fit-content;
+  margin-top: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 250px;
+}
+.likes div a div,
+.dislikes div a div {
+  min-height: 200px;
+}
+.likes div a div img,
+.dislikes div a div img {
+  max-width: 200px;
+  margin: auto;
+}
+.likes div a h2,
+.dislikes div a h2 {
+  text-align: center;
+  margin-bottom: 0%;
+  margin-top: auto;
 }
 .likes div summary,
 .dislikes div summary {
