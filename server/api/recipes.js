@@ -5,28 +5,22 @@ const { requireToken, isAdmin } = require('./gatekeepingMiddleware');
 // get all recipes
 router.get('/', async (req, res, next) => {
   try {
-    // not really using this statement anymore with endless scrolling; might later refactor to delete it
     if (req.query.page) {
+      // this statement being used in admin portal
       const cuisineObj = { model: Cuisine };
       const restrictionObj = { model: Restriction };
-      let orderArr = ['id', 'asc']; // default order by recipe id
+      let orderArr = ['id', 'asc'];
       if (req.query.cuisine !== 'all') {
         cuisineObj.where = { name: [req.query.cuisine] };
       }
       if (req.query.restriction !== 'all') {
         restrictionObj.where = { name: [req.query.restriction] };
       }
-      if (req.query.sort) {
-        orderArr =
-          req.query.sort === 'ascending'
-            ? ['servings', 'asc']
-            : ['servings', 'desc'];
-      }
       const { rows, count } = await Recipe.findAndCountAll({
         distinct: true,
         order: [orderArr],
-        offset: (req.query.page - 1) * 24,
-        limit: 24,
+        offset: (req.query.page - 1) * 25,
+        limit: 25,
         include: [
           cuisineObj,
           restrictionObj,
@@ -126,8 +120,6 @@ router.put('/:id', requireToken, isAdmin, async (req, res, next) => {
 // create new recipe; would also want isAdmin middleware to only allow them to create recipes
 router.post('/add-recipe', requireToken, isAdmin, async (req, res, next) => {
   try {
-    // writing under assumption that req.body will recieve object with {recipeDetails, cuisines, restrictions}
-    // might need to also input ingredients with qtys; would need to find or create line items and ingredients if not already exist
     const recipe = await Recipe.create(req.body.recipeDetails);
     req.body.cuisines.forEach(async (tag) => {
       const cuisine = await Cuisine.findOne({ where: { name: tag } });
@@ -137,6 +129,16 @@ router.post('/add-recipe', requireToken, isAdmin, async (req, res, next) => {
       const restriction = await Restriction.findOne({ where: { name: tag } });
       await recipe.addRestriction(restriction);
     });
+    req.body.ingredients.forEach(async (item) => {
+      const [ingredient, created] = await Ingredient.findOrCreate({where: {name: item.name}})
+      const lineItem = await LineItem.create({
+        qty: Number(item.qty),
+        measurement: item.measurement,
+        ingredientId: ingredient.id,
+        recipeId: recipe.id
+      })
+    });
+    // may want to include cuisine, restrictions, lineItems? guess not necessary though
     const updated = await Recipe.findByPk(recipe.id);
     res.send(updated);
   } catch (err) {

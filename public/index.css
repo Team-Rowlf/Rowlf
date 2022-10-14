@@ -3,7 +3,7 @@
   max-width: 100%;
 }
 #root {
-  min-height: 100%;
+	min-height: 100vh;
 }
 body {
   background-color: #E0E2DB;
@@ -357,6 +357,12 @@ button {
 .recipe-instructions-url {
   color: blue;
   margin-top: 1em;
+}
+.like-recipe {
+  background: green;
+}
+.dislike-recipe {
+  background: red;
 }
 .recipe-container {
   margin: auto;
@@ -716,16 +722,13 @@ a,
   margin-bottom: 0%;
   margin-top: auto;
 }
-.likes div summary,
-.dislikes div summary {
-  padding-left: 3%;
-  padding-bottom: 1%;
-  font-size: large;
-  font-weight: bold;
+.recipe-id-link:hover {
+  color: purple;
 }
-.likes div ul li,
-.dislikes div ul li {
-  padding: 0.5%;
-  margin-left: 5%;
-  font-size: large;
+#add-recipe-form {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

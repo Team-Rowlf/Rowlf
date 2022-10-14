@@ -1,5 +1,5 @@
 const router = require('express').Router();
-
+const Sequelize = require('sequelize');
 const { User } = require('../db');
 const { requireToken, isAdmin } = require('./gatekeepingMiddleware');
 
@@ -41,7 +41,7 @@ router.post('/signup', async (req, res, next) => {
 //user can view their own profile
 router.get('/me', requireToken, async (req, res, next) => {
 	try {
-		const { id, firstName, lastName, gender, phoneNum, username, email } =
+		const { id, firstName, lastName, gender, phoneNum, username, email, isAdmin } =
 			req.user;
 		const userInfo = {
 			id,
@@ -51,6 +51,7 @@ router.get('/me', requireToken, async (req, res, next) => {
 			phoneNum,
 			username,
 			email,
+			isAdmin
 		};
 		res.send(userInfo);
 	} catch (error) {
@@ -272,29 +273,52 @@ router.put(
 
 //ADMIN ROUTES for users
 //admin view all user accounts
-router.get('/account', requireToken, isAdmin, async (req, res, next) => {
+router.get('/all', requireToken, isAdmin, async (req, res, next) => {
 	try {
-		const users = await User.findAll({
-			attributes: [
-				'id',
-				'firstName',
-				'lastName',
-				'gender',
-				'phoneNum',
-				'username',
-				'password',
-				'email',
-				'isAdmin',
-			],
-		});
-		res.send(users);
+		if (req.query.page) {
+			console.log('req.query.sort', req.query.sort)
+			const orderArr = (req.query.sort === 'true') ? [Sequelize.fn('lower',Sequelize.col('lastName')), 'asc'] : ['id','asc']
+			const { rows, count } = await User.findAndCountAll({
+				order: [orderArr],
+				offset: (req.query.page - 1) * 25,
+        		limit: 25,
+				attributes: [
+					'id',
+					'firstName',
+					'lastName',
+					'gender',
+					'phoneNum',
+					'username',
+					'password',
+					'email',
+					'isAdmin',
+				],
+			});
+			res.send({ rows, count });
+		}
+		else {
+			const { rows, count } = await User.findAndCountAll({
+				attributes: [
+					'id',
+					'firstName',
+					'lastName',
+					'gender',
+					'phoneNum',
+					'username',
+					'password',
+					'email',
+					'isAdmin',
+				],
+			});
+			res.send({ rows, count });
+		}
 	} catch (error) {
 		next(error);
 	}
 });
 
 //admin view a single user account
-router.get('/account/:id', requireToken, isAdmin, async (req, res, next) => {
+router.get('/all/:id', requireToken, isAdmin, async (req, res, next) => {
 	try {
 		const user = await User.findByPk(req.params.id);
 		res.send(user);
@@ -304,7 +328,7 @@ router.get('/account/:id', requireToken, isAdmin, async (req, res, next) => {
 });
 
 //admin can create new user accounts
-router.post('/account', requireToken, isAdmin, async (req, res, next) => {
+router.post('/all', requireToken, isAdmin, async (req, res, next) => {
 	try {
 		const {
 			firstName,
@@ -338,7 +362,7 @@ router.post('/account', requireToken, isAdmin, async (req, res, next) => {
 });
 
 //admin can edit existing user accounts
-router.put('/account/:id', requireToken, isAdmin, async (req, res, next) => {
+router.put('/all/:id', requireToken, isAdmin, async (req, res, next) => {
 	try {
 		//gave admins the ability to set other admins
 		const {
@@ -369,7 +393,7 @@ router.put('/account/:id', requireToken, isAdmin, async (req, res, next) => {
 });
 
 //admin can remove user accounts
-router.delete('/account/:id', requireToken, isAdmin, async (req, res, next) => {
+router.delete('/all/:id', requireToken, isAdmin, async (req, res, next) => {
 	try {
 		const userToDelete = await User.findByPk(req.params.id);
 		await userToDelete.destroy();
