@@ -1,29 +1,39 @@
 .footer {
-    width: 100%;
-    padding: 15px;
+    min-height: fit-content;
+    padding: 0;
+    padding-top: 1%;
     text-align: center;
     display: block;
     background-color: @red;
     color: white;
     border-top: 10px solid @darkGreen;
-    margin-top: 25px;
-    margin-bottom: 0px;
+    margin-top: 5%;
     font-weight: bold;
     box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.5);
+    position:relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     .footer-upper{
         width: 100%;
         display: flex;
+        padding: 0.5%;
         div{
             width: 25%;
         }
     }
     .footer-lower{
-        width: 95%;
+        width: 100%;
         display:flex;
+        flex-wrap: wrap;
+        .col{
+            min-width: 100%;
+        }
         .media-container-row{
+            padding: 0.5%;
+            padding-bottom: 1.5%;
             margin-right: 0px;
             margin-left: auto;
-            padding-top: 10px;
             color: @lightGreen;
         }
     }
@@ -69,4 +79,12 @@ a, .title-card{
     display: flex;
     min-width: 200px;
     margin: auto;
+}
+.bottom{
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+    // .spacer{
+    //     flex:1;
+    // }
 }
