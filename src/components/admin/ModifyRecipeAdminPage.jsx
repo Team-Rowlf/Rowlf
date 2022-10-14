@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { fetchUser } from "../../features/user/userSlice.js";
 import Nav from "../general/Nav.jsx";
 import { toast } from 'react-toastify';
+import { fetchSingleRecipe } from "../../features/recipes/recipesSlice.js";
 
 const ModifyRecipeAdminPage = () => {
     const user = useSelector((state) => state.user);
@@ -17,6 +18,10 @@ const ModifyRecipeAdminPage = () => {
 
     // need to think about the delete status thing
     // if add an isActive field, will likely want to display that in allRecipes table as well, be able to filter for those
+    useEffect(() => {
+        dispatch(fetchUser())
+        dispatch(fetchSingleRecipe(params.id))
+    },[]);
 
     useEffect(() => {
         const token = window.localStorage.getItem('token');

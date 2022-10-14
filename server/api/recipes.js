@@ -9,6 +9,7 @@ router.get('/', async (req, res, next) => {
       // this statement being used in admin portal
       const cuisineObj = { model: Cuisine };
       const restrictionObj = { model: Restriction };
+      const activeObj = {};
       let orderArr = ['id', 'asc'];
       if (req.query.cuisine !== 'all') {
         cuisineObj.where = { name: [req.query.cuisine] };
@@ -16,9 +17,12 @@ router.get('/', async (req, res, next) => {
       if (req.query.restriction !== 'all') {
         restrictionObj.where = { name: [req.query.restriction] };
       }
+      if (req.query.active) {
+        activeObj.isActive = (req.query.active === 'yes' ? true : false)
+      }
       const { rows, count } = await Recipe.findAndCountAll({
         distinct: true,
-        where: {isActive: true},
+        where: activeObj,
         order: [orderArr],
         offset: (req.query.page - 1) * 25,
         limit: 25,
