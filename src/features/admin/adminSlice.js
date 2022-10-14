@@ -18,12 +18,13 @@ export const attemptAddRecipe = createAsyncThunk('admin/attemptAddRecipe',
     async (params) => {
         const token = window.localStorage.getItem('token');
         if (token) {
-            const { recipeDetails, cuisines, restrictions } = params;
+            const { recipeDetails, cuisines, restrictions, ingredients } = params;
             const { data } = await axios.post('/api/recipes/add-recipe', 
                 {
                     recipeDetails,
                     cuisines,
-                    restrictions
+                    restrictions,
+                    ingredients
                 },
                 {
                     headers: { authorization: token },

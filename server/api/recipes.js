@@ -131,6 +131,16 @@ router.post('/add-recipe', requireToken, isAdmin, async (req, res, next) => {
       const restriction = await Restriction.findOne({ where: { name: tag } });
       await recipe.addRestriction(restriction);
     });
+    req.body.ingredients.forEach(async (item) => {
+      const [ingredient, created] = await Ingredient.findOrCreate({where: {name: item.name}})
+      const lineItem = await LineItem.create({
+        qty: Number(item.qty),
+        measurement: item.measurement,
+        ingredientId: ingredient.id,
+        recipeId: recipe.id
+      })
+    });
+    // may want to include cuisine, restrictions, lineItems? guess not necessary though
     const updated = await Recipe.findByPk(recipe.id);
     res.send(updated);
   } catch (err) {

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { fetchUser } from "../../features/user/userSlice.js";
 import Nav from "../general/Nav.jsx";
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 
 const AdminPortal = () => {
     const user = useSelector((state) => state.user);
@@ -54,6 +54,7 @@ const AdminPortal = () => {
                     </button>
                 </div>
             </div>
+            <ToastContainer limit={1}/>
         </div>
     )
 };

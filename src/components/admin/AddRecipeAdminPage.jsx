@@ -19,6 +19,11 @@ const AddRecipeAdminPage = () => {
     });
     const [cuisine, setCuisine] = useState('');
     const [restriction, setRestriction] = useState('');
+    const [lineItems, setLineItems] = useState([{
+        name: '',
+        measurement: '',
+        qty: ''
+    }]);
 
     const cuisines = [
 		'',
@@ -45,6 +50,10 @@ const AddRecipeAdminPage = () => {
 	];
 
     useEffect(() => {
+        dispatch(fetchUser())
+    },[]);
+
+    useEffect(() => {
         const token = window.localStorage.getItem('token');
         if ((user.isLogged && !user.isAdmin) || !token) {
             toast.error("Not authorized for admin portal", {
@@ -61,7 +70,6 @@ const AddRecipeAdminPage = () => {
         }
     },[user.isLogged]);
 
-    // gonna need some form handling, etc here.
     const handleChange = (props) => (event) => {
         setForm({
           ...form,
@@ -69,22 +77,30 @@ const AddRecipeAdminPage = () => {
         });
     };
     const handleSubmit = async (event) => {
-        // console.log('clicking submit')
         event.preventDefault();
         let recipe = { ...form };
         recipe.servings = Number(recipe.servings);
         recipe.cookTime = Number(recipe.cookTime);
-        
-        // create thunk here to create object; will later want to add in new parameters
-        console.log(recipe)
+        let ingredients = validateLineItemsQtyMeasure()
+
         dispatch(attemptAddRecipe({
             recipeDetails: recipe,
             cuisines: [cuisine],
-            restrictions: restriction.length ? [restriction] : []
+            restrictions: restriction.length ? [restriction] : [],
+            ingredients: ingredients
         }))
 
-        // navigate('/adminportal');
-        // Toastify({text: `New product created: ${form.name}!`, duration:2500 ,gravity: "bottom", position: "left", backgroundColor: "#ff8300"}).showToast();
+        navigate('/adminportal');
+        toast.success(`New recipe added: "${form.name}"`, {
+            position: 'bottom-right',
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: 'dark',
+        })
     };
 
     const handleCuisineChange = (event) => {
@@ -93,9 +109,58 @@ const AddRecipeAdminPage = () => {
     const handleRestrictionChange = (event) => {
         setRestriction(event.target.value)
     }
+
+    const handleLineItemChange = (idx, props) => (event) => {
+        const copy = [...lineItems];
+        copy[idx][props] = event.target.value;
+        setLineItems([...copy])
+    }
+    const addLineItem = (event) => {
+        event.preventDefault();
+        setLineItems([...lineItems, {
+            name: '',
+            measurement: '',
+            qty: ''
+        }]);
+    };
+    const deleteLastLineItem = (event) => {
+        event.preventDefault();
+        const copy = [...lineItems];
+        copy.pop();
+        setLineItems([...copy]);
+    }
+    const checkLineItemsIngredients = () => {
+        // safety check
+        if (!lineItems) return true;
+        if (lineItems.length > 1) {
+            // had issues with using reduce where sometimes .name would be undefined
+            let names = lineItems.map(item => item.name.length)
+            return names.includes(0)
+        } else {
+            return !lineItems[0].name.length
+        }
+    };
+    const validateLineItemsQtyMeasure = () => {
+        const copy = [...lineItems];
+        copy.forEach(lineItem => {
+            if (!lineItem.qty.length) {
+                lineItem.qty = '1'
+            }
+            if (!lineItem.measurement.length) {
+                lineItem.measurement = 'whole'
+            }
+        })
+        return copy;
+    }
+
     const checkDisabled = () => {
-        // later add in checks for cuisine, restrictions? at least for cuisine; don't necessarily need restriction
-        return !form.name.length || !form.url.length || !form.img.length || !form.servings.length || !form.cookTime.length || !cuisine.length
+        return !form.name.length 
+            || !form.url.length 
+            || !form.img.length 
+            || !form.servings.length 
+            || !form.cookTime.length 
+            || !cuisine.length 
+            || checkLineItemsIngredients()
     };
 
     return (
@@ -150,7 +215,6 @@ const AddRecipeAdminPage = () => {
                     onChange={handleChange("cookTime")}
                     />
                 </div>
-                {/* need selector for cuisines */}
                 <div className="form-line">
                     Select a cuisine: 
                     <select defaultValue={cuisine} id='cuisine-selector'  onChange={handleCuisineChange}>
@@ -161,8 +225,6 @@ const AddRecipeAdminPage = () => {
 						))}
                     </select>
                 </div>
-                {/* need selector for restrictions */}
-                <div>
                 <div className="form-line">
                     Select a restriction (optional): 
                     <select defaultValue={restriction} id='restriction-selector'  onChange={handleRestrictionChange}>
@@ -173,12 +235,42 @@ const AddRecipeAdminPage = () => {
 						))}
                     </select>
                 </div>
-                </div>
-                {/* may even need for appliance if want to use that later */}
                 
                 {/* will need a line for line items; also will need a button to add new ingredient */}
-                <div>
-                    (Ingredients placeholder)
+                <div className="form-line">
+                    (Ingredient name required. Qty and measurment default to '1' and 'whole' if not filled out)
+                    
+                        {lineItems.map((lineItem, idx) =>
+                            <div className="new-line-item" key={idx}>
+                                <input
+                                    className="add-ingredient-form"
+                                    placeholder="Ingredient"
+                                    name="ingredient"
+                                    value={lineItem.name}
+                                    onChange={handleLineItemChange(idx,"name")}
+                                />
+                                <input
+                                    className="add-ingredient-form"
+                                    placeholder="Quantity (in decimals)"
+                                    name="quantity"
+                                    type="number"
+                                    value={lineItem.qty}
+                                    onChange={handleLineItemChange(idx,"qty")}
+                                />
+                                <input
+                                    className="add-ingredient-form"
+                                    placeholder="Measurement"
+                                    name="measurement"
+                                    value={lineItem.measurment}
+                                    onChange={handleLineItemChange(idx,"measurement")}
+                                />
+                            </div>
+                        )}
+                    <button type='click' className="add-line-item-button" onClick={addLineItem}>Add Ingredient</button>
+                    {lineItems.length > 1 ? 
+                        <button type='click' className="delete-line-item-button" onClick={deleteLastLineItem}>Remove Ingredient</button>
+                        : <></>
+                    }
                 </div>
 
                 <button className={checkDisabled() ? 'navbutton disabled' :'navbutton'} type="submit" disabled={checkDisabled()} onClick={handleSubmit}>
