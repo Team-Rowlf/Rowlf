@@ -14,6 +14,7 @@ import {
 import { fetchAddtoShoppingList } from '../../features/shoppingList/shoppingListSlice';
 import { getUserToken } from '../../features/user/userSlice';
 import { ToastContainer, toast } from 'react-toastify';
+import { decimalToFraction } from '../../helperfunctions/fractions';
 
 const RecipePage = () => {
 	const dispatch = useDispatch();
@@ -152,7 +153,7 @@ const RecipePage = () => {
 				<ul>
 					{recipe.lineItems.map((item) => (
 						<li key={item.id}>
-							{capitalize(item.ingredient.name)} ({item.qty}{' '}
+							{capitalize(item.ingredient.name)} ({item.measurement.toLowerCase() !== 'to taste' ? `${decimalToFraction(item.qty)} ` : ''}
 							{capitalize(item.measurement)})
 						</li>
 					))}

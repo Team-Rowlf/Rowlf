@@ -13,30 +13,37 @@ const _addIngredientToArray = (lineItem, array) => {
 }
 
 const _convertMeasurementFormat = (measurement) => {
-    if (measurement === 'lb') {
+    const lowerCase = measurement.toLowerCase();
+    if (lowerCase.includes('lb') || lowerCase.includes('pound')) {
         return 'POUNDS'
-    } else if (measurement === 'cup') {
+    } else if (lowerCase.includes('cup')) {
         return 'CUPS'
-    } else if (measurement === 'tsp') {
+    } else if (lowerCase.includes('tsp') || lowerCase.includes('teaspoon')) {
         return 'TSP'
-    } else if (measurement === 'tbsp') {
+    } else if (lowerCase.includes('tbsp') || lowerCase.includes('tablespoon')) {
         return 'TBSP'
-    } else if (measurement === 'oz') {
+    } else if (lowerCase.includes('oz') || lowerCase.includes('ounce')) {
         return 'OUNCES'
-    } else if (measurement.includes('clove')) {
+    } else if (lowerCase.includes('clove')) {
         return 'CLOVES'
-    } else if (measurement.includes('pinch') || (measurement === 'to taste')) {
+    } else if (lowerCase.includes('pinch') || (lowerCase === 'to taste')) {
         return 'PINCHES'
-    } else if (measurement.includes('stalk')) {
+    } else if (lowerCase.includes('stalk')) {
         return 'STALKS'
-    } else if (measurement.includes('bunch')) {
+    } else if (lowerCase.includes('bunch')) {
         return 'BUNCHES'
-    } else if ((measurement === 'leaf') || (measurement === 'leaves')) {
+    } else if ((lowerCase === 'leaf') || (lowerCase === 'leaves')) {
         return 'LEAVES'
-    } else if (measurement.includes('slice')) {
+    } else if (lowerCase.includes('slice')) {
         return 'SLICES'
-    } else if (measurement.includes('can')) {
+    } else if (lowerCase.includes('can')) {
         return 'JP_CANS' // unsure what this means; doesn't seem to be accurate; may want to update seed file with oz instead of cans
+    } else if (lowerCase.includes('pint')) {
+        return 'PINTS'
+    } else if (lowerCase.includes('quart')) {
+        return 'QUARTS'
+    } else if (lowerCase.includes('gallon')) {
+        return 'GALLONS'
     }
     else {
         return 'COUNT' // catchall for now
@@ -49,15 +56,12 @@ const _addRecipeToArray = (recipe, array) => {
     }
 }
 
-const _addRecipesToArray = (recipeArray, array) => {
+const addRecipesToArray = (recipeArray, array) => {
     for (index in recipeArray) {
         _addRecipeToArray(recipeArray[index], array)
     }
 }
 
 module.exports = {
-	_addIngredientToArray,
-    _addRecipeToArray,
-    _addRecipesToArray,
-    _convertMeasurementFormat
+	addRecipesToArray
 };
