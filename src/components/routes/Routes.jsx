@@ -19,36 +19,41 @@ import AllUsersAdminPage from '../admin/AllUsersAdminPage.jsx';
 import AllRecipesAdminPage from '../admin/AllRecipesAdminPage.jsx';
 import AddRecipeAdminPage from '../admin/AddRecipeAdminPage.jsx';
 import ModifyRecipeAdminPage from '../admin/ModifyRecipeAdminPage.jsx';
+import MapMain from '../googleMaps/MapMain.jsx';
 
 const RoutesComponent = () => {
-	return (
-		<Routes>
-			<Route index element={<Home />} />
-			<Route path="/login" element={<Login />} />
-			<Route path="/signUp" element={<Signup />} />
-			<Route path="/about" element={<About />} />
-			<Route path="/user" element={<User />}>
-				<Route index element={<ShoppingList />} />
-				<Route path="shoppingList" element={<ShoppingList />} />
-				<Route path="recipes" element={<Recipes />} />
-				<Route path="recipes/:recipeId" element={<RecipePage />} />
-				<Route path="profile" element={<Profile />}>
-					<Route index element={<Likes />} />
-					<Route path="likes" element={<Likes />} />
-					<Route path="dislikes" element={<Dislikes />} />
-					<Route path="edit" element={<EditProfile />} />
-				</Route>
-				<Route path="*" element={<NotFound />} />
-			</Route>
-			<Route path="/adminportal" element={<AdminPortal />} />
-			<Route path="/adminportal/allusers" element={<AllUsersAdminPage />} />
-			<Route path="/adminportal/allrecipes" element={<AllRecipesAdminPage />} />
-			<Route path="/adminportal/addrecipe" element={<AddRecipeAdminPage />} />
-			<Route path="/adminportal/updaterecipe/:id" element={<ModifyRecipeAdminPage />} />
-			<Route path="leaflet" element={<LeafletMap />} />
-			<Route path="*" element={<NotFound />} />
-		</Routes>
-	);
+  return (
+    <Routes>
+      <Route index element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signUp" element={<Signup />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/user" element={<User />}>
+        <Route index element={<ShoppingList />} />
+        <Route path="shoppingList" element={<ShoppingList />} />
+        <Route path="recipes" element={<Recipes />} />
+        <Route path="recipes/:recipeId" element={<RecipePage />} />
+        <Route path="profile" element={<Profile />}>
+          <Route index element={<Likes />} />
+          <Route path="likes" element={<Likes />} />
+          <Route path="dislikes" element={<Dislikes />} />
+          <Route path="edit" element={<EditProfile />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Route>
+      <Route path="/adminportal" element={<AdminPortal />} />
+      <Route path="/adminportal/allusers" element={<AllUsersAdminPage />} />
+      <Route path="/adminportal/allrecipes" element={<AllRecipesAdminPage />} />
+      <Route path="/adminportal/addrecipe" element={<AddRecipeAdminPage />} />
+      <Route
+        path="/adminportal/updaterecipe/:id"
+        element={<ModifyRecipeAdminPage />}
+      />
+      <Route path="groceryMap" element={<MapMain />} />
+      <Route path="leaflet" element={<LeafletMap />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
 };
 
 export default RoutesComponent;
