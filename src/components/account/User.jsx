@@ -27,23 +27,12 @@ const User = () => {
 			dispatch(fetchRecipes());
 			dispatch(getUserLikes({ token }));
 			dispatch(getUserDisLikes({ token }));
-			toast.success('🎉 Success 🎉!', {
-				position: 'bottom-right',
-				autoClose: 3000,
-				hideProgressBar: false,
-				closeOnClick: true,
-				pauseOnHover: true,
-				draggable: true,
-				progress: undefined,
-				theme: 'dark',
-			});
 		}
 	}, []);
 
 	return (
 		<div className="user">
 			<Nav />
-			<ToastContainer limit={1} />
 			<Outlet />
 		</div>
 	);
