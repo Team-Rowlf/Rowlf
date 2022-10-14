@@ -48,7 +48,7 @@ const adminSlice = createSlice({
             state.allUsers = [];
             state.status = 'idle';
             state.numUsers = NaN;
-        }
+        },
     },
     extraReducers(builder) {
         builder

@@ -93,7 +93,7 @@ router.get('/:id', async (req, res, next) => {
 });
 
 //ADMIN ROUTES
-// delete recipe
+// delete recipe; won't use this route after all, will just change isActive to false
 router.delete('/:id', requireToken, isAdmin, async (req, res, next) => {
   try {
     const recipe = await Recipe.findByPk(req.params.id);
@@ -115,9 +115,12 @@ router.put('/:id', requireToken, isAdmin, async (req, res, next) => {
       ],
     });
 
+    console.log('LOGGING REQ.BODY',req.body)
+
     // very basic implementation so far; would only account for updating it's own field values
     // may want to consider cases for updating Cuisine, Restriction, etc as well later
-    await recipe.update(req.body);
+    await recipe.update(req.body.recipeDetails);
+    console.log('LOGGING RECIPE IN API ROUTE',recipe)
     res.send(recipe);
   } catch (err) {
     next(err);

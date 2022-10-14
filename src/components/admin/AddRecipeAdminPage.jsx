@@ -76,7 +76,7 @@ const AddRecipeAdminPage = () => {
           [props]: event.target.value,
         });
     };
-    const handleSubmit = async (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
         let recipe = { ...form };
         recipe.servings = Number(recipe.servings);

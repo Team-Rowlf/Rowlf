@@ -18,7 +18,6 @@ const AdminPortal = () => {
     useEffect(() => {
         const token = window.localStorage.getItem('token');
         if ((user.isLogged && !user.isAdmin) || !token) {
-            // shows if not logged in; unsure why doesn't appear if logged in
             toast.error("Not authorized for admin portal", {
                 position: 'bottom-right',
                 autoClose: 3000,

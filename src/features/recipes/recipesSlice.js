@@ -35,6 +35,27 @@ export const fetchSingleRecipe = createAsyncThunk(
 	}
 )
 
+//admin only functionality
+export const attemptUpdateRecipe = createAsyncThunk('recipes/attemptUpdateRecipe',
+    async (params) => {
+        const token = window.localStorage.getItem('token');
+        if (token) {
+            const { recipeDetails, cuisines, restrictions, ingredients } = params;
+            const { data } = await axios.put(`/api/recipes/${recipeDetails.id}`, 
+                {
+                    recipeDetails,
+                    cuisines,
+                    restrictions,
+                    ingredients
+                },
+                {
+                    headers: { authorization: token },
+                });
+            return data;
+        }
+    }
+)
+
 const initialState = {
 	recipes: [],
 	filterRecipes: [],
@@ -102,7 +123,17 @@ const recipesSlice = createSlice({
 			.addCase(fetchSingleRecipe.rejected, (state, action) => {
 				state.status = 'failed';
 				state.error = action.error;
-			});	
+			})
+			.addCase(attemptUpdateRecipe.pending, (state, action) => {
+                state.status = 'pending';
+            })
+            .addCase(attemptUpdateRecipe.fulfilled, (state, action) => {
+				state.singleRecipe = action.payload;
+                state.status = 'succeeded';
+            })
+            .addCase(attemptUpdateRecipe.rejected, (state, action) => {
+                state.status = 'failed';
+            });	
 	},
 });
 
