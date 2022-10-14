@@ -3,7 +3,7 @@
   max-width: 100%;
 }
 #root {
-	min-height: 100vh;
+  min-height: 100%;
 }
 body {
   background-color: #E0E2DB;
@@ -725,6 +725,80 @@ a,
   text-align: center;
   margin-bottom: 0%;
   margin-top: auto;
+}
+.likes div summary,
+.dislikes div summary {
+  padding-left: 3%;
+  padding-bottom: 1%;
+  font-size: large;
+  font-weight: bold;
+}
+.likes div ul li,
+.dislikes div ul li {
+  padding: 0.5%;
+  margin-left: 5%;
+  font-size: large;
+}
+#admin-portal {
+  display: flex;
+  flex-direction: column;
+}
+.admin-portal-link-container {
+  display: flex;
+  flex-direction: row;
+}
+.admin-portal-link {
+  margin: 0.5em;
+}
+table,
+th,
+td {
+  border: 1px solid;
+}
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+td {
+  min-width: 50px;
+  max-width: 150px;
+  overflow: scroll;
+  height: 50px;
+  white-space: nowrap;
+  padding: 5px;
+}
+.allusers-header,
+.allrecipes-header {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+.allusers-header div,
+.allrecipes-header div {
+  margin: 0.25em;
+}
+.display-info {
+  flex-direction: row;
+  display: flex;
+}
+.display-text {
+  font-style: italic;
+  margin-right: 1em;
+}
+.sort-checkbox {
+  margin: 0.5em;
+}
+.no-recipes-message {
+  margin: auto;
+  text-align: center;
+  margin-top: 25px;
+}
+.recipe-id-link {
+  color: blue;
 }
 .recipe-id-link:hover {
   color: purple;

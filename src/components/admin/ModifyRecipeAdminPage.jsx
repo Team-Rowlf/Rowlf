@@ -76,7 +76,7 @@ const ModifyRecipeAdminPage = () => {
             let ingredients = recipe.lineItems.map((item) => ({
                 name: item.ingredient.name,
                 measurement: item.measurement,
-                qty: item.qty
+                qty: item.qty.toString()
             }));
             setLineItems([...ingredients]);
         }
