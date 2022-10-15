@@ -317,13 +317,13 @@ const AddRecipeAdminPage = () => {
 							<label htmlFor="cuisine" className="fl fontLabel">
 								Ingredients:
 							</label>
-							<div className="">
+							<div className="ingredients">
                                 {lineItems.map((lineItem, idx) =>
-                                    <>
+                                    <div className="ingredient">
                                         <div className="fr" key={idx}>
                                             <input
                                                 className="textBox"
-                                                placeholder="Ingredient"
+                                                placeholder="Name"
                                                 name="ingredient"
                                                 value={lineItem.name}
                                                 onChange={handleLineItemChange(idx,"name")}
@@ -349,7 +349,7 @@ const AddRecipeAdminPage = () => {
                                                 onChange={handleLineItemChange(idx,"measurement")}
                                             />
                                         </div>
-                                    </>
+                                    </div>
                                 )}
 							</div>
                                 <button type='click' className="-button" onClick={addLineItem}>+</button>
