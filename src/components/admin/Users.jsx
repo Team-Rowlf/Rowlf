@@ -16,6 +16,8 @@ const AllUsersAdminPage = () => {
     const [page, setPage]  = useState(searchParams.get('page'))
     const [sortByLastName, setSortByLastName] = useState(false)
     
+    console.log(useSelector(state=>state.admin))
+
     useEffect(() => {
         const token = window.localStorage.getItem('token');
         if ((user.isLogged && !user.isAdmin) || !token) {
@@ -46,7 +48,6 @@ const AllUsersAdminPage = () => {
     return (
         users.length ?
             <div className="all-users-container">
-                <Nav />
                 <div className='allusers-header'>
                     <h1>All User Information ({numUsers})</h1>
                     <div>

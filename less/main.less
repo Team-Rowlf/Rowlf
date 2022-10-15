@@ -70,3 +70,24 @@ img {
   display: flex;
   flex-direction: column;
 }
+
+.profile, .admin{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 60vh;
+    nav{
+        display: flex;
+        padding: 2%;
+        padding-bottom: 0px;
+        border-bottom: 3px solid @red;
+        a{
+          min-width: 10%;
+          flex-wrap: nowrap;
+          button{
+            min-width: fit-content;
+            flex-wrap: nowrap;
+          }
+        }
+    }
+}

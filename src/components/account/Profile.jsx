@@ -1,9 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Outlet } from 'react-router-dom';
-import Dislikes from '../pages/Dislikes.jsx';
-import Likes from '../pages/Likes.jsx';
-import EditProfile from './EditProfile.jsx';
 
 const Profile = () => {
 	const profile = useSelector((state) => state.profile);

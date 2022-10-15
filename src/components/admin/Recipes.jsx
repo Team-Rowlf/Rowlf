@@ -88,9 +88,8 @@ const AllRecipesAdminPage = () => {
     }
 
     return (
-        recipeStatus === 'succeeded' ?
+        recipes.length > 0 ?
             <div className="all-recipes-container">
-                <Nav />
                 <div className='allrecipes-header'>
                     <h1>All Recipes ({recipeCount})</h1>
                         <div>
@@ -126,8 +125,8 @@ const AllRecipesAdminPage = () => {
                         <div className='display-info'>
                             <div className='display-text'>Displaying 25 recipes per page:</div>
                             <div className="prev-next">
-                            <Link to={`/adminportal/allrecipes?page=${Number(page)-1}`} className={Number(page) === 1 ? 'prevNext disabled' : 'prevNext'} onClick={() => setPage(+page-1)}>Prev</Link>
-                            <Link to={`/adminportal/allrecipes?page=${Number(page)+1}`} className={page*25 >= recipeCount ? 'prevNext disabled' : 'prevNext'} onClick={() => setPage(+page+1)}>Next</Link>
+                            <Link to={`/admin/recipes?page=${Number(page)-1}`} className={Number(page) === 1 ? 'prevNext disabled' : 'prevNext'} onClick={() => setPage(+page-1)}>Prev</Link>
+                            <Link to={`/admin/recipes?page=${Number(page)+1}`} className={page*25 >= recipeCount ? 'prevNext disabled' : 'prevNext'} onClick={() => setPage(+page+1)}>Next</Link>
                             </div>
                         </div>
                     </div>
@@ -149,7 +148,7 @@ const AllRecipesAdminPage = () => {
                                 return (
                                 <tr key={idx}>
                                     <td>
-                                    <Link className="recipe-id-link" to={`/adminportal/updaterecipe/${recipe.id}`}>
+                                    <Link className="recipe-id-link" to={`admin/updaterecipe/${recipe.id}`}>
                                         {recipe.id}
                                     </Link>
                                     </td>
