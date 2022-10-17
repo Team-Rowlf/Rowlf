@@ -12,7 +12,6 @@ import Recipes from '../pages/AllRecipes.jsx';
 import RecipePage from '../pages/SingleRecipe.jsx';
 import Likes from '../pages/Likes.jsx';
 import Dislikes from '../pages/Dislikes.jsx';
-import LeafletMap from '../leaflet/LeafletMap.jsx';
 import EditProfile from '../account/EditProfile.jsx';
 import AdminPortal from '../admin/AdminPortal.jsx';
 import AllUsersAdminPage from '../admin/Users.jsx';
@@ -51,8 +50,7 @@ const RoutesComponent = () => {
         <Route path="updaterecipe/:id" element={<ModifyRecipeAdminPage />} />
         <Route path="*" element={<NotFound />} />
       </Route>
-      <Route path="groceryMap" element={<MapMain />} />
-      <Route path="leaflet" element={<LeafletMap />} />
+      <Route path="map" element={<MapMain />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

@@ -134,7 +134,7 @@ const ShoppingList = () => {
               </button>
             </div>
             <div className="find-stores-nearby">
-              <Link to="/storesMap" className="stores-button-link">
+              <Link to="/map" className="stores-button-link">
                 <button className="stores-button">Find Nearby Stores</button>
               </Link>
             </div>
