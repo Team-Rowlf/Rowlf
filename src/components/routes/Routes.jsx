@@ -21,6 +21,7 @@ import AddRecipeAdminPage from '../admin/AddRecipe.jsx';
 import ModifyRecipeAdminPage from '../admin/ModifyRecipe.jsx';
 import MapMain from '../googleMaps/MapMain.jsx';
 import ListHistory from '../account/ListHistory.jsx';
+import TermsConditions from '../general/TermsConditions.jsx';
 
 const RoutesComponent = () => {
   return (
@@ -28,6 +29,7 @@ const RoutesComponent = () => {
       <Route index element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signUp" element={<Signup />} />
+      <Route path="/agreement" element={<TermsConditions />} />
       <Route path="/about" element={<About />} />
       <Route path="/user" element={<User />}>
         <Route index element={<ShoppingList />} />
