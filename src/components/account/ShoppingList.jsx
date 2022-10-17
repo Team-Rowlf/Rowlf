@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import {
+  completeShoppingList,
   fetchRemoveFromShoppingList,
   fetchShoppingList,
   getListStatus,
@@ -16,6 +17,9 @@ const ShoppingList = () => {
   const location = useLocation();
   const shoppingList = useSelector(
     (state) => state.shoppingList.shoppingList.recipes
+  );
+  const shoppingListId = useSelector(
+    (state) => state.shoppingList.shoppingList.id
   );
   const listStatus = useSelector(getListStatus);
 
@@ -59,6 +63,10 @@ const ShoppingList = () => {
 
   const inLineStyle = {
     display: `flex`,
+  };
+
+  const completeListClickHandler = () => {
+    dispatch(completeShoppingList({ id: shoppingListId }));
   };
 
   return !shoppingList ? (
@@ -120,7 +128,11 @@ const ShoppingList = () => {
             );
           })}
           <div className="list-buttons">
-            <div className="mark-as-complete">(List complete placeholder)</div>
+            <div className="mark-as-complete">
+              <button type="click" onClick={completeListClickHandler}>
+                Mark as Complete!
+              </button>
+            </div>
             <div className="find-stores-nearby">
               <Link to="/storesMap" className="stores-button-link">
                 <button className="stores-button">Find Nearby Stores</button>

@@ -47,10 +47,23 @@ export const getUserDisLikes = createAsyncThunk(
   }
 );
 
+export const getUserListHistory = createAsyncThunk(
+  'profile/getUserListHistory',
+  async({ token }) => {
+    const { data } = await axios.get('/api/user/me/allLists', {
+      headers: { authorization: token },
+    });
+    // filtering out active shopping list
+    const filtered = data.filter(list => list.isCompleted)
+    return filtered;
+  }
+)
+
 const initialState = {
   account: {},
   likes: [],
   dislikes: [],
+  listHistory: [],
   status: 'idle',
   error: null,
 };
@@ -63,7 +76,11 @@ export const fetchProfile = createAsyncThunk(
 const profileSlice = createSlice({
   name: 'profile',
   initialState,
-  reducers: {},
+  reducers: {
+    clearListHistory: (state) => {
+      state.listHistory = [];
+    }
+  },
   extraReducers(builder) {
     builder
       .addCase(userLikeRecipe.fulfilled, (state, action) => {
@@ -89,6 +106,17 @@ const profileSlice = createSlice({
       .addCase(getUserDisLikes.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error;
+      })
+      .addCase(getUserListHistory.pending, (state, action) => {
+        state.status = 'pending';
+      })
+      .addCase(getUserListHistory.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.listHistory = action.payload;
+      })
+      .addCase(getUserListHistory.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error;
       });
   },
 });
@@ -103,5 +131,9 @@ export const getAllDislikesId = (state) =>
     accum.push(next.id);
     return accum;
   }, []);
+
+export const getProfileStatus = (state) => state.profile.status;
+
+export const { clearListHistory } = profileSlice.actions;
 
 export default profileSlice.reducer;
