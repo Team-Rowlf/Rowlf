@@ -149,7 +149,7 @@ const AllRecipesAdminPage = () => {
                                     return (
                                     <tr key={idx}>
                                         <td>
-                                        <Link className="recipe-id-link" to={`admin/updaterecipe/${recipe.id}`}>
+                                        <Link className="recipe-id-link" to={`/admin/updaterecipe/${recipe.id}`}>
                                             {recipe.id}
                                         </Link>
                                         </td>
