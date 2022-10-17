@@ -42,6 +42,11 @@ const Profile = () => {
 							Profile 
 					</button>
 				</Link >
+				<Link to={'history'}>
+					<button className='tab' id='list-history' onClick={OnClick}>
+							History
+					</button>
+				</Link>
 			</nav>
 			<Outlet />
 		</div>

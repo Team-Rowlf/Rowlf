@@ -846,6 +846,21 @@ a,
   margin-left: 5%;
   font-size: large;
 }
+.completed-lists div {
+  margin: 1em;
+}
+.completed-lists a {
+  color: #0D730D;
+}
+.completed-lists li {
+  margin: 0.5em;
+}
+.no-completed-lists {
+  min-width: 100%;
+  text-align: center;
+  font-size: medium;
+  margin-top: 1em;
+}
 #admin-portal {
   display: flex;
   flex-direction: column;

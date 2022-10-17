@@ -20,6 +20,7 @@ import AllRecipesAdminPage from '../admin/AllRecipesAdminPage.jsx';
 import AddRecipeAdminPage from '../admin/AddRecipeAdminPage.jsx';
 import ModifyRecipeAdminPage from '../admin/ModifyRecipeAdminPage.jsx';
 import MapMain from '../googleMaps/MapMain.jsx';
+import ListHistory from '../account/ListHistory.jsx';
 
 const RoutesComponent = () => {
   return (
@@ -38,6 +39,7 @@ const RoutesComponent = () => {
           <Route path="likes" element={<Likes />} />
           <Route path="dislikes" element={<Dislikes />} />
           <Route path="edit" element={<EditProfile />} />
+          <Route path="history" element={<ListHistory />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Route>
