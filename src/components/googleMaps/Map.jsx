@@ -32,6 +32,11 @@ const Map = () => {
       mapId: '7fb386391a2ca376',
       clickableIcons: false,
       disableDefaultUI: true,
+      zoomControl: true,
+      zoomControlOptions: {
+        position: google.maps.ControlPosition.RIGHT_TOP,
+      },
+      fullscreenControl: true,
     }),
     []
   );
@@ -48,19 +53,13 @@ const Map = () => {
     service.nearbySearch(request, callback);
 
     function callback(results, status) {
-      console.log(status);
       if (status == google.maps.places.PlacesServiceStatus.OK) {
         let openStores = results.filter(
           (result) =>
             result.business_status === 'OPERATIONAL' &&
             !result.name.includes('.com')
         );
-        console.log(openStores);
-        if (openStores.length > 15) {
-          setStores(openStores.slice(0, 15));
-        } else {
-          setStores(openStores);
-        }
+        setStores(openStores);
       }
     }
   }
@@ -100,13 +99,17 @@ const Map = () => {
     }
   }, [searched]);
 
-  function openMarkerPopup() {}
+  function openMarkerPopup(store) {
+    setSelectedStore(store);
+    mapRef.current?.panTo(store.geometry.location && store.geometry.location);
+  }
 
+  function centerMap() {}
   return (
     <div className="container">
       <div className="store-list-search">
         <PlaceAutoComplete setSearchLocation={getSearchLocation} />
-        <StoreList stores={stores} />
+        <StoreList stores={stores} openMarkerPopup={openMarkerPopup} />
       </div>
       <div className="map">
         <GoogleMap
@@ -116,9 +119,20 @@ const Map = () => {
           options={options}
           onLoad={(map) => onMapLoad(map)}
         >
+          <button
+            className="center-map"
+            onClick={() => {
+              setSelectedStore(null);
+              setUserClicked(true);
+              mapRef.current?.panTo(location && location);
+            }}
+          >
+            Recenter Map
+          </button>
           <Marker
             position={location && location}
             onClick={() => {
+              setSelectedStore(null);
               setUserClicked(true);
               mapRef.current?.panTo(location && location);
             }}
@@ -136,7 +150,7 @@ const Map = () => {
               onCloseClick={() => setUserClicked(false)}
             >
               <div>
-                <p>You are here</p>
+                <h4>You are here</h4>
               </div>
             </InfoWindow>
           ) : null}
@@ -147,6 +161,7 @@ const Map = () => {
                   key={idx}
                   position={store.geometry.location}
                   onClick={() => {
+                    setUserClicked(false);
                     setSelectedStore(store);
                     mapRef.current?.panTo(
                       store.geometry.location && store.geometry.location

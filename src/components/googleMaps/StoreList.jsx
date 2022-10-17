@@ -1,6 +1,6 @@
 import React from 'react';
 
-function StoreList({ stores }) {
+function StoreList({ stores, openMarkerPopup }) {
   return (
     <div className="store-list">
       {stores &&
@@ -8,12 +8,15 @@ function StoreList({ stores }) {
           <div
             className="store"
             key={store.place_id}
-            onClick={() => console.log('clicked')}
+            onClick={() => openMarkerPopup(store)}
           >
             <div className="store-text">
               <h2>{store.name}</h2>
               {store.rating ? (
-                <p> Rating: {store.rating}/5</p>
+                <p>
+                  {' '}
+                  Rating: {store.rating}/5 ({store.user_ratings_total} reviews)
+                </p>
               ) : (
                 <p>Rating: N/A</p>
               )}
