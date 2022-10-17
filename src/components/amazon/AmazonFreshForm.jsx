@@ -20,7 +20,8 @@ const AmazonFreshForm = () => {
         <div className="amazon-fresh-form">
             <form method="POST" action="https://www.amazon.com/afx/ingredients/landing" target="_blank">
                 <input id="json-ingredients" type="hidden" name="ingredients" value={`${ingredients}`}/>
-                <input type="submit" value="Order On Amazon Fresh"/>
+                {/* <input type="submit" value="Order On Amazon Fresh"/> */}
+                <button type="submit">Order On Amazon</button>
             </form>
         </div>
     )
