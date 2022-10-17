@@ -21,6 +21,7 @@ import AddRecipeAdminPage from '../admin/AddRecipe.jsx';
 import ModifyRecipeAdminPage from '../admin/ModifyRecipe.jsx';
 import MapMain from '../googleMaps/MapMain.jsx';
 import ListHistory from '../account/ListHistory.jsx';
+import ChefsChoice from '../pages/ChefsChoice.jsx';
 
 const RoutesComponent = () => {
   return (
@@ -56,6 +57,7 @@ const RoutesComponent = () => {
       </Route>
       <Route path="groceryMap" element={<MapMain />} />
       <Route path="leaflet" element={<LeafletMap />} />
+      <Route path="chefschoice" element={<ChefsChoice />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

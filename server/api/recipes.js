@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Recipe, Cuisine, Restriction, LineItem, Ingredient } = require('../db');
+const { Recipe, Cuisine, Restriction, LineItem, Ingredient, Appliance } = require('../db');
 const { requireToken, isAdmin } = require('./gatekeepingMiddleware');
 
 // get all recipes
@@ -29,6 +29,7 @@ router.get('/', async (req, res, next) => {
         include: [
           cuisineObj,
           restrictionObj,
+          { model: Appliance },
           { model: LineItem, include: { model: Ingredient } },
         ],
       });
@@ -56,6 +57,7 @@ router.get('/', async (req, res, next) => {
         include: [
           cuisineObj,
           restrictionObj,
+          { model: Appliance },
           { model: LineItem, include: { model: Ingredient } },
         ],
       });
@@ -66,6 +68,7 @@ router.get('/', async (req, res, next) => {
         include: [
           { model: Cuisine },
           { model: Restriction },
+          { model: Appliance },
           { model: LineItem, include: { model: Ingredient } },
         ],
       });
@@ -75,6 +78,25 @@ router.get('/', async (req, res, next) => {
     next(err);
   }
 });
+
+// route for suggested recipes component
+// can use token to get the disliked recipes as well
+// router.get('/suggestions', requireToken, async (req, res, next) => {
+//   try {
+//     // will first want to get recipes, can either filter in here or in the thunk
+//     // probably better practice to do it in here though
+//     if (req.query.cuisine) {
+//       if (typeof req.query.cuisine === 'string') {
+//         console.log([req.query.cuisine])
+//       } else
+//       console.log([...req.query.cuisine])
+//     }
+//     res.send('test')
+
+//   } catch (err) {
+//     next(err);
+//   }
+// });
 
 // get single recipe
 router.get('/:id', async (req, res, next) => {
