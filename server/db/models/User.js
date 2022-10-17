@@ -181,10 +181,11 @@ User.prototype.getAllLists = async function () {
 		where: {
 			userId: this.id,
 		},
-		attributes: ['id', 'userId', 'isCompleted'],
+		// attributes: ['id', 'userId', 'isCompleted'],
+		order: [['id', 'desc']],
 		include: {
 			model: Recipe,
-			attributes: ['name', 'servings'],
+			attributes: ['id','name', 'servings'],
 			include: {
 				model: LineItem,
 				attributes: ['qty', 'measurement'],
