@@ -1,30 +1,3 @@
-#admin-portal {
-    display: flex;
-    flex-direction: column;
-}
-.admin-portal-link-container {
-    display: flex;
-    flex-direction: row;
-    // could later add in some styling where under certain width, flex-direction becomes column
-}
-.admin-portal-link {
-    margin: .5em;
-}
-table, th, td {
-    border: 1px solid;
-}
-table {
-    margin-left: auto;
-    margin-right: auto;
-}
-td {
-    min-width: 50px;
-    max-width: 150px;
-    overflow: scroll;
-    height: 50px;
-    white-space: nowrap;
-    padding: 5px
-}
 .allusers-header, .allrecipes-header {
     margin-left: auto;
     margin-right: auto;
@@ -54,12 +27,6 @@ td {
     text-align: center;
     margin-top: 25px;
 }
-.recipe-id-link {
-    color: blue;
-}
-.recipe-id-link:hover {
-    color: purple;
-}
 
 #add-recipe-form, #modify-recipe-form {
     margin-top: 2em;
@@ -67,4 +34,81 @@ td {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.-button{
+    width:25px;
+    height:25px;
+    display:inline-block;
+    margin: auto;
+    align-items: center;
+}
+
+.ingredients{
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1%;
+    .ingredient{
+        background-color: @red;
+        margin: 1%;
+        height: fit-content;
+        width: fit-content;
+        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        border: 1px solid @backgroundLight;
+        padding: 0.5%;
+    }
+}
+
+#table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  border: 5px solid @red;
+}
+
+#table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#table th {
+  border: 5px solid @red;
+  padding: 8px;
+}
+
+tbody{
+  border: 5px solid @red;
+}
+
+#table tr:nth-child(even){background-color: #eee;}
+
+#table tr:hover {background-color: @lightGreen;}
+
+#table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: @darkGreen;
+  color: white;
+}
+.recipe-url{
+    max-width: 500px;;
+}
+.recipe-name{
+    max-width: 200px;;
+}
+
+.all-users-container{
+    display: flex;
+    flex-wrap: wrap;
+    allusers-header{
+        width: 100vw;
+    }
+}
+#table{
+    width: 100vw;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
