@@ -19,8 +19,9 @@ const AllRecipesAdminPage = () => {
 	const [restrictionFilter, setRestrictionFilter] = useState('all');
     const [activeFilter, setActiveFiler] = useState('both');
     
+    
     const cuisines = [
-		'all',
+        'all',
 		'american',
 		'asian',
 		'mexican',
@@ -34,7 +35,7 @@ const AllRecipesAdminPage = () => {
 	];
 
 	const restrictions = [
-		'all',
+        'all',
 		'vegetarian',
 		'vegan',
 		'glutan-free',
@@ -61,7 +62,7 @@ const AllRecipesAdminPage = () => {
             navigate('/');
         }
     },[user.isLogged]);
-
+    
     useEffect(() => {
         dispatch(fetchUser())
         if (user.isAdmin) {
@@ -76,7 +77,7 @@ const AllRecipesAdminPage = () => {
             dispatch(clearFilteredRecipes())
         }
     },[user.isAdmin, page, cuisineFilter, restrictionFilter, activeFilter]);
-
+    
     const handleCuisineFilterChange = (event) => {
         setCuisineFilter(event.target.value)
     }
@@ -88,9 +89,8 @@ const AllRecipesAdminPage = () => {
     }
 
     return (
-        recipeStatus === 'succeeded' ?
+        recipes.length > 0 ?
             <div className="all-recipes-container">
-                <Nav />
                 <div className='allrecipes-header'>
                     <h1>All Recipes ({recipeCount})</h1>
                         <div>
@@ -126,42 +126,42 @@ const AllRecipesAdminPage = () => {
                         <div className='display-info'>
                             <div className='display-text'>Displaying 25 recipes per page:</div>
                             <div className="prev-next">
-                            <Link to={`/adminportal/allrecipes?page=${Number(page)-1}`} className={Number(page) === 1 ? 'prevNext disabled' : 'prevNext'} onClick={() => setPage(+page-1)}>Prev</Link>
-                            <Link to={`/adminportal/allrecipes?page=${Number(page)+1}`} className={page*25 >= recipeCount ? 'prevNext disabled' : 'prevNext'} onClick={() => setPage(+page+1)}>Next</Link>
+                            <Link to={`/admin/recipes?page=${Number(page)-1}`} className={Number(page) === 1 ? 'prevNext disabled' : 'prevNext'} onClick={() => setPage(+page-1)}>Prev</Link>
+                            <Link to={`/admin/recipes?page=${Number(page)+1}`} className={page*25 >= recipeCount ? 'prevNext disabled' : 'prevNext'} onClick={() => setPage(+page+1)}>Next</Link>
                             </div>
                         </div>
                     </div>
                     {recipes.length ?
-                        <table id="all-recipes-table">
+                        <table id="table">
                             <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Recipe Url</th>
-                                <th>Image Url</th>
-                                <th>Cuisines</th>
-                                <th>Restrictions</th>
-                                <th>Active?</th>
-                            </tr>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Recipe Url</th>
+                                    <th>Image Url</th>
+                                    <th>Cuisines</th>
+                                    <th>Restrictions</th>
+                                    <th>Active?</th>
+                                </tr>
                             </thead>
                             <tbody>
-                            {recipes.map((recipe, idx) => {
-                                return (
-                                <tr key={idx}>
-                                    <td>
-                                    <Link className="recipe-id-link" to={`/adminportal/updaterecipe/${recipe.id}`}>
-                                        {recipe.id}
-                                    </Link>
-                                    </td>
-                                    <td>{recipe.name}</td>
-                                    <td className="recipe-url">{recipe.url}</td>
-                                    <td className="recipe-url">{recipe.img}</td>
-                                    <td>{recipe.cuisines.length ? recipe.cuisines.map(cuisine => cuisine.name.toUpperCase()).join(', ') : 'NO CUISINES'}</td>
-                                    <td>{recipe.restrictions.length ? recipe.restrictions.map(restriction => restriction.name.toUpperCase()).join(', ') : 'NO RESTRICIONS'}</td>
-                                    <td>{recipe.isActive ? 'YES' : 'NO'}</td>
-                                </tr>
-                                );
-                            })}
+                                {recipes.map((recipe, idx) => {
+                                    return (
+                                    <tr key={idx}>
+                                        <td>
+                                        <Link className="recipe-id-link" to={`/admin/updaterecipe/${recipe.id}`}>
+                                            {recipe.id}
+                                        </Link>
+                                        </td>
+                                        <td className="recipe-name">{recipe.name}</td>
+                                        <td className="recipe-url">{recipe.url}</td>
+                                        <td className="recipe-url">{recipe.img}</td>
+                                        <td>{recipe.cuisines.length ? recipe.cuisines.map(cuisine => cuisine.name.toUpperCase()).join(', ') : 'NO CUISINES'}</td>
+                                        <td>{recipe.restrictions.length ? recipe.restrictions.map(restriction => restriction.name.toUpperCase()).join(', ') : 'NO RESTRICIONS'}</td>
+                                        <td>{recipe.isActive ? 'YES' : 'NO'}</td>
+                                    </tr>
+                                    );
+                                })}
                             </tbody>
                         </table>
                         : <h3 className="no-recipes-message">No recipes to display</h3>

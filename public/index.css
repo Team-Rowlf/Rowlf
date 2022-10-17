@@ -64,6 +64,40 @@ img {
   display: flex;
   flex-direction: column;
 }
+.profile,
+.admin {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 60vh;
+}
+.profile nav,
+.admin nav {
+  display: flex;
+  padding: 2%;
+  padding-bottom: 0px;
+  border-bottom: 3px solid #8B2635;
+}
+.profile nav a,
+.admin nav a {
+  min-width: 8%;
+  flex-wrap: nowrap;
+}
+.profile nav a button,
+.admin nav a button {
+  min-width: fit-content;
+  flex-wrap: nowrap;
+}
+#load {
+  margin: auto;
+  font-size: large;
+  font-weight: bold;
+  width: 150px;
+  height: 150px;
+  padding: 10px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 75px;
+}
 .nav {
   display: flex;
   justify-content: space-between;
@@ -225,17 +259,23 @@ button {
   font-size: small;
   padding: 5px;
 }
-.signupContainer .box {
+.box {
   width: 400px;
-  height: 35px;
+  height: fit-content;
   margin-top: 10px;
   font-family: verdana;
   font-size: 12px;
 }
-.signupContainer .box .fr {
+.box .fr {
+  height: 35px;
+  float: right;
+  margin: 1%;
+}
+.box .fr .fr {
+  height: 35px;
   float: right;
 }
-.signupContainer .box .fl {
+.box .fl {
   float: left;
   width: 150px;
   line-height: 35px;
@@ -244,7 +284,7 @@ button {
   border: 2px solid #D3EFBD;
   border-radius: 5px;
 }
-.signupContainer .box .clr {
+.box .clr {
   clear: both;
 }
 .textBox {
@@ -494,16 +534,6 @@ button {
   pointer-events: none;
   color: lightgray;
 }
-#load {
-  margin: auto;
-  font-size: large;
-  font-weight: bold;
-  width: 150px;
-  height: 150px;
-  padding: 10px;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
-  border-radius: 75px;
-}
 .footer {
   min-height: fit-content;
   padding: 0;
@@ -751,18 +781,6 @@ a,
   margin-bottom: 50px;
   margin-right: 5px;
 }
-.profile {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  min-height: 60vh;
-}
-.profile nav {
-  display: flex;
-  padding: 2%;
-  padding-bottom: 0px;
-  border-bottom: 3px solid #8B2635;
-}
 .tab {
   border: 3px solid #8B2635;
   border-radius: 5px 5px 0px 0px ;
@@ -772,6 +790,7 @@ a,
   background-color: #8B2635;
   font-size: large;
   font-weight: bold;
+  min-width: fit-content;
 }
 .active {
   background-color: #E0E2DB;
@@ -846,33 +865,20 @@ a,
   margin-left: 5%;
   font-size: large;
 }
-#admin-portal {
-  display: flex;
-  flex-direction: column;
+.completed-lists div {
+  margin: 1em;
 }
-.admin-portal-link-container {
-  display: flex;
-  flex-direction: row;
+.completed-lists a {
+  color: #0D730D;
 }
-.admin-portal-link {
+.completed-lists li {
   margin: 0.5em;
 }
-table,
-th,
-td {
-  border: 1px solid;
-}
-table {
-  margin-left: auto;
-  margin-right: auto;
-}
-td {
-  min-width: 50px;
-  max-width: 150px;
-  overflow: scroll;
-  height: 50px;
-  white-space: nowrap;
-  padding: 5px;
+.no-completed-lists {
+  min-width: 100%;
+  text-align: center;
+  font-size: medium;
+  margin-top: 1em;
 }
 .allusers-header,
 .allrecipes-header {
@@ -904,12 +910,6 @@ td {
   text-align: center;
   margin-top: 25px;
 }
-.recipe-id-link {
-  color: blue;
-}
-.recipe-id-link:hover {
-  color: purple;
-}
 #add-recipe-form,
 #modify-recipe-form {
   margin-top: 2em;
@@ -917,4 +917,75 @@ td {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.-button {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  margin: auto;
+  align-items: center;
+}
+.ingredients {
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1%;
+}
+.ingredients .ingredient {
+  background-color: #8B2635;
+  margin: 1%;
+  height: fit-content;
+  width: fit-content;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  border: 1px solid #E0E2DB;
+  padding: 0.5%;
+}
+#table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  border: 5px solid #8B2635;
+}
+#table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+#table th {
+  border: 5px solid #8B2635;
+  padding: 8px;
+}
+tbody {
+  border: 5px solid #8B2635;
+}
+#table tr:nth-child(even) {
+  background-color: #eee;
+}
+#table tr:hover {
+  background-color: #D3EFBD;
+}
+#table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #0D730D;
+  color: white;
+}
+.recipe-url {
+  max-width: 500px;
+}
+.recipe-name {
+  max-width: 200px;
+}
+.all-users-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.all-users-container allusers-header {
+  width: 100vw;
+}
+#table {
+  width: 100vw;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }

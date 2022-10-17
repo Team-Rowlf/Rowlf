@@ -97,28 +97,12 @@ const Recipes = () => {
 
 	// in the future, could have a different formula for recipe of the day; highest rated would be recipe of the day, rolling basis or something
 
-	//handle scroll for infinite scrolling
-	// useEffect(() => {
-	// 	window.addEventListener('scroll', handleScroll);
-	// 	return () => window.removeEventListener('scroll', handleScroll);
-	// }, []);
-
 	useEffect(() => {
 		setList(filteredRecipes.slice(0, 25 * Number(page)));
 	}, [page]);
 
-	// function handleScroll() {
-	// 	if (
-	// 		window.innerHeight + document.documentElement.scrollTop !==
-	// 		document.documentElement.offsetHeight
-	// 	)
-	// 		return;
-	// 	setPage((page) => page + 1);
-	// }
-
 	const handleLoad = () => {
 		function reset() {
-			console.log('FINISHED TIMER!!');
 			load.innerHTML = 'Load More';
 			load.classList.remove('fa-spin');
 		}

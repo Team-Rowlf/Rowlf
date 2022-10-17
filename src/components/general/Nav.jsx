@@ -25,7 +25,7 @@ const Nav = () => {
       </div>
       <nav className="nav-bar">
         {isAdmin ?
-          <button className="navbutton" onClick={() => navigate('/adminportal')}>
+          <button className="navbutton" onClick={() => navigate('/admin')}>
             Admin
           </button>
           : <></>
@@ -38,12 +38,6 @@ const Nav = () => {
           onClick={() => navigate('/user/recipes?page=1')}
         >
           Recipes
-        </button>
-        <button
-          className="navbutton"
-          onClick={() => navigate('/user/shoppingList')}
-        >
-          List
         </button>
         <button className="navbutton" onClick={() => dispatch(logout())}>
           Logout

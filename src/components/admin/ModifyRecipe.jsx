@@ -188,8 +188,6 @@ const ModifyRecipeAdminPage = () => {
         let cuisinesFiltered = cuisines.filter(cuisine => cuisine.length)
         let restrictionsFiltered = restrictions.filter(restriction => restriction.length)
 
-        // console.log(form)
-
         dispatch(attemptUpdateRecipe({
             recipeDetails: updatedRecipe,
             cuisines: cuisinesFiltered,
@@ -221,7 +219,6 @@ const ModifyRecipeAdminPage = () => {
 
     return (
         <div>
-            <Nav />
             {status === 'pending' ? 
                 <h1 className="loading">Loading...</h1>
                 :
@@ -376,9 +373,14 @@ const ModifyRecipeAdminPage = () => {
                             : <></>
                         }
                     </div>
-                    <button className={checkDisabled() ? 'navbutton disabled' :'navbutton'} type="submit" disabled={checkDisabled()}>
-                        Save Changes
-                    </button>
+                    <div>
+                        <button className={checkDisabled() ? 'navbutton disabled' :'navbutton'} type="submit" disabled={checkDisabled()}>
+                            Save Changes
+                        </button>
+                        <button onClick={() => navigate('/admin/recipes?page=1')}>
+                            Back to Recipes
+                        </button>
+                    </div>
                 </form>
             }
         </div>
