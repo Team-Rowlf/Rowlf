@@ -516,10 +516,10 @@ button {
 .recipes-list-hover {
   margin: 4px;
   transform: scale(1);
-  perspective: 300px;
+  perspective: 600px;
 }
 .recipes-list-hover:hover {
-  z-index: 10;
+  z-index: 5;
   transform: scale(1.25);
   width: 100%;
 }
