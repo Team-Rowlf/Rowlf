@@ -49,7 +49,7 @@ const RoutesComponent = () => {
         path="/adminportal/updaterecipe/:id"
         element={<ModifyRecipeAdminPage />}
       />
-      <Route path="groceryMap" element={<MapMain />} />
+      <Route path="storesMap" element={<MapMain />} />
       <Route path="leaflet" element={<LeafletMap />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
