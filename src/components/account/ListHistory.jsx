@@ -7,10 +7,7 @@ const ListHistory = () => {
     const dispatch = useDispatch();
     const status = useSelector(getProfileStatus)
     const lists = useSelector((state) => state.profile.listHistory)
-    // need to fetch all lists associated with user; maybe even just the completed ones, since active still is the shopping list
-    // display the date of completion
-    // -- if click on particular list, expand to show the recipes associated with the list and links; don't need to show ingredients
-    // -- could maybe have a button under each toE 'add to current list'; would add all recipes to current shopping list
+    // could maybe add buttons to add recipes to current shopping list; users could still do so by visiting the single recipe pages though
 
     useEffect(() => {
         const token = window.localStorage.getItem('token');
@@ -38,7 +35,7 @@ const ListHistory = () => {
                     {lists.map((list, idx) => {
                         return (
                             <div key={idx}>
-                                <h3>{`List ${lists.length - idx} - Completed ${list.updatedAt.slice(0,10)}`}</h3>
+                                <h3>{`Recipe List ${lists.length - idx} - Marked Complete on ${list.updatedAt.slice(0,10)}`}</h3>
                                 <details>
                                     <summary> Recipes: </summary>
                                     <ul>
@@ -52,7 +49,6 @@ const ListHistory = () => {
                 : 
                 <h2 className="no-completed-lists">No completed lists</h2>
             )
-
     )
 }
 
