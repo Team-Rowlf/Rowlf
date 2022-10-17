@@ -7,6 +7,7 @@ import React, {
 } from 'react';
 import { GoogleMap, Marker, InfoWindow } from '@react-google-maps/api';
 import PlaceAutoComplete from './PlaceAutocomplete.jsx';
+import StoreList from './StoreList.jsx';
 
 const Map = () => {
   const [location, setLocation] = useState(null);
@@ -33,12 +34,14 @@ const Map = () => {
       disableDefaultUI: true,
       zoomControl: true,
       zoomControlOptions: {
-        position: google.maps.ControlPosition.LEFT_TOP,
+        position: google.maps.ControlPosition.RIGHT_TOP,
       },
+      fullscreenControl: true,
     }),
     []
   );
 
+  // Commenting this out to avoid extra queries to google api
   function setNearbyStores(location) {
     const request = {
       location: location,
@@ -49,14 +52,20 @@ const Map = () => {
     let service = new google.maps.places.PlacesService(mapRef.current);
     service.nearbySearch(request, callback);
 
-    function callback(results, status, pagination) {
+    function callback(results, status) {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
-        setStores(results);
+        let openStores = results.filter(
+          (result) =>
+            result.business_status === 'OPERATIONAL' &&
+            !result.name.includes('.com')
+        );
+        setStores(openStores);
       }
     }
   }
 
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -90,8 +99,18 @@ const Map = () => {
     }
   }, [searched]);
 
+  function openMarkerPopup(store) {
+    setSelectedStore(store);
+    mapRef.current?.panTo(store.geometry.location && store.geometry.location);
+  }
+
+  function centerMap() {}
   return (
     <div className="container">
+      <div className="store-list-search">
+        <PlaceAutoComplete setSearchLocation={getSearchLocation} />
+        <StoreList stores={stores} openMarkerPopup={openMarkerPopup} />
+      </div>
       <div className="map">
         <GoogleMap
           mapContainerClassName="map-container"
@@ -100,10 +119,23 @@ const Map = () => {
           options={options}
           onLoad={(map) => onMapLoad(map)}
         >
-          <PlaceAutoComplete setSearchLocation={getSearchLocation} />
+          <button
+            className="center-map"
+            onClick={() => {
+              setSelectedStore(null);
+              setUserClicked(true);
+              mapRef.current?.panTo(location && location);
+            }}
+          >
+            Recenter Map
+          </button>
           <Marker
             position={location && location}
-            onClick={() => setUserClicked(true)}
+            onClick={() => {
+              setSelectedStore(null);
+              setUserClicked(true);
+              mapRef.current?.panTo(location && location);
+            }}
             draggable={true}
             icon={{
               url: '/chefs-hat.svg',
@@ -118,7 +150,7 @@ const Map = () => {
               onCloseClick={() => setUserClicked(false)}
             >
               <div>
-                <p>You are here</p>
+                <h4>You are here</h4>
               </div>
             </InfoWindow>
           ) : null}
@@ -128,7 +160,13 @@ const Map = () => {
                 <Marker
                   key={idx}
                   position={store.geometry.location}
-                  onClick={() => setSelectedStore(store)}
+                  onClick={() => {
+                    setUserClicked(false);
+                    setSelectedStore(store);
+                    mapRef.current?.panTo(
+                      store.geometry.location && store.geometry.location
+                    );
+                  }}
                   icon={{
                     url: '/images/shoppingCart.png',
                     scaledSize: new window.google.maps.Size(30, 30),
@@ -145,32 +183,10 @@ const Map = () => {
               onCloseClick={() => {
                 setSelectedStore(null);
               }}
+              maxHeight="50"
             >
               <div className="store-info-container">
-                <img
-                  className="store-img"
-                  src={
-                    selectedStore.photos
-                      ? selectedStore.photos[0].getUrl({
-                          maxWidth: 500,
-                          maxHeight: 500,
-                        })
-                      : '/images/stockStore.jpeg'
-                  }
-                  width="200"
-                  height="150"
-                />
-                <h2 className="store-name">
-                  {selectedStore.name}
-                  {selectedStore.business_status !== 'OPERATIONAL' ? (
-                    <p>(Closed)</p>
-                  ) : null}
-                </h2>
-                <div className="store-info">
-                  <div className="selectedStore-address">
-                    <p>{selectedStore.vicinity}</p>
-                  </div>
-                </div>
+                <h4 className="store-name">{selectedStore.name}</h4>
               </div>
             </InfoWindow>
           ) : null}
