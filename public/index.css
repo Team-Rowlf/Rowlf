@@ -80,13 +80,23 @@ img {
 }
 .profile nav a,
 .admin nav a {
-  min-width: 10%;
+  min-width: 8%;
   flex-wrap: nowrap;
 }
 .profile nav a button,
 .admin nav a button {
   min-width: fit-content;
   flex-wrap: nowrap;
+}
+#load {
+  margin: auto;
+  font-size: large;
+  font-weight: bold;
+  width: 150px;
+  height: 150px;
+  padding: 10px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 75px;
 }
 .nav {
   display: flex;
@@ -524,16 +534,6 @@ button {
   pointer-events: none;
   color: lightgray;
 }
-#load {
-  margin: auto;
-  font-size: large;
-  font-weight: bold;
-  width: 150px;
-  height: 150px;
-  padding: 10px;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
-  border-radius: 75px;
-}
 .footer {
   min-height: fit-content;
   padding: 0;
@@ -865,23 +865,6 @@ a,
   margin-left: 5%;
   font-size: large;
 }
-table,
-th,
-td {
-  border: 1px solid;
-}
-table {
-  margin-left: auto;
-  margin-right: auto;
-}
-td {
-  min-width: 50px;
-  max-width: 150px;
-  overflow: scroll;
-  height: 50px;
-  white-space: nowrap;
-  padding: 5px;
-}
 .allusers-header,
 .allrecipes-header {
   margin-left: auto;
@@ -911,12 +894,6 @@ td {
   margin: auto;
   text-align: center;
   margin-top: 25px;
-}
-.recipe-id-link {
-  color: blue;
-}
-.recipe-id-link:hover {
-  color: purple;
 }
 #add-recipe-form,
 #modify-recipe-form {
@@ -948,4 +925,52 @@ td {
   border-radius: 10px;
   border: 1px solid #E0E2DB;
   padding: 0.5%;
+}
+#table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  border: 5px solid #8B2635;
+}
+#table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+#table th {
+  border: 5px solid #8B2635;
+  padding: 8px;
+}
+tbody {
+  border: 5px solid #8B2635;
+}
+#table tr:nth-child(even) {
+  background-color: #eee;
+}
+#table tr:hover {
+  background-color: #D3EFBD;
+}
+#table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #0D730D;
+  color: white;
+}
+.recipe-url {
+  max-width: 500px;
+}
+.recipe-name {
+  max-width: 200px;
+}
+.all-users-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.all-users-container allusers-header {
+  width: 100vw;
+}
+#table {
+  width: 100vw;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }

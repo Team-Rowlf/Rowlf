@@ -56,7 +56,7 @@ const AdminPortal = () => {
 							Users 
 					</button>
 				</Link >
-				<Link to={'recipes'}>
+				<Link to={'recipes?page=1'}>
 					<button  className="tab" id="allRecipes"  onClick={OnClick}>
 							Recipes 
 					</button>
@@ -70,28 +70,6 @@ const AdminPortal = () => {
 			<Outlet />
 		</div>
         </>
-        // <div id="admin-portal">
-        //     <Nav />
-        //     <h1>Welcome back to the Admin Portal</h1>
-        //     <div className="admin-portal-link-container">
-        //         <div className="admin-portal-link">
-        //             <button className="navbutton" onClick={() => navigate('allusers?page=1')}>
-        //                 All Users
-        //             </button>
-        //         </div>
-        //         <div className="admin-portal-link">
-        //             <button className="navbutton" onClick={() => navigate('allrecipes?page=1')}>
-        //                 All Recipes
-        //             </button>
-        //         </div>
-        //         <div className="admin-portal-link">
-        //             <button className="navbutton" onClick={() => navigate('addrecipe')}>
-        //                 Add Recipe
-        //             </button>
-        //         </div>
-        //     </div>
-        //     <ToastContainer limit={1}/>
-        // </div>
     )
 };
 

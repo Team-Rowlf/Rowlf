@@ -13,10 +13,28 @@ const AllUsersAdminPage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
-    const [page, setPage]  = useState(searchParams.get('page'))
+    const [page, setPage]  = useState(1)
     const [sortByLastName, setSortByLastName] = useState(false)
-    
-    console.log(useSelector(state=>state.admin))
+	const [list, setList] = useState(users.slice(0, 25));
+    let load = undefined;
+	let loading = undefined;
+
+    useEffect(() => {
+		setList(users.slice(0, 25 * Number(page)));
+	}, [page, users]);
+	
+	const handleLoad = () =>{
+		function reset () {
+			load.innerHTML = 'Load More';
+			load.classList.remove(' fa-spin');
+		}
+		load = document.getElementById('load');
+		loading = document.getElementById('loading')
+		setPage((page) => page + 1);
+		load.innerHTML = 'Loading'
+		load.classList.add(' fa-spin');
+		setTimeout(reset,2000)
+	}
 
     useEffect(() => {
         const token = window.localStorage.getItem('token');
@@ -46,7 +64,7 @@ const AllUsersAdminPage = () => {
     },[user.isAdmin, page, sortByLastName]);
 
     return (
-        users.length ?
+        list.length ?
             <div className="all-users-container">
                 <div className='allusers-header'>
                     <h1>All User Information ({numUsers})</h1>
@@ -54,28 +72,21 @@ const AllUsersAdminPage = () => {
                         <input className='sort-checkbox' type='checkbox' name='sort-lastName' defaultChecked={sortByLastName} onChange={() => setSortByLastName(!sortByLastName)}/>
                         <label htmlFor='sort-lastName'>Sort by Last Name (Asc.)</label>
                     </div>
-                    <div className='display-info'>
-                        <div className='display-text'>Displaying 25 users per page:</div>
-                        <div className="prev-next">
-                        <Link to={`/adminportal/allusers?page=${Number(page)-1}`} className={Number(page) === 1 ? 'prevNext disabled' : 'prevNext'} onClick={() => setPage(+page-1)}>Prev</Link>
-                        <Link to={`/adminportal/allusers?page=${Number(page)+1}`} className={page*25 >= numUsers ? 'prevNext disabled' : 'prevNext'} onClick={() => setPage(+page+1)}>Next</Link>
-                        </div>
-                    </div>
                 </div>
-                <table id="all-users-table">
+                <table id="table">
                     <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Username</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
-                        <th>Phone Number</th>
-                        <th>Admin?</th>
-                    </tr>
+                        <tr>
+                                <th>ID</th>
+                                <th>Username</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                                <th>Phone Number</th>
+                                <th>Admin?</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    {users.map((user, idx) => {
+                    {list.map((user, idx) => {
                         return (
                         <tr key={idx}>
                             <td>{user.id}</td>
@@ -90,6 +101,11 @@ const AllUsersAdminPage = () => {
                     })}
                     </tbody>
                 </table>
+                {list.length < users.length ? 
+                    <button id='load' className='button ' onClick={handleLoad}>Load More</button>
+                    :
+                    <></>
+                }
             </div>
         : 
         <h1 className="loading">Loading...</h1>
