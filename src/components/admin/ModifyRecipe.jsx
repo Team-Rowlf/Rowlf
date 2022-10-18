@@ -222,166 +222,219 @@ const ModifyRecipeAdminPage = () => {
             {status === 'pending' ? 
                 <h1 className="loading">Loading...</h1>
                 :
-                <form id="modify-recipe-form" onSubmit={handleSubmit}>
-                    <h2 className="modify-recipe-title">Modify Recipe Page</h2>
-                    <div className="form-line">
-                        <span className="modify-recipe-label">
-                            {"Recipe Name: "}
-                        </span>
-                        <input
-                        className="modify-recipe-form"
-                        placeholder="Recipe Name"
-                        name="name"
-                        value={form.name}
-                        onChange={handleChange("name")}
-                        />
-                    </div>
-                    <div className="form-line">
-                        <span className="modify-recipe-label">
-                            {"Recipe Url: "} 
-                        </span>
-                        <input
-                        className="modify-recipe-form"
-                        placeholder="Recipe Url"
-                        name="url"
-                        value={form.url}
-                        onChange={handleChange("url")}
-                        />
-                    </div>
-                    <div className="form-line">
-                        <span className="modify-recipe-label">
-                            {"Image Url: "}
-                        </span>
-                        <input
-                        className="modify-recipe-form"
-                        placeholder="Recipe Image Url"
-                        name="img"
-                        value={form.img}
-                        onChange={handleChange("img")}
-                        />
-                    </div>
-                    <div className="form-line">
-                        <span className="modify-recipe-label">
-                            {"Servings: "}
-                        </span>
-                        <input
-                        className="modify-recipe-form"
-                        placeholder="Servings"
-                        name="servings"
-                        value={form.servings}
-                        onChange={handleChange("servings")}
-                        />
-                    </div>
-                    <div className="form-line">
-                        <span className="modify-recipe-label">
-                            {"Cook Time (mins): "}
-                        </span>
-                        <input
-                        className="modify-recipe-form"
-                        placeholder="Cook Time (mins)"
-                        name="cookTime"
-                        value={form.cookTime}
-                        onChange={handleChange("cookTime")}
-                        />
-                    </div>
-                    <div className="form-line">
-                        <span className="modify-recipe-label">
-                            {"Is Active? "}
-                        </span>
-                        <select defaultValue={form.isActive} onChange={handleChange("isActive")}>
-                            <option>true</option>
-                            <option>false</option>
-                        </select>
-                    </div>
-                    <div>
-                        Cuisines (at least one required):
-                        {cuisines.map((cuisine,idx) => {
-                            return(
-                                <div key={idx} className="cuisine-form-line">
-                                    <label htmlFor="cuisines">{`Cuisine ${idx+1}`}</label>
-                                    <select defaultValue={cuisine} className='cuisine-selector' onChange={handleCuisineChange(idx)}>
-                                        {cuisineTypes.map((ele, index) => (
-                                            <option value={ele} key={index}>
-                                                {ele.length ? ele[0].toUpperCase() + ele.slice(1) : ''}
-                                            </option>
-                                        ))}
+                <div className="signup">
+                    <div className="signupContainer">
+                        <form id="modify-recipe-form" onSubmit={handleSubmit}>
+                            <h1>Modify Recipe Page</h1>
+                            <p>Use this form to update existing recipe in the database.</p>
+                            <hr />
+                            <div className="box">
+                                <span  className="fl fontLabel">
+                                    {"Recipe Name: "}
+                                </span>
+                                <div className="fr">
+                                    <input
+                                        className="textBox"
+                                        placeholder="Recipe Name"
+                                        name="name"
+                                        value={form.name}
+                                        onChange={handleChange("name")}
+                                    />
+                                </div>
+                                <div className="clr"></div>
+                            </div>
+                            <div className="box">
+                                <span className="fl fontLabel">
+                                    {"Recipe Url: "} 
+                                </span>
+                                <div className="fr">
+                                    <input
+                                        className="textBox"
+                                        placeholder="Recipe Url"
+                                        name="url"
+                                        value={form.url}
+                                        onChange={handleChange("url")}
+                                    />
+                                </div>
+                                <div className="clr"></div>
+                            </div>
+                            <div className="box">
+                                <span className="fl fontLabel">
+                                    {"Image Url: "}
+                                </span>
+                                <div className="fr">
+                                    <input
+                                        className="textBox"
+                                        placeholder="Recipe Image Url"
+                                        name="img"
+                                        value={form.img}
+                                        onChange={handleChange("img")}
+                                    />
+                                </div>
+                                <div className="clr"></div>
+                            </div>
+                            <div className="box">
+                                <span className="fl fontLabel">
+                                    {"Servings: "}
+                                </span>
+                                <div className="fr">
+                                    <input
+                                        className="textBox"
+                                        placeholder="Servings"
+                                        name="servings"
+                                        value={form.servings}
+                                        onChange={handleChange("servings")}
+                                    />
+                                </div>
+                                <div className="clr"></div>
+                            </div>
+                            <div className="box">
+                                <span className="fl fontLabel">
+                                    {"Cook Time (mins): "}
+                                </span>
+                                <div className="fr">
+                                    <input
+                                        className="textBox"
+                                        placeholder="Cook Time (mins)"
+                                        name="cookTime"
+                                        value={form.cookTime}
+                                        onChange={handleChange("cookTime")}
+                                    />
+                                </div>
+                                <div className="clr"></div>
+                            </div>
+                            <div className="box">
+                                <span className="fl fontLabel">
+                                    {"Is Active? "}
+                                </span>
+                                <div className="fr">
+                                   <select className="textBox" defaultValue={form.isActive} onChange={handleChange("isActive")}>
+                                        <option>true</option>
+                                        <option>false</option>
                                     </select>
                                 </div>
-                            )
-                        })}
-                        <button type='click' className="add-cuisine-tag" onClick={addTag("cuisine")}>Add Cuisine</button>
-                        {cuisines.length > 1 ?
-                            <button type='click' className="delete-cuisine-tag" onClick={removeTag("cuisine")}>Remove Cuisine</button>
-                            : <></>
-                        }
-                    </div>
-                    <div>
-                        Restrictions (optional):
-                        {restrictions.map((restriction,idx) => {
-                            return(
-                                <div key={idx} className="restriction-form-line">
-                                    <label htmlFor="restrictions">{`Restriction ${idx+1}`}</label>
-                                    <select defaultValue={restriction} className='restriction-selector' onChange={handleRestrictionChange(idx)}>
-                                        {restrictionTypes.map((ele, index) => (
-                                            <option value={ele} key={index}>
-                                                {ele.length ? ele[0].toUpperCase() + ele.slice(1) : ''}
-                                            </option>
-                                        ))}
-                                    </select>
+                                <div className="clr"></div>
+                            </div>
+                            <div  className="fl fontLabel modify-header">
+                                Cuisines (at least one required):
+                            </div>
+                            <div>
+                                {cuisines.map((cuisine,idx) => {
+                                    return(
+                                        <div key={idx} className="box">
+                                            <label className="fl fontLabel" htmlFor="cuisines">{`Cuisine ${idx+1}`}</label>
+                                            <div className="fr">
+                                                <select defaultValue={cuisine}  className="textBox" onChange={handleCuisineChange(idx)}>
+                                                    {cuisineTypes.map((ele, index) => (
+                                                        <option value={ele} key={index}>
+                                                            {ele.length ? ele[0].toUpperCase() + ele.slice(1) : ''}
+                                                        </option>
+                                                    ))}
+                                                </select>
+                                            </div>
+                                            <div className="clr"></div>
+                                        </div>
+                                    )
+                                })}
+                                <div className="box">
+                                    <button type='click' className="add-tag" onClick={addTag("cuisine")}>+</button>
+                                    {cuisines.length > 1 ?
+                                        <button type='click' className="delete-tag" onClick={removeTag("cuisine")}>-</button>
+                                        : <></>
+                                    }
+                                    <div className="clr"></div>
                                 </div>
-                            )
-                        })}
-                        <button type="click" className="add-restriction-tag" onClick={addTag("restriction")}>Add Restriction</button>
-                        {restrictions.length ?
-                            <button type='click' className="delete-restriction-tag" onClick={removeTag("restriction")}>Remove Restriction</button>
-                            : <></>
-                        }
-                    </div>
-                    <div>
-                        Ingredients:
-                        {lineItems.map((lineItem,idx) => {
-                            return (
-                                <div className="recipe-line-item" key={idx}>
-                                    <input
-                                            className="modify-ingredient-form"
-                                            placeholder="Ingredient"
-                                            name="ingredient"
-                                            value={lineItem.name}
-                                            onChange={handleLineItemChange(idx,"name")}
-                                        />
-                                    <input
-                                            className="modify-ingredient-form"
-                                            placeholder="Quantity (in decimals)"
-                                            name="quantity"
-                                            type="number"
-                                            value={lineItem.qty}
-                                            onChange={handleLineItemChange(idx,"qty")}
-                                        />
-                                    <input
-                                            className="modify-ingredient-form"
-                                            placeholder="Measurement"
-                                            name="measurement"
-                                            value={lineItem.measurement}
-                                            onChange={handleLineItemChange(idx,"measurement")}
-                                        />
+                            </div>
+                            <div  className="fl fontLabel modify-header">
+                                Restrictions (optional):
+                            </div>
+                            <div>
+                                {restrictions.map((restriction,idx) => {
+                                    return(
+                                        <div key={idx} className="box">
+                                            <label className="fl fontLabel" htmlFor="restrictions">{`Restriction ${idx+1}`}</label>
+                                            <div className="fr">
+                                                <select defaultValue={restriction} className="textBox" onChange={handleRestrictionChange(idx)}>
+                                                    {restrictionTypes.map((ele, index) => (
+                                                        <option value={ele} key={index}>
+                                                            {ele.length ? ele[0].toUpperCase() + ele.slice(1) : ''}
+                                                        </option>
+                                                    ))}
+                                                </select>
+                                            </div>
+                                            <div className="clr"></div>
+                                        </div>
+                                    )
+                                })}
+                                <div className="box">
+                                    <button type="click" className="add-tag" onClick={addTag("restriction")}>+</button>
+                                    {restrictions.length ?
+                                        <button type='click' className="delete-tag" onClick={removeTag("restriction")}>-</button>
+                                        : <></>
+                                    }
+                                    <div className="clr"></div>
                                 </div>
-                            )
-                        })}
-                        <button type='click' className="add-line-item-button" onClick={addLineItem}>Add Ingredient</button>
-                        {lineItems.length > 1 ? 
-                            <button type='click' className="delete-line-item-button" onClick={deleteLastLineItem}>Remove Ingredient</button>
-                            : <></>
-                        }
+                            </div>
+                            <div className="box">
+                                <label htmlFor="cuisine" className="fl fontLabel">
+                                    Ingredients:
+                                </label>
+                                <div className="ingredients">
+                                    {lineItems.map((lineItem,idx) => {
+                                        return (
+                                            <div className="ingredient" key={idx}>
+                                                <div className="fr">
+                                                    <input
+                                                        className="textBox"
+                                                        placeholder="Ingredient"
+                                                        name="ingredient"
+                                                        value={lineItem.name}
+                                                        onChange={handleLineItemChange(idx,"name")}
+                                                    />
+                                                </div>
+                                                <div className="fr">
+                                                    <input
+                                                        className="textBox"
+                                                        placeholder="Quantity (in decimals)"
+                                                        name="quantity"
+                                                        type="number"
+                                                        value={lineItem.qty}
+                                                        onChange={handleLineItemChange(idx,"qty")}
+                                                    />
+                                                </div>
+                                                <div className="fr">
+                                                    <input
+                                                        className="textBox"
+                                                        placeholder="Measurement"
+                                                        name="measurement"
+                                                        value={lineItem.measurement}
+                                                        onChange={handleLineItemChange(idx,"measurement")}
+                                                    />
+                                                </div>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+                                <div className="box">
+                                    <button type='click' className="-button" onClick={addLineItem}>+</button>
+                                    {lineItems.length > 1 ? 
+                                        <button type='click' className="-button" onClick={deleteLastLineItem}>-</button>
+                                        : <></>
+                                    }
+                                    <div className="clr"></div>
+                                </div>
+                            </div>
+                            <div className="box save-back-div">
+                                <button className={checkDisabled() ? 'save-changes disabled' :'save-changes'} type="submit" disabled={checkDisabled()}>
+                                    Save Changes
+                                </button>
+                                <button className="back-to-recipes" onClick={() => navigate('/admin/recipes?page=1')}>
+                                    Back to Recipes
+                                </button>
+                            </div>
+                        </form>
                     </div>
-                    <div>
-                        <button className={checkDisabled() ? 'navbutton disabled' :'navbutton'} type="submit" disabled={checkDisabled()}>
-                            Save Changes
-                        </button>
-                        <button onClick={() => navigate('/admin/recipes?page=1')}>
-                            Back to Recipes
-                        </button>
-                    </div>
-                </form>
+                </div>
             }
         </div>
     )

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Nav from "../general/Nav.jsx";
 import { toast } from 'react-toastify';
 import { fetchUser } from "../../features/user/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import { clearFilteredRecipes, fetchRecipesByPage, getRecipeStatus } from "../../features/recipes/recipesSlice.js";
+import { resetFilteredRecipes, fetchRecipesByPage, getRecipeStatus } from "../../features/recipes/recipesSlice.js";
 
 const AllRecipesAdminPage = () => {
     const user = useSelector((state) => state.user);
@@ -74,7 +73,7 @@ const AllRecipesAdminPage = () => {
 			}))
         }
         return () => {
-            dispatch(clearFilteredRecipes())
+            dispatch(resetFilteredRecipes())
         }
     },[user.isAdmin, page, cuisineFilter, restrictionFilter, activeFilter]);
     
@@ -89,7 +88,8 @@ const AllRecipesAdminPage = () => {
     }
 
     return (
-        recipes.length > 0 ?
+        // recipes.length > 0 ?
+        recipeStatus === 'succeeded' ?
             <div className="all-recipes-container">
                 <div className='allrecipes-header'>
                     <h1>All Recipes ({recipeCount})</h1>
@@ -166,7 +166,6 @@ const AllRecipesAdminPage = () => {
                         </table>
                         : <h3 className="no-recipes-message">No recipes to display</h3>
                     }
-                    {/* add in table here */}
                 </div>
             : <h1 className="loading">Loading...</h1>
     )

@@ -141,7 +141,7 @@ const ChefsChoice = () => {
         for (let i in suggestions) {
             dispatch(fetchAddtoShoppingList({id: suggestions[i].id}));
         }
-        navigate("/");
+        navigate("/user/shoppingList");
     }
 
     return (
@@ -258,11 +258,11 @@ const ChefsChoice = () => {
                                     </div>
                                 )
                             })}</div>
-                            {insufficentServings ? <div className="insufficient-servings">We apologize, the chef is unable to accomodate your total number of desired meals.</div> : <></>}
-                            <button onClick={addToCartClickHandler}>Add All to List</button>
+                            {insufficentServings ? <div className="insufficient-servings">We apologize, the chef is unable to accomodate your total number of desired meals that match your criteria.</div> : <></>}
+                            {suggestions.length ? <button onClick={addToCartClickHandler}>Add All to List</button> : <></>}
                         </div>
                         :
-                        <div className="no-suggestions">Sorry, no recipes matched your requirments</div>
+                        <div className="results-header">Sorry, no recipes matched your criteria</div>
                     : <></>
                 }
             </div>

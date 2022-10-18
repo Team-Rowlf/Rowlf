@@ -79,25 +79,6 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-// route for suggested recipes component
-// can use token to get the disliked recipes as well
-// router.get('/suggestions', requireToken, async (req, res, next) => {
-//   try {
-//     // will first want to get recipes, can either filter in here or in the thunk
-//     // probably better practice to do it in here though
-//     if (req.query.cuisine) {
-//       if (typeof req.query.cuisine === 'string') {
-//         console.log([req.query.cuisine])
-//       } else
-//       console.log([...req.query.cuisine])
-//     }
-//     res.send('test')
-
-//   } catch (err) {
-//     next(err);
-//   }
-// });
-
 // get single recipe
 router.get('/:id', async (req, res, next) => {
   try {
