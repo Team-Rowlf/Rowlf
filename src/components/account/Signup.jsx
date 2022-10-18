@@ -68,7 +68,7 @@ const Signup = () => {
 									autoFocus="on"
 									onChange={handleChange('firstName')}
 									required
-									min={3}
+									minLength={3}
 								/>
 							</div>
 							<div className="clr"></div>
@@ -87,7 +87,7 @@ const Signup = () => {
 									className="textBox"
 									onChange={handleChange('lastName')}
 									required
-									min={3}
+									minLength={3}
 								/>
 							</div>
 							<div className="clr"></div>
@@ -106,14 +106,18 @@ const Signup = () => {
 									className="textBox"
 									onChange={handleChange('username')}
 									required
-									min={6}
+									minLength={6}
 									onBlur={handleAdditionalValidate('username')}
 								/>
 							</div>
 							<div className="clr"></div>
 						</div>
 
-						{!validate['username'] && <p> Username is Taken </p>}
+						{!validate['username'] && (
+							<p style={{ color: `red` }}>
+								<b>Username is Taken</b>
+							</p>
+						)}
 
 						<div className="box">
 							<label htmlFor="phone" className="fl fontLabel">
@@ -173,7 +177,7 @@ const Signup = () => {
 									className="textBox"
 									onChange={handleChange('password')}
 									required
-									min={5}
+									minLength={5}
 								/>
 							</div>
 							<div className="clr"></div>
@@ -190,7 +194,7 @@ const Signup = () => {
 									className="textBox"
 									onChange={handleChange('password')}
 									required
-									min={5}
+									minLength={5}
 								/>
 							</div>
 							<div className="clr"></div>
@@ -238,7 +242,15 @@ const Signup = () => {
 
 						<div className="box">
 							{/* <input type="Submit" name="Register" className="submit" /> */}
-							<button type="Submit" name="Register" className="submit">
+							<button
+								type="Submit"
+								name="Register"
+								className="submit"
+								disabled={
+									!validate['email'] || !validate['username'] ? true : ''
+								}
+							>
+								{console.log(!validate['username'])}
 								Signup
 							</button>
 							<button onClick={handleLogin}>Login</button>
