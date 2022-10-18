@@ -45,6 +45,25 @@ export const fetchSingleRecipe = createAsyncThunk(
 	}
 );
 
+// export const fetchSuggestedRecipeMatches = createAsyncThunk(
+// 	'recipes/fetchSuggestedRecipeMatches',
+// 	async (params) => {
+// 		const token = window.localStorage.getItem('token');
+// 		if (token){
+// 			const {cuisines, restrictions, appliances} = params;
+// 			const { data } = await axios.get('/api/recipes/suggestions' 
+// 				+ (cuisines.length || restrictions.length || appliances.length ? '?' : '') 
+// 				+ (cuisines.length ? cuisines.map(cuisine => `cuisine=${cuisine}`).join('&') : '')
+// 				+ (restrictions.length ? (cuisines.length ? '&' : '') + restrictions.map(restriction => `restriction=${restriction}`).join('&') : '')
+// 				+ (appliances.length ? (cuisines.length || restrictions.length ? '&' : '') + appliances.map(appliance => `appliance=${appliance}`).join('&') : ''),
+// 				{
+//                     headers: { authorization: token },
+//                 });
+// 			return data;
+// 		}
+// 	}
+// )
+
 //admin only functionality
 export const attemptUpdateRecipe = createAsyncThunk(
 	'recipes/attemptUpdateRecipe',
@@ -72,6 +91,7 @@ export const attemptUpdateRecipe = createAsyncThunk(
 const initialState = {
 	recipes: [],
 	filterRecipes: [],
+	matchedRecipes: [], // maybe could also just use the filterRecipes array; shouldn't conflict if in different page
 	singleRecipe: {},
 	status: 'idle',
 	error: null,

@@ -46,20 +46,19 @@ const ShoppingList = () => {
     });
   };
 
-  const capitalize = (string) => {
-    let arr = string.split(' ');
-    arr = arr.map((itm) => itm[0].toUpperCase() + itm.slice(1));
-    string = arr.join(' ');
-    return string;
-  };
-  const handleRemoveRecipe = (id) => {
-    console.log('handle', id);
-    dispatch(fetchRemoveFromShoppingList({ id }));
-  };
-  useEffect(() => {
-    dispatch(fetchShoppingList());
-  }, []);
-  useEffect(() => {}, [listStatus]);
+	const capitalize = (string) => {
+		let arr = string.split(' ');
+		arr = arr.map((itm) => itm.length ? itm[0].toUpperCase() + itm.slice(1) : itm);
+		string = arr.join(' ');
+		return string;
+	};
+	const handleRemoveRecipe = (id) => {
+		dispatch(fetchRemoveFromShoppingList({ id }));
+	};
+	useEffect(() => {
+		dispatch(fetchShoppingList());
+	}, []);
+	useEffect(() => {}, [listStatus]);
 
   const inLineStyle = {
     display: `flex`,
