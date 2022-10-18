@@ -29,9 +29,13 @@ const Login = () => {
     dispatch(loginUser({ login }));
   };
   const handleChange = (prop) => (event) => {
+    let value = event.target.value;
+    if (prop == "username") {
+      value = value.toLowerCase();
+    }
     setLogin({
       ...login,
-      [prop]: event.target.value,
+      [prop]: value,
     });
   };
   useEffect(() => {
