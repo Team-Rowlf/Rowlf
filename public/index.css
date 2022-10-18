@@ -339,9 +339,6 @@ button {
   cursor: pointer;
   font-weight: bold;
 }
-form input[name="username"] {
-  text-transform: lowercase;
-}
 .loading {
   margin: auto;
   width: 100vw;
