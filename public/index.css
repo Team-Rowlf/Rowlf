@@ -1001,8 +1001,7 @@ a,
   text-align: center;
   margin-top: 25px;
 }
-#add-recipe-form,
-#modify-recipe-form {
+#add-recipe-form {
   margin-top: 2em;
   margin-bottom: 2em;
   display: flex;
@@ -1015,6 +1014,9 @@ a,
   display: inline-block;
   margin: auto;
   align-items: center;
+}
+.-button:hover {
+  color: #1d1717;
 }
 .ingredients {
   height: fit-content;
@@ -1082,6 +1084,31 @@ tbody {
 }
 .recipe-id-link {
   color: #0D730D;
+}
+.modify-header {
+  margin-top: 0.5em;
+  text-align: center;
+}
+.delete-tag,
+.add-tag {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  margin: auto;
+  align-items: center;
+}
+.add-tag:hover,
+.delete-tag:hover,
+.back-to-recipes:hover,
+.save-changes:hover {
+  color: #1d1717;
+}
+.back-to-recipes {
+  margin-left: 1em;
+}
+.save-back-div {
+  display: flex;
+  justify-content: center;
 }
 #chefs-choice-container {
   margin-bottom: 2em;

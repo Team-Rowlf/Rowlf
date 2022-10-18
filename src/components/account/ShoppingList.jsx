@@ -97,7 +97,7 @@ const ShoppingList = () => {
                     {capitalize(recipe.name)}
                   </Link>{' '}
                   <button
-                    className="remove-item-list"
+                    className="remove-item-list -button"
                     onClick={() => handleRemoveRecipe(recipe.id)}
                   >
                     {' '}

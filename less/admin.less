@@ -28,7 +28,7 @@
     margin-top: 25px;
 }
 
-#add-recipe-form, #modify-recipe-form {
+#add-recipe-form {
     margin-top: 2em;
     margin-bottom: 2em;
     display: flex;
@@ -42,6 +42,9 @@
     display:inline-block;
     margin: auto;
     align-items: center;
+}
+.-button:hover{
+    color: rgb(29, 23, 23);
 }
 
 .ingredients{
@@ -115,4 +118,28 @@ tbody{
 
 .recipe-id-link {
     color: @darkGreen;
+}
+.modify-header {
+    // margin-left: 1em;
+    margin-top: .5em;
+    text-align: center;
+}
+.delete-tag, .add-tag {
+    // margin-left: 1em;
+    width:25px;
+    height:25px;
+    display:inline-block;
+    margin: auto;
+    align-items: center;
+}
+
+.add-tag:hover, .delete-tag:hover, .back-to-recipes:hover, .save-changes:hover {
+    color: rgb(29, 23, 23);
+}
+.back-to-recipes {
+    margin-left: 1em;
+}
+.save-back-div {
+    display: flex;
+    justify-content: center;
 }
