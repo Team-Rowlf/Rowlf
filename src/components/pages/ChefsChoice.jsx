@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { fetchAddtoShoppingList } from "../../features/shoppingList/shoppingListSlice"
 
 const ChefsChoice = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const allRecipes = useSelector((state) => state.recipes.recipes);
     const dislikes = useSelector((state) => state.profile.dislikes);
     const [filteredRecipes, setFilteredRecipes] = useState([]);
@@ -44,16 +47,6 @@ const ChefsChoice = () => {
         'lactose-free',
         'pescatarian',
       ];
-
-    // possible idea: create new array in recipes store; once suggestion button clicked, just fetch all possible matches
-    // then, have a method in here that will display some random recipes
-    // if no matches found, say something like "Sorry, no matches found"
-    // if less than 3 or so satisfy parameters, can display some message like "only 1/2 match(es) found:"
-    // otherwise, say something like "x matches found" and then display a few options
-    // then, could show a button that says something like "add all to shopping list"
-
-    // once that works, could also give users the option to reject recipes they don't want to make
-    // -- would then want to remove that recipe from the suggested list in store and local list here, then find a new match to replace it
 
     useEffect(() => {
         if (filteredRecipes.length) {
@@ -139,6 +132,13 @@ const ChefsChoice = () => {
             || (applianceBool && !form.appliances.length)
     }
 
+    const addToCartClickHandler = () => {
+        for (let i in suggestions) {
+            dispatch(fetchAddtoShoppingList({id: suggestions[i].id}));
+        }
+        navigate("/");
+    }
+
     // make an "Add all to cart" method/functionality
     // when that button is clicked, all recipes will get added to cart
     // should then clear out the suggestions array and reset the insufficient warning, etc. maybe even navigate them to cart
@@ -220,7 +220,7 @@ const ChefsChoice = () => {
                         <div>{filteredRecipes.length > 3 ? `${filteredRecipes.length} recipes matched your criteria. The chef suggests the following:` : `Only ${filteredRecipes.length} recipe(s) matched your critera:`}</div>
                         <div>{suggestions.map((recipe, idx) => {
                             return (
-                                <div className="recipe-display">
+                                <div key={idx} className="recipe-display">
                                     <Link to={`/user/recipes/${recipe.id}`}> 
                                         <div>
                                             <img src={recipe.img} alt="recipe" />
@@ -240,6 +240,7 @@ const ChefsChoice = () => {
                             )
                         })}</div>
                         {insufficentServings ? <div className="insufficient-servings">We apologize, the chef is unable to accomodate your total number of desired meals.</div> : <></>}
+                        <button onClick={addToCartClickHandler}>Add All to List</button>
                     </div>
                     :
                     <div>Sorry, no recipes matched your requirments</div>
