@@ -544,6 +544,12 @@ button {
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
   border-radius: 75px;
 }
+.chefs-choice-link {
+  color: #0D730D;
+}
+.chefs-choice-link:hover {
+  color: blue;
+}
 .footer {
   min-height: fit-content;
   padding: 0;
