@@ -22,7 +22,7 @@ const Signup = () => {
 		value.length >= 6 && dispatch(validateSignupForm({ prop, value }));
 	};
 	const handleSubmit = (event) => {
-		event.preventDefault();
+		event.preventDefault(); 
 
 		dispatch(createUser({ signUp })) && navigate('/login');
 	};
@@ -230,7 +230,6 @@ const Signup = () => {
 						</div>
 
 						<div className="box">
-							{/* <input type="Submit" name="Register" className="submit" /> */}
 							<button type="Submit" name="Register" className="submit">
 								Signup
 							</button>

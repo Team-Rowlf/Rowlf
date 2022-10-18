@@ -8,6 +8,9 @@ import {
 } from '../../features/profile/profileSlice';
 
 const ListHistory = () => {
+
+  console.log('HISTORY: ',useSelector(state=>state))
+
   const dispatch = useDispatch();
   const status = useSelector(getProfileStatus);
   const lists = useSelector((state) => state.profile.listHistory);

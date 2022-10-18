@@ -339,6 +339,9 @@ button {
   cursor: pointer;
   font-weight: bold;
 }
+form input[name="username"] {
+  text-transform: lowercase;
+}
 .loading {
   margin: auto;
   width: 100vw;
@@ -534,6 +537,16 @@ button {
   pointer-events: none;
   color: lightgray;
 }
+#load {
+  margin: auto;
+  font-size: large;
+  font-weight: bold;
+  width: 150px;
+  height: 150px;
+  padding: 10px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 75px;
+}
 .footer {
   min-height: fit-content;
   padding: 0;
@@ -626,9 +639,6 @@ a,
   text-align: center;
   min-height: 70vh;
 }
-.shoppingList-container h1 {
-  padding: 3%;
-}
 .shoppingList-container .recipe {
   max-width: fit-content;
   margin: auto;
@@ -674,6 +684,15 @@ a,
 }
 .recipe-name-link:hover {
   color: blue;
+}
+.head {
+  padding: 3%;
+}
+.head h1 {
+  padding: none;
+}
+.head .notice {
+  font-size: smaller;
 }
 #map {
   height: 800px;

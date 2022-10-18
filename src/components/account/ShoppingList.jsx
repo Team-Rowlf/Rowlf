@@ -72,10 +72,13 @@ const ShoppingList = () => {
   return !shoppingList ? (
     <h1 className="loading">Loading...</h1>
   ) : (
-    <div className="shoppingList-container">
-      <h1>
-        <u>Main Shopping List</u>
-      </h1>
+      <div className="shoppingList-container">
+        <div className='head'>
+          <h1>
+              <u>Main Shopping List</u>
+          </h1>
+          <p className='notice'>Click on the logo at the top of the screen to return to this page at any time</p>
+        </div>
 
       {shoppingList.length ? (
         <div>
