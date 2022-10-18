@@ -42,15 +42,15 @@ export const completeShoppingList = createAsyncThunk(
 	'shoppingList/completeShoppingList',
 	async ({ id }) => {
 		const token = localStorage.getItem('token');
-		const { data: oldList } = await axios.put('/api/user/me/setCompleted', 
-			{ id }, 
+		const { data: oldList } = await axios.put(
+			'/api/user/me/setCompleted',
+			{ id },
 			{ headers: { authorization: token } }
 		);
 		const { data: newList } = await axios.get('/api/user/me/currentList', {
 			headers: { authorization: token },
 		});
 		return newList;
-
 	}
 );
 
@@ -63,7 +63,11 @@ const initialState = {
 const shoppingListSlice = createSlice({
 	name: 'shoppingList',
 	initialState,
-	reducers: {},
+	reducers: {
+		resetShoppingList: (state) => {
+			(state.shoppingList = []), (state.status = 'idle'), (state.error = null);
+		},
+	},
 	extraReducers(builder) {
 		builder
 			.addCase(fetchShoppingList.pending, (state, action) => {
@@ -126,7 +130,8 @@ const shoppingListSlice = createSlice({
 	},
 });
 
-export const { addToList, removeFromList } = shoppingListSlice.actions;
+export const { addToList, removeFromList, resetShoppingList } =
+	shoppingListSlice.actions;
 
 export const getListStatus = (state) => state.shoppingList.status;
 

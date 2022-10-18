@@ -153,7 +153,12 @@ const Signup = () => {
 							<div className="clr"></div>
 						</div>
 
-						{!validate['email'] && <p> Email is Taken </p>}
+						{!validate['email'] && (
+							<p style={{ color: `red` }}>
+								{' '}
+								<b>Email is Taken</b>{' '}
+							</p>
+						)}
 
 						<div className="box">
 							<label htmlFor="password" className="fl fontLabel">
@@ -226,7 +231,9 @@ const Signup = () => {
 						<div className="box terms">
 							<input type="checkbox" name="Terms" required /> &nbsp; I accept
 							the
-							<a href="https://www.privacypolicies.com/live/83a73e61-cd09-4cde-817a-4ca8337a132d">terms and conditions</a>
+							<a href="https://www.privacypolicies.com/live/83a73e61-cd09-4cde-817a-4ca8337a132d">
+								terms and conditions
+							</a>
 						</div>
 
 						<div className="box">
