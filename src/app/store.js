@@ -5,7 +5,7 @@ import recipesSlice from '../features/recipes/recipesSlice';
 import profileSlice from '../features/profile/profileSlice';
 import shoppingListSlice from '../features/shoppingList/shoppingListSlice';
 import adminSlice from '../features/admin/adminSlice';
-
+import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import {
 	persistReducer,
 	persistStore,
