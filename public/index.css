@@ -1007,8 +1007,7 @@ a,
   text-align: center;
   margin-top: 25px;
 }
-#add-recipe-form,
-#modify-recipe-form {
+#add-recipe-form {
   margin-top: 2em;
   margin-bottom: 2em;
   display: flex;
@@ -1021,6 +1020,9 @@ a,
   display: inline-block;
   margin: auto;
   align-items: center;
+}
+.-button:hover {
+  color: #1d1717;
 }
 .ingredients {
   height: fit-content;
@@ -1085,4 +1087,108 @@ tbody {
   width: 100vw;
   margin-top: 2%;
   margin-bottom: 2%;
+}
+.recipe-id-link {
+  color: #0D730D;
+}
+.modify-header {
+  margin-top: 0.5em;
+  text-align: center;
+}
+.delete-tag,
+.add-tag {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  margin: auto;
+  align-items: center;
+}
+.add-tag:hover,
+.delete-tag:hover,
+.back-to-recipes:hover,
+.save-changes:hover {
+  color: #1d1717;
+}
+.back-to-recipes {
+  margin-left: 1em;
+}
+.save-back-div {
+  display: flex;
+  justify-content: center;
+}
+#chefs-choice-container {
+  margin-bottom: 2em;
+}
+#chefs-choice-form,
+#chefs-choice-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  max-width: 50%;
+  justify-content: space-between;
+  margin: auto;
+  margin-top: 1em;
+}
+#chefs-choice-form h2,
+#chefs-choice-results h2 {
+  text-align: center;
+}
+.question-answer {
+  margin: 0.5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+.yes-checkbox {
+  margin-left: 0.5em;
+}
+.selections {
+  display: flex;
+  flex-direction: column;
+}
+.select-italicized {
+  font-style: italic;
+}
+.selection-options {
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+  justify-content: space-between;
+}
+.selection-options div {
+  flex-basis: 25%;
+  margin: 0.5em;
+  display: flex;
+}
+.number-input {
+  max-width: 30px;
+}
+#suggested-results {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+}
+.results-header,
+.insufficient-servings {
+  margin-top: 1em;
+  text-align: center;
+  font-style: italic;
+  font-weight: bold;
+}
+.recipe-display {
+  margin: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.suggested-recipe-name {
+  color: #0D730D;
+}
+.insufficient-servings {
+  color: red;
+  margin-bottom: 1em;
 }

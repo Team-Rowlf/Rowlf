@@ -59,6 +59,7 @@ export const attemptUpdateRecipe = createAsyncThunk('recipes/attemptUpdateRecipe
 const initialState = {
 	recipes: [],
 	filterRecipes: [],
+	matchedRecipes: [], // maybe could also just use the filterRecipes array; shouldn't conflict if in different page
 	singleRecipe: {},
 	status: 'idle',
 	error: null,
@@ -70,8 +71,8 @@ const recipesSlice = createSlice({
 		clearSingleRecipe: (state) => {
 			state.singleRecipe = {};
 		},
-		clearFilteredRecipes: (state) => {
-			state.filterRecipes = [];
+		resetFilteredRecipes: (state) => {
+			state.filterRecipes = [...state.recipes];
 			state.count = state.recipes.length;
 		}
 	},
@@ -139,6 +140,6 @@ const recipesSlice = createSlice({
 
 export const getRecipeStatus = (state) => state.recipes.status;
 
-export const { clearSingleRecipe, clearFilteredRecipes } = recipesSlice.actions;
+export const { clearSingleRecipe, resetFilteredRecipes } = recipesSlice.actions;
 
 export default recipesSlice.reducer;

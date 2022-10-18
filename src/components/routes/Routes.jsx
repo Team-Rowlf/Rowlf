@@ -20,6 +20,7 @@ import AddRecipeAdminPage from "../admin/AddRecipe.jsx";
 import ModifyRecipeAdminPage from "../admin/ModifyRecipe.jsx";
 import MapMain from "../googleMaps/MapMain.jsx";
 import ListHistory from "../account/ListHistory.jsx";
+import ChefsChoice from "../pages/ChefsChoice.jsx";
 
 const RoutesComponent = () => {
   return (
@@ -50,6 +51,7 @@ const RoutesComponent = () => {
         <Route path="updaterecipe/:id" element={<ModifyRecipeAdminPage />} />
         <Route path="*" element={<NotFound />} />
       </Route>
+      <Route path="chefschoice" element={<ChefsChoice />} />
       <Route path="map" element={<MapMain />} />
       <Route path="*" element={<NotFound />} />
     </Routes>

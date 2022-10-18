@@ -48,12 +48,13 @@ const ShoppingList = () => {
 
   const capitalize = (string) => {
     let arr = string.split(" ");
-    arr = arr.map((itm) => itm[0].toUpperCase() + itm.slice(1));
+    arr = arr.map((itm) =>
+      itm.length ? itm[0].toUpperCase() + itm.slice(1) : itm
+    );
     string = arr.join(" ");
     return string;
   };
   const handleRemoveRecipe = (id) => {
-    console.log("handle", id);
     dispatch(fetchRemoveFromShoppingList({ id }));
   };
   useEffect(() => {
@@ -104,7 +105,7 @@ const ShoppingList = () => {
                     {capitalize(recipe.name)}
                   </Link>{" "}
                   <button
-                    className="remove-item-list"
+                    className="remove-item-list -button"
                     onClick={() => handleRemoveRecipe(recipe.id)}
                   >
                     {" "}
