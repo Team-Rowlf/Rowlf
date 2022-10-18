@@ -1,13 +1,15 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchSuggestedRecipeMatches } from "../../features/recipes/recipesSlice";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const ChefsChoice = () => {
-    const dispatch = useDispatch();
     const allRecipes = useSelector((state) => state.recipes.recipes);
     const dislikes = useSelector((state) => state.profile.dislikes);
     const [filteredRecipes, setFilteredRecipes] = useState([]);
+    const [suggestions, setSuggestions] = useState([]);
+    const [insufficentServings, setInsufficientServings] = useState(false);
     const [submitted, setSubmitted] = useState(false);
+    const [count, setCount] = useState(0)
     const [form, setForm] = useState({
         people: '1',
         meals: '1',
@@ -53,6 +55,12 @@ const ChefsChoice = () => {
     // once that works, could also give users the option to reject recipes they don't want to make
     // -- would then want to remove that recipe from the suggested list in store and local list here, then find a new match to replace it
 
+    useEffect(() => {
+        if (filteredRecipes.length) {
+            randomizeRecipes();
+        }
+    },[filteredRecipes.length, count])
+
     const addOrRemoveTag = (props, tag) => () => {
         const copy = [...form[props]];
         let index = copy.indexOf(tag);
@@ -91,18 +99,34 @@ const ChefsChoice = () => {
             filtered = filtered.filter(recipe => recipe.appliances.some(appliance => form.appliances.includes(appliance.name)))
         }
         setFilteredRecipes([...filtered]);
-        console.log(filtered.length)
         setSubmitted(true);
+        setCount(count+1);
     }
 
-    // next, want to write in some logic that randomly chooses recipes from the filtered list
-    // basically, want to choose random recipes to display; keep track of total servings and keep adding to list until serving count met or exceeded
-    // if not enough suggested recipes to meet servings, display a text warning or something that says so
-    // if no recipes match filtered requirments, then display that message as well;
+    const randomizeRecipes = () => {
+        let servings = 0;
+        let recipeArray = [];
+        // either will stop if servings enough, or if suggestions = the filtered recipes list
+        while ((servings < form.people*form.meals) && (recipeArray.length < filteredRecipes.length)) {
+            let randIndex = Math.floor(Math.random()*filteredRecipes.length);
+            let randRecipe = filteredRecipes[randIndex];
+            if (!recipeArray.includes(randRecipe)) {
+                recipeArray.push(randRecipe);
+                servings += randRecipe.servings;
+            }
+        }
+        if (servings < form.people*form.meals) {
+            setInsufficientServings(true);
+        } else {
+            setInsufficientServings(false);
+        }
+        setSuggestions([...recipeArray])
+    }
 
     const capitalize = (string) => {
 		let arr = string.split(' ');
-		arr = arr.map((itm) => itm[0].toUpperCase() + itm.slice(1));
+        console.log(arr)
+		arr = arr.map((itm) => itm.length ? itm[0].toUpperCase() + itm.slice(1) : itm);
 		string = arr.join(' ');
 		return string;
 	};
@@ -114,6 +138,10 @@ const ChefsChoice = () => {
             || (restrictionBool && !form.restrictions.length)
             || (applianceBool && !form.appliances.length)
     }
+
+    // make an "Add all to cart" method/functionality
+    // when that button is clicked, all recipes will get added to cart
+    // should then clear out the suggestions array and reset the insufficient warning, etc. maybe even navigate them to cart
 
     return (
         <div>
@@ -188,7 +216,31 @@ const ChefsChoice = () => {
             </form>
             {submitted ?
                 filteredRecipes.length ? 
-                    <div>(Placeholder for displaying recipes)</div>
+                    <div>
+                        <div>{filteredRecipes.length > 3 ? `${filteredRecipes.length} recipes matched your criteria. The chef suggests the following:` : `Only ${filteredRecipes.length} recipe(s) matched your critera:`}</div>
+                        <div>{suggestions.map((recipe, idx) => {
+                            return (
+                                <div className="recipe-display">
+                                    <Link to={`/user/recipes/${recipe.id}`}> 
+                                        <div>
+                                            <img src={recipe.img} alt="recipe" />
+                                        </div>
+                                        <h2>{recipe.name}</h2>
+                                    </Link>
+                                    <div className="recipe-details">
+                                        <span>{`Cook Time: ${recipe.cookTime} mins, Servings: ${recipe.servings}`}</span>
+                                    </div>
+                                    <details>
+                                        <summary> Ingredients: </summary>
+                                        <ul>
+                                            {recipe.lineItems.map(ingredient=><li key={ingredient.id}>{capitalize(ingredient.ingredient.name)}</li>)}
+                                        </ul>
+                                    </details>
+                                </div>
+                            )
+                        })}</div>
+                        {insufficentServings ? <div className="insufficient-servings">We apologize, the chef is unable to accomodate your total number of desired meals.</div> : <></>}
+                    </div>
                     :
                     <div>Sorry, no recipes matched your requirments</div>
                 : <></>

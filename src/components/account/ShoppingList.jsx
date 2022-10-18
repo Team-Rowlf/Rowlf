@@ -45,7 +45,7 @@ const ShoppingList = () => {
 
 	const capitalize = (string) => {
 		let arr = string.split(' ');
-		arr = arr.map((itm) => itm[0].toUpperCase() + itm.slice(1));
+		arr = arr.map((itm) => itm.length ? itm[0].toUpperCase() + itm.slice(1) : itm);
 		string = arr.join(' ');
 		return string;
 	};
