@@ -12,8 +12,8 @@ export const fetchRecipes = createAsyncThunk(
 export const fetchRecipesByPage = createAsyncThunk(
 	'recipes/fetchRecipesByPage',
 	async (params) => {
-		const {page, cuisine, restriction, sortDirection} = params;
-		const { data } = await axios.get(`/api/recipes?page=${page}&cuisine=${cuisine}&restriction=${restriction}` + (sortDirection.length ? `&sort=${sortDirection}` : ''));
+		const {page, cuisine, restriction, active} = params;
+		const { data } = await axios.get(`/api/recipes?page=${page}&cuisine=${cuisine}&restriction=${restriction}` + (active === 'both' ? '' : (active === 'yes' ? '&active=yes' : '&active=no')));
 		return data;
 	}
 );
@@ -35,6 +35,27 @@ export const fetchSingleRecipe = createAsyncThunk(
 	}
 )
 
+//admin only functionality
+export const attemptUpdateRecipe = createAsyncThunk('recipes/attemptUpdateRecipe',
+    async (params) => {
+        const token = window.localStorage.getItem('token');
+        if (token) {
+            const { recipeDetails, cuisines, restrictions, ingredients } = params;
+            const { data } = await axios.put(`/api/recipes/${recipeDetails.id}`, 
+                {
+                    recipeDetails,
+                    cuisines,
+                    restrictions,
+                    ingredients
+                },
+                {
+                    headers: { authorization: token },
+                });
+            return data;
+        }
+    }
+)
+
 const initialState = {
 	recipes: [],
 	filterRecipes: [],
@@ -48,6 +69,10 @@ const recipesSlice = createSlice({
 	reducers: {
 		clearSingleRecipe: (state) => {
 			state.singleRecipe = {};
+		},
+		clearFilteredRecipes: (state) => {
+			state.filterRecipes = [];
+			state.count = state.recipes.length;
 		}
 	},
 	extraReducers(builder) {
@@ -69,7 +94,7 @@ const recipesSlice = createSlice({
 			})
 			.addCase(fetchRecipesByPage.fulfilled, (state, action) => {
 				state.status = 'succeeded';
-				state.recipes = action.payload.rows;
+				state.filterRecipes = action.payload.rows;
 				state.count = action.payload.count;
 			})
 			.addCase(fetchRecipesByPage.rejected, (state, action) => {
@@ -98,12 +123,22 @@ const recipesSlice = createSlice({
 			.addCase(fetchSingleRecipe.rejected, (state, action) => {
 				state.status = 'failed';
 				state.error = action.error;
-			});	
+			})
+			.addCase(attemptUpdateRecipe.pending, (state, action) => {
+                state.status = 'pending';
+            })
+            .addCase(attemptUpdateRecipe.fulfilled, (state, action) => {
+				state.singleRecipe = action.payload;
+                state.status = 'succeeded';
+            })
+            .addCase(attemptUpdateRecipe.rejected, (state, action) => {
+                state.status = 'failed';
+            });	
 	},
 });
 
 export const getRecipeStatus = (state) => state.recipes.status;
 
-export const { setSortRecipes, setFilterRecipes, clearSingleRecipe } = recipesSlice.actions;
+export const { clearSingleRecipe, clearFilteredRecipes } = recipesSlice.actions;
 
 export default recipesSlice.reducer;

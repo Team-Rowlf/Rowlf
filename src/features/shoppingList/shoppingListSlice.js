@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import Toastify from 'toastify-js';
 
 export const fetchShoppingList = createAsyncThunk(
 	'shoppingList/fetchShoppingList',
@@ -39,6 +38,21 @@ export const fetchRemoveFromShoppingList = createAsyncThunk(
 		return data;
 	}
 );
+export const completeShoppingList = createAsyncThunk(
+	'shoppingList/completeShoppingList',
+	async ({ id }) => {
+		const token = localStorage.getItem('token');
+		const { data: oldList } = await axios.put('/api/user/me/setCompleted', 
+			{ id }, 
+			{ headers: { authorization: token } }
+		);
+		const { data: newList } = await axios.get('/api/user/me/currentList', {
+			headers: { authorization: token },
+		});
+		return newList;
+
+	}
+);
 
 const initialState = {
 	shoppingList: [],
@@ -69,30 +83,30 @@ const shoppingListSlice = createSlice({
 			.addCase(fetchAddtoShoppingList.fulfilled, (state, action) => {
 				state.status = 'succeeded';
 				state.shoppingList = action.payload;
-				toast.success("Added recipe to shopping list!", {
+				toast.success('Added recipe to shopping list!', {
 					position: 'bottom-right',
 					autoClose: 1500,
 					hideProgressBar: false,
 					closeOnClick: true,
-					pauseOnHover: true,
+					pauseOnHover: false,
 					draggable: true,
 					progress: undefined,
 					theme: 'dark',
-				})
+				});
 			})
 			.addCase(fetchAddtoShoppingList.rejected, (state, action) => {
 				state.status = 'failed';
 				state.error = action.error;
-				toast.warning("Recipe already in shopping list", {
+				toast.warning('Recipe already in shopping list', {
 					position: 'bottom-right',
 					autoClose: 1500,
 					hideProgressBar: false,
 					closeOnClick: true,
-					pauseOnHover: true,
+					pauseOnHover: false,
 					draggable: true,
 					progress: undefined,
 					theme: 'dark',
-				})
+				});
 			})
 			.addCase(fetchRemoveFromShoppingList.pending, (state, action) => {
 				state.status = 'pending';
@@ -104,6 +118,10 @@ const shoppingListSlice = createSlice({
 			.addCase(fetchRemoveFromShoppingList.rejected, (state, action) => {
 				state.status = 'failed';
 				state.error = action.error;
+			})
+			.addCase(completeShoppingList.fulfilled, (state, action) => {
+				state.status = 'succeeded';
+				state.shoppingList = action.payload;
 			});
 	},
 });

@@ -30,27 +30,33 @@
         font-size: small;
         padding: 5px;
     }
-    .box {
-        width: 400px;
+}
+.box {
+    width: 400px;
+    height: fit-content;
+    margin-top: 10px;
+    font-family: verdana;
+    font-size: 12px;
+    .fr {
         height: 35px;
-        margin-top: 10px;
-        font-family: verdana;
-        font-size: 12px;
+        float: right;
+        margin: 1%;
         .fr {
+            height: 35px;
             float: right;
         }
-        .fl {
-            float: left;
-            width: 150px;
-            line-height: 35px;
-            padding-left: 15px;
-            background-color: @red;
-            border: 2px solid @lightGreen;
-            border-radius: 5px;
-        }
-        .clr {
-            clear: both;
-        }
+    }
+    .fl {
+        float: left;
+        width: 150px;
+        line-height: 35px;
+        padding-left: 15px;
+        background-color: @red;
+        border: 2px solid @lightGreen;
+        border-radius: 5px;
+    }
+    .clr {
+        clear: both;
     }
 }
 
