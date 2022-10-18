@@ -89,7 +89,8 @@ const AllRecipesAdminPage = () => {
     }
 
     return (
-        recipes.length > 0 ?
+        // recipes.length > 0 ?
+        recipeStatus === 'succeeded' ?
             <div className="all-recipes-container">
                 <div className='allrecipes-header'>
                     <h1>All Recipes ({recipeCount})</h1>

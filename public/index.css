@@ -1080,6 +1080,9 @@ tbody {
   margin-top: 2%;
   margin-bottom: 2%;
 }
+.recipe-id-link {
+  color: #0D730D;
+}
 #chefs-choice-container {
   margin-bottom: 2em;
 }
@@ -1133,8 +1136,12 @@ tbody {
   display: flex;
   flex-direction: column;
   margin: auto;
+  align-items: center;
+  justify-content: center;
 }
-.results-header {
+.results-header,
+.insufficient-servings {
+  margin-top: 1em;
   text-align: center;
   font-style: italic;
   font-weight: bold;
@@ -1147,4 +1154,8 @@ tbody {
 }
 .suggested-recipe-name {
   color: #0D730D;
+}
+.insufficient-servings {
+  color: red;
+  margin-bottom: 1em;
 }

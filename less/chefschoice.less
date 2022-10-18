@@ -56,9 +56,11 @@
     display: flex;
     flex-direction: column;
     margin: auto;
-
+    align-items: center;
+    justify-content: center;
 }
-.results-header {
+.results-header, .insufficient-servings {
+    margin-top: 1em;
     text-align: center;
     font-style: italic;
     font-weight: bold;
@@ -71,4 +73,9 @@
 }
 .suggested-recipe-name {
     color: @darkGreen;
+}
+
+.insufficient-servings {
+    color: red;
+    margin-bottom: 1em;
 }
