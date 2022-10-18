@@ -250,7 +250,6 @@ const Signup = () => {
 									!validate['email'] || !validate['username'] ? true : ''
 								}
 							>
-								{console.log(!validate['username'])}
 								Signup
 							</button>
 							<button onClick={handleLogin}>Login</button>
