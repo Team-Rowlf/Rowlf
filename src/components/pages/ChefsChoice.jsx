@@ -141,7 +141,7 @@ const ChefsChoice = () => {
         for (let i in suggestions) {
             dispatch(fetchAddtoShoppingList({id: suggestions[i].id}));
         }
-        navigate("/");
+        navigate("/user/shoppingList");
     }
 
     return (
