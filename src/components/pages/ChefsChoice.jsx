@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { fetchAddtoShoppingList } from "../../features/shoppingList/shoppingListSlice"
+import Nav from "../general/Nav.jsx";
 
 const ChefsChoice = () => {
     const dispatch = useDispatch();
@@ -19,13 +20,13 @@ const ChefsChoice = () => {
         cuisines: [],
         restrictions: [],
         appliances: [],
-        cookTimes: []
+        cookTime: 'all'
     });
     const [cuisineBool, setCuisineBool] = useState(false);
     const [restrictionBool, setRestrictionBool] = useState(false);
     const [applianceBool, setApplianceBool] = useState(false);
     // will need to figure out how to best set this; could also be something like 'set max cookTime in minutes'
-    const [cookTimeBool, setCookTimeBool] = useState(false);
+    const cookTimes = ['all', '< 30 mins', '< 60 mins'];
     const cuisines = [
         'american',
         'asian',
@@ -74,6 +75,7 @@ const ChefsChoice = () => {
     const onSubmitHandler = (event) => {
         event.preventDefault();
         filterRecipes();
+        console.log(form)
     };
 
     const filterRecipes = () => {
@@ -90,6 +92,10 @@ const ChefsChoice = () => {
         }
         if (form.appliances.length) {
             filtered = filtered.filter(recipe => recipe.appliances.some(appliance => form.appliances.includes(appliance.name)))
+        }
+        if (form.cookTime !== 'all') {
+            let maxTime = form.cookTime === '< 30 mins' ? 30 : 60;
+            filtered = filtered.filter(recipe => recipe.cookTime <= maxTime);
         }
         setFilteredRecipes([...filtered]);
         setSubmitted(true);
@@ -118,7 +124,6 @@ const ChefsChoice = () => {
 
     const capitalize = (string) => {
 		let arr = string.split(' ');
-        console.log(arr)
 		arr = arr.map((itm) => itm.length ? itm[0].toUpperCase() + itm.slice(1) : itm);
 		string = arr.join(' ');
 		return string;
@@ -139,37 +144,38 @@ const ChefsChoice = () => {
         navigate("/");
     }
 
-    // make an "Add all to cart" method/functionality
-    // when that button is clicked, all recipes will get added to cart
-    // should then clear out the suggestions array and reset the insufficient warning, etc. maybe even navigate them to cart
-
     return (
-        <div>
-            <form id="chefs-choice" onSubmit={onSubmitHandler}>
-                <h3>Fill out the questions to find recipe recommendations:</h3>
+        <div id="chefs-choice-container">
+            <Nav />
+            <form id="chefs-choice-form" onSubmit={onSubmitHandler}>
+                <h2>Input your criteria to find recipe recommendations:</h2>
                 <div className="question-answer">
                     <span className="question">How many people are you cooking for?</span>
-                    <input type="number" min={"1"} defaultValue="1" onChange={onChangeHandler("people")}/>
+                    <input className="number-input" type="number" min={"1"} defaultValue="1" onChange={onChangeHandler("people")}/>
                 </div>
                 <div className="question-answer">
                     <span className="question">How many meals per person are you preparing?</span>
-                    <input type="number" min={"1"}  defaultValue="1" onChange={onChangeHandler("meals")}/>
+                    <input className="number-input" type="number" min={"1"}  defaultValue="1" onChange={onChangeHandler("meals")}/>
                 </div>
 
                 <div className="question-answer">
                     <span className="question">Any cuisine preferences?</span>
-                    <label>Yes</label>
-                    <input type="checkbox" defaultChecked={cuisineBool} onChange={() => {setCuisineBool(!cuisineBool); setForm({...form, ["cuisines"]: []})}}/>
+                    <span>
+                        <label>Yes</label>
+                        <input className="yes-checkbox" type="checkbox" defaultChecked={cuisineBool} onChange={() => {setCuisineBool(!cuisineBool); setForm({...form, ["cuisines"]: []})}}/>
+                    </span>
                 </div>
                 {cuisineBool ? 
-                    <div>
-                        <div>Select all that apply: </div>
-                        {cuisines.map((cuisine,idx) => 
-                            <div key={idx}>
-                                <input type="checkbox" onChange={addOrRemoveTag("cuisines",cuisine)}/>
-                                <label>{capitalize(cuisine)}</label>
-                            </div>
-                        )}
+                    <div className="selections">
+                        <div className="select-italicized">Select all that apply: </div>
+                        <div className="selection-options">
+                            {cuisines.map((cuisine,idx) => 
+                                <div key={idx}>
+                                    <input type="checkbox" onChange={addOrRemoveTag("cuisines",cuisine)}/>
+                                    <label>{capitalize(cuisine)}</label>
+                                </div>
+                            )}
+                        </div>
                     </div>
                     :
                     <></>
@@ -177,18 +183,22 @@ const ChefsChoice = () => {
 
                 <div className="question-answer">
                     <span className="question">Any dietary restrictions?</span>
-                    <label>Yes</label>
-                    <input type="checkbox" defaultChecked={restrictionBool} onChange={() => {setRestrictionBool(!restrictionBool); setForm({...form, ["restrictions"]: []})}}/>
+                    <span>
+                        <label>Yes</label>
+                        <input className="yes-checkbox" type="checkbox" defaultChecked={restrictionBool} onChange={() => {setRestrictionBool(!restrictionBool); setForm({...form, ["restrictions"]: []})}}/>
+                    </span>
                 </div>
                 {restrictionBool ? 
-                    <div>
-                        <div>Select all that apply:</div>
-                        {restrictions.map((restriction, idx) => 
-                            <div key={idx}>
-                                <input type="checkbox" onChange={addOrRemoveTag("restrictions",restriction)}/>
-                                <label>{capitalize(restriction)}</label>
-                            </div>
-                        )}
+                    <div className="selections">
+                        <div className="select-italicized">Select all that apply:</div>
+                        <div  className="selection-options">
+                            {restrictions.map((restriction, idx) => 
+                                <div key={idx}>
+                                    <input type="checkbox" onChange={addOrRemoveTag("restrictions",restriction)}/>
+                                    <label>{capitalize(restriction)}</label>
+                                </div>
+                            )}
+                        </div>
                     </div>
                     :
                     <></>
@@ -196,56 +206,66 @@ const ChefsChoice = () => {
 
                 <div className="question-answer">
                     <span className="question">Any cooking appliance preferences?</span>
-                    <label>Yes</label>
-                    <input type="checkbox" defaultChecked={applianceBool} onChange={() => {setApplianceBool(!applianceBool); setForm({...form, ["appliances"]: []})}}/>
+                    <span>
+                        <label>Yes</label>
+                        <input className="yes-checkbox" type="checkbox" defaultChecked={applianceBool} onChange={() => {setApplianceBool(!applianceBool); setForm({...form, ["appliances"]: []})}}/>
+                    </span>
                 </div>
                 {applianceBool ? 
-                    <div>
-                        <div>Select all that apply:</div>
-                        {appliances.map((appliance, idx) => 
-                            <div key={idx}>
-                                <input type="checkbox" onChange={addOrRemoveTag("appliances",appliance)}/>
-                                <label>{capitalize(appliance)}</label>
-                            </div>
-                        )}
+                    <div className="selections">
+                        <div className="select-italicized">Select all that apply:</div>
+                        <div className="selection-options">
+                            {appliances.map((appliance, idx) => 
+                                <div key={idx}>
+                                    <input type="checkbox" onChange={addOrRemoveTag("appliances",appliance)}/>
+                                    <label>{capitalize(appliance)}</label>
+                                </div>
+                            )}
+                        </div>
                     </div>
                     :
                     <></>
                 }
+                <div className="question-answer">
+                    <span className="question">Desired cook time:</span>
+                    <select defaultValue={form.cookTime} onChange={(event) => setForm({...form, ["cookTime"]: event.target.value})}>
+                        {cookTimes.map(time => <option key={time}>{time}</option>)}
+                    </select>
+                </div>
                 <button type="submit" className={checkDisabled() ? 'disabled' : ''}>See Results!</button>
             </form>
-            {submitted ?
-                filteredRecipes.length ? 
-                    <div>
-                        <div>{filteredRecipes.length > 3 ? `${filteredRecipes.length} recipes matched your criteria. The chef suggests the following:` : `Only ${filteredRecipes.length} recipe(s) matched your critera:`}</div>
-                        <div>{suggestions.map((recipe, idx) => {
-                            return (
-                                <div key={idx} className="recipe-display">
-                                    <Link to={`/user/recipes/${recipe.id}`}> 
-                                        <div>
+            <div id="suggested-results">
+                {submitted ?
+                    filteredRecipes.length ? 
+                        <div id="chefs-choice-results">
+                            <div className="results-header">{filteredRecipes.length > 3 ? `${filteredRecipes.length} recipes matched your criteria. The chef suggests the following:` : `Only ${filteredRecipes.length} recipe(s) matched your critera:`}</div>
+                            <div>{suggestions.map((recipe, idx) => {
+                                return (
+                                    <div key={idx} className="recipe-display">
+                                        <Link to={`/user/recipes/${recipe.id}`}> 
+                                            <h2 className="suggested-recipe-name">{recipe.name}</h2>
                                             <img src={recipe.img} alt="recipe" />
+                                        </Link>
+                                        <div className="recipe-details">
+                                            <span>{`Cook Time: ${recipe.cookTime} mins, Servings: ${recipe.servings}`}</span>
                                         </div>
-                                        <h2>{recipe.name}</h2>
-                                    </Link>
-                                    <div className="recipe-details">
-                                        <span>{`Cook Time: ${recipe.cookTime} mins, Servings: ${recipe.servings}`}</span>
+                                        <details>
+                                            <summary> Ingredients: </summary>
+                                            <ul>
+                                                {recipe.lineItems.map(ingredient=><li key={ingredient.id}>{capitalize(ingredient.ingredient.name)}</li>)}
+                                            </ul>
+                                        </details>
                                     </div>
-                                    <details>
-                                        <summary> Ingredients: </summary>
-                                        <ul>
-                                            {recipe.lineItems.map(ingredient=><li key={ingredient.id}>{capitalize(ingredient.ingredient.name)}</li>)}
-                                        </ul>
-                                    </details>
-                                </div>
-                            )
-                        })}</div>
-                        {insufficentServings ? <div className="insufficient-servings">We apologize, the chef is unable to accomodate your total number of desired meals.</div> : <></>}
-                        <button onClick={addToCartClickHandler}>Add All to List</button>
-                    </div>
-                    :
-                    <div>Sorry, no recipes matched your requirments</div>
-                : <></>
-            }
+                                )
+                            })}</div>
+                            {insufficentServings ? <div className="insufficient-servings">We apologize, the chef is unable to accomodate your total number of desired meals.</div> : <></>}
+                            <button onClick={addToCartClickHandler}>Add All to List</button>
+                        </div>
+                        :
+                        <div className="no-suggestions">Sorry, no recipes matched your requirments</div>
+                    : <></>
+                }
+            </div>
         </div>
     )
 }

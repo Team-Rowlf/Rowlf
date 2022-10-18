@@ -1,0 +1,74 @@
+#chefs-choice-container {
+    margin-bottom: 2em;
+}
+
+#chefs-choice-form, #chefs-choice-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    max-width: 50%;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 1em;
+    h2 {
+        text-align: center;
+    }
+}
+
+.question-answer {
+    margin: .5em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.yes-checkbox {
+    margin-left: .5em;
+}
+.selections {
+    display: flex;
+    flex-direction: column;
+    // width: 100%;
+}
+.select-italicized {
+    font-style: italic;
+}
+.selection-options {
+    display: flex;
+    flex-direction: row;
+    // flex-wrap: wrap;
+    flex-flow: wrap;
+    justify-content: space-between;
+    // width: 100%;
+    div {
+        // flex: 1 1 25%;
+        flex-basis: 25%;
+        margin: .5em;
+        display: flex;
+    }
+}
+.number-input {
+    max-width: 30px;
+}
+#suggested-results {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+
+}
+.results-header {
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+}
+.recipe-display {
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.suggested-recipe-name {
+    color: @darkGreen;
+}

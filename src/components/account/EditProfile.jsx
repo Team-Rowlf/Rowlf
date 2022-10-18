@@ -13,8 +13,6 @@ const EditProfile = () => {
 	const navigate = useNavigate();
 	let user = useSelector((state) => state.user.userInfo);
 
-	console.log('USER: ',user)
-
 	const handleLogin = () => {
 		navigate('/login');
 	};
