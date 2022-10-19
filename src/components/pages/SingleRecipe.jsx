@@ -13,7 +13,7 @@ import {
 } from '../../features/recipes/recipesSlice';
 import { fetchAddtoShoppingList } from '../../features/shoppingList/shoppingListSlice';
 import { getUserToken } from '../../features/user/userSlice';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { decimalToFraction } from '../../helperfunctions/fractions';
 import { capitalize } from '../../helperfunctions/utils';
 

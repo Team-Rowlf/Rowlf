@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate, Link } from 'react-router-dom';
 import {
 	editUser,
 	validateSignupForm,
 	getFormInputAvailable,
-	fetchUser,
 } from '../../features/user/userSlice';
 import { capitalize } from '../../helperfunctions/utils';
 
 const EditProfile = ({ handleEdit }) => {
 	const dispatch = useDispatch();
-	const navigate = useNavigate();
 	let user = useSelector((state) => state.user.userInfo);
 
 	const [signUp, setSignUp] = useState({});
@@ -30,9 +27,7 @@ const EditProfile = ({ handleEdit }) => {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		dispatch(editUser({ signUp }));
-		dispatch(fetchUser());
 		handleEdit();
-		navigate('/user/profile/edit');
 	};
 
 	const handleChange = (prop) => (event) => {

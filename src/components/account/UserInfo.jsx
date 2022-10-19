@@ -1,24 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate, Link } from 'react-router-dom';
-import {
-	editUser,
-	validateSignupForm,
-	getFormInputAvailable,
-	fetchUser,
-} from '../../features/user/userSlice';
+import { useNavigate } from 'react-router-dom';
 import { capitalize, formatPhoneNumber } from '../../helperfunctions/utils';
 import EditProfile from './EditProfile.jsx';
 
 const UserInfo = () => {
-	const dispatch = useDispatch();
-	const navigate = useNavigate();
 	let user = useSelector((state) => state.user.userInfo);
 	const [edit, setEdit] = useState(false);
 
 	const handleEdit = () => {
 		setEdit(!edit);
 	};
+	useEffect(() => {}, [user]);
 
 	return edit ? (
 		<EditProfile handleEdit={handleEdit} />

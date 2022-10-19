@@ -113,6 +113,11 @@ const userSlice = createSlice({
 			.addCase(loginUser.rejected, (state, action) => {
 				state.status = 'failed';
 				state.error = action.payload;
+			})
+			.addCase(editUser.fulfilled, (state, action) => {
+				if (state.isLogged) {
+					state.userInfo = action.payload;
+				}
 			});
 	},
 });

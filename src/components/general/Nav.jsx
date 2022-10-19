@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { button, useNavigate } from 'react-router-dom';
+import { button, Link, useNavigate } from 'react-router-dom';
 import { clearAllUsersState } from '../../features/admin/adminSlice';
 import { resetProfile } from '../../features/profile/profileSlice';
 import { resetRecipes } from '../../features/recipes/recipesSlice';
@@ -29,9 +29,9 @@ const Nav = () => {
 	return (
 		<div className="nav">
 			<div className="nav-title">
-				<a href="/">
+				<Link to={user.isLogged ? '/user/shoppingList' : '/'}>
 					<img className="small-logo" src="/favicon.svg" alt="Logo" />
-				</a>
+				</Link>
 				<h1>Hello Kitchen</h1>
 			</div>
 			<nav className="nav-bar">
