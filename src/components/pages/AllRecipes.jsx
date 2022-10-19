@@ -137,6 +137,13 @@ const Recipes = () => {
 									<p> Serving Size: {recipes[id].servings} </p>
 								</Link>
 							</div>
+							<br />
+							<p>
+								Not sure what you're looking for?{' '}
+								<Link className="chefs-choice-link" to="/chefschoice">
+									Ask the chef!
+								</Link>
+							</p>
 						</div>
 					) : (
 						<></>

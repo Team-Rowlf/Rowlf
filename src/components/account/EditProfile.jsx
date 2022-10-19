@@ -5,11 +5,11 @@ import {
 	editUser,
 	validateSignupForm,
 	getFormInputAvailable,
-	fetchUser
+	fetchUser,
 } from '../../features/user/userSlice';
 
 const EditProfile = () => {
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	let user = useSelector((state) => state.user.userInfo);
 
@@ -21,7 +21,13 @@ const EditProfile = () => {
 
 	const handleAdditionalValidate = (prop) => (event) => {
 		const value = event.target.value;
-		value.length >= 6 && dispatch(validateSignupForm({ prop, value }));
+		if (prop === 'email') {
+			if (value !== user.email)
+				value.length >= 6 && dispatch(validateSignupForm({ prop, value }));
+		} else {
+			if (value !== user.username)
+				value.length >= 6 && dispatch(validateSignupForm({ prop, value }));
+		}
 	};
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -44,10 +50,11 @@ const EditProfile = () => {
 	};
 	useEffect(() => {}, [validate]);
 
-
 	const capitalize = (string) => {
 		let arr = string.split(' ');
-		arr = arr.map((itm) => itm.length ? itm[0].toUpperCase() + itm.slice(1) : itm);
+		arr = arr.map((itm) =>
+			itm.length ? itm[0].toUpperCase() + itm.slice(1) : itm
+		);
 		string = arr.join(' ');
 		return string;
 	};
@@ -56,8 +63,14 @@ const EditProfile = () => {
 		<>
 			<div className="signup">
 				<div className="signupContainer">
-					{user.firstName ? <h1>Edit {capitalize(user.firstName)}'s Profile</h1> : <h1>Edit Profile</h1>}
-					<p>Please change the information on this form to edit your account.</p>
+					{user.firstName ? (
+						<h1>Edit {capitalize(user.firstName)}'s Profile</h1>
+					) : (
+						<h1>Edit Profile</h1>
+					)}
+					<p>
+						Please change the information on this form to edit your account.
+					</p>
 					<hr />
 					<form onSubmit={handleSubmit} autoComplete="on">
 						<div className="box">
@@ -73,7 +86,7 @@ const EditProfile = () => {
 									autoFocus="on"
 									onChange={handleChange('firstName')}
 									required
-									min={3}
+									minLength={3}
 									defaultValue={capitalize(user.firstName)}
 								/>
 							</div>
@@ -93,7 +106,7 @@ const EditProfile = () => {
 									className="textBox"
 									onChange={handleChange('lastName')}
 									required
-									min={3}
+									minLength={3}
 								/>
 							</div>
 							<div className="clr"></div>
@@ -112,14 +125,18 @@ const EditProfile = () => {
 									className="textBox"
 									onChange={handleChange('username')}
 									required
-									min={6}
+									minLength={6}
 									onBlur={handleAdditionalValidate('username')}
 								/>
 							</div>
 							<div className="clr"></div>
 						</div>
 
-						{!validate['username'] && <p> Username is Taken </p>}
+						{!validate['username'] && (
+							<p style={{ color: `red` }}>
+								<b>Username is Taken</b>
+							</p>
+						)}
 
 						<div className="box">
 							<label htmlFor="phone" className="fl fontLabel">
@@ -159,7 +176,12 @@ const EditProfile = () => {
 							<div className="clr"></div>
 						</div>
 
-						{!validate['email'] && <p> Email is Taken </p>}
+						{!validate['email'] && (
+							<p style={{ color: `red` }}>
+								{' '}
+								<b>Email is Taken</b>{' '}
+							</p>
+						)}
 
 						<div className="box">
 							<label htmlFor="password" className="fl fontLabel">
@@ -174,7 +196,7 @@ const EditProfile = () => {
 									className="textBox"
 									onChange={handleChange('password')}
 									required
-									min={5}
+									minLength={5}
 								/>
 							</div>
 							<div className="clr"></div>
@@ -191,7 +213,7 @@ const EditProfile = () => {
 									className="textBox"
 									onChange={handleChange('password')}
 									required
-									min={5}
+									minLength={5}
 								/>
 							</div>
 							<div className="clr"></div>
@@ -209,7 +231,7 @@ const EditProfile = () => {
 								value="male"
 								onChange={handleChange('Gender')}
 								required
-								defaultChecked={user.gender=='male' ? true : false}
+								defaultChecked={user.gender == 'male' ? true : false}
 							/>{' '}
 							Male &nbsp;
 							<input
@@ -218,7 +240,7 @@ const EditProfile = () => {
 								value="female"
 								onChange={handleChange('Gender')}
 								required
-								defaultChecked={user.gender=='female' ? true : false}
+								defaultChecked={user.gender == 'female' ? true : false}
 							/>{' '}
 							Female &nbsp;
 							<input
@@ -227,7 +249,7 @@ const EditProfile = () => {
 								value="other"
 								onChange={handleChange('Gender')}
 								required
-								defaultChecked={user.gender=='other' ? true : false}
+								defaultChecked={user.gender == 'other' ? true : false}
 							/>{' '}
 							Other
 						</div>
@@ -239,7 +261,14 @@ const EditProfile = () => {
 						</div>
 
 						<div className="box">
-							<button type="Submit" name="Register" className="submit">
+							<button
+								type="Submit"
+								name="Register"
+								className="submit"
+								disabled={
+									!validate['email'] || !validate['username'] ? true : ''
+								}
+							>
 								Edit Profile
 							</button>
 						</div>
@@ -248,6 +277,6 @@ const EditProfile = () => {
 			</div>
 		</>
 	);
-}
+};
 
-export default EditProfile
+export default EditProfile;
