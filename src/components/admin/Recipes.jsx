@@ -4,7 +4,7 @@ import { fetchUser } from '../../features/user/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import {
-	clearFilteredRecipes,
+	resetFilteredRecipes,
 	fetchRecipesByPage,
 	getRecipeStatus,
 } from '../../features/recipes/recipesSlice.js';
@@ -78,7 +78,7 @@ const AllRecipesAdminPage = () => {
 			);
 		}
 		return () => {
-			dispatch(clearFilteredRecipes());
+			dispatch(resetFilteredRecipes());
 		};
 	}, [user.isAdmin, page, cuisineFilter, restrictionFilter, activeFilter]);
 
