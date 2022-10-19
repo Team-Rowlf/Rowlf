@@ -3038,6 +3038,3408 @@ const recipes = [
       { qty: 2, name: 'garlic powder', denom: 'tbsp' },
       { qty: 2, name: 'salt', denom: 'pinches' }
     ]
+    },
+    {
+      url: "https://www.delish.com/cooking/recipe-ideas/recipes/a45774/chicken-bacon-and-spinach-spaghetti-recipe/",
+      img: "https://hips.hearstapps.com/del.h-cdn.co/assets/16/04/1453934758-chicken-bacon-spaghetti-delish.jpg?resize=480:*",
+      name: "Hearty Tuscan Chicken Pasta",
+      cuisine: ['pasta'],
+      appliances: ['stovetop'],
+      restrictions: [],
+      ingredients: [
+        {
+          qty: 12,
+          denom: "oz.",
+          name: "spaghetti or angel hair"
+        },
+        {
+          qty: 1,
+          denom: "tbsp.",
+          name: "extra-virgin olive oil"
+        },
+        {
+          qty: 1.25,
+          denom: "lb",
+          name: "chicken breast"
+        },
+        {
+          qty: 1,
+          denom: "to taste",
+          name: "salt"
+        },
+        {
+          qty: 1,
+          denom: "to taste",
+          name: "pepper"
+        },
+        {
+          qty: 6,
+          denom: "slices",
+          name: "bacon"
+        },
+        {
+          qty: 2,
+          denom: "cloves",
+          name: "garlic"
+        },
+        {
+          qty: 2,
+          denom: "cup",
+          name: "diced tomatoes"
+        },
+        {
+          qty: 3,
+          denom: "cup",
+          name: "spinach"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "heavy cream"
+        },
+        {
+          qty: 1/3,
+          denom: "cup",
+          name: "parmesan"
+        },
+        {
+          qty: 1,
+          denom: "to taste",
+          name: "fresh basil"
+        }
+      ],
+      cookTime: 45,
+      servings: 4
+    },
+    {
+      "url": "https://www.delish.com/cooking/recipe-ideas/a35421563/baked-feta-pasta-tiktok/",
+      img: "https://hips.hearstapps.com/hmg-prod/images/delish-210212-feta-pasta-007-ab-1613747029.jpg?crop=0.668xw:1.00xh;0.138xw,0&resize=480:*",
+      name: "Baked Feta Pasta",
+      cuisine: ['pasta'],
+      appliances: ['oven'],
+      restrictions: ['vegetarian'],
+      ingredients: [
+        {
+          qty: 2,
+          denom: "pint",
+          name: "cherry tomatoes"
+        },
+        {
+          qty: 1,
+          denom: "whole",
+          name: "shallot"
+        },
+        {
+          qty: 3,
+          denom: "cloves",
+          name: "garlic"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "extra-virgin olive oil"
+        },
+        {
+          qty: 1,
+          denom: "to taste",
+          name: "salt"
+        },
+        {
+          qty: 1,
+          denom: "pinch",
+          name: "red pepper flakes"
+        },
+        {
+          qty: 8,
+          denom: "oz",
+          name: "feta"
+        },
+        {
+          qty: 3,
+          denom: "sprigs",
+          name: "fresh thyme"
+        },
+        {
+          qty: 10,
+          denom: "oz",
+          name: "pasta"
+        },
+        {
+          qty: 1,
+          denom: "whole",
+          name: "lemon zest"
+        },
+        {
+          qty: 1,
+          denom: "to taste",
+          name: "fresh basil"
+        }
+      ],
+      cookTime: 45,
+      servings: 3
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/instant-pot-baked-potato-soup",
+      name: "Instant Pot Baked Potato Soup",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2021%2F01%2F19%2Fbaked-potato-soup-batch-21.jpg",
+      cuisine: ['soup'],
+      appliances: ['instant pot'],
+      restrictions: ['nut-free'],
+      servings: 4,
+      cookTime: 50,
+      ingredients: [
+        {
+          qty: 2,
+          denom: "slice",
+          name: "bacon"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "onion"
+        },
+        {
+          qty: 2,
+          denom: "lb",
+          name: "russet potatoes"
+        },
+        {
+          qty: 2,
+          denom: "clove",
+          name: "garlic"
+        },
+        {
+          qty: 3,
+          denom: "cups",
+          name: "chicken broth"
+        },
+        {
+          qty: 1/2,
+          denom: "tsp",
+          name: "salt"
+        },
+        {
+          qty: 1/4,
+          denom: "tsp",
+          name: "pepper"
+        },
+        {
+          qty: 4,
+          denom: "oz",
+          name: "cream cheese"
+        },
+        {
+          qty: 2,
+          denom: "oz",
+          name: "cheddar cheese"
+        },
+        {
+          qty: 1,
+          denom: "to taste",
+          name: "scallions"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/instant-pot-taco-soup",
+      name: "Instant Pot Two-Minute Taco Soup",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2018%2F12%2F05%2Finstant-pot-taco-soup-dcms-large-2000.jpg",
+      cuisine: ['soup','mexican'],
+      appliances: ['instant pot'],
+      restrictions: ['nut-free'],
+      servings: 8,
+      cookTime: 30,
+      ingredients: [
+        {
+          qty: 1,
+          denom: "tbsp",
+          name: "canola oil"
+        },
+        {
+          qty: 1.25,
+          denom: "pounds",
+          name: "ground beef"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "onion"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "flour"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "taco seasoning mix"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "ranch dressing mix"
+        },
+        {
+          qty: 3,
+          denom: "cups",
+          name: "beef stock"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "frozen corn kernels"
+        },
+        {
+          qty: 18,
+          denom: "oz",
+          name: "crushed tomatoes"
+        },
+        {
+          qty: 16,
+          denom: "oz",
+          name: "can kidney chili beans"
+        },
+        {
+          qty: 15,
+          denom: "oz",
+          name: "can black beans"
+        },
+        {
+          qty: 4,
+          denom: "oz",
+          name: "cheddar cheese"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "sour cream"
+        },
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "scallion"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/best-beefy-vegan-burgers",
+      name: "The Best \"Beefy\" Vegan Burgers",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2016%2F08%2F12%2Fbest-beefy-vegan-burgers-mr_0-2000.jpg",
+      cuisine: ['healthy'],
+      appliances: ['stovetop','grill'],
+      restrictions: ['vegan','vegetarian','lactose-free'],
+      servings: 10,
+      cookTime: 75,
+      ingredients: [
+        {
+          qty: 2,
+          denom: "cups",
+          name: "walnuts"
+        },
+        {
+          qty: 8,
+          denom: "ounces",
+          name: "portobello mushrooms"
+        },
+        {
+          qty: 3,
+          denom: "ounces",
+          name: "vegan butter"
+        },
+        {
+          qty: 2,
+          denom: "cups",
+          name: "cooked brown rice"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "uncooked regular rolled oats"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "red beet"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "vegan mayonnaise"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "soy sauce"
+        },
+        {
+          qty: 2.5,
+          denom: "teaspoons",
+          name: "salt"
+        },
+        {
+          qty: 2,
+          denom: "teaspoons",
+          name: "pepper"
+        },
+        {
+          qty: 4,
+          denom: "cloves",
+          name: "garlic"
+        },
+        {
+          qty: 10,
+          denom: "whole",
+          name: "hamburger buns"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/white-bean-jackfruit-chili",
+      name: "White Bean and Jackfruit Chili",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2016%2F09%2F06%2Fwhitebeanjackfruitchili-mr-2000.jpg",
+      cuisine: ['soup','healthy'],
+      appliances: ['oven','stovetop'],
+      restrictions: ['vegan','vegetarian','lactose-free','glutan-free'],
+      servings: 6,
+      cookTime: 35,
+      ingredients: [
+        {
+          qty: 1,
+          denom: "whole",
+          name: "onion"
+        },
+        {
+          qty: 2,
+          denom: "whole",
+          name: "serrano chiles"
+        },
+        {
+          qty: 1,
+          denom: "whole",
+          name: "jalapeno pepper"
+        },
+        {
+          qty: 5,
+          denom: "cloves",
+          name: "garlic"
+        },
+        {
+          qty: 4,
+          denom: "cups",
+          name: "vegetable broth"
+        },
+        {
+          qty: 30,
+          denom: "oz",
+          name: "canned white beans"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "canola oil"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "cumin"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "oregano"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "coriander"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "paprika"
+        },
+        {
+          qty: 30,
+          denom: "oz",
+          name: "canned jackfruit"
+        },
+        {
+          qty: 1,
+          denom: "whole",
+          name: "bay leaf"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/vegan-buffalo-tofu-tot-skillet",
+      name: "Vegan Buffalo Tofu Tot Skillet",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2016%2F08%2F16%2Fbuffalotofutotskillet.jpg",
+      cuisine: ['other','healthy'],
+      appliances: ['stovetop'],
+      restrictions: ['vegan','vegetarian','lactose-free'],
+      servings: 4,
+      cookTime: 45,
+      ingredients: [
+        {
+          qty: 32,
+          denom: "oz",
+          name: "tater tots"
+        },
+        {
+          qty: 28,
+          denom: "oz",
+          name: "extra firm tofu"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "olive oil"
+        },
+        {
+          qty: 3/4,
+          denom: "cup",
+          name: "non-dairy cheddar cheese"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "green onion"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "celery"
+        },
+        {
+          qty: 3/4,
+          denom: "cup",
+          name: "hot pepper sauce"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "vegan margarine"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "garlic powder"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "agave nectar"
+        },
+        {
+          qty: 1/3,
+          denom: "cup",
+          name: "apple cider vinegar"
+        },
+        {
+          qty: 2,
+          denom: "whole",
+          name: "avocado"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "cucumber"
+        },
+        {
+          qty: 3/4,
+          denom: "cup",
+          name: "unsweetened non-dairy milk"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "olive oil"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "apple cider vinegar"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "lemon juice"
+        },
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "chives"
+        },
+        {
+          qty: 14,
+          denom: "cup",
+          name: "fresh dill"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "fresh parsley"
+        },
+        {
+          qty: 1,
+          denom: "clove",
+          name: "garlic"
+        },
+        {
+          qty: 1/2,
+          denom: "tablespoon",
+          name: "onion powder"
+        },
+        {
+          qty: "1",
+          denom: "tsp",
+          name: "celery salt"
+        },
+        {
+          qty: 1,
+          denom: "to taste",
+          name: "pepper"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/instant-pot-chicken-and-rice",
+      name: "Instant Pot Chicken and Rice",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2021%2F01%2F21%2Finstant-pot-chicken-and-rice-batch-21.jpg",
+      cuisine: ['american','other'],
+      appliances: ['instant pot'],
+      restrictions: ['healthy','lactose-free'],
+      servings: 4,
+      cookTime: 40,
+      ingredients: [
+        {
+          qty: 2,
+          denom: "tsp",
+          name: "rosemary"
+        },
+        {
+          qty: 1.5,
+          denom: "tsp",
+          name: "thyme"
+        },
+        {
+          qty: 1,
+          denom: "tsp",
+          name: "salt"
+        },
+        {
+          qty: 3/4,
+          denom: "tsp",
+          name: "garlic powder"
+        },
+        {
+          qty: 3/4,
+          denom: "tsp",
+          name: "paprika"
+        },
+        {
+          qty: 3/4,
+          denom: "tsp",
+          name: "pepper"
+        },
+        {
+          qty: 1/2,
+          denom: "tsp",
+          name: "dry mustard"
+        },
+        {
+          qty: 1/2,
+          denom: "tsp",
+          name: "oregano"
+        },
+        {
+          qty: 2.5,
+          denom: "lbs",
+          name: "bone-in chicken thighs"
+        },
+        {
+          qty: 1,
+          denom: "tbsp",
+          name: "olive oil"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "white rice"
+        },
+        {
+          qty: 1.5,
+          denom: "cups",
+          name: "chicken broth"
+        },
+        {
+          qty: 1,
+          denom: "tsp",
+          name: "lemon zest"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/creamy-chicken-wild-rice-soup",
+      name: "Creamy Chicken and Wild Rice Soup",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2017%2F08%2F21%2Fcreamy20chicken20and20wild20rice20soup.jpeg",
+      cuisine: ['soup'],
+      appliances: ['stovetop'],
+      restrictions: ['nut-free'],
+      servings: 6,
+      cookTime: 40,
+      ingredients: [
+        {
+          qty: 5,
+          denom: "slices",
+          name: "bacon"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "onion"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "carrot"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "celery"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "fresh thyme"
+        },
+        {
+          qty: 8,
+          denom: "oz",
+          name: "cremini mushrooms"
+        },
+        {
+          qty: 4,
+          denom: "cloves",
+          name: "garlic"
+        },
+        {
+          qty: 4,
+          denom: "cups",
+          name: "chicken stock"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "water"
+        },
+        {
+          qty: 4,
+          denom: "cups",
+          name: "kale"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "pepper"
+        },
+        {
+          qty: 6,
+          denom: "ounces",
+          name: "rotisserie chicken breast"
+        },
+        {
+          qty: 8,
+          denom: "oz",
+          name: "precooked wild rice"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "half-and-half"
+        },
+        {
+          qty: 1/3,
+          denom: "cup",
+          name: "flour"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/easy-chicken-adobo",
+      name: "Easy Chicken Adobo",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2007%2F02%2F13%2Feasy_chicken_adobo_139-2000.jpg",
+      cuisine: ['mexican'],
+      appliances: ['stovetop'],
+      restrictions: ['nut-free','lactose-free'],
+      servings: 4,
+      cookTime: 45,
+      ingredients: [
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "vegetable oil"
+        },
+        {
+          qty: 6,
+          denom: "count",
+          name: "bone-in chicken thighs"
+        },
+        {
+          qty: 3,
+          denom: "cloves",
+          name: "garlic"
+        },
+        {
+          qty: 2/3,
+          denom: "cup",
+          name: "apple cider vinegar"
+        },
+        {
+          qty: 1/3,
+          denom: "cup",
+          name: "soy sauce"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "whole black peppercorns"
+        },
+        {
+          qty: 1,
+          denom: "whole",
+          name: "bay leaf"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/arroz-con-pollo-3",
+      name: "Arroz Con Pollo",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2019%2F12%2F06%2Farroz-con-pollo-ay.jpg",
+      cuisine: ['mexican'],
+      appliances: ['oven','stovetop'],
+      restrictions: ['nut-free','lactose-free'],
+      servings: 12,
+      cookTime: 95,
+      ingredients: [
+        {
+          qty: 2,
+          denom: "whole",
+          name: "chickens"
+        },
+        {
+          qty: 1,
+          denom: "to taste",
+          name: "salt"
+        },
+        {
+          qty: 1,
+          denom: "to taste",
+          name: "pepper"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "unsalted butter"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "vegetable oil"
+        },
+        {
+          qty: 2,
+          denom: "whole",
+          name: "onions"
+        },
+        {
+          qty: 2,
+          denom: "stalk",
+          name: "celery"
+        },
+        {
+          qty: 2,
+          denom: "whole",
+          name: "carrots"
+        },
+        {
+          qty: 1,
+          denom: "whole",
+          name: "green bell pepper"
+        },
+        {
+          qty: 1,
+          denom: "whole",
+          name: "red bell pepper"
+        },
+        {
+          qty: 2,
+          denom: "cloves",
+          name: "garlic"
+        },
+        {
+          qty: 14.5,
+          denom: "oz",
+          name: "canned diced tomatoes"
+        },
+        {
+          qty: 3,
+          denom: "cups",
+          name: "long-grain rice"
+        },
+        {
+          qty: 3,
+          denom: "cups",
+          name: "chicken broth"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "fresh parsley"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/blackened-chicken-dirty-rice",
+      name: "Blackened Chicken with Dirty Rice",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2012%2F02%2F22%2Fblackened-chicken-dirty-rice-ck-x.jpg",
+      cuisine: ['other'],
+      appliances: ['stovetop'],
+      restrictions: ['nut-free','lactose-free'],
+      servings: 4,
+      cookTime: 29,
+      ingredients: [
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "olive oil"
+        },
+        {
+          qty: 1/3,
+          denom: "cup",
+          name: "onion"
+        },
+        {
+          qty: 1/3,
+          denom: "cup",
+          name: "celery"
+        },
+        {
+          qty: 1/3,
+          denom: "cup",
+          name: "green bell pepper"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "fresh thyme"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "white rice"
+        },
+        {
+          qty: 2,
+          denom: "teaspoons",
+          name: "paprika"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "ground red pepper"
+        },
+        {
+          qty: 3,
+          denom: "cloves",
+          name: "garlic"
+        },
+        {
+          qty: 2,
+          denom: "cups",
+          name: "water"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 1,
+          denom: "spray",
+          name: "cooking spray"
+        },
+        {
+          qty: 4,
+          denom: "ounces",
+          name: "chicken livers"
+        },
+        {
+          qty: 2,
+          denom: "stalk",
+          name: "green onions"
+        },
+        {
+          qty: 1/8,
+          denom: "teaspoon",
+          name: "hot pepper sauce"
+        },
+        {
+          qty: 1.5,
+          denom: "teaspoons",
+          name: "cumin"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "paprika"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "ground coriander"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "pepper"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "ground red pepper"
+        },
+        {
+          qty: 24,
+          denom: "oz",
+          name: "chicken breast"
+        },
+        {
+          qty: 2,
+          denom: "teaspoons",
+          name: "olive oil"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "chicken broth"
+        },
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/chicken-broccoli-brown-rice-casserole",
+      name: "Chicken, Broccoli, and Brown Rice Casserole",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2015%2F01%2F27%2Fchicken-broccoli-brown-rice-casserole-ck.jpg",
+      cuisine: ['american','other'],
+      appliances: ['oven','stovetop'],
+      restrictions: ['nut-pre'],
+      servings: 4,
+      cookTime: 30,
+      ingredients: [
+        {
+          qty: 7,
+          denom: "oz",
+          name: "boil-in-bag brown rice"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "olive oil"
+        },
+        {
+          qty: 1,
+          denom: "whole",
+          name: "onion"
+        },
+        {
+          qty: 8,
+          denom: "ounces",
+          name: "presliced button mushrooms"
+        },
+        {
+          qty: 8,
+          denom: "ounces",
+          name: "chicken thighs"
+        },
+        {
+          qty: 3/4,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "pepper"
+        },
+        {
+          qty: 12,
+          denom: "oz",
+          name: "microwave-in-bag broccoli"
+        },
+        {
+          qty: 1.5,
+          denom: "cups",
+          name: "milk"
+        },
+        {
+          qty: 3,
+          denom: "tablespoons",
+          name: "flour"
+        },
+        {
+          qty: 3,
+          denom: "ounces",
+          name: "cheddar cheese"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/creamy-chicken-tomato-skillet",
+      name: "Creamy Chicken-Tomato Skillet",
+      img: "https://www.myrecipes.com/recipe/creamy-chicken-tomato-skillet",
+      cuisine: ['other'],
+      appliances: ['stovetop'],
+      restrictions: ['nut-free'],
+      servings: 4,
+      cookTime: 20,
+      ingredients: [
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "olive oil"
+        },
+        {
+          qty: 1,
+          denom: "pound",
+          name: "chicken thighs"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "pepper"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "grape tomatoes"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "onion"
+        },
+        {
+          qty: 1,
+          denom: "clove",
+          name: "garlic"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "rosemary"
+        },
+        {
+          qty: 1.5,
+          denom: "cups",
+          name: "chicken stock"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "flour"
+        },
+        {
+          qty: 9,
+          denom: "oz",
+          name: "microwavable brown rice"
+        },
+        {
+          qty: 3,
+          denom: "cups",
+          name: "spinach"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "lemon zest"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "lemon juice"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/lemon-chicken-teriyaki-rice-bowl",
+      name: "Lemon Chicken Teriyaki Rice Bowl",
+      img: "https://www.myrecipes.com/recipe/lemon-chicken-teriyaki-rice-bowl",
+      cuisine: ['asian'],
+      appliances: ['stovetop'],
+      restrictions: ['lactose-free'],
+      servings: 4,
+      cookTime: 48,
+      ingredients: [
+        {
+          qty: 1,
+          denom: "cup",
+          name: "brown rice"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "soy sauce"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "cornstarch"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "brown sugar"
+        },
+        {
+          qty: 4,
+          denom: "teaspoons",
+          name: "mirin"
+        },
+        {
+          qty: 2,
+          denom: "teaspoons",
+          name: "lemon juice"
+        },
+        {
+          qty: 18,
+          denom: "oz",
+          name: "chicken breast"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "pepper"
+        },
+        {
+          qty: 2,
+          denom: "teaspoons",
+          name: "canola oil"
+        },
+        {
+          qty: 1,
+          denom: "pound",
+          name: "broccolini"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/millet-amaranth-buddha-bowls",
+      name: "Millet Amaranth Buddha Bowls",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2015%2F12%2F16%2Fmillet-amaranth-buddha-bowls-su.jpg",
+      cuisine: ['asian','fusion','healthy'],
+      appliances: ['oven','stovetop'],
+      restrictions: ['vegan','vegetarian','lactose-free'],
+      servings: 4,
+      cookTime: 60,
+      ingredients: [
+        {
+          qty: 3/4,
+          denom: "cup",
+          name: "hulled millet"
+        },
+        {
+          qty: 3/4,
+          denom: "cup",
+          name: "whole-grain amaranth"
+        },
+        {
+          qty: 3,
+          denom: "cups",
+          name: "vegetable broth"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "curry powder"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "olive oil"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 8,
+          denom: "ounces",
+          name: "extra firm tofu"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "soy sauce"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "canola oil"
+        },
+        {
+          qty: 1,
+          denom: "bunch",
+          name: "kale"
+        },
+        {
+          qty: 8,
+          denom: "ounces",
+          name: "broccoli"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "sesame oil"
+        },
+        {
+          qty: 3/4,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "sesame seeds"
+        },
+        {
+          qty: 1,
+          denom: "whole",
+          name: "avocado"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "paprika"
+        },
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "pine nuts"
+        },
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "basil"
+        },
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "basil sprigs"
+        },
+        {
+          qty: 3/4,
+          denom: "cup",
+          name: "tahini"
+        },
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "white miso"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "sesame oil"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "cider vinegar"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "chives"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/vegan-corndogs",
+      name: "Vegan Corndogs",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2019%2F04%2F03%2FMRTrending_0326190439205-2000.jpg",
+      cuisine: ['american'],
+      appliances: ['stovetop'],
+      restrictions: ['vegan','vegetarian'],
+      servings: 8,
+      cookTime: 75,
+      ingredients: [
+        {
+          qty: 6,
+          denom: "cloves",
+          name: "garlic"
+        },
+        {
+          qty: 3,
+          denom: "whole",
+          name: "carrot"
+        },
+        {
+          qty: 6,
+          denom: "oz",
+          name: "portobello mushrooms"
+        },
+        {
+          qty: 5,
+          denom: "oz",
+          name: "red beet"
+        },
+        {
+          qty: 1/2,
+          denom: "whole",
+          name: "onion"
+        },
+        {
+          qty: 2,
+          denom: "teaspoons",
+          name: "salt"
+        },
+        {
+          qty: 2,
+          denom: "teaspoons",
+          name: "pepper"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "nutritional yeast"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "soy sauce"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "paprika"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "lemon juice"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "cumin"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "brown or red miso"
+        },
+        {
+          qty: 1.25,
+          denom: "cups",
+          name: "vital wheat gluten"
+        },
+        {
+          qty: 1,
+          denom: "count",
+          name: "Oil for frying"
+        },
+        {
+          qty: 8,
+          denom: "count",
+          name: "skewers"
+        },
+        {
+          qty: 1.5,
+          denom: "cups",
+          name: "flour"
+        },
+        {
+          qty: 1.5,
+          denom: "cups",
+          name: "cornmeal"
+        },
+        {
+          qty: 6,
+          denom: "tablespoons",
+          name: "sugar"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "baking powder"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 2,
+          denom: "cups",
+          name: "plant-based milk"
+        },
+        {
+          qty: 1,
+          denom: "to taste",
+          name: "ketchup"
+        },
+        {
+          qty: 1,
+          denom: "to taste",
+          name: "mustard"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/quinoa-brown-rice-vegetables-tahini",
+      name: "Quinoa and Brown Rice Bowl with Vegetables and Tahini",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2013%2F05%2F16%2Fquinoa-brown-rice-bowl-vegetables-tahini-fw-x.jpg",
+      cuisine: ['asian','fusion','healthy'],
+      appliances: ['stovetop'],
+      restrictions: ['vegan','vegetarian','lactose-free'],
+      servings: 6,
+      cookTime: 60,
+      ingredients: [
+        {
+          qty: 1,
+          denom: "cup",
+          name: "brown rice"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "red quinoa"
+        },
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "extra-virgin olive oil"
+        },
+        {
+          qty: 1,
+          denom: "whole",
+          name: "onion"
+        },
+        {
+          qty: 1,
+          denom: "whole",
+          name: "carrot"
+        },
+        {
+          qty: 1/4,
+          denom: "pound",
+          name: "shiitake mushrooms"
+        },
+        {
+          qty: 1,
+          denom: "whole",
+          name: "zucchini"
+        },
+        {
+          qty: 1,
+          denom: "to taste",
+          name: "salt"
+        },
+        {
+          qty: 1,
+          denom: "head",
+          name: "broccoli"
+        },
+        {
+          qty: 1,
+          denom: "bunch",
+          name: "kale"
+        },
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "tahini"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "lemon juice"
+        },
+        {
+          qty: 2,
+          denom: "cloves",
+          name: "garlic"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "water"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "crushed red pepper"
+        },
+        {
+          qty: 1,
+          denom: "whole",
+          name: "avocado"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "mung bean sprouts"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/spicy-asparagus-tempeh-stir-fry",
+      name: "Spicy Asparagus-Tempeh Stir-Fry",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2008%2F04%2F16%2Fspicy-asparagus-oh-1733510-x.jpg",
+      cuisine: ['asian','fusion','healthy'],
+      appliances: ['stovetop'],
+      restrictions: ['vegan','vegetarian','lactose-free'],
+      servings: 4,
+      cookTime: 22,
+      ingredients: [
+        {
+          qty: 3/4,
+          denom: "pound",
+          name: "asparagus"
+        },
+        {
+          qty: 3/4,
+          denom: "cup",
+          name: "vegetable broth"
+        },
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "soy sauce"
+        },
+        {
+          qty: 2,
+          denom: "teaspoons",
+          name: "cornstarch"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "sesame oil"
+        },
+        {
+          qty: 8,
+          denom: "oz",
+          name: "multigrain tempeh"
+        },
+        {
+          qty: 4,
+          denom: "cloves",
+          name: "garlic"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "crushed red pepper"
+        },
+        {
+          qty: 6,
+          denom: "oz",
+          name: "shiitake mushrooms"
+        },
+        {
+          qty: 3,
+          denom: "cups",
+          name: "instant brown rice"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/peanut-broccoli-stir-fry",
+      name: "Peanut-Broccoli Stir-fry",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2007%2F12%2F12%2Fbroccoli-stirfry-sl-1694189-x.jpg",
+      cuisine: ['asian','fusion','healthy'],
+      appliances: ['stovetop'],
+      restrictions: ['vegan','vegetarian','nut-free'],
+      servings: 6,
+      cookTime: 95,
+      ingredients: [
+        {
+          qty: 16,
+          denom: "oz",
+          name: "firm tofu"
+        },
+        {
+          qty: 2,
+          denom: "cups",
+          name: "brown rice"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 1.5,
+          denom: "cups",
+          name: "vegetable broth"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "brown sugar"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "lime juice"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "sweet chili sauce"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "creamy peanut butter"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "soy sauce"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "ginger"
+        },
+        {
+          qty: 3/4,
+          denom: "teaspoon",
+          name: "cornstarch"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "vegetable oil"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "sesame oil"
+        },
+        {
+          qty: 2,
+          denom: "cups",
+          name: "broccoli"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "carrot"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "chopped peanuts"
+        },
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/curried-red-kidney-beans-cauliflower-rajma-masala",
+      name: "Curried Red Kidney Beans and Cauliflower (Rajma Masala)",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2007%2F01%2F09%2Fkidney-beans-su-1575588-x.jpg",
+      cuisine: ['asian','healthy'],
+      appliances: ['stovetop'],
+      restrictions: ['vegan','vegetarian','lactose-free'],
+      servings: 6,
+      cookTime: 60,
+      ingredients: [
+        {
+          qty: 3,
+          denom: "tablespoons",
+          name: "vegetable oil"
+        },
+        {
+          qty: 1,
+          denom: "whole",
+          name: "onion"
+        },
+        {
+          qty: 1,
+          denom: "piece",
+          name: "cinnamon stick"
+        },
+        {
+          qty: 1,
+          denom: "whole",
+          name: "bay leaf"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "garlic"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "ginger"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "fennel"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "cumin seeds"
+        },
+        {
+          qty: 3,
+          denom: "count",
+          name: "green cardamom pods"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "cayenne"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "ground coriander"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "turmeric"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "garam masala"
+        },
+        {
+          qty: 14.5,
+          denom: "oz",
+          name: "canned whole peeled tomatoes"
+        },
+        {
+          qty: 1,
+          denom: "whole",
+          name: "serrano chile"
+        },
+        {
+          qty: 1,
+          denom: "tsp",
+          name: "salt"
+        },
+        {
+          qty: 56,
+          denom: "oz",
+          name: "canned red kidney beans"
+        },
+        {
+          qty: 1/2,
+          denom: "head",
+          name: "cauliflower"
+        },
+        {
+          qty: 1,
+          denom: "tbsp",
+          name: "lemon juice"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "cilantro"
+        },
+        {
+          qty: 6,
+          denom: "cups",
+          name: "cooked brown rice"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/mixed-vegetable-farro-soup",
+      name: "Mixed Vegetable and Farro Soup",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2013%2F10%2F09%2Fmixed-vegetable-farro-soup-x.jpg",
+      cuisine: ['soup','healthy'],
+      appliances: ['stovetop'],
+      restrictions: ['vegan','vegetarian','nut-free','lactose-free'],
+      servings: 6,
+      cookTime: 165,
+      ingredients: [
+        {
+          qty: 3,
+          denom: "tablespoons",
+          name: "extra-virgin olive oil"
+        },
+        {
+          qty: 2,
+          denom: "stalks",
+          name: "celery"
+        },
+        {
+          qty: 1,
+          denom: "whole",
+          name: "onion"
+        },
+        {
+          qty: 1,
+          denom: "whole",
+          name: "leek"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "farro"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "tomato paste"
+        },
+        {
+          qty: 2,
+          denom: "quarts",
+          name: "water"
+        },
+        {
+          qty: 15,
+          denom: "oz",
+          name: "canned pinto beans"
+        },
+        {
+          qty: 2,
+          denom: "whole",
+          name: "carrots"
+        },
+        {
+          qty: 1.5,
+          denom: "cups",
+          name: "frozen peas"
+        },
+        {
+          qty: 1,
+          denom: "to taste",
+          name: "pepper"
+        },
+        {
+          qty: 1,
+          denom: "to taste",
+          name: "salt"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "fresh basil"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/chilled-corn-soup-0",
+      name: "Chilled Corn Soup",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2011%2F08%2F10%2Fchilled-corn-soup-ck-x.jpg",
+      cuisine: ['soup'],
+      appliances: ['stovetop'],
+      restrictions: ['vegan','vegetarian','nut-free','lactose-free'],
+      servings: 6,
+      cookTime: 218,
+      ingredients: [
+        {
+          qty: 4,
+          denom: "ears",
+          name: "corn"
+        },
+        {
+          qty: 4,
+          denom: "tablespoons",
+          name: "canola oil"
+        },
+        {
+          qty: 3/4,
+          denom: "cup",
+          name: "onion"
+        },
+        {
+          qty: 1,
+          denom: "bunch",
+          name: "fresh thyme"
+        },
+        {
+          qty: 3/4,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 1,
+          denom: "clove",
+          name: "garlic"
+        },
+        {
+          qty: 3,
+          denom: "cups",
+          name: "water"
+        },
+        {
+          qty: 1/2,
+          denom: "cups",
+          name: "avocado"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "radish"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "cilantro"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "lime juice"
+        },
+        {
+          qty: 1/8,
+          denom: "teaspoon",
+          name: "ground red pepper"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/parmesan-crusted-baked-fish",
+      name: "Parmesan Crusted Baked Fish",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2015%2F09%2F01%2FParmesan_Crusted_Baked_Fish_141.jpg",
+      cuisine: ['american','other'],
+      appliances: ['oven'],
+      restrictions: ['nut-free','pescatarian','lactose-free'],
+      servings: 4,
+      cookTime: 22,
+      ingredients: [
+        {
+          qty: 3/4,
+          denom: "cup",
+          name: "panko breadcrumbs"
+        },
+        {
+          qty: 3/4,
+          denom: "cup",
+          name: "parmesan cheese"
+        },
+        {
+          qty: 3,
+          denom: "tablespoons",
+          name: "unsalted butter"
+        },
+        {
+          qty: 3,
+          denom: "tablespoons",
+          name: "mayonnaise"
+        },
+        {
+          qty: 3,
+          denom: "stalks",
+          name: "green onions"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "worchestershire sauce"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "hot pepper sauce"
+        },
+        {
+          qty: 1.5,
+          denom: "tablespoons",
+          name: "lemon juice"
+        },
+        {
+          qty: 1,
+          denom: "to taste",
+          name: "salt"
+        },
+        {
+          qty: 1,
+          denom: "to taste",
+          name: "pepper"
+        },
+        {
+          qty: 24,
+          denom: "oz",
+          name: "white fish fillet"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "fresh parsely"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/pacific-northwest-smoked-salmon-tacos",
+      name: "Pacific Northwest Smoked Salmon Tacos",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2017%2F02%2F02%2Fpacific-northwest-smoked-salmon.jpg",
+      cuisine: ['mexican','fusion','healthy'],
+      appliances: ['stovetop'],
+      restrictions: ['pescatarian','nut-free'],
+      servings: 8,
+      cookTime: 15,
+      ingredients: [
+        {
+          qty: 8,
+          denom: "ounces",
+          name: "cream cheese"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "fresh dill"
+        },
+        {
+          qty: 2,
+          denom: "teaspoons",
+          name: "lemon zest"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "pepper"
+        },
+        {
+          qty: 16,
+          denom: "count",
+          name: "flour tortillas"
+        },
+        {
+          qty: 1,
+          denom: "pound",
+          name: "hot smoked salmon"
+        },
+        {
+          qty: 8,
+          denom: "ounces",
+          name: "cucumber"
+        },
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "shallot"
+        },
+        {
+          qty: 16,
+          denom: "teaspoons",
+          name: "salmon roe"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "mint leaves"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/everything-bagel-roasted-salmon",
+      name: "Everything Bagel Roasted Salmon",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2019%2F01%2F03%2Feverything-bagel-salmon-dcms-large-2000.jpg",
+      cuisine: ['other','healthy'],
+      appliances: ['oven'],
+      restrictions: ['pescatarian','lactose-free','glutan-free'],
+      servings: 4,
+      cookTime: 15,
+      ingredients: [
+        {
+          qty: 20,
+          denom: "oz",
+          name: "salmon fillet"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "honey"
+        },
+        {
+          qty: 2,
+          denom: "teaspoons",
+          name: "dijon mustard"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "everything bagel seasoning"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/tuna-melt-2",
+      name: "Tuna Melt",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2018%2F06%2F25%2Ftuna-melt-dcms-large-image-2000.jpg",
+      cuisine: ['other','american'],
+      appliances: ['stovetop'],
+      restrictions: ['pescatarian'],
+      servings: 2,
+      cookTime: 15,
+      ingredients: [
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "mayonnaise"
+        },
+        {
+          qty: 3,
+          denom: "tablespoons",
+          name: "red onion"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "fresh dill"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "pickled banana peppers"
+        },
+        {
+          qty: 2,
+          denom: "teaspoons",
+          name: "capers"
+        },
+        {
+          qty: 2,
+          denom: "teaspoons",
+          name: "dijon mustard"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "lemon juice"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "apple cider vinegar"
+        },
+        {
+          qty: 1/8,
+          denom: "teaspoon",
+          name: "pepper"
+        },
+        {
+          qty: 10,
+          denom: "oz",
+          name: "canned tun"
+        },
+        {
+          qty: 1.5,
+          denom: "tablespoons",
+          name: "unsalted butter"
+        },
+        {
+          qty: 4,
+          denom: "slices",
+          name: "sourdough bread"
+        },
+        {
+          qty: 8,
+          denom: "slice",
+          name: "pickle chips"
+        },
+        {
+          qty: 4,
+          denom: "slice",
+          name: "swiss cheese"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/seafood-cataplana",
+      name: "Seafood Cataplana",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2014%2F06%2F16%2Fseafood-cataplana-cl-x.jpg",
+      cuisine: ['mediterranean'],
+      appliances: ['stovetop'],
+      restrictions: ['nut-free','lactose-free','glutan-free'],
+      servings: 2,
+      cookTime: 32,
+      ingredients: [
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "olive oil"
+        },
+        {
+          qty: 6,
+          denom: "oz",
+          name: "chorizo sausage"
+        },
+        {
+          qty: 1/2,
+          denom: "whole",
+          name: "onione"
+        },
+        {
+          qty: 2,
+          denom: "cloves",
+          name: "garlic"
+        },
+        {
+          qty: 1,
+          denom: "whole",
+          name: "bay leaf"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "paprika"
+        },
+        {
+          qty: 1/4,
+          denom: "tsp",
+          name: "salt"
+        },
+        {
+          qty: 1/8,
+          denom: "teaspoon",
+          name: "crushed red pepper"
+        },
+        {
+          qty: 14,
+          denom: "oz",
+          name: "canned crushed tomatoes"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "white wine"
+        },
+        {
+          qty: 18,
+          denom: "count",
+          name: "clams"
+        },
+        {
+          qty: 1/2,
+          denom: "pound",
+          name: "raw shrimp"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "fresh parsley"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/instant-pot-gumbo",
+      name: "Instant Pot Gumbo",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2018%2F12%2F05%2Finstant-pot-gumbo-dcms-large-2000.jpg",
+      cuisine: ['soup','american'],
+      appliances: ['instant pot'],
+      restrictions: ['lactose-free','nut-free'],
+      servings: 6,
+      cookTime: 60,
+      ingredients: [
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "canola oil"
+        },
+        {
+          qty: 5,
+          denom: "tablespoons",
+          name: "flour"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "onion"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "green bell pepper"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "celery"
+        },
+        {
+          qty: 3,
+          denom: "cloves",
+          name: "garlic"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 12,
+          denom: "ounces",
+          name: "chicken thighs"
+        },
+        {
+          qty: 6,
+          denom: "ounces",
+          name: "andouille sausage"
+        },
+        {
+          qty: 3,
+          denom: "cups",
+          name: "chicken stock"
+        },
+        {
+          qty: 2,
+          denom: "cups",
+          name: "frozen okra"
+        },
+        {
+          qty: 14.5,
+          denom: "oz",
+          name: "canned diced tomatoes"
+        },
+        {
+          qty: 2,
+          denom: "teaspoons",
+          name: "fresh thyme"
+        },
+        {
+          qty: 2,
+          denom: "teaspoons",
+          name: "creole seasoning"
+        },
+        {
+          qty: 1,
+          denom: "whole",
+          name: "bay leaf"
+        },
+        {
+          qty: 3,
+          denom: "cups",
+          name: "cooked white rice"
+        },
+        {
+          qty: 3,
+          denom: "tablespoons",
+          name: "scallions"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/simple-lemon-shrimp-and-prosciutto-pasta",
+      name: "Simple Lemon, Shrimp, and Prosciutto Pasta",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2018%2F12%2F17%2Fsimple-lemon-shrimp-and-prosciutto-pasta-1808-p91-2000.jpg",
+      cuisine: ['pasta','mediterranean'],
+      appliances: ['stovetop'],
+      restrictions: ['nut-free','lactose-free'],
+      servings: 4,
+      cookTime: 20,
+      ingredients: [
+        {
+          qty: 8,
+          denom: "ounces",
+          name: "angel hair pasta"
+        },
+        {
+          qty: 2,
+          denom: "ounces",
+          name: "prosciutto"
+        },
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "extra-virgin olive oil"
+        },
+        {
+          qty: 4,
+          denom: "cloves",
+          name: "garlic"
+        },
+        {
+          qty: 2,
+          denom: "cups",
+          name: "cherry tomatoes"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "fresh basil"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "crushed red pepper"
+        },
+        {
+          qty: 12,
+          denom: "ounces",
+          name: "raw shrimp"
+        },
+        {
+          qty: 2,
+          denom: "whole",
+          name: "lemon"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/spinach-quinoa-salad-shrimp",
+      name: "Spinach and Quinoa Salad with Shrimp",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2015%2F01%2F26%2Fspinach-quinoa-salad-shrimp-ck.jpg",
+      cuisine: ['salad','healthy'],
+      appliances: ['stovetop'],
+      restrictions: ['pescatarian'],
+      servings: 2,
+      cookTime: 15,
+      ingredients: [
+        {
+          qty: 3/4,
+          denom: "cup",
+          name: "water"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "quinoa"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 1,
+          denom: "spray",
+          name: "cooking spray"
+        },
+        {
+          qty: 1/2,
+          denom: "pound",
+          name: "shrimp"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "pepper"
+        },
+        {
+          qty: 1.5,
+          denom: "tablespoons",
+          name: "extra-virgin olive oil"
+        },
+        {
+          qty: 3,
+          denom: "tablespoons",
+          name: "lemon juice"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "fresh dill"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "honey"
+        },
+        {
+          qty: 2,
+          denom: "cups",
+          name: "spinach"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "cucumber"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "radish"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "sugar snap peas"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/slow-cooker-chicken-posole",
+      name: "Slow Cooker Chicken Posole",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2019%2F05%2F13%2Fslow-cooker-chicken-posole-2000.jpg",
+      cuisine: ['soup','mexican'],
+      appliances: ['slow cooker'],
+      restrictions: ['lactose-free','nut-free'],
+      servings: 6,
+      cookTime: 370,
+      ingredients: [
+        {
+          qty: 2,
+          denom: "cups",
+          name: "water"
+        },
+        {
+          qty: 2,
+          denom: "cups",
+          name: "chicken stock"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "onion"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "poblano pepper"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "cumin"
+        },
+        {
+          qty: 2,
+          denom: "teaspoons",
+          name: "garlic"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "oregano"
+        },
+        {
+          qty: 28,
+          denom: "oz",
+          name: "canned white hominy"
+        },
+        {
+          qty: 20,
+          denom: "oz",
+          name: "bone-in chicken breasts"
+        },
+        {
+          qty: 1/3,
+          denom: "cup",
+          name: "tomatillos"
+        },
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "cilantro"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "lime juice"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 1/3,
+          denom: "cup",
+          name: "radishes"
+        },
+        {
+          qty: 1.5,
+          denom: "whole",
+          name: "avocados"
+        },
+        {
+          qty: 3,
+          denom: "ounces",
+          name: "tortilla strips"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "pepper"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/tex-mex-chicken-and-black-bean-soup",
+      name: "Slow Cooker Tex-Mex Chicken and Black Bean Soup",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2019%2F02%2F26%2Ftex-mex-chicken-and-black-bean-soup-1811-p151-2000.jpg",
+      cuisine: ['soup','mexican'],
+      appliances: ['slow cooker'],
+      restrictions: ['lactose-free','nut-free'],
+      servings: 5,
+      cookTime: 315,
+      ingredients: [
+        {
+          qty: 1.25,
+          denom: "pounds",
+          name: "chicken thighs"
+        },
+        {
+          qty: 4,
+          denom: "cups",
+          name: "chicken stock"
+        },
+        {
+          qty: 15,
+          denom: "oz",
+          name: "canned black beans"
+        },
+        {
+          qty: 14.5,
+          denom: "oz",
+          name: "canned diced tomatoes"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "onion"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "red bell pepper"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "corn kernels"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "canned chipotle chiles"
+        },
+        {
+          qty: 2,
+          denom: "cloves",
+          name: "garlic"
+        },
+        {
+          qty: 2,
+          denom: "teaspoons",
+          name: "chili powder"
+        },
+        {
+          qty: 2,
+          denom: "teaspoons",
+          name: "cumin"
+        },
+        {
+          qty: 3/4,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "pepper"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "lime juice"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "plain greek yogurt"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "cilantro"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/slow-cooker-shrimp-boil",
+      name: "Slow Cooker Shrimp Boil",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2018%2F05%2F22%2Fmr_0515180265_1-2000.jpg",
+      cuisine: ['american','other'],
+      appliances: ['slow cooker'],
+      restrictions: ['nut-free','lactose-free'],
+      servings: 4,
+      cookTime: 300,
+      ingredients: [
+        {
+          qty: 10,
+          denom: "cups",
+          name: "water"
+        },
+        {
+          qty: 2,
+          denom: "pounds",
+          name: "red potato"
+        },
+        {
+          qty: 2,
+          denom: "whole",
+          name: "onion"
+        },
+        {
+          qty: 1,
+          denom: "whole",
+          name: "garlic bulb"
+        },
+        {
+          qty: 1,
+          denom: "whole",
+          name: "lemon"
+        },
+        {
+          qty: 3,
+          denom: "oz",
+          name: "crab boil-in-bag seasoning"
+        },
+        {
+          qty: 3,
+          denom: "teaspoons",
+          name: "salt"
+        },
+        {
+          qty: 10,
+          denom: "ounces",
+          name: "andouille sausage"
+        },
+        {
+          qty: 6,
+          denom: "ears",
+          name: "corn"
+        },
+        {
+          qty: 2,
+          denom: "pounds",
+          name: "raw shrimp"
+        },
+        {
+          qty: "",
+          denom: "",
+          name: "Lemon wedges"
+        },
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/slow-cooker-ramen-bowls",
+      name: "Slow Cooker Ramen Bowls",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2016%2F03%2F23%2F1605p44-slow-cooker-ramen-bowls-2000.jpg",
+      cuisine: ['soup','asian'],
+      appliances: ['slow cooker'],
+      restrictions: ['lactose-free'],
+      servings: 8,
+      cookTime: 495,
+      ingredients: [
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "canola oil"
+        },
+        {
+          qty: 2,
+          denom: "lb",
+          name: "pork shoulder roast"
+        },
+        {
+          qty: 2,
+          denom: "whole",
+          name: "onion"
+        },
+        {
+          qty: 4,
+          denom: "cups",
+          name: "chicken stock"
+        },
+        {
+          qty: 4,
+          denom: "cups",
+          name: "water"
+        },
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "soy sauce"
+        },
+        {
+          qty: 12,
+          denom: "ounces",
+          name: "shiitake mushrooms"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "sesame oil"
+        },
+        {
+          qty: 1,
+          denom: "piece",
+          name: "kombu"
+        },
+        {
+          qty: 1,
+          denom: "piece",
+          name: "ginger"
+        },
+        {
+          qty: 12,
+          denom: "ounces",
+          name: "fresh chinese noodles"
+        },
+        {
+          qty: 8,
+          denom: "whole",
+          name: "eggs"
+        },
+        {
+          qty: 3,
+          denom: "stalk",
+          name: "green onion"
+        },
+        {
+          qty: 2,
+          denom: "whole",
+          name: "fresno chiles"
+        },
+        {
+          qty: 4,
+          denom: "teaspoons",
+          name: "sesame seeds"
+        },
+        {
+          qty: 1,
+          denom: "sheet",
+          name: "nori"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/slow-cooker-chicken-tikka-masala",
+      name: "Slow Cooker Chicken Tikka Masala",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2014%2F08%2F13%2Fslow-cooker-chicken-tikka-masala-ck.jpg",
+      cuisine: ['asian'],
+      appliances: ['slow cooker'],
+      restrictions: ['lactose-free'],
+      servings: 4,
+      cookTime: 490,
+      ingredients: [
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "extra-virgin olive oil"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "onion"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "ginger"
+        },
+        {
+          qty: 6,
+          denom: "cloves",
+          name: "garlic"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "tomato paste"
+        },
+        {
+          qty: 29,
+          denom: "oz",
+          name: "canned diced tomatoes"
+        },
+        {
+          qty: 1/3,
+          denom: "cup",
+          name: "water"
+        },
+        {
+          qty: 3,
+          denom: "tablespoons",
+          name: "flour"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "garam masala"
+        },
+        {
+          qty: 1.5,
+          denom: "teaspoons",
+          name: "paprika"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "curry powder"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "ground red pepper"
+        },
+        {
+          qty: 24,
+          denom: "oz",
+          name: "bone-in chicken thighs"
+        },
+        {
+          qty: 1,
+          denom: "spray",
+          name: "cooking spray"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "coconut milk"
+        },
+        {
+          qty: 3,
+          denom: "tablespoons",
+          name: "cilantro"
+        },
+        {
+          qty: 2,
+          denom: "cups",
+          name: "cooked brown rice"
+        },
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "plain greek yogurt"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/slow-cooker-barbacoa-brisket",
+      name: "Slow Cooker Barbacoa Brisket",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2016%2F01%2F20%2Fslow-cooker-barbacoa-brisket-ck.jpg",
+      cuisine: ['mexican'],
+      appliances: ['slow cooker'],
+      restrictions: ['lactose-free','nut-free'],
+      servings: 4,
+      cookTime: 495,
+      ingredients: [
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "oregano"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "brown sugar"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "olive oil"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "chipotle chiles"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "adobo sauce"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "cumin"
+        },
+        {
+          qty: 3/4,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "pepper"
+        },
+        {
+          qty: 3,
+          denom: "cloves",
+          name: "garlic"
+        },
+        {
+          qty: 1,
+          denom: "pound",
+          name: "beef brisket"
+        },
+        {
+          qty: 2,
+          denom: "whole",
+          name: "tomato"
+        },
+        {
+          qty: 1/2,
+          denom: "whole",
+          name: "onion"
+        },
+        {
+          qty: 1,
+          denom: "whole",
+          name: "red bell pepper"
+        },
+        {
+          qty: 1,
+          denom: "whole",
+          name: "jalapeno pepper"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/slow-cooker-mississippi-pork-roast",
+      name: "Slow Cooker Mississippi Pork Roast",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2020%2F02%2F07%2Fmississippi-pork-roast-dcms-large-2000.jpg",
+      cuisine: ['american','other'],
+      appliances: ['slow cooker'],
+      restrictions: ['lactose-free','nut-free'],
+      servings: 8,
+      cookTime: 480,
+      ingredients: [
+        {
+          qty: 3.5,
+          denom: "lb",
+          name: "boneless pork shoulder"
+        },
+        {
+          qty: 1,
+          denom: "oz",
+          name: "ranch dressing mix"
+        },
+        {
+          qty: 1,
+          denom: "oz",
+          name: "brown gravy mix"
+        },
+        {
+          qty: 4,
+          denom: "tablespoons",
+          name: "unsalted butter"
+        },
+        {
+          qty: 8,
+          denom: "whole",
+          name: "jarred pepperoncini salad peppers"
+        },
+        {
+          qty: 2/3,
+          denom: "cup",
+          name: "cold water"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/lazy-lasagna-soup",
+      name: "Slow Cooker Lazy Lasagna Soup",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2019%2F02%2F26%2Flazy-lasagna-soup-1811-p152-2000.jpg",
+      cuisine: ['soup','pasta'],
+      appliances: ['slow cooker'],
+      restrictions: [],
+      servings: 8,
+      cookTime: 405,
+      ingredients: [
+        {
+          qty: 1,
+          denom: "pound",
+          name: "ground chuck"
+        },
+        {
+          qty: 8,
+          denom: "ounces",
+          name: "cremini mushrooms"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "onion"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "red bell pepper"
+        },
+        {
+          qty: 2,
+          denom: "cloves",
+          name: "garlic"
+        },
+        {
+          qty: 4,
+          denom: "cups",
+          name: "chicken stock"
+        },
+        {
+          qty: 14.5,
+          denom: "oz",
+          name: "canned crushed tomatoes"
+        },
+        {
+          qty: 6,
+          denom: "oz",
+          name: "tomato paste"
+        },
+        {
+          qty: 2,
+          denom: "teaspoons",
+          name: "oregano"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "pepper"
+        },
+        {
+          qty: 8,
+          denom: "ounces",
+          name: "lasagna noodles"
+        },
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "half-and-half"
+        },
+        {
+          qty: 4,
+          denom: "ounces",
+          name: "mozzarella cheese"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "fresh basil"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/easy-brunswick-stew-2",
+      name: "Easy Brunswick Stew",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2012%2F10%2F09%2Feasy-brunswick-stew-10-1000.jpg",
+      cuisine: ['soup'],
+      appliances: ['slow cooker'],
+      restrictions: ['nut-free','lactose-free'],
+      servings: 9,
+      cookTime: 480,
+      ingredients: [
+        {
+          qty: 4,
+          denom: "cups",
+          name: "hash brown potatoes"
+        },
+        {
+          qty: 7/3,
+          denom: "cups",
+          name: "onion"
+        },
+        {
+          qty: 2,
+          denom: "cups",
+          name: "chicken broth"
+        },
+        {
+          qty: 1.5,
+          denom: "cups",
+          name: "frozen lima beans"
+        },
+        {
+          qty: 1.25,
+          denom: "cups",
+          name: "green bell pepper"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "frozen okra"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "barbecue sauce"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "cooked chicken breast"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "celery"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "pepper"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 3/4,
+          denom: "pound",
+          name: "pulled smoked pork"
+        },
+        {
+          qty: 16,
+          denom: "oz",
+          name: "canned tomato sauce"
+        },
+        {
+          qty: 15,
+          denom: "oz",
+          name: "canned corn"
+        },
+        {
+          qty: 14.5,
+          denom: "oz",
+          name: "canned diced tomatoes"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/slow-cooker-sweet-and-sour-chicken",
+      name: "Slow Cooker Sweet-and-Sour Chicken",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2018%2F12%2F18%2Fslow-cooker-sweet-and-sour-chicken-1808-p38-2000.jpg",
+      cuisine: ['asian'],
+      appliances: ['slow cooker'],
+      restrictions: ['lactose-free'],
+      servings: 6,
+      cookTime: 480,
+      ingredients: [
+        {
+          qty: 1.25,
+          denom: "pounds",
+          name: "chicken thighs"
+        },
+        {
+          qty: 2,
+          denom: "cups",
+          name: "red bell pepper"
+        },
+        {
+          qty: 1.5,
+          denom: "cups",
+          name: "chicken stock"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "onion"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "carrots"
+        },
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "soy sauce"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "worcestershire sauce"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "chile paste"
+        },
+        {
+          qty: 3/4,
+          denom: "cup",
+          name: "ketchup"
+        },
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "pineapple juice"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "cornstarch"
+        },
+        {
+          qty: 3,
+          denom: "cups",
+          name: "cooked brown rice"
+        },
+        {
+          qty: 1.5,
+          denom: "teaspoons",
+          name: "sesame seeds"
+        },
+        {
+          qty: "1.5",
+          denom: "teaspoons",
+          name: "scallions"
+        }
+      ]
     }
 ]
 
