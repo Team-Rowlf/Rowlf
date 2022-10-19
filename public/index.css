@@ -642,9 +642,6 @@ a,
   text-align: center;
   min-height: 70vh;
 }
-.shoppingList-container h1 {
-  padding: 3%;
-}
 .shoppingList-container .recipe {
   max-width: fit-content;
   margin: auto;
@@ -690,6 +687,15 @@ a,
 }
 .recipe-name-link:hover {
   color: blue;
+}
+.head {
+  padding: 3%;
+}
+.head h1 {
+  padding: none;
+}
+.head .notice {
+  font-size: smaller;
 }
 #map {
   height: 800px;
