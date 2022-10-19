@@ -1,20 +1,25 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import {
   clearListHistory,
   getProfileStatus,
   getUserListHistory,
-} from '../../features/profile/profileSlice';
+} from "../../features/profile/profileSlice";
 
 const ListHistory = () => {
+  console.log(
+    "HISTORY: ",
+    useSelector((state) => state)
+  );
+
   const dispatch = useDispatch();
   const status = useSelector(getProfileStatus);
   const lists = useSelector((state) => state.profile.listHistory);
   // could maybe add buttons to add recipes to current shopping list; users could still do so by visiting the single recipe pages though
 
   useEffect(() => {
-    const token = window.localStorage.getItem('token');
+    const token = window.localStorage.getItem("token");
     if (token) {
       dispatch(getUserListHistory({ token }));
     }
@@ -23,14 +28,16 @@ const ListHistory = () => {
     };
   }, []);
 
-    const capitalize = (string) => {
-		let arr = string.split(' ');
-		arr = arr.map((itm) => itm.length ? itm[0].toUpperCase() + itm.slice(1) : itm);
-		string = arr.join(' ');
-		return string;
-	};
+  const capitalize = (string) => {
+    let arr = string.split(" ");
+    arr = arr.map((itm) =>
+      itm.length ? itm[0].toUpperCase() + itm.slice(1) : itm
+    );
+    string = arr.join(" ");
+    return string;
+  };
 
-  return status === 'pending' ? (
+  return status === "pending" ? (
     <h2 className="loading">Loading...</h2>
   ) : lists.length ? (
     <div className="completed-lists">

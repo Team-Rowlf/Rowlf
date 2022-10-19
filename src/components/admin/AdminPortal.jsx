@@ -1,76 +1,75 @@
-import React, { useEffect } from "react"; 
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { fetchUser } from "../../features/user/userSlice.js";
-import { toast, ToastContainer } from 'react-toastify';
-import { Link, Outlet } from 'react-router-dom';
+import { toast, ToastContainer } from "react-toastify";
+import { Link, Outlet } from "react-router-dom";
 import Nav from "../general/Nav.jsx";
 
 const AdminPortal = () => {
-    const user = useSelector((state) => state.user);
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-    useEffect(() => {}, [OnClick]);
+  useEffect(() => {}, [OnClick]);
 
-    const OnClick = (event) => {
-		let tablinks = document.getElementsByClassName("tab");
-		for (let i = 0; i < tablinks.length; i++) {
-			tablinks[i].className = tablinks[i].className.replace(" active", "");
-		}
-		
-		if(event.target){
-			event.target.className += " active";
-		}
-		
-	}
+  const OnClick = (event) => {
+    let tablinks = document.getElementsByClassName("tab");
+    for (let i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
 
-    useEffect(() => {
-        dispatch(fetchUser())
-    },[]);
+    if (event.target) {
+      event.target.className += " active";
+    }
+  };
 
-    useEffect(() => {
-        const token = window.localStorage.getItem('token');
-        if ((user.isLogged && !user.isAdmin) || !token) {
-            toast.error("Not authorized for admin portal", {
-                position: 'bottom-right',
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: true,
-                progress: undefined,
-                theme: 'dark',
-            })
-            navigate('/');
-        }
-    },[user.isLogged]);
+  useEffect(() => {
+    dispatch(fetchUser());
+  }, []);
 
-    return (
-        <>
-        <Nav />
-        <div className="admin">
-			<nav>
-				<Link to={'users'}>
-					<button  className="tab active" id="allUsers"  onClick={OnClick}>
-							Users 
-					</button>
-				</Link >
-				<Link to={'recipes?page=1'}>
-					<button  className="tab" id="allRecipes"  onClick={OnClick}>
-							Recipes 
-					</button>
-				</Link >
-				<Link to={'addrecipe'}>
-					<button  className="tab" id="addRecipe"  onClick={OnClick}>
-							Add Recipe 
-					</button>
-				</Link >
-			</nav>
-			<Outlet />
-		</div>
-        </>
-    )
+  useEffect(() => {
+    const token = window.localStorage.getItem("token");
+    if ((user.isLogged && !user.isAdmin) || !token) {
+      toast.error("Not authorized for admin portal", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      navigate("/");
+    }
+  }, [user.isLogged]);
+
+  return (
+    <>
+      <Nav />
+      <div className="admin">
+        <nav>
+          <Link to={"users"}>
+            <button className="tab active" id="allUsers" onClick={OnClick}>
+              Users
+            </button>
+          </Link>
+          <Link to={"recipes?page=1"}>
+            <button className="tab" id="allRecipes" onClick={OnClick}>
+              Recipes
+            </button>
+          </Link>
+          <Link to={"addrecipe"}>
+            <button className="tab" id="addRecipe" onClick={OnClick}>
+              Add Recipe
+            </button>
+          </Link>
+        </nav>
+        <Outlet />
+      </div>
+    </>
+  );
 };
 
 export default AdminPortal;

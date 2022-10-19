@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation } from "react-router-dom";
 import {
   completeShoppingList,
   fetchRemoveFromShoppingList,
   fetchShoppingList,
   getListStatus,
-} from '../../features/shoppingList/shoppingListSlice';
-import AmazonFreshForm from '../amazon/AmazonFreshForm.jsx';
-import MapMain from '../googleMaps/MapMain.jsx';
-import { ToastContainer } from 'react-toastify';
-import { decimalToFraction } from '../../helperfunctions/fractions';
+} from "../../features/shoppingList/shoppingListSlice";
+import AmazonFreshForm from "../amazon/AmazonFreshForm.jsx";
+import MapMain from "../googleMaps/MapMain.jsx";
+import { ToastContainer } from "react-toastify";
+import { decimalToFraction } from "../../helperfunctions/fractions";
 
 const ShoppingList = () => {
   const dispatch = useDispatch();
@@ -31,8 +31,8 @@ const ShoppingList = () => {
     checkAll.forEach((input) => {
       input.checked = event.target.checked;
       input.checked
-        ? input.parentNode.classList.add('have-item')
-        : input.parentNode.classList.remove('have-item');
+        ? input.parentNode.classList.add("have-item")
+        : input.parentNode.classList.remove("have-item");
     });
   };
   const handleCheck = (event) => {
@@ -41,24 +41,26 @@ const ShoppingList = () => {
     );
     inputs.forEach((input) => {
       input.checked
-        ? input.parentNode.classList.add('have-item')
-        : input.parentNode.classList.remove('have-item');
+        ? input.parentNode.classList.add("have-item")
+        : input.parentNode.classList.remove("have-item");
     });
   };
 
-	const capitalize = (string) => {
-		let arr = string.split(' ');
-		arr = arr.map((itm) => itm.length ? itm[0].toUpperCase() + itm.slice(1) : itm);
-		string = arr.join(' ');
-		return string;
-	};
-	const handleRemoveRecipe = (id) => {
-		dispatch(fetchRemoveFromShoppingList({ id }));
-	};
-	useEffect(() => {
-		dispatch(fetchShoppingList());
-	}, []);
-	useEffect(() => {}, [listStatus]);
+  const capitalize = (string) => {
+    let arr = string.split(" ");
+    arr = arr.map((itm) =>
+      itm.length ? itm[0].toUpperCase() + itm.slice(1) : itm
+    );
+    string = arr.join(" ");
+    return string;
+  };
+  const handleRemoveRecipe = (id) => {
+    dispatch(fetchRemoveFromShoppingList({ id }));
+  };
+  useEffect(() => {
+    dispatch(fetchShoppingList());
+  }, []);
+  useEffect(() => {}, [listStatus]);
 
   const inLineStyle = {
     display: `flex`,
@@ -72,9 +74,15 @@ const ShoppingList = () => {
     <h1 className="loading">Loading...</h1>
   ) : (
     <div className="shoppingList-container">
-      <h1>
-        <u>Main Shopping List</u>
-      </h1>
+      <div className="head">
+        <h1>
+          <u>Main Shopping List</u>
+        </h1>
+        <p className="notice">
+          Click on the logo at the top of the screen to return to this page at
+          any time
+        </p>
+      </div>
 
       {shoppingList.length ? (
         <div>
@@ -89,18 +97,18 @@ const ShoppingList = () => {
                     className="recipe-checkbox"
                     value={recipe.name}
                     onClick={handleCheckAll}
-                  />{' '}
+                  />{" "}
                   <Link
                     className="recipe-name-link"
                     to={`/user/recipes/${recipe.id}`}
                   >
                     {capitalize(recipe.name)}
-                  </Link>{' '}
+                  </Link>{" "}
                   <button
                     className="remove-item-list -button"
                     onClick={() => handleRemoveRecipe(recipe.id)}
                   >
-                    {' '}
+                    {" "}
                     &#9747;
                   </button>
                 </div>
@@ -115,9 +123,9 @@ const ShoppingList = () => {
                           onClick={handleCheck}
                         />
                         {capitalize(ingredient.ingredient.name)} (
-                        {ingredient.measurement.toLowerCase() !== 'to taste'
+                        {ingredient.measurement.toLowerCase() !== "to taste"
                           ? `${decimalToFraction(ingredient.qty)} `
-                          : ''}
+                          : ""}
                         {capitalize(ingredient.measurement)})
                       </div>
                     );
