@@ -106,7 +106,9 @@ const RecipePage = () => {
 
 	const capitalize = (string) => {
 		let arr = string.split(' ');
-		arr = arr.map((itm) => itm.length ? itm[0].toUpperCase() + itm.slice(1) : itm);
+		arr = arr.map((itm) =>
+			itm.length ? itm[0].toUpperCase() + itm.slice(1) : itm
+		);
 		string = arr.join(' ');
 		return string;
 	};
@@ -116,7 +118,14 @@ const RecipePage = () => {
 	) : (
 		<div className="recipe-page">
 			<div className="recipe-container">
-				{!recipe.isActive ? <p className='not-active-warning'>(Note: this recipe is not active in our database. It may have some outdated information.)</p> : <></>}
+				{!recipe.isActive ? (
+					<p className="not-active-warning">
+						(Note: this recipe is not active in our database. It may have some
+						outdated information.)
+					</p>
+				) : (
+					<></>
+				)}
 				<h1>{recipe.name}</h1>
 				<img src={recipe.img} alt="dish" />
 				<div className="recipe-buttons">
@@ -153,7 +162,10 @@ const RecipePage = () => {
 				<ul>
 					{recipe.lineItems.map((item) => (
 						<li key={item.id}>
-							{capitalize(item.ingredient.name)} ({item.measurement.toLowerCase() !== 'to taste' ? `${decimalToFraction(item.qty)} ` : ''}
+							{capitalize(item.ingredient.name)} (
+							{item.measurement.toLowerCase() !== 'to taste'
+								? `${decimalToFraction(item.qty)} `
+								: ''}
 							{capitalize(item.measurement)})
 						</li>
 					))}
