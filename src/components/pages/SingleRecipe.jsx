@@ -15,6 +15,7 @@ import { fetchAddtoShoppingList } from '../../features/shoppingList/shoppingList
 import { getUserToken } from '../../features/user/userSlice';
 import { ToastContainer, toast } from 'react-toastify';
 import { decimalToFraction } from '../../helperfunctions/fractions';
+import { capitalize } from '../../helperfunctions/utils';
 
 const RecipePage = () => {
 	const dispatch = useDispatch();
@@ -104,19 +105,19 @@ const RecipePage = () => {
 		window.open(recipe.url, '_blank');
 	};
 
-	const capitalize = (string) => {
-		let arr = string.split(' ');
-		arr = arr.map((itm) => itm.length ? itm[0].toUpperCase() + itm.slice(1) : itm);
-		string = arr.join(' ');
-		return string;
-	};
-
 	return !recipe.name ? (
 		<h1 className="loading">LOADING...</h1>
 	) : (
 		<div className="recipe-page">
 			<div className="recipe-container">
-				{!recipe.isActive ? <p className='not-active-warning'>(Note: this recipe is not active in our database. It may have some outdated information.)</p> : <></>}
+				{!recipe.isActive ? (
+					<p className="not-active-warning">
+						(Note: this recipe is not active in our database. It may have some
+						outdated information.)
+					</p>
+				) : (
+					<></>
+				)}
 				<h1>{recipe.name}</h1>
 				<img src={recipe.img} alt="dish" />
 				<div className="recipe-buttons">
@@ -153,7 +154,10 @@ const RecipePage = () => {
 				<ul>
 					{recipe.lineItems.map((item) => (
 						<li key={item.id}>
-							{capitalize(item.ingredient.name)} ({item.measurement.toLowerCase() !== 'to taste' ? `${decimalToFraction(item.qty)} ` : ''}
+							{capitalize(item.ingredient.name)} (
+							{item.measurement.toLowerCase() !== 'to taste'
+								? `${decimalToFraction(item.qty)} `
+								: ''}
 							{capitalize(item.measurement)})
 						</li>
 					))}

@@ -9,7 +9,7 @@ import {
 	isLoggedStatus,
 } from '../../features/user/userSlice';
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 const Login = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();

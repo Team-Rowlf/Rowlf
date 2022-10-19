@@ -160,7 +160,11 @@ const recipesSlice = createSlice({
 
 export const getRecipeStatus = (state) => state.recipes.status;
 
-export const { clearSingleRecipe, clearFilteredRecipes, resetRecipes } =
-	recipesSlice.actions;
+export const {
+	clearSingleRecipe,
+	clearFilteredRecipes,
+	resetRecipes,
+	resetFilteredRecipes,
+} = recipesSlice.actions;
 
 export default recipesSlice.reducer;
