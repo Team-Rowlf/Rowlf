@@ -215,7 +215,7 @@ const EditProfile = ({ handleEdit }) => {
 								type="radio"
 								name="Gender"
 								value="male"
-								onChange={handleChange('Gender')}
+								onChange={handleChange('gender')}
 								required
 								defaultChecked={user.gender == 'male' ? true : false}
 							/>{' '}
@@ -224,7 +224,7 @@ const EditProfile = ({ handleEdit }) => {
 								type="radio"
 								name="Gender"
 								value="female"
-								onChange={handleChange('Gender')}
+								onChange={handleChange('gender')}
 								required
 								defaultChecked={user.gender == 'female' ? true : false}
 							/>{' '}
@@ -233,7 +233,7 @@ const EditProfile = ({ handleEdit }) => {
 								type="radio"
 								name="Gender"
 								value="other"
-								onChange={handleChange('Gender')}
+								onChange={handleChange('gender')}
 								required
 								defaultChecked={user.gender == 'other' ? true : false}
 							/>{' '}
