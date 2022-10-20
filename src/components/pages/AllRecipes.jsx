@@ -117,7 +117,7 @@ const Recipes = () => {
 							<br />
 							<p>
 								Not sure what you're looking for?{' '}
-								<Link className="chefs-choice-link" to="/chefschoice">
+								<Link className="chefs-choice-link" to="/user/chefschoice">
 									Ask the chef!
 								</Link>
 							</p>

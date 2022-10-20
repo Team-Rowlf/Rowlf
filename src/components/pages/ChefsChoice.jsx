@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { fetchAddtoShoppingList } from '../../features/shoppingList/shoppingListSlice';
 import {
 	capitalize,
@@ -9,11 +9,9 @@ import {
 	cuisines,
 	appliances,
 } from '../../helperfunctions/utils';
-import Nav from '../general/Nav.jsx';
 
 const ChefsChoice = () => {
 	const dispatch = useDispatch();
-	const navigate = useNavigate();
 	const allRecipes = useSelector((state) => state.recipes.recipes);
 	const dislikes = useSelector((state) => state.profile.dislikes);
 	const [filteredRecipes, setFilteredRecipes] = useState([]);
@@ -59,7 +57,6 @@ const ChefsChoice = () => {
 	const onSubmitHandler = (event) => {
 		event.preventDefault();
 		filterRecipes();
-		console.log(form);
 	};
 
 	const filterRecipes = () => {
@@ -132,15 +129,13 @@ const ChefsChoice = () => {
 	};
 
 	const addToCartClickHandler = () => {
-		for (let i in suggestions) {
-			dispatch(fetchAddtoShoppingList({ id: suggestions[i].id }));
-		}
-		navigate('/user/shoppingList');
+        for (let i in suggestions) {
+            dispatch(fetchAddtoShoppingList({ id: suggestions[i].id }));
+        }
 	};
 
 	return (
 		<div id="chefs-choice-container">
-			<Nav />
 			<form id="chefs-choice-form" onSubmit={onSubmitHandler}>
 				<h2>Input your criteria to find recipe recommendations:</h2>
 				<div className="question-answer">
@@ -185,7 +180,7 @@ const ChefsChoice = () => {
 					<div className="selections">
 						<div className="select-italicized">Select all that apply: </div>
 						<div className="selection-options">
-							{cuisines.map((cuisine, idx) => (
+							{cuisines.filter(tag => tag !== 'all').map((cuisine, idx) => (
 								<div key={idx}>
 									<input
 										type="checkbox"
@@ -219,7 +214,7 @@ const ChefsChoice = () => {
 					<div className="selections">
 						<div className="select-italicized">Select all that apply:</div>
 						<div className="selection-options">
-							{restrictions.map((restriction, idx) => (
+							{restrictions.filter(tag => tag !== 'all').map((restriction, idx) => (
 								<div key={idx}>
 									<input
 										type="checkbox"
