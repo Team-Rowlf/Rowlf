@@ -58,6 +58,7 @@ const initialState = {
 	shoppingList: [],
 	status: 'idle',
 	error: null,
+	addedCount: 0,
 };
 
 const shoppingListSlice = createSlice({
@@ -65,8 +66,11 @@ const shoppingListSlice = createSlice({
 	initialState,
 	reducers: {
 		resetShoppingList: (state) => {
-			(state.shoppingList = []), (state.status = 'idle'), (state.error = null);
+			(state.shoppingList = []), (state.status = 'idle'), (state.error = null), (addedCount = 0);
 		},
+		resetAddedCount: (state) => {
+			state.addedCount = 0;
+		}
 	},
 	extraReducers(builder) {
 		builder
@@ -87,6 +91,7 @@ const shoppingListSlice = createSlice({
 			.addCase(fetchAddtoShoppingList.fulfilled, (state, action) => {
 				state.status = 'succeeded';
 				state.shoppingList = action.payload;
+				state.addedCount = state.addedCount + 1;
 				toast.success('Added recipe to shopping list!', {
 					position: 'bottom-right',
 					autoClose: 1500,
@@ -130,7 +135,7 @@ const shoppingListSlice = createSlice({
 	},
 });
 
-export const { addToList, removeFromList, resetShoppingList } =
+export const { addToList, removeFromList, resetShoppingList, resetAddedCount } =
 	shoppingListSlice.actions;
 
 export const getListStatus = (state) => state.shoppingList.status;

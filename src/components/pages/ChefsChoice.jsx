@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { fetchAddtoShoppingList } from '../../features/shoppingList/shoppingListSlice';
+import { Link, useNavigate } from 'react-router-dom';
+import { fetchAddtoShoppingList, resetAddedCount } from '../../features/shoppingList/shoppingListSlice';
 import {
 	capitalize,
 	restrictions,
@@ -12,8 +12,11 @@ import {
 
 const ChefsChoice = () => {
 	const dispatch = useDispatch();
+    const navigate = useNavigate();
 	const allRecipes = useSelector((state) => state.recipes.recipes);
 	const dislikes = useSelector((state) => state.profile.dislikes);
+    const stateAddedCount = useSelector((state) => state.shoppingList.addedCount)
+    const [clickedAddToList, setClickedAddToList] = useState(false);
 	const [filteredRecipes, setFilteredRecipes] = useState([]);
 	const [suggestions, setSuggestions] = useState([]);
 	const [insufficentServings, setInsufficientServings] = useState(false);
@@ -32,10 +35,18 @@ const ChefsChoice = () => {
 	const [applianceBool, setApplianceBool] = useState(false);
 
 	useEffect(() => {
+        dispatch(resetAddedCount());
 		if (filteredRecipes.length) {
 			randomizeRecipes();
 		}
 	}, [filteredRecipes.length, count]);
+
+    useEffect(() => {
+        if (clickedAddToList && (stateAddedCount === suggestions.length)) {
+            dispatch(resetAddedCount());
+            navigate('/user/shoppinglist');
+        }
+    },[stateAddedCount])
 
 	const addOrRemoveTag = (props, tag) => () => {
 		const copy = [...form[props]];
@@ -128,7 +139,8 @@ const ChefsChoice = () => {
 		);
 	};
 
-	const addToCartClickHandler = () => {
+	const addToCartClickHandler = async () => {
+        setClickedAddToList(true)
         for (let i in suggestions) {
             dispatch(fetchAddtoShoppingList({ id: suggestions[i].id }));
         }
