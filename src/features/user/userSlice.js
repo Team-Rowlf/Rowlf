@@ -15,7 +15,6 @@ export const editUser = createAsyncThunk(
 	'user/editUser',
 	async ({ signUp }) => {
 		const token = window.localStorage.getItem('token');
-		console.log(signUp);
 		if (token) {
 			const { data } = await axios.put('/api/user/editMe', signUp, {
 				headers: { authorization: token },
