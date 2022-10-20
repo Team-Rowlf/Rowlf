@@ -18,7 +18,7 @@ const AdminPortal = () => {
     for (let i = 0; i < tablinks.length; i++) {
       tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
-
+    
     if (event.target) {
       event.target.className += " active";
     }
