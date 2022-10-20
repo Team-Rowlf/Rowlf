@@ -131,8 +131,7 @@ const AllRecipesAdminPage = () => {
 								className={
 									Number(page) === 1 ? 'prevNext disabled' : 'prevNext'
 								}
-								onClick={() => setPage(+page - 1)}
-									
+								onClick={() => setPage(+page - 1)}		
 							>
 								Prev
 							</Link>
