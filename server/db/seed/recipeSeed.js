@@ -3592,7 +3592,7 @@ const recipes = [
           name: "onion powder"
         },
         {
-          qty: "1",
+          qty: 1,
           denom: "tsp",
           name: "celery salt"
         },
@@ -6430,7 +6430,7 @@ const recipes = [
           name: "sesame seeds"
         },
         {
-          qty: "1.5",
+          qty: 1.5,
           denom: "teaspoons",
           name: "scallions"
         }
@@ -8984,6 +8984,2348 @@ const recipes = [
           qty: 1/2,
           denom: "cup",
           name: "plain yogurt"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/shrimp-bean-burrito-bowl",
+      name: "Shrimp and Bean Burrito Bowl",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2016%2F06%2F21%2F6046101_dtdin8546_beer-2000.jpg",
+      cuisine: ['mexican','fusion'],
+      appliances: ['stovetop'],
+      restrictions: ['pescatarian','nut-free'],
+      servings: 4,
+      cookTime: 15,
+      ingredients: [
+        {
+          qty: 3/4,
+          denom: "cup",
+          name: "chicken stock"
+        },
+        {
+          qty: 30,
+          denom: "oz",
+          name: "canned kidney beans"
+        },
+        {
+          qty: 1.5,
+          denom: "tablespoons",
+          name: "unsalted butter"
+        },
+        {
+          qty: 5/8,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 5/8,
+          denom: "teaspoon",
+          name: "pepper"
+        },
+        {
+          qty: 2,
+          denom: "teaspoons",
+          name: "olive oil"
+        },
+        {
+          qty: 1,
+          denom: "pound",
+          name: "shrimp"
+        },
+        {
+          qty: 1.5,
+          denom: "tablespoons",
+          name: "sweet chili sauce"
+        },
+        {
+          qty: 8.5,
+          denom: "oz",
+          name: "precooked brown rice"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "cilantro"
+        },
+        {
+          qty: 1,
+          denom: "whole",
+          name: "avocado"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "cotija cheese"
+        },
+        {
+          qty: 1,
+          denom: "whole",
+          name: "lime"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/whole-grain-veggie-burrito-bowl",
+      name: "Whole-Grain Veggie Burrito Bowl",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2016%2F02%2F22%2F1604p24-whole-grain-veggie-burrito-bowl.jpg",
+      cuisine: ['mexican','fusion'],
+      appliances: ['stovetop'],
+      restrictions: ['vegetarian','nut-free'],
+      servings: 4,
+      cookTime: 15,
+      ingredients: [
+        {
+          qty: 3.5,
+          denom: "oz",
+          name: "boil-in-bag brown rice"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "olive oil"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "cumin"
+        },
+        {
+          qty: 3,
+          denom: "cloves",
+          name: "garlic"
+        },
+        {
+          qty: 3/4,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 15,
+          denom: "oz",
+          name: "canned black beans"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "canned chipotle chiles"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "grape tomatoes"
+        },
+        {
+          qty: 1/3,
+          denom: "cup",
+          name: "onion"
+        },
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "cilantro"
+        },
+        {
+          qty: 1.5,
+          denom: "tablespoons",
+          name: "lime juice"
+        },
+        {
+          qty: 1,
+          denom: "whole",
+          name: "jalapeno pepper"
+        },
+        {
+          qty: 4/3,
+          denom: "cups",
+          name: "red cabbage"
+        },
+        {
+          qty: 3,
+          denom: "ounces",
+          name: "queso fresco"
+        },
+        {
+          qty: 1,
+          denom: "whole",
+          name: "avocado"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/tangy-chicken-farro-bowl",
+      name: "Tangy Chicken-Farro Bowl",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2015%2F12%2F07%2Ftangy-chicken-farro-bowl-ck.jpg",
+      cuisine: ['fusion','other'],
+      appliances: ['stovetop'],
+      restrictions: ['lactose-free','nut-free'],
+      servings: 4,
+      cookTime: 20,
+      ingredients: [
+        {
+          qty: 5,
+          denom: "tablespoons",
+          name: "white vinegar"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "sugar"
+        },
+        {
+          qty: 5/8,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 1/8,
+          denom: "teaspoon",
+          name: "allspice"
+        },
+        {
+          qty: 2,
+          denom: "whole",
+          name: "cucumbers"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "dijon mustard"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "dry mustard"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "canola oil"
+        },
+        {
+          qty: 2,
+          denom: "teaspoons",
+          name: "fresh dill"
+        },
+        {
+          qty: 17,
+          denom: "oz",
+          name: "precooked farro"
+        },
+        {
+          qty: 12,
+          denom: "oz",
+          name: "rotisserie chicken breasts"
+        },
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "lingonberry preserves"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/tex-mex-rice-bowl",
+      name: "Tex-Mex Rice Bowl",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2012%2F02%2F22%2Ftex-mex-rice-bowl-ck-x.jpg",
+      cuisine: ['mexican','fusion'],
+      appliances: ['stovetop'],
+      restrictions: ['nut-free'],
+      servings: 4,
+      cookTime: 11,
+      ingredients: [
+        {
+          qty: 9,
+          denom: "oz",
+          name: "precooked brown rice"
+        },
+        {
+          qty: 8,
+          denom: "ounces",
+          name: "ground sirloin"
+        },
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "water"
+        },
+        {
+          qty: 1.5,
+          denom: "tablespoons",
+          name: "taco seasoning"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "frozen corn"
+        },
+        {
+          qty: 15,
+          denom: "oz",
+          name: "canned black beans"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "pico de gallo"
+        },
+        {
+          qty: 1,
+          denom: "whoe",
+          name: "jalapeno pepper"
+        },
+        {
+          qty: 4,
+          denom: "teaspoons",
+          name: "cilantro"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "red onion"
+        },
+        {
+          qty: 2,
+          denom: "tbsp",
+          name: "olive oil"
+        },
+        {
+          qty: 1,
+          denom: "tbsp",
+          name: "lime juice"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoons",
+          name: "salt"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoons",
+          name: "pepper"
+        },
+        {
+          qty: 3,
+          denom: "cups",
+          name: "lettuce"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "avocado"
+        },
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/tuna-poke-bowls-brown-rice-kale",
+      name: "Tuna Poke Bowls with Brown Rice and Kale",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2016%2F06%2F21%2F6046401_cldie1104-2000.jpg",
+      cuisine: ['asian','fusion'],
+      appliances: ['stovetop'],
+      restrictions: ['lactose-free','pescatarian'],
+      servings: 4,
+      cookTime: 10,
+      ingredients: [
+        {
+          qty: 2,
+          denom: "cups",
+          name: "cooked brown rice"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "kale"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "rice vinegar"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 2.5,
+          denom: "tablespoons",
+          name: "soy sauce"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "sesame oil"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "sriracha chili sauce"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "ginger"
+        },
+        {
+          qty: 1,
+          denom: "pound",
+          name: "raw sushi-grade ahi tuna"
+        },
+        {
+          qty: 3/4,
+          denom: "cup",
+          name: "cucumber"
+        },
+        {
+          qty: 1,
+          denom: "small",
+          name: "avocado"
+        },
+        {
+          qty: 1,
+          denom: "count",
+          name: "green onion"
+        },
+        {
+          qty: 1.5,
+          denom: "tablespoons",
+          name: "sesame seeds"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/fresh-thai-noodle-bowl",
+      name: "Fresh Thai Noodle Bowl",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2015%2F02%2F24%2Ffresh-thai-noodle-bowl-ck.jpg",
+      cuisine: ['asian','fusion'],
+      appliances: ['stovetop'],
+      restrictions: ['lactose-free'],
+      servings: 4,
+      cookTime: 20,
+      ingredients: [
+        {
+          qty: 8,
+          denom: "oz",
+          name: "rice vermicelli noodles"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "canola oil"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "ginger"
+        },
+        {
+          qty: 4,
+          denom: "cloves",
+          name: "garlic"
+        },
+        {
+          qty: 3.5,
+          denom: "cups",
+          name: "vegetable stock"
+        },
+        {
+          qty: 2.5,
+          denom: "tablespoons",
+          name: "soy sauce"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "carrots"
+        },
+        {
+          qty: 1,
+          denom: "whole",
+          name: "red bell pepper"
+        },
+        {
+          qty: 1,
+          denom: "small",
+          name: "cucumber"
+        },
+        {
+          qty: 5,
+          denom: "tablespoons",
+          name: "fresh herbs"
+        },
+        {
+          qty: 6,
+          denom: "tablespoons",
+          name: "unsalted peanuts"
+        },
+        {
+          qty: 2,
+          denom: "teaspoons",
+          name: "chili oil"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/soba-edamame-noodle-bowl",
+      name: "Soba-Edamame Noodle Bowl",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2016%2F03%2F23%2F1605p18-seared-baby-bok-choy-2000.jpg",
+      cuisine: ['asian','fusion'],
+      appliances: ['stovetop'],
+      restrictions: ['lactose-free','vegetarian'],
+      servings: 4,
+      cookTime: 10,
+      ingredients: [
+        {
+          qty: 1,
+          denom: "cup",
+          name: "frozen edamame"
+        },
+        {
+          qty: 6,
+          denom: "ounces",
+          name: "uncooked soba noodles"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "snow peas"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "sesame oil"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "rice vinegar"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "soy sauce"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "yellow miso"
+        },
+        {
+          qty: 1.5,
+          denom: "teaspoons",
+          name: "brown sugar"
+        },
+        {
+          qty: 1.5,
+          denom: "teaspoons",
+          name: "ginger"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 2,
+          denom: "cups",
+          name: "red cabbage"
+        },
+        {
+          qty: 2/3,
+          denom: "cup",
+          name: "green onions"
+        },
+        {
+          qty: 2,
+          denom: "large",
+          name: "carrot"
+        },
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "cilantro"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/slow-cooker-barbecue-chicken",
+      name: "Slow-Cooker Barbecue Chicken",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2011%2F05%2F10%2Fslow-cooker-bbq-chicken-ay-x.jpg",
+      cuisine: ['american'],
+      appliances: ['slow cooker'],
+      restrictions: ['lactose-free'],
+      servings: 8,
+      cookTime: 365,
+      ingredients: [
+        {
+          qty: 24,
+          denom: "ounces",
+          name: "chicken breasts"
+        },
+        {
+          qty: 3/4,
+          denom: "cup",
+          name: "barbecue sauce"
+        },
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "Italian dressing"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "brown sugar"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "worcestershire sauce"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "cornstarch"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "chicken broth"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/chicken-chilaquiles-casserole",
+      name: "Chicken Chilaquiles Casserole",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2017%2F01%2F17%2Fchicken-chilaquiles-casserole-.jpg",
+      cuisine: ['mexican','fusion'],
+      appliances: ['oven'],
+      restrictions: ['nut-free'],
+      servings: 6,
+      cookTime: 35,
+      ingredients: [
+        {
+          qty: 15,
+          denom: "count",
+          name: "corn tostadas"
+        },
+        {
+          qty: 16,
+          denom: "oz",
+          name: "green chile enchilada sauce"
+        },
+        {
+          qty: 3,
+          denom: "cups",
+          name: "rotisserie chicken"
+        },
+        {
+          qty: 8,
+          denom: "ounces",
+          name: "monterey jack cheese"
+        },
+        {
+          qty: 4,
+          denom: "ounces",
+          name: "manchego cheese"
+        },
+        {
+          qty: 3,
+          denom: "tablespoons",
+          name: "sour cream"
+        },
+        {
+          qty: 1,
+          denom: "whole",
+          name: "jalapeno pepper"
+        },
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "cilantro"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/lemon-garlic-pork-broccoli-bulgur-bowl",
+      name: "Lemon-Garlic Pork and Broccoli Bulgur Bowl",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2016%2F04%2F20%2F1606p36-lemon-garlic-pork-and-broccoli-bulgur-bowl-2000.jpg",
+      cuisine: ['other','healthy'],
+      appliances: ['stovetop'],
+      restrictions: ['lactose-free','nut-free'],
+      servings: 4,
+      cookTime: 25,
+      ingredients: [
+        {
+          qty: 1.25,
+          denom: "cups",
+          name: "water"
+        },
+        {
+          qty: 3/4,
+          denom: "cup",
+          name: "uncooked bulgur"
+        },
+        {
+          qty: 1.25,
+          denom: "teaspoons",
+          name: "salt"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "olive oil"
+        },
+        {
+          qty: 2,
+          denom: "cups",
+          name: "broccoli"
+        },
+        {
+          qty: 1,
+          denom: "lb",
+          name: "pork tenderloin"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "cornstarch"
+        },
+        {
+          qty: 3,
+          denom: "tablespoons",
+          name: "unsalted butter"
+        },
+        {
+          qty: 5,
+          denom: "cloves",
+          name: "garlic"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "chicken stock"
+        },
+        {
+          qty: 1.5,
+          denom: "tablespoons",
+          name: "lemon juice"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "honey"
+        },
+        {
+          qty: 3,
+          denom: "tablespoons",
+          name: "fresh basil"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/toasted-farro-salad-watermelon-peaches",
+      name: "Toasted Farro Salad with Watermelon and Peaches",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2017%2F06%2F12%2Ffarrosalad-2000.jpeg",
+      cuisine: ['salad','healthy'],
+      appliances: ['stovetop'],
+      restrictions: ['vegetarian','nut-free'],
+      servings: 4,
+      cookTime: 25,
+      ingredients: [
+        {
+          qty: 1,
+          denom: "cup",
+          name: "uncooked farro"
+        },
+        {
+          qty: 1.5,
+          denom: "cups",
+          name: "watermelon"
+        },
+        {
+          qty: 2,
+          denom: "medium",
+          name: "peaches"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "fresh mint"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "fresh basil"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "extra-virgin olive oil"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "sherry vinegar"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "shallot"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "lime juice"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "pepper"
+        },
+        {
+          qty: 1,
+          denom: "to taste",
+          name: "feta"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/chicken-farro-vegetable-salad-lemon-vinaigrette",
+      name: "Chicken, Farro, and Vegetable Salad with Lemon Vinaigrette",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2015%2F02%2F10%2Fchicken-farro-vegetable-salad-lemon-vinaigrette-sl.jpg",
+      cuisine: ['salad','healthy'],
+      appliances: ['stovetop'],
+      restrictions: [],
+      servings: 6,
+      cookTime: 90,
+      ingredients: [
+        {
+          qty: 4,
+          denom: "count",
+          name: "chicken thighs"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "lemon vinaigrette dressing"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "uncooked farro"
+        },
+        {
+          qty: 2.25,
+          denom: "teaspoons",
+          name: "salt"
+        },
+        {
+          qty: 2,
+          denom: "cloves",
+          name: "garlic"
+        },
+        {
+          qty: 3/4,
+          denom: "teaspoon",
+          name: "pepper"
+        },
+        {
+          qty: 1/2,
+          denom: "whole",
+          name: "red onion"
+        },
+        {
+          qty: 1,
+          denom: "bulb",
+          name: "fennel"
+        },
+        {
+          qty: 10,
+          denom: "count",
+          name: "sweet mini peppers"
+        },
+        {
+          qty: 1.5,
+          denom: "teaspoons",
+          name: "olive oil"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "parsley"
+        },
+        {
+          qty: 1/3,
+          denom: "cup",
+          name: "fresh basil"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "fresh thyme"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/the-cheeseburger-salad",
+      name: "The Cheeseburger Salad",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2016%2F02%2F22%2F1604p48-the-cheeseburger-salad.jpg",
+      cuisine: ['american','salad','fusion'],
+      appliances: ['stovetop'],
+      restrictions: ['nut-free'],
+      servings: 4,
+      cookTime: 30,
+      ingredients: [
+        {
+          qty: 12,
+          denom: "ounces",
+          name: "ground sirloin"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "pepper"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 1,
+          denom: "spray",
+          name: "cooking spray"
+        },
+        {
+          qty: 1,
+          denom: "large",
+          name: "red onion"
+        },
+        {
+          qty: 10,
+          denom: "oz",
+          name: "romaine hearts"
+        },
+        {
+          qty: 1.5,
+          denom: "cups",
+          name: "tomato"
+        },
+        {
+          qty: 3,
+          denom: "ounces",
+          name: "cheddar cheese"
+        },
+        {
+          qty: 1/3,
+          denom: "cup",
+          name: "mayonnaise"
+        },
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "ketchup"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "water"
+        },
+        {
+          qty: 1.5,
+          denom: "ounces",
+          name: "potato chips"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/tuscan-steak-salad",
+      name: "Tuscan Steak Salad",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2015%2F04%2F21%2Ftuscan-steak-salad-ck.jpg",
+      cuisine: ['salad','mediterranean','healthy'],
+      appliances: ['stovetop'],
+      restrictions: ['nut-free'],
+      servings: 2,
+      cookTime: 30,
+      ingredients: [
+        {
+          qty: 1,
+          denom: "clove",
+          name: "garlic"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "olive oil"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "rosemary"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "lemon rind"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "pepper"
+        },
+        {
+          qty: 8,
+          denom: "oz",
+          name: "strip steak"
+        },
+        {
+          qty: 1,
+          denom: "spray",
+          name: "cooking spray"
+        },
+        {
+          qty: 2,
+          denom: "teaspoons",
+          name: "balsamic vinegar"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "dijon mustard"
+        },
+        {
+          qty: 3,
+          denom: "cups",
+          name: "salad greens"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "parmesan cheese"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/caprese-wraps-with-chicken",
+      name: "Caprese Wraps with Chicken",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2010%2F04%2F12%2Fcaprese-wraps-ck-4x3-1-2000.jpg",
+      cuisine: ['mediterranean','healthy'],
+      appliances: ['stovetop'],
+      restrictions: ['nut-free'],
+      servings: 4,
+      cookTime: 20,
+      ingredients: [
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "olive oil"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "white wine vinegar"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "pepper"
+        },
+        {
+          qty: 4,
+          denom: "cups",
+          name: "romaine lettuce"
+        },
+        {
+          qty: 1.5,
+          denom: "cups",
+          name: "rotisserie chicken breast"
+        },
+        {
+          qty: 3/4,
+          denom: "cup",
+          name: "fresh mozzarella cheese"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "fresh basil"
+        },
+        {
+          qty: 1,
+          denom: "pint",
+          name: "cherry tomatoes"
+        },
+        {
+          qty: 1,
+          denom: "spray",
+          name: "cooking spray"
+        },
+        {
+          qty: 4,
+          denom: "piece",
+          name: "flatbreads"
+        },
+        {
+          qty: 1,
+          denom: "clove",
+          name: "garlic"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/grilled-zucchini-caprese-sandwiches",
+      name: "Grilled Zucchini Caprese Sandwiches",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2011%2F07%2F06%2Fgrilled-zucchini-caprese-ck-x.jpg",
+      cuisine: ['mediterranean','healthy'],
+      appliances: ['stovetop'],
+      restrictions: ['vegetarian','nut-free'],
+      servings: 4,
+      cookTime: 15,
+      ingredients: [
+        {
+          qty: 1,
+          denom: "medium",
+          name: "zucchini"
+        },
+        {
+          qty: 4,
+          denom: "teaspoons",
+          name: "extra-virgin olive oil"
+        },
+        {
+          qty: 1,
+          denom: "clove",
+          name: "garlic"
+        },
+        {
+          qty: 1.5,
+          denom: "teaspoons",
+          name: "balsamic vinegar"
+        },
+        {
+          qty: 1/8,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 1/8,
+          denom: "teaspoon",
+          name: "pepper"
+        },
+        {
+          qty: 4,
+          denom: "count",
+          name: "ciabatta rolls"
+        },
+        {
+          qty: 8,
+          denom: "leaves",
+          name: "fresh basil"
+        },
+        {
+          qty: 1,
+          denom: "medium",
+          name: "tomato"
+        },
+        {
+          qty: 6,
+          denom: "ounces",
+          name: "fresh mozzarella cheese"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/roasted-chicken-bow-tie-pasta-salad",
+      name: "Roasted Chicken and Bow Tie Pasta Salad",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2004%2F02%2F18%2Fpasta-salad-ck-592284-r-2000.jpg",
+      cuisine: ['pasta','salad'],
+      appliances: ['stovetop'],
+      restrictions: [],
+      servings: 6,
+      cookTime: 20,
+      ingredients: [
+        {
+          qty: 3,
+          denom: "cups",
+          name: "bow tie pasta"
+        },
+        {
+          qty: 1/3,
+          denom: "cup",
+          name: "orange juice"
+        },
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "lemon juice"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "olive oil"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "mustard"
+        },
+        {
+          qty: 2,
+          denom: "teaspoons",
+          name: "sugar"
+        },
+        {
+          qty: 1.25,
+          denom: "teaspoons",
+          name: "salt"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "pepper"
+        },
+        {
+          qty: 1.5,
+          denom: "teaspoons",
+          name: "rice vinegar"
+        },
+        {
+          qty: 2,
+          denom: "cups",
+          name: "cooked chicken breast"
+        },
+        {
+          qty: 1.5,
+          denom: "cups",
+          name: "red grapes"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "celery"
+        },
+        {
+          qty: 1/3,
+          denom: "cup",
+          name: "red onion"
+        },
+        {
+          qty: 1/3,
+          denom: "cup",
+          name: "walnuts"
+        },
+        {
+          qty: 3,
+          denom: "tablespoons",
+          name: "chives"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "parsley"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/tex-mex-pasta-salad",
+      name: "Tex-Mex Pasta Salad",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2005%2F08%2F17%2Fpasta-salad-ck-1097017-x.jpg",
+      cuisine: ['mexican','salad','fusion'],
+      appliances: ['stovetop'],
+      restrictions: [],
+      servings: 12,
+      cookTime: 40,
+      ingredients: [
+        {
+          qty: 1,
+          denom: "pound",
+          name: "radiatore pasta"
+        },
+        {
+          qty: 2,
+          denom: "teaspoons",
+          name: "olive oil"
+        },
+        {
+          qty: 3,
+          denom: "cloves",
+          name: "garlic"
+        },
+        {
+          qty: 1.5,
+          denom: "pounds",
+          name: "ground turkey"
+        },
+        {
+          qty: 2/3,
+          denom: "cup",
+          name: "water"
+        },
+        {
+          qty: 1.25,
+          denom: "oz",
+          name: "taco seasoning"
+        },
+        {
+          qty: 2,
+          denom: "cups",
+          name: "mexican blend cheese"
+        },
+        {
+          qty: 2,
+          denom: "cups",
+          name: "tomato"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "bell pepper"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "cilantro"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "green onions"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "olives"
+        },
+        {
+          qty: 15.5,
+          denom: "oz",
+          name: "canned black beans"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "lime juice"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "cumin"
+        },
+        {
+          qty: 8,
+          denom: "oz",
+          name: "sour cream"
+        },
+        {
+          qty: 1,
+          denom: "to taste",
+          name: "salsa"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/sirloin-steak-pasta-salad",
+      name: "Sirloin Steak and Pasta Salad",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2003%2F11%2F24%2Fsteak-salad-ck-554716-x.jpg",
+      cuisine: ['pasta'],
+      appliances: ['stovetop'],
+      restrictions: ['lactose-free'],
+      servings: 4,
+      cookTime: 35,
+      ingredients: [
+        {
+          qty: 2,
+          denom: "cups",
+          name: "penne"
+        },
+        {
+          qty: 1/4,
+          denom: "pound",
+          name: "green beans"
+        },
+        {
+          qty: 3/4,
+          denom: "lb",
+          name: "sirloin steak"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "garlic-pepper"
+        },
+        {
+          qty: 1.5,
+          denom: "cups",
+          name: "red onion"
+        },
+        {
+          qty: 1.5,
+          denom: "cups",
+          name: "red bell pepper"
+        },
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "fresh basil"
+        },
+        {
+          qty: 3,
+          denom: "tablespoons",
+          name: "dijon mustard"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "balsamic vinegar"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "olive oil"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "garlic"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "pepper"
+        },
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "blue cheese"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/speedy-shepherds-pie",
+      name: "Speedy Shepherd's Pie",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2016%2F10%2F03%2Fspeedy-shepherds-pie-ck.jpg",
+      cuisine: ['american','other'],
+      appliances: ['oven','stovetop'],
+      restrictions: ['nut-free'],
+      servings: 4,
+      cookTime: 20,
+      ingredients: [
+        {
+          qty: 1,
+          denom: "pound",
+          name: "ground beef"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "carrot"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "onion"
+        },
+        {
+          qty: 4,
+          denom: "cloves",
+          name: "garlic"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "tomato paste"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "beef stock"
+        },
+        {
+          qty: 2,
+          denom: "teaspoons",
+          name: "cornstarch"
+        },
+        {
+          qty: 2,
+          denom: "teaspoons",
+          name: "worcestershire sauce"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "pepper"
+        },
+        {
+          qty: 3/8,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 1.5,
+          denom: "cups",
+          name: "frozen peas"
+        },
+        {
+          qty: 24,
+          denom: "oz",
+          name: "premade mashed potatoes"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "freeze-dried onion"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "paprika"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/ground-beef-pasta-casserole",
+      name: "Ground Beef and Pasta Casserole",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2016%2F01%2F20%2Fground-beef-pasta-casserole-ck.jpg",
+      cuisine: ['pasta','other'],
+      appliances: ['stovetop','oven'],
+      restrictions: ['nut-free'],
+      servings: 6,
+      cookTime: 45,
+      ingredients: [
+        {
+          qty: 2,
+          denom: "small",
+          name: "onion"
+        },
+        {
+          qty: 2,
+          denom: "large",
+          name: "carrot"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "olive oil"
+        },
+        {
+          qty: 4,
+          denom: "cloves",
+          name: "garlic"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "Italian seasoning"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "crushed red pepper"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 1,
+          denom: "pound",
+          name: "ground sirloin"
+        },
+        {
+          qty: 3.5,
+          denom: "cups",
+          name: "chicken stock"
+        },
+        {
+          qty: 6,
+          denom: "tablespoons",
+          name: "fresh basil"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "tomato paste"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "red wine vinegar"
+        },
+        {
+          qty: 12,
+          denom: "ounces",
+          name: "rigatoni"
+        },
+        {
+          qty: 26.5,
+          denom: "oz",
+          name: "carton strained tomatoes"
+        },
+        {
+          qty: 4,
+          denom: "ounces",
+          name: "fresh mozzarella cheese"
+        },
+        {
+          qty: 1,
+          denom: "ounce",
+          name: "parmigiano-reggiano cheese"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/baked-italian-style-cauliflower",
+      name: "Baked Italian-Style Cauliflower",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2011%2F10%2F12%2Fbaked-italian-style-cauliflower-ck-x.jpg",
+      cuisine: ['other','mediterranean'],
+      appliances: ['oven'],
+      restrictions: ['nut-free'],
+      servings: 4,
+      cookTime: 28,
+      ingredients: [
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "olive oil"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "onion"
+        },
+        {
+          qty: 4,
+          denom: "cloves",
+          name: "garlic"
+        },
+        {
+          qty: 6,
+          denom: "ounces",
+          name: "ground sirloin"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "crushed red pepper"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "pepper"
+        },
+        {
+          qty: 1.5,
+          denom: "cups",
+          name: "marinara sauce"
+        },
+        {
+          qty: 2,
+          denom: "ounces",
+          name: "kalamata olives"
+        },
+        {
+          qty: 1.5,
+          denom: "pounds",
+          name: "cauliflower"
+        },
+        {
+          qty: 1,
+          denom: "spray",
+          name: "cooking spray"
+        },
+        {
+          qty: 1,
+          denom: "ounce",
+          name: "French bread baguette"
+        },
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "pecorino romano cheese"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/nacho-grande-casserole",
+      name: "Nacho Grande Casserole",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2010%2F11%2F29%2Fnacho-grande-casserole-gbp-4x3-1-2000.jpg",
+      cuisine: ['mexican','fusion'],
+      appliances: ['oven','stovetop'],
+      restrictions: ['nut-free'],
+      servings: 8,
+      cookTime: 50,
+      ingredients: [
+        {
+          qty: 2,
+          denom: "pounds",
+          name: "ground beef"
+        },
+        {
+          qty: 1,
+          denom: "whole",
+          name: "onion"
+        },
+        {
+          qty: 32,
+          denom: "oz",
+          name: "canned chili beans"
+        },
+        {
+          qty: 16,
+          denom: "oz",
+          name: "frozen corn"
+        },
+        {
+          qty: 15,
+          denom: "oz",
+          name: "tomato sauce"
+        },
+        {
+          qty: 1.25,
+          denom: "oz",
+          name: "taco seasoning mix"
+        },
+        {
+          qty: 3,
+          denom: "cups",
+          name: "cheddar jack cheese"
+        },
+        {
+          qty: 3,
+          denom: "cups",
+          name: "nacho-flavored tortilla chips"
+        },
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/eggplant-lasagna-0",
+      name: "Eggplant Lasagna",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2019%2F07%2F10%2Feggplantlasagnamr_trending_3496-2000.jpg",
+      cuisine: ['pasta','other'],
+      appliances: ['oven'],
+      restrictions: ['nut-free'],
+      servings: 8,
+      cookTime: 150,
+      ingredients: [
+        {
+          qty: 1,
+          denom: "large",
+          name: "eggplant"
+        },
+        {
+          qty: 12,
+          denom: "ounces",
+          name: "ground beef"
+        },
+        {
+          qty: 1,
+          denom: "cup",
+          name: "onion"
+        },
+        {
+          qty: 1/2,
+          denom: "whole",
+          name: "red bell pepper"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "garlic"
+        },
+        {
+          qty: 1.5,
+          denom: "teaspoons",
+          name: "salt"
+        },
+        {
+          qty: 1,
+          denom: "teaspoon",
+          name: "pepper"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "crushed red pepper"
+        },
+        {
+          qty: 24,
+          denom: "oz",
+          name: "marinara sauce"
+        },
+        {
+          qty: 2,
+          denom: "cups",
+          name: "ricotta cheese"
+        },
+        {
+          qty: 2,
+          denom: "whole",
+          name: "eggs"
+        },
+        {
+          qty: 16,
+          denom: "ounces",
+          name: "mozzarella cheese"
+        },
+        {
+          qty: 7,
+          denom: "ounces",
+          name: "fresh mozzarella"
+        },
+        {
+          qty: 2,
+          denom: "teaspoons",
+          name: "fresh thyme"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/pork-chops-with-country-gravy",
+      name: "Pork Chops with Country Gravy",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2017%2F10%2F01%2Fpork-chops-ck-1197218-x.jpg",
+      cuisine: ['american'],
+      appliances: ['stovetop'],
+      restrictions: ['nut-free'],
+      servings: 4,
+      cookTime: 20,
+      ingredients: [
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "flour"
+        },
+        {
+          qty: 3/4,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "dried marjoram"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "thyme"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "sage"
+        },
+        {
+          qty: 16,
+          denom: "oz",
+          name: "pork chops"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "butter"
+        },
+        {
+          qty: 1,
+          denom: "spray",
+          name: "cooking spray"
+        },
+        {
+          qty: 1.5,
+          denom: "cups",
+          name: "1% milk"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/pork-chops-grits-gravy",
+      name: "Pork Chops with Grits and Red-Eye Gravy",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2011%2F11%2F16%2Fpork-chops-ck-x.jpg",
+      cuisine: ['american'],
+      appliances: ['stovetop'],
+      restrictions: ['nut-free'],
+      servings: 4,
+      cookTime: 40,
+      ingredients: [
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "extra-virgin olive oil"
+        },
+        {
+          qty: 24,
+          denom: "oz",
+          name: "pork chops"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "pepper"
+        },
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "shallot"
+        },
+        {
+          qty: 2,
+          denom: "teaspoons",
+          name: "fresh thyme"
+        },
+        {
+          qty: 4,
+          denom: "oz",
+          name: "mushrooms"
+        },
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "dry sherry"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "hot coffee"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "tomato juice"
+        },
+        {
+          qty: 2,
+          denom: "teaspoons",
+          name: "sherry vinegar"
+        },
+        {
+          qty: 1/8,
+          denom: "teaspoon",
+          name: "ground red pepper"
+        },
+        {
+          qty: 2,
+          denom: "teaspoons",
+          name: "cornstarch"
+        },
+        {
+          qty: 2.25,
+          denom: "cups",
+          name: "2% milk"
+        },
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "uncooked grits"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "butter"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/pork-schnitzel",
+      name: "Pork Schnitzel",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2013%2F03%2F28%2Fpork-schnitzel-ck-x.jpg",
+      cuisine: ['other'],
+      appliances: ['stovetop'],
+      restrictions: [],
+      servings: 4,
+      cookTime: 24,
+      ingredients: [
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "sour cream"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "dill"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "buttermilk"
+        },
+        {
+          qty: 5/8,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 3/4,
+          denom: "teaspoon",
+          name: "pepper"
+        },
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "milk"
+        },
+        {
+          qty: 1,
+          denom: "large",
+          name: "egg"
+        },
+        {
+          qty: 3/4,
+          denom: "cup",
+          name: "breadcrumbs"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "parsley"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "garlic powder"
+        },
+        {
+          qty: 16,
+          denom: "oz",
+          name: "pork chops"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "olive oil"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/pork-chops-stuffed-with-feta-spinach",
+      name: "Pork Chops Stuffed with Feta and Spinach",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2007%2F03%2F15%2Fpork-chops-ck-1599621-x.jpg",
+      cuisine: ['american'],
+      appliances: ['oven','stovetop'],
+      restrictions: [],
+      servings: 4,
+      cookTime: 25,
+      ingredients: [
+        {
+          qty: 1,
+          denom: "spray",
+          name: "cooking spray"
+        },
+        {
+          qty: 4,
+          denom: "cloves",
+          name: "garlic"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "pepper"
+        },
+        {
+          qty: 5,
+          denom: "count",
+          name: "sun-dried tomatoes"
+        },
+        {
+          qty: 10,
+          denom: "oz",
+          name: "frozen spinach"
+        },
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "feta"
+        },
+        {
+          qty: 3,
+          denom: "tablespoons",
+          name: "cream cheese"
+        },
+        {
+          qty: 1/2,
+          denom: "teaspoon",
+          name: "lemon rind"
+        },
+        {
+          qty: 16,
+          denom: "oz",
+          name: "pork chops"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "lemon juice"
+        },
+        {
+          qty: 2,
+          denom: "teaspoons",
+          name: "dijon mustard"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "oregano"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/spicy-shrimp-noodles",
+      name: "Spicy Shrimp Noodles",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2019%2F02%2F21%2Fspicy-shrimp-noodles-1810-p32-2000.jpg",
+      cuisine: ['pasta','asian','fusion'],
+      appliances: ['stovetop'],
+      restrictions: ['pescatarian'],
+      servings: 4,
+      cookTime: 20,
+      ingredients: [
+        {
+          qty: 6,
+          denom: "ounces",
+          name: "pad Thai noodles"
+        },
+        {
+          qty: 3,
+          denom: "tablespoons",
+          name: "canola oil"
+        },
+        {
+          qty: 2,
+          denom: "cups",
+          name: "scallions"
+        },
+        {
+          qty: 8,
+          denom: "ounces",
+          name: "shrimp"
+        },
+        {
+          qty: 1,
+          denom: "large",
+          name: "egg"
+        },
+        {
+          qty: 1/3,
+          denom: "cup",
+          name: "unsalted peanuts"
+        },
+        {
+          qty: 3,
+          denom: "tablespoons",
+          name: "ketchup"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "lime juice"
+        },
+        {
+          qty: 1.5,
+          denom: "tablespoons",
+          name: "Sriracha chili sauce"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "fish sauce"
+        },
+        {
+          qty: 1,
+          denom: "tablespoon",
+          name: "water"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "cilantro"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/cacio-e-pepe-sauteed-shrimp",
+      name: "Cacio e Pepe with Sauteed Shrimp",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2017%2F05%2F12%2F4068801_ShrimpManifesto_Noodles_04-2000.jpg",
+      cuisine: ['pasta','mediterranean'],
+      appliances: ['stovetop'],
+      restrictions: ['pescatarian'],
+      servings: 6,
+      cookTime: 25,
+      ingredients: [
+        {
+          qty: 8,
+          denom: "ounces",
+          name: "linguini"
+        },
+        {
+          qty: 2,
+          denom: "tablespoons",
+          name: "salt"
+        },
+        {
+          qty: 1/4,
+          denom: "cup",
+          name: "unsalted butter"
+        },
+        {
+          qty: 1,
+          denom: "pound",
+          name: "shrimp"
+        },
+        {
+          qty: 3,
+          denom: "cloves",
+          name: "garlic"
+        },
+        {
+          qty: 3,
+          denom: "ounces",
+          name: "Grana Padano cheese"
+        },
+        {
+          qty: 2,
+          denom: "teaspoons",
+          name: "pepper"
+        },
+        {
+          qty: 1,
+          denom: "ounce",
+          name: "pecorino romano cheese"
+        },
+        {
+          qty: 1,
+          denom: "whole",
+          name: "lemon"
+        }
+      ]
+    },
+    {
+      url: "https://www.myrecipes.com/recipe/no-cook-shrimp-noodle-bowl-with-peanut-ginger-sauce",
+      name: "No-Cook Shrimp Noodle Bowl with Peanut-Ginger Sauce",
+      img: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2018%2F07%2F05%2Fmrpackaging_0621181790-1-2000.jpg",
+      cuisine: ['asian'],
+      appliances: ['stovetop'],
+      restrictions: ['pescatarian'],
+      servings: 6,
+      cookTime: 20,
+      ingredients: [
+        {
+          qty: 1/2,
+          denom: "cup",
+          name: "creamy peanut butter"
+        },
+        {
+          qty: 4.5,
+          denom: "tablespoons",
+          name: "lime juice"
+        },
+        {
+          qty: 3,
+          denom: "tablespoons",
+          name: "rice vinegar"
+        },
+        {
+          qty: 3,
+          denom: "tablespoons",
+          name: "soy sauce"
+        },
+        {
+          qty: 3,
+          denom: "tablespoons",
+          name: "honey"
+        },
+        {
+          qty: 1.5,
+          denom: "teaspoons",
+          name: "sesame oil"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "salt"
+        },
+        {
+          qty: 1/4,
+          denom: "teaspoon",
+          name: "crushed red pepper"
+        },
+        {
+          qty: 8,
+          denom: "cups",
+          name: "water"
+        },
+        {
+          qty: 9,
+          denom: "oz",
+          name: "rice stick noodles"
+        },
+        {
+          qty: 3,
+          denom: "cups",
+          name: "napa cabbage"
+        },
+        {
+          qty: 1.5,
+          denom: "cups",
+          name: "cucumber"
+        },
+        {
+          qty: 1.5,
+          denom: "cups",
+          name: "carrot"
+        },
+        {
+          qty: 1.5,
+          denom: "cups",
+          name: "red bell pepper"
+        },
+        {
+          qty: 1.5,
+          denom: "pounds",
+          name: "steamed shrimp"
+        },
+        {
+          qty: 3/4,
+          denom: "cup",
+          name: "salted peanuts"
         }
       ]
     }
