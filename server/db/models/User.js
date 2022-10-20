@@ -40,6 +40,9 @@ const User = db.define('user', {
 		validate: {
 			notEmpty: true,
 		},
+		set(value){
+			this.setDataValue('username',value.toLowerCase())
+		}
 	},
 	email: {
 		type: Sequelize.STRING,

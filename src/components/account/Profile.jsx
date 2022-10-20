@@ -1,9 +1,15 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useOutlet } from 'react-router-dom';
 
 const Profile = () => {
 	const profile = useSelector((state) => state.profile);
+	const { props } = useOutlet();
+	const tabURL = props.children.props.match.route.path;
+
+	useEffect(() => {
+		document.querySelector(`button[id=${tabURL}]`)?.classList.add('active');
+	}, []);
 	useEffect(() => {}, [profile]);
 	useEffect(() => {}, [OnClick]);
 
@@ -21,23 +27,23 @@ const Profile = () => {
 	return (
 		<div className="profile">
 			<nav>
-				<Link to={'likes'}>
-					<button className="tab active" id="likes" onClick={OnClick}>
+				<Link to="likes">
+					<button className="tab" id="likes" onClick={OnClick}>
 						Likes
 					</button>
 				</Link>
-				<Link to={'dislikes'}>
+				<Link to="dislikes">
 					<button className="tab" id="dislikes" onClick={OnClick}>
 						Dislikes
 					</button>
 				</Link>
-				<Link to={'edit'}>
+				<Link to="edit">
 					<button className="tab" id="edit" onClick={OnClick}>
 						Profile
 					</button>
 				</Link>
-				<Link to={'history'}>
-					<button className="tab" id="list-history" onClick={OnClick}>
+				<Link to="history">
+					<button className="tab" id="history" onClick={OnClick}>
 						History
 					</button>
 				</Link>
