@@ -70,7 +70,7 @@ const AddRecipeAdminPage = () => {
 			})
 		);
 
-		navigate('/adminportal');
+		navigate('/admin/recipes?page=1');
 		toast.success(`New recipe added: "${form.name}"`, {
 			position: 'bottom-right',
 			autoClose: 2000,
@@ -256,7 +256,7 @@ const AddRecipeAdminPage = () => {
 								<option value="" disabled selected>
 									Cuisine
 								</option>
-								{cuisines.map((ele, index) => (
+								{cuisines.filter(tag => tag !== 'all').map((ele, index) => (
 									<option value={ele} key={index}>
 										{ele.length ? ele[0].toUpperCase() + ele.slice(1) : ''}
 									</option>
@@ -279,7 +279,7 @@ const AddRecipeAdminPage = () => {
 								<option value="" disabled selected>
 									Optional
 								</option>
-								{restrictions.map((ele, index) => (
+								{restrictions.filter(tag => tag !== 'all').map((ele, index) => (
 									<option value={ele} key={index}>
 										{ele.length ? ele[0].toUpperCase() + ele.slice(1) : ''}
 									</option>
@@ -349,7 +349,6 @@ const AddRecipeAdminPage = () => {
 							className={checkDisabled() ? 'navbutton disabled' : 'navbutton'}
 							type="submit"
 							disabled={checkDisabled()}
-							onClick={handleSubmit}
 						>
 							Add Recipe
 						</button>

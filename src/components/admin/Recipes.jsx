@@ -25,6 +25,13 @@ const AllRecipesAdminPage = () => {
 
 	const statuses = ['both', 'yes', 'no'];
 
+	// addresses bug where if admin clicks on 'Recipes' tab when page != 1, table would not update
+	useEffect(() => {
+		if (Number(page) !== Number(searchParams.get('page'))) {
+			setPage(searchParams.get('page'))
+		}
+	},[searchParams.get('page')])
+
 	useEffect(() => {
 		const token = window.localStorage.getItem('token');
 		if ((user.isLogged && !user.isAdmin) || !token) {
@@ -70,7 +77,6 @@ const AllRecipesAdminPage = () => {
 	};
 
 	return (
-		// recipes.length > 0 ?
 		recipeStatus === 'succeeded' ? (
 			<div className="all-recipes-container">
 				<div className="allrecipes-header">
@@ -126,6 +132,7 @@ const AllRecipesAdminPage = () => {
 									Number(page) === 1 ? 'prevNext disabled' : 'prevNext'
 								}
 								onClick={() => setPage(+page - 1)}
+									
 							>
 								Prev
 							</Link>
