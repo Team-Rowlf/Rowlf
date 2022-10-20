@@ -10,7 +10,8 @@ import { cuisines, restrictions } from '../../helperfunctions/utils';
 const Recipes = () => {
 	const dispatch = useDispatch();
 	const recipes = useSelector((state) => state.recipes.recipes);
-	const filteredRecipes = useSelector((state) => state.recipes.filterRecipes);
+	const dislikeIds = useSelector((state) => state.profile.dislikes.map(recipe => recipe.id));
+	const filteredRecipes = useSelector((state) => state.recipes.filterRecipes.filter(recipe => !dislikeIds.includes(recipe.id)));
 	const recipeStatus = useSelector(getRecipeStatus);
 	const [cuisineFilter, setCuisineFilter] = useState('all');
 	const [restrictionFilter, setRestrictionFilter] = useState('all');
@@ -95,7 +96,6 @@ const Recipes = () => {
 	const day = date.getDate();
 	const month = date.getMonth();
 	const id = (recipes.length - 1) % (day * month);
-	const rotd = recipes[id];
 
 	return recipeStatus === 'pending' ? (
 		<h1 className="loading">LOADING...</h1>
@@ -117,7 +117,7 @@ const Recipes = () => {
 							<br />
 							<p>
 								Not sure what you're looking for?{' '}
-								<Link className="chefs-choice-link" to="/chefschoice">
+								<Link className="chefs-choice-link" to="/user/chefschoice">
 									Ask the chef!
 								</Link>
 							</p>

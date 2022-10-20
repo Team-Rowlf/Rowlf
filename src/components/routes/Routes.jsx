@@ -41,6 +41,7 @@ const RoutesComponent = () => {
 					<Route path="edit" element={<UserInfo />} />
 					<Route path="history" element={<ListHistory />} />
 				</Route>
+				<Route path="chefschoice" element={<ChefsChoice />} />
 				<Route path="*" element={<NotFound />} />
 			</Route>
 			<Route path="admin" element={<AdminPortal />}>
@@ -51,7 +52,7 @@ const RoutesComponent = () => {
 				<Route path="updaterecipe/:id" element={<ModifyRecipeAdminPage />} />
 				<Route path="*" element={<NotFound />} />
 			</Route>
-			<Route path="chefschoice" element={<ChefsChoice />} />
+			{/* <Route path="user/chefschoice" element={<ChefsChoice />} /> */}
 			<Route path="map" element={<MapMain />} />
 			<Route path="*" element={<NotFound />} />
 		</Routes>

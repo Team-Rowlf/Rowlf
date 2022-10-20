@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { fetchAddtoShoppingList } from '../../features/shoppingList/shoppingListSlice';
+import { fetchAddtoShoppingList, resetAddedCount } from '../../features/shoppingList/shoppingListSlice';
 import {
 	capitalize,
 	restrictions,
@@ -9,13 +9,14 @@ import {
 	cuisines,
 	appliances,
 } from '../../helperfunctions/utils';
-import Nav from '../general/Nav.jsx';
 
 const ChefsChoice = () => {
 	const dispatch = useDispatch();
-	const navigate = useNavigate();
+    const navigate = useNavigate();
 	const allRecipes = useSelector((state) => state.recipes.recipes);
 	const dislikes = useSelector((state) => state.profile.dislikes);
+    const stateAddedCount = useSelector((state) => state.shoppingList.addedCount)
+    const [clickedAddToList, setClickedAddToList] = useState(false);
 	const [filteredRecipes, setFilteredRecipes] = useState([]);
 	const [suggestions, setSuggestions] = useState([]);
 	const [insufficentServings, setInsufficientServings] = useState(false);
@@ -34,10 +35,18 @@ const ChefsChoice = () => {
 	const [applianceBool, setApplianceBool] = useState(false);
 
 	useEffect(() => {
+        dispatch(resetAddedCount());
 		if (filteredRecipes.length) {
 			randomizeRecipes();
 		}
 	}, [filteredRecipes.length, count]);
+
+    useEffect(() => {
+        if (clickedAddToList && (stateAddedCount === suggestions.length)) {
+            dispatch(resetAddedCount());
+            navigate('/user/shoppinglist');
+        }
+    },[stateAddedCount])
 
 	const addOrRemoveTag = (props, tag) => () => {
 		const copy = [...form[props]];
@@ -59,7 +68,6 @@ const ChefsChoice = () => {
 	const onSubmitHandler = (event) => {
 		event.preventDefault();
 		filterRecipes();
-		console.log(form);
 	};
 
 	const filterRecipes = () => {
@@ -131,16 +139,15 @@ const ChefsChoice = () => {
 		);
 	};
 
-	const addToCartClickHandler = () => {
-		for (let i in suggestions) {
-			dispatch(fetchAddtoShoppingList({ id: suggestions[i].id }));
-		}
-		navigate('/user/shoppingList');
+	const addToCartClickHandler = async () => {
+        setClickedAddToList(true)
+        for (let i in suggestions) {
+            dispatch(fetchAddtoShoppingList({ id: suggestions[i].id }));
+        }
 	};
 
 	return (
 		<div id="chefs-choice-container">
-			<Nav />
 			<form id="chefs-choice-form" onSubmit={onSubmitHandler}>
 				<h2>Input your criteria to find recipe recommendations:</h2>
 				<div className="question-answer">
@@ -185,7 +192,7 @@ const ChefsChoice = () => {
 					<div className="selections">
 						<div className="select-italicized">Select all that apply: </div>
 						<div className="selection-options">
-							{cuisines.map((cuisine, idx) => (
+							{cuisines.filter(tag => tag !== 'all').map((cuisine, idx) => (
 								<div key={idx}>
 									<input
 										type="checkbox"
@@ -219,7 +226,7 @@ const ChefsChoice = () => {
 					<div className="selections">
 						<div className="select-italicized">Select all that apply:</div>
 						<div className="selection-options">
-							{restrictions.map((restriction, idx) => (
+							{restrictions.filter(tag => tag !== 'all').map((restriction, idx) => (
 								<div key={idx}>
 									<input
 										type="checkbox"
