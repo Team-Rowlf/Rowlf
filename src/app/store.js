@@ -6,6 +6,7 @@ import profileSlice from '../features/profile/profileSlice';
 import shoppingListSlice from '../features/shoppingList/shoppingListSlice';
 import adminSlice from '../features/admin/adminSlice';
 import userSuggestionsSlice from '../features/userSuggestions/userSuggestionsSlice';
+import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 
 import {
   persistReducer,
@@ -31,7 +32,9 @@ const rootReducer = combineReducers({
 const persistConfig = {
   key: 'root',
   storage,
+  stateReconciler: autoMergeLevel2,
 };
+
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({

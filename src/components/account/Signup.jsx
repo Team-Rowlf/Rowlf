@@ -68,7 +68,7 @@ const Signup = () => {
 									autoFocus="on"
 									onChange={handleChange('firstName')}
 									required
-									min={3}
+									minLength={3}
 								/>
 							</div>
 							<div className="clr"></div>
@@ -87,7 +87,7 @@ const Signup = () => {
 									className="textBox"
 									onChange={handleChange('lastName')}
 									required
-									min={3}
+									minLength={3}
 								/>
 							</div>
 							<div className="clr"></div>
@@ -106,14 +106,18 @@ const Signup = () => {
 									className="textBox"
 									onChange={handleChange('username')}
 									required
-									min={6}
+									minLength={6}
 									onBlur={handleAdditionalValidate('username')}
 								/>
 							</div>
 							<div className="clr"></div>
 						</div>
 
-						{!validate['username'] && <p> Username is Taken </p>}
+						{!validate['username'] && (
+							<p style={{ color: `red` }}>
+								<b>Username is Taken</b>
+							</p>
+						)}
 
 						<div className="box">
 							<label htmlFor="phone" className="fl fontLabel">
@@ -153,7 +157,12 @@ const Signup = () => {
 							<div className="clr"></div>
 						</div>
 
-						{!validate['email'] && <p> Email is Taken </p>}
+						{!validate['email'] && (
+							<p style={{ color: `red` }}>
+								{' '}
+								<b>Email is Taken</b>{' '}
+							</p>
+						)}
 
 						<div className="box">
 							<label htmlFor="password" className="fl fontLabel">
@@ -168,7 +177,7 @@ const Signup = () => {
 									className="textBox"
 									onChange={handleChange('password')}
 									required
-									min={5}
+									minLength={5}
 								/>
 							</div>
 							<div className="clr"></div>
@@ -185,7 +194,7 @@ const Signup = () => {
 									className="textBox"
 									onChange={handleChange('password')}
 									required
-									min={5}
+									minLength={5}
 								/>
 							</div>
 							<div className="clr"></div>
@@ -201,7 +210,7 @@ const Signup = () => {
 								type="radio"
 								name="Gender"
 								value="male"
-								onChange={handleChange('Gender')}
+								onChange={handleChange('gender')}
 								required
 							/>{' '}
 							Male &nbsp;
@@ -209,7 +218,7 @@ const Signup = () => {
 								type="radio"
 								name="Gender"
 								value="female"
-								onChange={handleChange('Gender')}
+								onChange={handleChange('gender')}
 								required
 							/>{' '}
 							Female &nbsp;
@@ -217,7 +226,7 @@ const Signup = () => {
 								type="radio"
 								name="Gender"
 								value="other"
-								onChange={handleChange('Gender')}
+								onChange={handleChange('gender')}
 								required
 							/>{' '}
 							Other
@@ -226,12 +235,20 @@ const Signup = () => {
 						<div className="box terms">
 							<input type="checkbox" name="Terms" required /> &nbsp; I accept
 							the
-							<a href="https://www.privacypolicies.com/live/83a73e61-cd09-4cde-817a-4ca8337a132d">terms and conditions</a>
+							<a href="https://www.privacypolicies.com/live/83a73e61-cd09-4cde-817a-4ca8337a132d">
+								terms and conditions
+							</a>
 						</div>
 
 						<div className="box">
-							{/* <input type="Submit" name="Register" className="submit" /> */}
-							<button type="Submit" name="Register" className="submit">
+							<button
+								type="Submit"
+								name="Register"
+								className="submit"
+								disabled={
+									!validate['email'] || !validate['username'] ? true : ''
+								}
+							>
 								Signup
 							</button>
 							<button onClick={handleLogin}>Login</button>

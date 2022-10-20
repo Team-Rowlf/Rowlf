@@ -43,7 +43,6 @@ const ReviewSuggestionsAdminPage = () => {
         id: singleSuggestion.id,
       })
     );
-    // dispatch(fetchAllSuggestions());
     navigate('/admin/userSuggestions');
   }
 

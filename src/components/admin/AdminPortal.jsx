@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useOutlet } from 'react-router-dom';
 import { fetchUser } from '../../features/user/userSlice.js';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { Link, Outlet } from 'react-router-dom';
 import Nav from '../general/Nav.jsx';
 
@@ -10,7 +10,12 @@ const AdminPortal = () => {
   const user = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { props } = useOutlet();
+  const tabURL = props.children.props.match.route.path;
 
+  useEffect(() => {
+    document.querySelector(`button[id=${tabURL}]`)?.classList.add('active');
+  }, []);
   useEffect(() => {}, [OnClick]);
 
   const OnClick = (event) => {
@@ -51,17 +56,17 @@ const AdminPortal = () => {
       <div className="admin">
         <nav>
           <Link to={'users'}>
-            <button className="tab active" id="allUsers" onClick={OnClick}>
+            <button className="tab" id="users" onClick={OnClick}>
               Users
             </button>
           </Link>
           <Link to={'recipes?page=1'}>
-            <button className="tab" id="allRecipes" onClick={OnClick}>
+            <button className="tab" id="recipes" onClick={OnClick}>
               Recipes
             </button>
           </Link>
           <Link to={'addrecipe'}>
-            <button className="tab" id="addRecipe" onClick={OnClick}>
+            <button className="tab" id="addrecipe" onClick={OnClick}>
               Add Recipe
             </button>
           </Link>

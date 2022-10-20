@@ -12,7 +12,6 @@ import Recipes from '../pages/AllRecipes.jsx';
 import RecipePage from '../pages/SingleRecipe.jsx';
 import Likes from '../pages/Likes.jsx';
 import Dislikes from '../pages/Dislikes.jsx';
-import EditProfile from '../account/EditProfile.jsx';
 import AdminPortal from '../admin/AdminPortal.jsx';
 import AllUsersAdminPage from '../admin/Users.jsx';
 import AllRecipesAdminPage from '../admin/Recipes.jsx';
@@ -20,6 +19,8 @@ import AddRecipeAdminPage from '../admin/AddRecipe.jsx';
 import ModifyRecipeAdminPage from '../admin/ModifyRecipe.jsx';
 import MapMain from '../googleMaps/MapMain.jsx';
 import ListHistory from '../account/ListHistory.jsx';
+import ChefsChoice from '../pages/ChefsChoice.jsx';
+import UserInfo from '../account/UserInfo.jsx';
 import UserSuggestionsAdminPage from '../admin/UserSuggestionsAdminPage.jsx';
 import ReviewUserSuggestionsAdminPage from '../admin/ReviewUserSuggestions.jsx';
 import UserRecipeSuggestion from '../pages/UserRecipeSuggestion.jsx';
@@ -42,10 +43,11 @@ const RoutesComponent = () => {
           <Route index element={<Likes />} />
           <Route path="likes" element={<Likes />} />
           <Route path="dislikes" element={<Dislikes />} />
-          <Route path="edit" element={<EditProfile />} />
+          <Route path="edit" element={<UserInfo />} />
           <Route path="history" element={<ListHistory />} />
           <Route path="userSuggestions" element={<UserSuggestions />} />
         </Route>
+        <Route path="chefschoice" element={<ChefsChoice />} />
         <Route path="*" element={<NotFound />} />
       </Route>
       <Route path="admin" element={<AdminPortal />}>

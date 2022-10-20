@@ -12,8 +12,15 @@ export const fetchRecipes = createAsyncThunk(
 export const fetchRecipesByPage = createAsyncThunk(
 	'recipes/fetchRecipesByPage',
 	async (params) => {
-		const {page, cuisine, restriction, active} = params;
-		const { data } = await axios.get(`/api/recipes?page=${page}&cuisine=${cuisine}&restriction=${restriction}` + (active === 'both' ? '' : (active === 'yes' ? '&active=yes' : '&active=no')));
+		const { page, cuisine, restriction, active } = params;
+		const { data } = await axios.get(
+			`/api/recipes?page=${page}&cuisine=${cuisine}&restriction=${restriction}` +
+				(active === 'both'
+					? ''
+					: active === 'yes'
+					? '&active=yes'
+					: '&active=no')
+		);
 		return data;
 	}
 );
@@ -21,8 +28,11 @@ export const fetchRecipesByPage = createAsyncThunk(
 export const fetchFilteredRecipes = createAsyncThunk(
 	'recipes/fetchFilteredRecipes',
 	async (params) => {
-		const {cuisine, restriction, sortDirection} = params;
-		const { data } = await axios.get(`/api/recipes?cuisine=${cuisine}&restriction=${restriction}` + (sortDirection.length ? `&sort=${sortDirection}` : ''));
+		const { cuisine, restriction, sortDirection } = params;
+		const { data } = await axios.get(
+			`/api/recipes?cuisine=${cuisine}&restriction=${restriction}` +
+				(sortDirection.length ? `&sort=${sortDirection}` : '')
+		);
 		return data;
 	}
 );
@@ -33,32 +43,36 @@ export const fetchSingleRecipe = createAsyncThunk(
 		const { data } = await axios.get(`/api/recipes/${id}`);
 		return data;
 	}
-)
+);
 
 //admin only functionality
-export const attemptUpdateRecipe = createAsyncThunk('recipes/attemptUpdateRecipe',
-    async (params) => {
-        const token = window.localStorage.getItem('token');
-        if (token) {
-            const { recipeDetails, cuisines, restrictions, ingredients } = params;
-            const { data } = await axios.put(`/api/recipes/${recipeDetails.id}`, 
-                {
-                    recipeDetails,
-                    cuisines,
-                    restrictions,
-                    ingredients
-                },
-                {
-                    headers: { authorization: token },
-                });
-            return data;
-        }
-    }
-)
+export const attemptUpdateRecipe = createAsyncThunk(
+	'recipes/attemptUpdateRecipe',
+	async (params) => {
+		const token = window.localStorage.getItem('token');
+		if (token) {
+			const { recipeDetails, cuisines, restrictions, ingredients } = params;
+			const { data } = await axios.put(
+				`/api/recipes/${recipeDetails.id}`,
+				{
+					recipeDetails,
+					cuisines,
+					restrictions,
+					ingredients,
+				},
+				{
+					headers: { authorization: token },
+				}
+			);
+			return data;
+		}
+	}
+);
 
 const initialState = {
 	recipes: [],
 	filterRecipes: [],
+	matchedRecipes: [], // maybe could also just use the filterRecipes array; shouldn't conflict if in different page
 	singleRecipe: {},
 	status: 'idle',
 	error: null,
@@ -70,10 +84,17 @@ const recipesSlice = createSlice({
 		clearSingleRecipe: (state) => {
 			state.singleRecipe = {};
 		},
-		clearFilteredRecipes: (state) => {
-			state.filterRecipes = [];
+		resetFilteredRecipes: (state) => {
+			state.filterRecipes = [...state.recipes];
 			state.count = state.recipes.length;
-		}
+		},
+		resetRecipes: (state) => {
+			(state.recipes = []),
+				(state.filterRecipes = []),
+				(state.singleRecipe = {}),
+				(state.status = 'idle'),
+				(state.error = null);
+		},
 	},
 	extraReducers(builder) {
 		builder
@@ -125,20 +146,25 @@ const recipesSlice = createSlice({
 				state.error = action.error;
 			})
 			.addCase(attemptUpdateRecipe.pending, (state, action) => {
-                state.status = 'pending';
-            })
-            .addCase(attemptUpdateRecipe.fulfilled, (state, action) => {
+				state.status = 'pending';
+			})
+			.addCase(attemptUpdateRecipe.fulfilled, (state, action) => {
 				state.singleRecipe = action.payload;
-                state.status = 'succeeded';
-            })
-            .addCase(attemptUpdateRecipe.rejected, (state, action) => {
-                state.status = 'failed';
-            });	
+				state.status = 'succeeded';
+			})
+			.addCase(attemptUpdateRecipe.rejected, (state, action) => {
+				state.status = 'failed';
+			});
 	},
 });
 
 export const getRecipeStatus = (state) => state.recipes.status;
 
-export const { clearSingleRecipe, clearFilteredRecipes } = recipesSlice.actions;
+export const {
+	clearSingleRecipe,
+	clearFilteredRecipes,
+	resetRecipes,
+	resetFilteredRecipes,
+} = recipesSlice.actions;
 
 export default recipesSlice.reducer;

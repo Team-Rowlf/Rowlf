@@ -5,11 +5,13 @@ import {
 	fetchFilteredRecipes,
 } from '../../features/recipes/recipesSlice';
 import { Link } from 'react-router-dom';
+import { cuisines, restrictions } from '../../helperfunctions/utils';
 
 const Recipes = () => {
 	const dispatch = useDispatch();
 	const recipes = useSelector((state) => state.recipes.recipes);
-	const filteredRecipes = useSelector((state) => state.recipes.filterRecipes);
+	const dislikeIds = useSelector((state) => state.profile.dislikes.map(recipe => recipe.id));
+	const filteredRecipes = useSelector((state) => state.recipes.filterRecipes.filter(recipe => !dislikeIds.includes(recipe.id)));
 	const recipeStatus = useSelector(getRecipeStatus);
 	const [cuisineFilter, setCuisineFilter] = useState('all');
 	const [restrictionFilter, setRestrictionFilter] = useState('all');
@@ -19,30 +21,6 @@ const Recipes = () => {
 	const [showROTD, setShowROTD] = useState(true);
 	let load = undefined;
 	let loading = undefined;
-
-	const cuisines = [
-		'all',
-		'american',
-		'asian',
-		'mexican',
-		'pasta',
-		'mediterranean',
-		'salad',
-		'soup',
-		'fusion',
-		'healthy',
-		'other',
-	];
-
-	const restrictions = [
-		'all',
-		'vegetarian',
-		'vegan',
-		'glutan-free',
-		'nut-free',
-		'lactose-free',
-		'pescatarian',
-	];
 
 	useEffect(() => {
 		dispatch(
@@ -118,7 +96,6 @@ const Recipes = () => {
 	const day = date.getDate();
 	const month = date.getMonth();
 	const id = (recipes.length - 1) % (day * month);
-	const rotd = recipes[id];
 
 	return recipeStatus === 'pending' ? (
 		<h1 className="loading">LOADING...</h1>
@@ -137,6 +114,13 @@ const Recipes = () => {
 									<p> Serving Size: {recipes[id].servings} </p>
 								</Link>
 							</div>
+							<br />
+							<p>
+								Not sure what you're looking for?{' '}
+								<Link className="chefs-choice-link" to="/user/chefschoice">
+									Ask the chef!
+								</Link>
+							</p>
 						</div>
 					) : (
 						<></>

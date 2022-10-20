@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Recipe, Cuisine, Restriction, LineItem, Ingredient } = require('../db');
+const { Recipe, Cuisine, Restriction, LineItem, Ingredient, Appliance } = require('../db');
 const { requireToken, isAdmin } = require('./gatekeepingMiddleware');
 
 // get all recipes
@@ -29,6 +29,7 @@ router.get('/', async (req, res, next) => {
         include: [
           cuisineObj,
           restrictionObj,
+          { model: Appliance },
           { model: LineItem, include: { model: Ingredient } },
         ],
       });
@@ -56,6 +57,7 @@ router.get('/', async (req, res, next) => {
         include: [
           cuisineObj,
           restrictionObj,
+          { model: Appliance },
           { model: LineItem, include: { model: Ingredient } },
         ],
       });
@@ -66,6 +68,7 @@ router.get('/', async (req, res, next) => {
         include: [
           { model: Cuisine },
           { model: Restriction },
+          { model: Appliance },
           { model: LineItem, include: { model: Ingredient } },
         ],
       });
