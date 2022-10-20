@@ -20,6 +20,10 @@ import AddRecipeAdminPage from '../admin/AddRecipe.jsx';
 import ModifyRecipeAdminPage from '../admin/ModifyRecipe.jsx';
 import MapMain from '../googleMaps/MapMain.jsx';
 import ListHistory from '../account/ListHistory.jsx';
+import UserSuggestionsAdminPage from '../admin/UserSuggestionsAdminPage.jsx';
+import ReviewUserSuggestionsAdminPage from '../admin/ReviewUserSuggestions.jsx';
+import UserRecipeSuggestion from '../pages/UserRecipeSuggestion.jsx';
+import UserSuggestions from '../account/UserSuggestions.jsx';
 
 const RoutesComponent = () => {
   return (
@@ -33,12 +37,14 @@ const RoutesComponent = () => {
         <Route path="shoppingList" element={<ShoppingList />} />
         <Route path="recipes" element={<Recipes />} />
         <Route path="recipes/:recipeId" element={<RecipePage />} />
+        <Route path="userRecipeSuggestion" element={<UserRecipeSuggestion />} />
         <Route path="profile" element={<Profile />}>
           <Route index element={<Likes />} />
           <Route path="likes" element={<Likes />} />
           <Route path="dislikes" element={<Dislikes />} />
           <Route path="edit" element={<EditProfile />} />
           <Route path="history" element={<ListHistory />} />
+          <Route path="userSuggestions" element={<UserSuggestions />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Route>
@@ -48,6 +54,11 @@ const RoutesComponent = () => {
         <Route path="recipes" element={<AllRecipesAdminPage />} />
         <Route path="addrecipe" element={<AddRecipeAdminPage />} />
         <Route path="updaterecipe/:id" element={<ModifyRecipeAdminPage />} />
+        <Route path="userSuggestions" element={<UserSuggestionsAdminPage />} />
+        <Route
+          path="userSuggestions/reviewUserSuggestion/:id"
+          element={<ReviewUserSuggestionsAdminPage />}
+        />
         <Route path="*" element={<NotFound />} />
       </Route>
       <Route path="map" element={<MapMain />} />

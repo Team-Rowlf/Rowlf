@@ -18,7 +18,7 @@ router.get('/', async (req, res, next) => {
         restrictionObj.where = { name: [req.query.restriction] };
       }
       if (req.query.active) {
-        activeObj.isActive = (req.query.active === 'yes' ? true : false)
+        activeObj.isActive = req.query.active === 'yes' ? true : false;
       }
       const { rows, count } = await Recipe.findAndCountAll({
         distinct: true,
@@ -51,7 +51,7 @@ router.get('/', async (req, res, next) => {
       }
       const { rows, count } = await Recipe.findAndCountAll({
         distinct: true,
-        where: {isActive: true},
+        where: { isActive: true },
         order: [orderArr],
         include: [
           cuisineObj,
@@ -62,7 +62,7 @@ router.get('/', async (req, res, next) => {
       res.send({ rows, count });
     } else {
       const { rows, count } = await Recipe.findAndCountAll({
-        where: {isActive: true},
+        where: { isActive: true },
         include: [
           { model: Cuisine },
           { model: Restriction },
@@ -120,7 +120,7 @@ router.put('/:id', requireToken, isAdmin, async (req, res, next) => {
     let cuisineCopy = [...recipe.cuisines];
     for (let i in cuisineCopy) {
       await recipe.removeCuisine(cuisineCopy[i]);
-    };
+    }
     let restrictionCopy = [...recipe.restrictions];
     for (let i in restrictionCopy) {
       await recipe.removeRestriction(restrictionCopy[i]);
@@ -133,15 +133,21 @@ router.put('/:id', requireToken, isAdmin, async (req, res, next) => {
 
     await recipe.update(req.body.recipeDetails);
     for (let i in req.body.cuisines) {
-      const cuisine = await Cuisine.findOne({where: {name: req.body.cuisines[i]}})
-      await recipe.addCuisine(cuisine)
+      const cuisine = await Cuisine.findOne({
+        where: { name: req.body.cuisines[i] },
+      });
+      await recipe.addCuisine(cuisine);
     }
     for (let i in req.body.restrictions) {
-      const restriction = await Restriction.findOne({where: {name: req.body.restrictions[i]}})
-      await recipe.addRestriction(restriction)
+      const restriction = await Restriction.findOne({
+        where: { name: req.body.restrictions[i] },
+      });
+      await recipe.addRestriction(restriction);
     }
     for (let i in req.body.ingredients) {
-      const [ingredient, created] = await Ingredient.findOrCreate({where: {name: req.body.ingredients[i].name}})
+      const [ingredient, created] = await Ingredient.findOrCreate({
+        where: { name: req.body.ingredients[i].name },
+      });
       const lineItem = await LineItem.create({
         ingredientId: ingredient.id,
         recipeId: recipe.id,
@@ -177,13 +183,15 @@ router.post('/add-recipe', requireToken, isAdmin, async (req, res, next) => {
       await recipe.addRestriction(restriction);
     });
     req.body.ingredients.forEach(async (item) => {
-      const [ingredient, created] = await Ingredient.findOrCreate({where: {name: item.name}})
+      const [ingredient, created] = await Ingredient.findOrCreate({
+        where: { name: item.name },
+      });
       const lineItem = await LineItem.create({
         qty: Number(item.qty),
         measurement: item.measurement,
         ingredientId: ingredient.id,
-        recipeId: recipe.id
-      })
+        recipeId: recipe.id,
+      });
     });
     const updated = await Recipe.findByPk(recipe.id);
     res.send(updated);

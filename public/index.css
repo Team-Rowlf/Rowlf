@@ -864,14 +864,13 @@ a,
 }
 .tab {
   border: 3px solid #8B2635;
-  border-radius: 5px 5px 0px 0px ;
+  border-radius: 5px 5px 0px 0px;
   padding: 0.5%;
   margin: 0.25%;
   margin-bottom: -3px;
   background-color: #8B2635;
   font-size: large;
   font-weight: bold;
-  min-width: fit-content;
 }
 .active {
   background-color: #E0E2DB;
@@ -1069,4 +1068,31 @@ tbody {
   width: 100vw;
   margin-top: 2%;
   margin-bottom: 2%;
+}
+#userSuggestions.tab {
+  width: fit-content;
+}
+.user-suggestions-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+.submit-review {
+  margin-top: 5px;
+  margin-right: 110px;
+}
+.suggestion-radio {
+  margin-left: 5px;
+}
+.user-recipe-suggestion {
+  margin-top: 90px;
+  margin-bottom: 50px;
+}
+.user-suggestion-link {
+  margin: 50px;
+}
+.user-suggestion-link button {
+  margin-top: 10px;
 }

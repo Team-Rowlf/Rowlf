@@ -1,6 +1,7 @@
 const db = require('../db');
 const users = require('./userSeed');
 const shoppingLists = require('./shoppingListSeed');
+const userSuggestions = require('./userSuggestionsSeed');
 const User = require('../models/User');
 const cuisines = require('./cuisineSeed');
 const Cuisine = require('../models/Cuisine');
@@ -14,6 +15,7 @@ const recipes = require('./recipeSeed');
 const Recipe = require('../models/Recipe');
 const LineItem = require('../models/LineItem');
 const ShoppingList = require('../models/ShoppingList');
+const UserSuggestion = require('../models/UserSuggestion');
 
 const seed = async () => {
   console.log('Seeding in progress...');
@@ -27,6 +29,16 @@ const seed = async () => {
       isCompleted: Math.random() < 0.5 ? true : false,
     });
     await currentShoppingList.setUser(
+      await User.findByPk(Math.floor(Math.random() * users.length) + 1)
+    );
+  });
+
+  //made some suggestions that are all given a status of pending
+  userSuggestions.forEach(async (suggestion) => {
+    let currentSuggestion = await UserSuggestion.create({
+      url: suggestion,
+    });
+    await currentSuggestion.setUser(
       await User.findByPk(Math.floor(Math.random() * users.length) + 1)
     );
   });

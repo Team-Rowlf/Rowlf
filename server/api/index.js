@@ -8,5 +8,6 @@ router.use('/restrictions', require('./restrictions'));
 router.use('/ingredients', require('./ingredients'));
 router.use('/appliances', require('./appliances'));
 router.use('/amazon', require('./amazon'));
+router.use('/userSuggestions', require('./userSuggestions'));
 
 module.exports = router;

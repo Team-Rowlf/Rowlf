@@ -410,4 +410,5 @@ router.delete('/all/:id', requireToken, isAdmin, async (req, res, next) => {
     next(error);
   }
 });
+
 module.exports = router;

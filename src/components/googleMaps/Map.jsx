@@ -77,9 +77,9 @@ const Map = () => {
           setNearbyStores(latLng);
         },
         () => {
-          const sanFranLatLng = { lat: 37.7749, lng: -122.4194 };
-          setLocation(sanFranLatLng);
-          setNearbyStores(sanFranLatLng);
+          const sanDiegoLatLng = { lat: 32.715736, lng: -117.161087 };
+          setLocation(sanDiegoLatLng);
+          setNearbyStores(sanDiegoLatLng);
         }
       );
     }

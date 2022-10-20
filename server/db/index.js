@@ -7,6 +7,7 @@ const Restriction = require('./models/Restriction');
 const ShoppingList = require('./models/ShoppingList');
 const Appliance = require('./models/Appliance');
 const LineItem = require('./models/LineItem');
+const UserSuggestion = require('./models/UserSuggestion');
 const seedFunc = require('./seed');
 
 User.hasMany(ShoppingList);
@@ -18,6 +19,9 @@ User.belongsToMany(Ingredient, {
   through: 'UserOwnedIngredients',
   as: 'ownedIngredient',
 });
+
+User.hasMany(UserSuggestion);
+UserSuggestion.belongsTo(User);
 
 Recipe.belongsToMany(Cuisine, { through: 'CuisineType' });
 Cuisine.belongsToMany(Recipe, { through: 'CuisineType' });
@@ -44,5 +48,6 @@ module.exports = {
   Restriction,
   Appliance,
   LineItem,
+  UserSuggestion,
   seedFunc,
 };
