@@ -252,6 +252,7 @@ const ModifyRecipeAdminPage = () => {
                                         className="textBox"
                                         placeholder="Recipe Url"
                                         name="url"
+                                        type="url"
                                         value={form.url}
                                         onChange={handleChange("url")}
                                     />
@@ -267,6 +268,7 @@ const ModifyRecipeAdminPage = () => {
                                         className="textBox"
                                         placeholder="Recipe Image Url"
                                         name="img"
+                                        type="url"
                                         value={form.img}
                                         onChange={handleChange("img")}
                                     />

@@ -52,7 +52,6 @@ const RoutesComponent = () => {
 				<Route path="updaterecipe/:id" element={<ModifyRecipeAdminPage />} />
 				<Route path="*" element={<NotFound />} />
 			</Route>
-			{/* <Route path="user/chefschoice" element={<ChefsChoice />} /> */}
 			<Route path="map" element={<MapMain />} />
 			<Route path="*" element={<NotFound />} />
 		</Routes>
