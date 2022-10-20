@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { PURGE } from 'redux-persist';
 
 export const fetchUser = createAsyncThunk('user/fetchUser', async () => {
 	const token = window.localStorage.getItem('token');
@@ -20,7 +19,6 @@ export const editUser = createAsyncThunk(
 			const { data } = await axios.put('/api/user/editMe', signUp, {
 				headers: { authorization: token },
 			});
-			console.log('EDIT: ', data);
 			return data;
 		}
 	}
@@ -115,6 +113,11 @@ const userSlice = createSlice({
 			.addCase(loginUser.rejected, (state, action) => {
 				state.status = 'failed';
 				state.error = action.payload;
+			})
+			.addCase(editUser.fulfilled, (state, action) => {
+				if (state.isLogged) {
+					state.userInfo = action.payload;
+				}
 			});
 	},
 });

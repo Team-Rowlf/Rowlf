@@ -13,8 +13,9 @@ import {
 } from '../../features/recipes/recipesSlice';
 import { fetchAddtoShoppingList } from '../../features/shoppingList/shoppingListSlice';
 import { getUserToken } from '../../features/user/userSlice';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { decimalToFraction } from '../../helperfunctions/fractions';
+import { capitalize } from '../../helperfunctions/utils';
 
 const RecipePage = () => {
 	const dispatch = useDispatch();
@@ -102,15 +103,6 @@ const RecipePage = () => {
 
 	const handleInstructions = () => {
 		window.open(recipe.url, '_blank');
-	};
-
-	const capitalize = (string) => {
-		let arr = string.split(' ');
-		arr = arr.map((itm) =>
-			itm.length ? itm[0].toUpperCase() + itm.slice(1) : itm
-		);
-		string = arr.join(' ');
-		return string;
 	};
 
 	return !recipe.name ? (

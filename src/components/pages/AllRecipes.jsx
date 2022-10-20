@@ -5,6 +5,7 @@ import {
 	fetchFilteredRecipes,
 } from '../../features/recipes/recipesSlice';
 import { Link } from 'react-router-dom';
+import { cuisines, restrictions } from '../../helperfunctions/utils';
 
 const Recipes = () => {
 	const dispatch = useDispatch();
@@ -19,30 +20,6 @@ const Recipes = () => {
 	const [showROTD, setShowROTD] = useState(true);
 	let load = undefined;
 	let loading = undefined;
-
-	const cuisines = [
-		'all',
-		'american',
-		'asian',
-		'mexican',
-		'pasta',
-		'mediterranean',
-		'salad',
-		'soup',
-		'fusion',
-		'healthy',
-		'other',
-	];
-
-	const restrictions = [
-		'all',
-		'vegetarian',
-		'vegan',
-		'glutan-free',
-		'nut-free',
-		'lactose-free',
-		'pescatarian',
-	];
 
 	useEffect(() => {
 		dispatch(

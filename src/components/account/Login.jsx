@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
-  loginUser,
-  fetchUser,
-  getError,
-  setError,
-  isLoggedStatus,
-} from "../../features/user/userSlice";
-import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer, toast } from "react-toastify";
+	loginUser,
+	fetchUser,
+	getError,
+	setError,
+	isLoggedStatus,
+} from '../../features/user/userSlice';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();

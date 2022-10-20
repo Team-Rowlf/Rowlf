@@ -1,21 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate, Link } from 'react-router-dom';
 import {
 	editUser,
 	validateSignupForm,
 	getFormInputAvailable,
-	fetchUser,
 } from '../../features/user/userSlice';
+import { capitalize } from '../../helperfunctions/utils';
 
-const EditProfile = () => {
+const EditProfile = ({ handleEdit }) => {
 	const dispatch = useDispatch();
-	const navigate = useNavigate();
 	let user = useSelector((state) => state.user.userInfo);
 
-	const handleLogin = () => {
-		navigate('/login');
-	};
 	const [signUp, setSignUp] = useState({});
 	const validate = useSelector(getFormInputAvailable);
 
@@ -31,8 +26,8 @@ const EditProfile = () => {
 	};
 	const handleSubmit = (event) => {
 		event.preventDefault();
-
 		dispatch(editUser({ signUp }));
+		handleEdit();
 	};
 
 	const handleChange = (prop) => (event) => {
@@ -49,15 +44,6 @@ const EditProfile = () => {
 		}
 	};
 	useEffect(() => {}, [validate]);
-
-	const capitalize = (string) => {
-		let arr = string.split(' ');
-		arr = arr.map((itm) =>
-			itm.length ? itm[0].toUpperCase() + itm.slice(1) : itm
-		);
-		string = arr.join(' ');
-		return string;
-	};
 
 	return (
 		<>

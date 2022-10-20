@@ -8,6 +8,7 @@ import {
 	fetchRecipesByPage,
 	getRecipeStatus,
 } from '../../features/recipes/recipesSlice.js';
+import { restrictions, cuisines } from '../../helperfunctions/utils';
 
 const AllRecipesAdminPage = () => {
 	const user = useSelector((state) => state.user);
@@ -21,30 +22,6 @@ const AllRecipesAdminPage = () => {
 	const [cuisineFilter, setCuisineFilter] = useState('all');
 	const [restrictionFilter, setRestrictionFilter] = useState('all');
 	const [activeFilter, setActiveFiler] = useState('both');
-
-	const cuisines = [
-		'all',
-		'american',
-		'asian',
-		'mexican',
-		'pasta',
-		'mediterranean',
-		'salad',
-		'soup',
-		'fusion',
-		'healthy',
-		'other',
-	];
-
-	const restrictions = [
-		'all',
-		'vegetarian',
-		'vegan',
-		'glutan-free',
-		'nut-free',
-		'lactose-free',
-		'pescatarian',
-	];
 
 	const statuses = ['both', 'yes', 'no'];
 
