@@ -156,19 +156,19 @@ svg {
 }
 .navigation-menu.expanded ul {
   background-color: #8B2635;
-  padding-right: 25%;
+  padding-right: 30%;
   display: block;
   list-style: none;
   min-width: 55vw;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  padding-top: 5%;
 }
 .navigation-menu.expanded ul li {
-  padding: 15%;
+  padding: 5%;
 }
 .navigation-menu.expanded ul li a {
-  padding: 15%;
   font-size: xx-large;
   text-decoration: none;
   font-weight: bolder;
