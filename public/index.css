@@ -76,14 +76,15 @@ img {
 .profile nav,
 .admin nav {
   display: flex;
-  padding: 2%;
+  padding: 1%;
   padding-bottom: 0px;
   border-bottom: 3px solid #8B2635;
 }
 .profile nav a,
 .admin nav a {
-  min-width: 8%;
+  min-width: 130px;
   flex-wrap: nowrap;
+  min-height: fit-content;
 }
 .profile nav a button,
 .admin nav a button {
@@ -99,6 +100,10 @@ img {
   padding: 10px;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
   border-radius: 75px;
+}
+button {
+  min-width: fit-content;
+  flex-wrap: wrap;
 }
 .nav {
   display: flex;
