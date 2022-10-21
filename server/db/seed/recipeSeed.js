@@ -416,7 +416,7 @@ const recipes = [
       },
       {
         url: 'https://www.allrecipes.com/recipe/14595/salisbury-steak/',
-        img: undefined,
+        img: 'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fpublic-assets.meredithcorp.io%2F375d91c897e80b66378201bc0a6b8439%2F166604920934320221017_184526.jpg&q=60&c=sc&orient=true&poi=auto&h=512',
         name: 'Salisbury Steak',
         cuisine: ['american'],
         appliances: ['stovetop'],
@@ -443,7 +443,7 @@ const recipes = [
       },
       {
         url: 'https://www.allrecipes.com/recipe/11887/pesto-pasta/',
-        img: undefined,
+        img: 'https://www.allrecipes.com/thmb/uYKuSLd9j6HWVFVN6f6H7yX_60M=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/11887_pesto-pasta_Rita-1x1-1-501c953b29074ab193e2b5ad36e64648.jpg',
         name: 'Pesto Pasta',
         cuisine: ['pasta'],
         appliances: ['stovetop'],
@@ -2039,7 +2039,7 @@ const recipes = [
   },
   {
     url: 'https://www.allrecipes.com/recipe/278702/air-fryer-chimichangas/',
-    img: undefined,
+    img: 'https://www.allrecipes.com/thmb/dPztwB6f5cuO7IAo9smRqbq_SOg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/8183487-795c0771bd5b4591a2e8dea7461fa0e4.jpg',
     name: 'Air Fryer Chimichangas',
     cuisine: ['mexican'],
     appliances: ['air fryer'],
@@ -2299,7 +2299,7 @@ const recipes = [
   },
   {
     url: 'https://www.allrecipes.com/recipe/268999/mediterranean-chicken-sheet-pan-dinner/',
-    img: undefined,
+    img: 'https://www.allrecipes.com/thmb/fkuwtKXxAGTcUU1HocMNnp5iffY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/9062400-bd4781326b9949579f605816d31a4b38.jpg',
     name: 'Mediterranean Chicken Sheet Pan Dinner',
     cuisine: ['mediterranean'],
     appliances: ['oven'],
@@ -2814,7 +2814,7 @@ const recipes = [
   },
   {
     url: 'https://www.allrecipes.com/recipe/280935/air-fryer-tilapia-with-fresh-lemon-pepper/',
-    img: undefined,
+    img: 'https://www.allrecipes.com/thmb/1VpYDbLNVfwK__exvcLxKAopQBM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/9070673-c8129652e5144532a523477e72fec843.jpg',
     name: 'Air Fryer Tilapia with Fresh Lemon Pepper',
     cuisine: ['other'],
     appliances: ['air fryer'],
