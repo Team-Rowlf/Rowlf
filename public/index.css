@@ -2,6 +2,7 @@
   margin: 0px;
   max-width: 100%;
   font-family: 'Fuzzy Bubbles';
+  overflow-x: hidden;
 }
 #root {
   min-height: 100%;
@@ -40,7 +41,6 @@ body {
   margin-bottom: 25px;
 }
 .footer {
-  position: fixed;
   margin-bottom: -50px;
   width: 100%;
   padding: 15px;
@@ -197,8 +197,24 @@ svg {
   width: 30px;
   height: 30px;
 }
+.-button {
+  width: 30px;
+  height: 30px;
+  background-color: #8B2635;
+  overflow: hidden;
+  color: white;
+  border-radius: 5%;
+}
 .close-navbar:hover {
   color: #302e2e;
+}
+button {
+  background: #8B2635;
+  border-radius: 10%;
+  color: white;
+}
+button:hover {
+  color: black;
 }
 .login {
   border: 5px solid #8B2635;
@@ -281,7 +297,7 @@ svg {
   cursor: pointer;
   font-weight: bold;
 }
-button {
+#buttonClass {
   float: left;
   border: 2px solid #D3EFBD;
   border-radius: 5px;
@@ -388,18 +404,6 @@ button {
   color: white;
   width: 110px;
   height: 35px;
-  background: #8B2635;
-  text-transform: uppercase;
-  cursor: pointer;
-  font-weight: bold;
-}
-button {
-  float: left;
-  border: 2px solid #D3EFBD;
-  border-radius: 5px;
-  color: white;
-  min-width: 110px;
-  min-height: 35px;
   background: #8B2635;
   text-transform: uppercase;
   cursor: pointer;
@@ -619,16 +623,14 @@ button {
 .footer {
   min-height: fit-content;
   padding: 0;
-  padding-top: 1%;
   text-align: center;
   display: block;
   background-color: #8B2635;
   color: white;
   border-top: 10px solid #0D730D;
-  margin-top: 5%;
+  margin-top: 2%;
   font-weight: bold;
   box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.5);
-  position: relative;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -651,14 +653,14 @@ button {
 }
 .footer .footer-lower .media-container-row {
   padding: 0.5%;
-  padding-bottom: 1.5%;
   margin-right: 0px;
   margin-left: auto;
   color: #D3EFBD;
 }
 .title-card {
   font-size: xx-large;
-  padding-bottom: 10px;
+  padding-bottom: 2%;
+  padding-top: 2%;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 .text {
@@ -672,7 +674,7 @@ a,
 .fa {
   padding: 20px;
   font-size: 30px;
-  width: 30px;
+  width: 15px;
   text-align: center;
   text-decoration: none;
   margin: 5px 2px;
@@ -707,8 +709,10 @@ a,
   margin: auto;
   text-align: center;
   min-height: 70vh;
+  overflow-x: visible;
 }
 .shoppingList-container .recipe {
+  overflow-x: visible;
   max-width: fit-content;
   margin: auto;
   font-size: x-large;
@@ -718,6 +722,7 @@ a,
   padding-top: 2.5%;
 }
 .shoppingList-container .recipe .ingredients {
+  overflow-x: visible;
   font-size: normal;
   font-weight: normal;
   margin: auto;
@@ -726,6 +731,7 @@ a,
   white-space: nowrap;
 }
 .shoppingList-container .recipe .ingredients .ingredient-checkbox {
+  overflow-x: visible;
   display: block;
 }
 .shoppingList-container .recipe .ingredients .ingredient-checkbox input {
@@ -1086,8 +1092,8 @@ a,
   align-items: center;
 }
 .-button {
-  width: 25px;
-  height: 25px;
+  max-width: 25px !important;
+  height: 25px !important;
   display: inline-block;
   margin: auto;
   align-items: center;
