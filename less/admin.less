@@ -1,67 +1,67 @@
-.allusers-header, .allrecipes-header {
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 50px;
-    div {
-        margin: .25em;
-    }
+.allusers-header,
+.allrecipes-header {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  div {
+    margin: 0.25em;
+  }
 }
 .display-info {
-    flex-direction: row;
-    display: flex;
-
+  flex-direction: row;
+  display: flex;
 }
 .display-text {
-    font-style: italic;
-    margin-right: 1em;
+  font-style: italic;
+  margin-right: 1em;
 }
 .sort-checkbox {
-    margin: .5em
+  margin: 0.5em;
 }
 .no-recipes-message {
-    margin: auto;
-    text-align: center;
-    margin-top: 25px;
+  margin: auto;
+  text-align: center;
+  margin-top: 25px;
 }
 
 #add-recipe-form {
-    margin-top: 2em;
-    margin-bottom: 2em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.-button{
-    width:25px;
-    height:25px;
-    display:inline-block;
-    margin: auto;
-    align-items: center;
+.-button {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  margin: auto;
+  align-items: center;
 }
-.-button:hover{
-    color: rgb(29, 23, 23);
+.-button:hover {
+  color: rgb(29, 23, 23);
 }
 
-.ingredients{
+.ingredients {
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1%;
+  .ingredient {
+    background-color: @red;
+    margin: 1%;
     height: fit-content;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 1%;
-    .ingredient{
-        background-color: @red;
-        margin: 1%;
-        height: fit-content;
-        width: fit-content;
-        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
-        border-radius: 10px;
-        border: 1px solid @backgroundLight;
-        padding: 0.5%;
-    }
+    width: fit-content;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    border: 1px solid @backgroundLight;
+    padding: 0.5%;
+  }
 }
 
 #table {
@@ -81,13 +81,17 @@
   padding: 8px;
 }
 
-tbody{
+tbody {
   border: 5px solid @red;
 }
 
-#table tr:nth-child(even){background-color: #eee;}
+#table tr:nth-child(even) {
+  background-color: #eee;
+}
 
-#table tr:hover {background-color: @lightGreen;}
+#table tr:hover {
+  background-color: @lightGreen;
+}
 
 #table th {
   padding-top: 12px;
@@ -96,51 +100,55 @@ tbody{
   background-color: @darkGreen;
   color: white;
 }
-.recipe-url{
-    max-width: 500px;;
-    overflow: scroll;
+.recipe-url {
+  max-width: 500px;
+  overflow: scroll;
 }
-.recipe-name{
-    max-width: 200px;;
+.recipe-name {
+  max-width: 200px;
 }
 
-.all-users-container{
-    display: flex;
-    flex-wrap: wrap;
-    allusers-header{
-        width: 100vw;
-    }
-}
-#table{
+.all-users-container {
+  display: flex;
+  flex-wrap: wrap;
+  allusers-header {
     width: 100vw;
-    margin-top: 2%;
-    margin-bottom: 2%;
+  }
+}
+#table {
+  width: 100vw;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 .recipe-id-link {
-    color: @darkGreen;
+  color: @darkGreen;
 }
 .modify-header {
-    // margin-left: 1em;
-    margin-top: .5em;
-    text-align: center;
+  // margin-left: 1em;
+  margin-top: 0.5em;
+  text-align: center;
 }
-.delete-tag, .add-tag {
-    // margin-left: 1em;
-    width:25px;
-    height:25px;
-    display:inline-block;
-    margin: auto;
-    align-items: center;
+.delete-tag,
+.add-tag {
+  // margin-left: 1em;
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  margin: auto;
+  align-items: center;
 }
 
-.add-tag:hover, .delete-tag:hover, .back-to-recipes:hover, .save-changes:hover {
-    color: rgb(29, 23, 23);
+.add-tag:hover,
+.delete-tag:hover,
+.back-to-recipes:hover,
+.save-changes:hover {
+  color: rgb(29, 23, 23);
 }
 .back-to-recipes {
-    margin-left: 1em;
+  margin-left: 1em;
 }
 .save-back-div {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
