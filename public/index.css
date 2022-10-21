@@ -156,14 +156,16 @@ svg {
 }
 .navigation-menu.expanded ul {
   background-color: #8B2635;
-  padding-right: 30%;
+  margin-right: 2em;
   display: block;
   list-style: none;
-  min-width: 55vw;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  height: fit-content;
   padding-top: 5%;
+}
+.navigation-menu.expanded ul ul {
+  margin-right: 2em;
 }
 .navigation-menu.expanded ul li {
   padding: 5%;
@@ -174,10 +176,24 @@ svg {
   font-weight: bolder;
 }
 .navigation a {
-  padding: 15%;
   font-size: xx-large;
   text-decoration: none;
   font-weight: bolder;
+}
+.navigation a:hover {
+  color: #302e2e;
+}
+.close-navbar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 1em;
+  margin-right: 1em;
+  width: 30px;
+  height: 30px;
+}
+.close-navbar:hover {
+  color: #302e2e;
 }
 .login {
   border: 5px solid #8B2635;
