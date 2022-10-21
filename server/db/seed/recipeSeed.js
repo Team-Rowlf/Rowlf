@@ -4108,7 +4108,7 @@ const recipes = [
     {
       url: "https://www.myrecipes.com/recipe/creamy-chicken-tomato-skillet",
       name: "Creamy Chicken-Tomato Skillet",
-      img: "https://www.myrecipes.com/recipe/creamy-chicken-tomato-skillet",
+      img: "https://www.myrecipes.com/recipe/creahttps://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F19%2F2018%2F10%2F10%2Fcreamy-chicken-tomato-skillet-ck-1805p20.jpgmy-chicken-tomato-skillet",
       cuisine: ['other'],
       appliances: ['stovetop'],
       restrictions: ['nut-free'],
