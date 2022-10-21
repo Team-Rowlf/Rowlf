@@ -10,8 +10,8 @@ const UserSuggestion = db.define('userSuggestion', {
     },
   },
   status: {
-    type: Sequelize.ENUM('approved', 'denied', 'pending'),
-    defaultValue: 'pending',
+    type: Sequelize.ENUM('Approved', 'Denied', 'Pending'),
+    defaultValue: 'Pending',
   },
   adminResponse: {
     type: Sequelize.STRING,

@@ -16,35 +16,45 @@ const defaultToast = {
 export const fetchAllSuggestions = createAsyncThunk(
   'userSuggestions/fetchAllSuggestions',
   async () => {
-    const token = window.localStorage.getItem('token');
-    const { data } = await axios.get('/api/userSuggestions', {
-      headers: { authorization: token },
-    });
-    return data;
+    try {
+      const token = window.localStorage.getItem('token');
+      const { data } = await axios.get('/api/userSuggestions', {
+        headers: { authorization: token },
+      });
+      return data;
+    } catch (error) {
+      throw error;
+    }
   }
 );
 
 export const fetchSingleSuggestion = createAsyncThunk(
   'userSuggestions/fetchSingleSuggestion',
   async (id) => {
-    console.log('fetchSingleSuggestion');
-    const token = window.localStorage.getItem('token');
-    const { data } = await axios.get(`/api/userSuggestions/${id}`, {
-      headers: { authorization: token },
-    });
-    return data;
+    try {
+      const token = window.localStorage.getItem('token');
+      const { data } = await axios.get(`/api/userSuggestions/${id}`, {
+        headers: { authorization: token },
+      });
+      return data;
+    } catch (error) {
+      throw error;
+    }
   }
 );
 
 export const fetchLoggedInUserSuggestions = createAsyncThunk(
   'userSuggestions/fetchLoggedInUserSuggestions',
   async () => {
-    console.log('fetchLoggedInUserSuggestions');
-    const token = window.localStorage.getItem('token');
-    const { data } = await axios.get(`/api/userSuggestions/me`, {
-      headers: { authorization: token },
-    });
-    return data;
+    try {
+      const token = window.localStorage.getItem('token');
+      const { data } = await axios.get(`/api/userSuggestions/me`, {
+        headers: { authorization: token },
+      });
+      return data;
+    } catch (error) {
+      throw error;
+    }
   }
 );
 
@@ -63,6 +73,7 @@ export const addSuggestion = createAsyncThunk(
         error.response ? error.response.data : 'Unable to submit suggestion',
         defaultToast
       );
+      throw error;
     }
   }
 );
@@ -86,6 +97,24 @@ export const reviewSuggestion = createAsyncThunk(
         error.response ? error.response.data : 'Unable to submit review',
         defaultToast
       );
+      throw error;
+    }
+  }
+);
+
+export const deleteSuggestion = createAsyncThunk(
+  'userSuggestions/deleteSuggestion',
+  async (id) => {
+    try {
+      const token = window.localStorage.getItem('token');
+      const { data } = await axios.delete(`/api/userSuggestions/${id}`, {
+        headers: { authorization: token },
+      });
+      toast.success('Suggestion has been deleted!', defaultToast);
+      return data;
+    } catch (error) {
+      toast.error('Unable to delete suggestion', defaultToast);
+      throw error;
     }
   }
 );
@@ -142,6 +171,14 @@ const userSuggestionsSlice = createSlice({
         state.loggedInUserSuggestions = action.payload;
       })
       .addCase(fetchLoggedInUserSuggestions.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error;
+      })
+      .addCase(reviewSuggestion.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error;
+      })
+      .addCase(addSuggestion.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error;
       });

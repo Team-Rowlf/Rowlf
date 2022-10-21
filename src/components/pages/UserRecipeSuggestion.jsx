@@ -17,8 +17,9 @@ const UserRecipeSuggestion = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(addSuggestion({ url: url }));
-    dispatch(fetchLoggedInUserSuggestions());
-    navigate('/user/profile/userSuggestions');
+    setUrl('');
+    // dispatch(fetchLoggedInUserSuggestions());
+    // navigate('/user/profile/userSuggestions');
   };
 
   return (
@@ -44,14 +45,23 @@ const UserRecipeSuggestion = () => {
             </div>
             <div className="clr"></div>
           </div>
-          <div className="box">
-            <button
-              type="Submit"
-              name="Submit-Review"
-              className="submit submit-review"
-            >
-              Send Suggestion
-            </button>
+          <div className="suggestion-buttons">
+            <div className="box">
+              <button
+                type="Submit"
+                name="Submit-Review"
+                className="submit submit-review"
+              >
+                Send Suggestion
+              </button>
+            </div>
+            <div className="box suggestion-box">
+              <Link to="/user/profile/userSuggestions">
+                <button type="Submit" name="go-back" className="submit go-back">
+                  Go Back
+                </button>
+              </Link>
+            </div>
           </div>
         </form>
       </div>

@@ -6,20 +6,7 @@ const { requireToken, isAdmin } = require('./gatekeepingMiddleware');
 router.get('/', requireToken, isAdmin, async (req, res, next) => {
   try {
     const userSuggestions = await UserSuggestion.findAll({
-      include: {
-        model: User,
-        attributes: ['username'],
-      },
-    });
-    res.send(userSuggestions);
-  } catch (err) {
-    next(err);
-  }
-});
-
-router.get('/', requireToken, isAdmin, async (req, res, next) => {
-  try {
-    const userSuggestions = await UserSuggestion.findAll({
+      order: [['createdAt', 'ASC']],
       include: {
         model: User,
         attributes: ['username'],
@@ -34,6 +21,7 @@ router.get('/', requireToken, isAdmin, async (req, res, next) => {
 router.get('/me', requireToken, async (req, res, next) => {
   try {
     const userSuggestions = await UserSuggestion.findAll({
+      order: [['createdAt', 'ASC']],
       where: {
         userId: req.user.id,
       },
