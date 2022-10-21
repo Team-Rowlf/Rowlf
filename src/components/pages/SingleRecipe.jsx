@@ -85,7 +85,7 @@ const RecipePage = () => {
 		const color = addLike || removeDislike ? '#0D730D' : '#8B2635';
 
 		toast.success(message, {
-			position: 'top-right',
+			position: 'bottom-right',
 			autoClose: 1500,
 			hideProgressBar: false,
 			closeOnClick: true,
