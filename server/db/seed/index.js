@@ -39,7 +39,7 @@ const seed = async () => {
       url: suggestion,
     });
     await currentSuggestion.setUser(
-      await User.findByPk(Math.floor(Math.random() * users.length) + 1)
+      await User.findByPk(Math.floor(Math.random() * 4) + 1)
     );
   });
 
