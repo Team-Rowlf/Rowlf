@@ -68,6 +68,7 @@ const Nav = () => {
 					<li>			
 					<Link
 						to='/admin'
+						className='navbar-link'
 						onClick={() => {
 							setIsNavExpanded(!isNavExpanded)
 						}}
@@ -81,16 +82,18 @@ const Nav = () => {
 				<li>
 				<Link
 					to='/user/shoppinglist'
+					className='navbar-link'
 					onClick={() => {
 					setIsNavExpanded(!isNavExpanded)
 					}}
 				>
-					Home
+					List
 				</Link>
 				</li>
 				<li>
 				<Link
 					to='/user/recipes?page=1'
+					className='navbar-link'
 					onClick={() => {
 					setIsNavExpanded(!isNavExpanded)
 					}}
@@ -100,7 +103,19 @@ const Nav = () => {
 				</li>
 				<li>
 				<Link
+					to='/user/chefschoice'
+					className='navbar-link'
+					onClick={() => {
+					setIsNavExpanded(!isNavExpanded)
+					}}
+				>
+					Chef's Choice
+				</Link>
+				</li>
+				<li>
+				<Link
 					to='/user/profile'
+					className='navbar-link'
 					onClick={() => {
 					setIsNavExpanded(!isNavExpanded)
 					}}
@@ -111,6 +126,7 @@ const Nav = () => {
 				<li>
 				<Link
 					to='/'
+					className='navbar-link'
 					onClick={() => {
 						setIsNavExpanded(!isNavExpanded)
 						handleLogout();
@@ -120,6 +136,7 @@ const Nav = () => {
 				</Link>
 				</li>
 			</ul>
+			{isNavExpanded ? <button className='close-navbar' onClick={() => setIsNavExpanded(!isNavExpanded)}>X</button> : <></>}
 			</div>
 			</nav>
 				
