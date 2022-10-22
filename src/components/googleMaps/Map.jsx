@@ -25,6 +25,7 @@ const Map = () => {
     const latlng = { lat: event.latLng.lat(), lng: event.latLng.lng() };
     setLocation(latlng);
     setNearbyStores(latlng);
+    setSelectedStore(null)
   }
 
   const options = useMemo(
@@ -130,6 +131,7 @@ const Map = () => {
             Recenter Map
           </button>
           <Marker
+          className="marker"
             position={location && location}
             onClick={() => {
               setSelectedStore(null);
@@ -145,7 +147,8 @@ const Map = () => {
           />
           {userClicked ? (
             <InfoWindow
-              options={{ pixelOffset: new window.google.maps.Size(-13, -20) }}
+            className="info-window"
+              options={{ pixelOffset: new window.google.maps.Size(1, -22) }}
               position={location && location}
               onCloseClick={() => setUserClicked(false)}
             >
@@ -158,6 +161,7 @@ const Map = () => {
             stores.map((store, idx) => {
               return (
                 <Marker
+                className="marker"
                   key={idx}
                   position={store.geometry.location}
                   onClick={() => {
@@ -178,7 +182,8 @@ const Map = () => {
             })}
           {selectedStore ? (
             <InfoWindow
-              options={{ pixelOffset: new window.google.maps.Size(-12, -8) }}
+            className="info-window"
+              options={{ pixelOffset: new window.google.maps.Size(1, -5) }}
               position={selectedStore.geometry.location}
               onCloseClick={() => {
                 setSelectedStore(null);

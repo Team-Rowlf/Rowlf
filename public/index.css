@@ -769,29 +769,6 @@ a,
 .head .notice {
   font-size: smaller;
 }
-#map {
-  height: 800px;
-}
-#map img {
-  box-shadow: none;
-}
-.leaflet-container {
-  height: 100vh;
-  width: 100wh;
-}
-.leaflet-control-geosearch {
-  display: flex;
-  justify-content: end;
-}
-.leaflet-control-geosearch button {
-  width: 30px;
-  height: 31px;
-  position: absolute;
-  display: none;
-}
-.popup {
-  max-width: none;
-}
 @font-face {
   font-family: 'Lato';
   font-style: normal;
@@ -802,6 +779,11 @@ a,
 .container {
   display: flex;
   height: 100vh;
+  overflow-x: visible;
+}
+.container * {
+  overflow-x: visible;
+  max-width: none;
 }
 .map {
   width: 75%;
@@ -864,6 +846,7 @@ a,
   font-size: 0.85rem;
   margin-right: 5px;
   font-weight: bold;
+  overflow-x: visible;
 }
 .suggestion-locations {
   font-family: 'Lato', sans-serif;
@@ -888,6 +871,7 @@ a,
 }
 .suggestion-locations:hover {
   background-color: #f1f1f1;
+  overflow-x: visible;
 }
 .location-icon {
   color: #c21d1d;

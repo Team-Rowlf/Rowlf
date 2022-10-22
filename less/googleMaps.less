@@ -3,6 +3,13 @@
 .container {
   display: flex;
   height: 100vh;
+  overflow-x: visible;
+}
+
+
+.container * {
+  overflow-x: visible;
+  max-width: none;
 }
 
 .map {
@@ -66,6 +73,7 @@
   margin-top: 20px;
   margin-bottom: 30px;
   align-self: center;
+
 }
 
 .location-search-input {
@@ -78,6 +86,7 @@
   font-size: 0.85rem;
   margin-right: 5px;
   font-weight: bold;
+  overflow-x: visible;
 }
 
 .suggestion-locations {
@@ -105,6 +114,7 @@
 
 .suggestion-locations:hover {
   background-color: rgb(241, 241, 241);
+  overflow-x: visible;
 }
 
 .location-icon {
