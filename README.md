@@ -74,16 +74,6 @@
   </ol>
 </details>
 
-<!-- ABOUT THE PROJECT -->
-
-## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](https://rowlf.herokuapp.com)
-
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `team-rowlf`, `rowlf`, `twitter_handle`, `linkedin_username`, `icloud`, `kenneth.schaefer.ii`, `hello kitchen`, `hello kitchen makes meal times simpler by suggesting recipes and providing a shopping list of the items that are needed in order to make those meals. your shopping list will allow you to either find nearby stores or order all of the items from amazon fresh to be delivered directly to your door. mealtimes have never been simpler than with hello kitchen.`
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ### Built With
 
 - [![React][react.js]][react-url]
@@ -108,18 +98,13 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/team-rowlf/rowlf.git
    ```
-3. Install NPM packages
+2. Install NPM packages
    ```sh
    npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = "ENTER YOUR API";
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -128,10 +113,10 @@ This is an example of how to list things you need to use the software and how to
 
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-  - [ ] Nested Feature
+- [ ] Signup for your free account.
+- [ ] Browse recipes.
+- [ ] Add recipes to you aLike/Dislike or Shopping List.
+- [ ] Select your method of purchasing items on your Shopping List
 
 See the [open issues](https://github.com/team-rowlf/rowlf/issues) for a full list of proposed features (and known issues).
 
@@ -166,7 +151,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-Contact us by creating a project issue or messaging one of our team members listed at (https://github.com/orgs/Team-Rowlf/people)
+Contact us by creating a project issue or messaging one of our team members listed [here](https://github.com/orgs/Team-Rowlf/people)
 
 Project Link: [https://github.com/team-rowlf/rowlf](https://github.com/team-rowlf/rowlf)
 
