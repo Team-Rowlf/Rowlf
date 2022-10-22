@@ -35,7 +35,7 @@ const Map = () => {
       disableDefaultUI: true,
       zoomControl: true,
       zoomControlOptions: {
-        position: google.maps.ControlPosition.RIGHT_TOP,
+        position: google.maps.ControlPosition.RIGHT_BOTTOM,
       },
       fullscreenControl: true,
     }),
@@ -102,10 +102,10 @@ const Map = () => {
 
   function openMarkerPopup(store) {
     setSelectedStore(store);
+    setUserClicked(false);
     mapRef.current?.panTo(store.geometry.location && store.geometry.location);
   }
 
-  function centerMap() {}
   return (
     <div className="container">
       <div className="store-list-search">

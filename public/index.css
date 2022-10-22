@@ -779,7 +779,6 @@ a,
 .container {
   display: flex;
   height: 100vh;
-  overflow-x: visible;
 }
 .container * {
   overflow-x: visible;
@@ -845,8 +844,6 @@ a,
   border-radius: 5px;
   font-size: 0.85rem;
   margin-right: 5px;
-  font-weight: bold;
-  overflow-x: visible;
 }
 .suggestion-locations {
   font-family: 'Lato', sans-serif;
@@ -871,7 +868,6 @@ a,
 }
 .suggestion-locations:hover {
   background-color: #f1f1f1;
-  overflow-x: visible;
 }
 .location-icon {
   color: #c21d1d;
