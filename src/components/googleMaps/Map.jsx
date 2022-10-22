@@ -25,6 +25,7 @@ const Map = () => {
     const latlng = { lat: event.latLng.lat(), lng: event.latLng.lng() };
     setLocation(latlng);
     setNearbyStores(latlng);
+    setSelectedStore(null)
   }
 
   const options = useMemo(
@@ -34,7 +35,7 @@ const Map = () => {
       disableDefaultUI: true,
       zoomControl: true,
       zoomControlOptions: {
-        position: google.maps.ControlPosition.RIGHT_TOP,
+        position: google.maps.ControlPosition.RIGHT_BOTTOM,
       },
       fullscreenControl: true,
     }),
@@ -101,10 +102,10 @@ const Map = () => {
 
   function openMarkerPopup(store) {
     setSelectedStore(store);
+    setUserClicked(false);
     mapRef.current?.panTo(store.geometry.location && store.geometry.location);
   }
 
-  function centerMap() {}
   return (
     <div className="container">
       <div className="store-list-search">
@@ -130,6 +131,7 @@ const Map = () => {
             Recenter Map
           </button>
           <Marker
+          className="marker"
             position={location && location}
             onClick={() => {
               setSelectedStore(null);
@@ -145,7 +147,8 @@ const Map = () => {
           />
           {userClicked ? (
             <InfoWindow
-              options={{ pixelOffset: new window.google.maps.Size(-13, -20) }}
+            className="info-window"
+              options={{ pixelOffset: new window.google.maps.Size(1, -22) }}
               position={location && location}
               onCloseClick={() => setUserClicked(false)}
             >
@@ -158,6 +161,7 @@ const Map = () => {
             stores.map((store, idx) => {
               return (
                 <Marker
+                className="marker"
                   key={idx}
                   position={store.geometry.location}
                   onClick={() => {
@@ -178,7 +182,8 @@ const Map = () => {
             })}
           {selectedStore ? (
             <InfoWindow
-              options={{ pixelOffset: new window.google.maps.Size(-12, -8) }}
+            className="info-window"
+              options={{ pixelOffset: new window.google.maps.Size(1, -5) }}
               position={selectedStore.geometry.location}
               onCloseClick={() => {
                 setSelectedStore(null);
