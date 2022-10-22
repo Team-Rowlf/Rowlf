@@ -769,13 +769,6 @@ a,
 .head .notice {
   font-size: smaller;
 }
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/lato/v23/S6uyw4BMUTPHvxk.ttf) format('truetype');
-}
 .container {
   display: flex;
   height: 100vh;
@@ -820,7 +813,6 @@ a,
   background-color: green;
 }
 .back-link {
-  font-family: 'Lato', sans-serif;
   margin-top: 10px;
   margin-left: 10px;
   align-self: flex-start;
@@ -837,7 +829,6 @@ a,
   align-self: center;
 }
 .location-search-input {
-  font-family: 'Lato', sans-serif;
   width: 90%;
   height: 30px;
   border: 2px solid grey;
@@ -846,7 +837,6 @@ a,
   margin-right: 5px;
 }
 .suggestion-locations {
-  font-family: 'Lato', sans-serif;
   gap: 10px;
   border: 5px;
   width: 90%;
@@ -872,9 +862,6 @@ a,
 .location-icon {
   color: #c21d1d;
 }
-.map p {
-  font-family: 'Lato', sans-serif;
-}
 .gm-style-iw {
   margin-bottom: 50px;
   margin-right: 5px;
@@ -895,7 +882,6 @@ a,
   width: 100%;
 }
 .store {
-  font-family: 'Lato', sans-serif;
   border-bottom: 1px grey dotted;
   width: 100%;
   font-size: smaller;
@@ -933,7 +919,6 @@ a,
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   color: #191919;
   cursor: pointer;
-  font-family: 'Lato', sans-serif;
   text-align: center;
 }
 .tab {
