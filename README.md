@@ -29,7 +29,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/team-rowlf/rowlf">
-    <img src="public/largelogo.png" alt="Logo" width="80" height="80">
+    <img src="public/largelogo.svg" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Rowlf</h3>
