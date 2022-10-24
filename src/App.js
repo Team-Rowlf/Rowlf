@@ -7,7 +7,7 @@ function App() {
 		<>
 			<div id="main">
 				<RoutesComponent />
-				<ToastContainer pauseOnFocusLoss={false} style={{textAlign: 'center'}} />
+				<ToastContainer pauseOnFocusLoss={false} style={{textAlign: 'center'}} icon={false} />
 			</div>
 			<Footer />
 		</>
