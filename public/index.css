@@ -71,7 +71,7 @@ img {
   margin: 0;
   display: flex;
   flex-direction: column;
-  min-height: 60vh;
+  min-height: 70.5vh;
 }
 .profile nav,
 .admin nav {
@@ -88,7 +88,7 @@ img {
 }
 .profile nav a button,
 .admin nav a button {
-  min-width: fit-content;
+  min-width: 120px;
   flex-wrap: nowrap;
 }
 #load {
@@ -592,6 +592,8 @@ button:hover {
   z-index: 5;
   transform: scale(1.25);
   width: 100%;
+  height: fit-content;
+  overflow: hidden;
 }
 .recipes-list-hover {
   transition: all 250ms ease-out;
@@ -634,8 +636,10 @@ button:hover {
   left: 0;
   bottom: 0;
   width: 100%;
+  overflow: hidden;
 }
 .footer .footer-upper {
+  overflow: hidden;
   width: 100%;
   display: flex;
   padding: 0.5%;
@@ -644,6 +648,7 @@ button:hover {
   width: 25%;
 }
 .footer .footer-lower {
+  overflow: hidden;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -700,6 +705,7 @@ a,
   margin: auto;
 }
 .bottom {
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   min-height: 200px;
@@ -930,6 +936,8 @@ a,
   background-color: #8B2635;
   font-size: large;
   font-weight: bold;
+  overflow: hidden;
+  min-width: 120px;
 }
 .active {
   background-color: #E0E2DB;
@@ -1018,6 +1026,9 @@ a,
   text-align: center;
   font-size: medium;
   margin-top: 1em;
+}
+a {
+  overflow: hidden;
 }
 .allusers-header,
 .allrecipes-header {
